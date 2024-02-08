@@ -1,7 +1,30 @@
 @import-normalize; /* bring in normalize.css styles */
 
-body {
+/* /////////////////////--VAR--/////////////////////////////// */
+:root {
+  --background-color: #0c0d0d;
+  --box-background-color: #171719;
+  --button-color: #0ef387;
+  --hover-color: #0ebb69;
+  --main-text-color: #fafafa;
+  --regular-text-color: rgba(250, 250, 250, 0.4);
+
+  /* Font-size */
+
+  --font-size-small: 14px;
+  --font-size-medium: 20px;
+  --font-size-large: 24px;
+  --font-size-modal-title: 28px;
+  --font-size-title: 38px;
+  --font-size-main-title: 56px;
+}
+/* /////////////////////  /var/ ////////////////////////////// */
+
+body,
+html {
   margin: 0;
+  box-sizing: border-box;
+  background-color: var(--background-color); /* #0c0d0d */
 }
 
 h1,
@@ -32,7 +55,7 @@ button {
   border: none;
   font: inherit;
   color: inherit;
-  background-color: transparent;
+  background-color: var(--button-color); /* #0ef387 */
   cursor: pointer;
 }
 
