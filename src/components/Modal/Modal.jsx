@@ -32,7 +32,7 @@ export const Modal = ({ children }) => {
     <div className={s.wrapper} onClick={handleClick}>
       <div className={s.modal}>
         <button className={s.button} onClick={toggleModal}>
-          <svg
+          {/* <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -53,7 +53,8 @@ export const Modal = ({ children }) => {
               stroke-linecap="round"
               stroke-linejoin="round"
             />
-          </svg>
+          </svg> */}
+          Close
         </button>
         {children}
       </div>
