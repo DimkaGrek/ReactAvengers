@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: grey;
+  opacity: 0.8;
+}
+
+.modal {
+  position: relative;
+  border: 1px solid rgba(250, 250, 250, 0.1);
+  border-radius: 30px;
+  padding: 50px 40px;
+  background-color: #171719;
+}
+
+.button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
