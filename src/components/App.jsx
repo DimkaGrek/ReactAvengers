@@ -18,7 +18,7 @@ const App = () => {
     })
   );
 
-  dispatch(refreshUser());
+  // dispatch(refreshUser());
 
   return (
     <Routes>
