@@ -5,8 +5,21 @@ import Home from 'pages/Home';
 import RegisterPage from 'pages/RegisterPage';
 import MainTransactionsPage from 'pages/MainTransactionsPage';
 import TransactionsHistoryPage from 'pages/TransactionsHistoryPage';
+import { useDispatch } from 'react-redux';
+import { loginUser, refreshUser } from 'my-redux/Auth/operations';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  dispatch(
+    loginUser({
+      email: 'marta@test.com',
+      password: 'marta@test.com',
+    })
+  );
+
+  dispatch(refreshUser());
+
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>

@@ -23,10 +23,10 @@ const userSlice = createSlice({
       .addCase(
         fetchCurrentUser.fulfilled,
         (state, { payload: { name, email, avatarUrl, currency } }) => {
-          state.name = name;
-          state.email = email;
-          state.currency = currency;
-          state.avatarUrl = avatarUrl;
+          state.user.name = name;
+          state.user.email = email;
+          state.user.currency = currency;
+          state.user.avatarUrl = avatarUrl;
         }
       )
       .addCase(changeUserInfo.fulfilled, (state, { payload }) => {
@@ -46,4 +46,4 @@ const userSlice = createSlice({
 });
 
 export const userReducer = userSlice.reducer;
-export const { selectUser } = userReducer.selectors;
+// export const { selectUser } = userReducer.selectors;

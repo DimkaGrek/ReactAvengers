@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getCurrentUser } from 'my-redux/User/operations';
+import { fetchCurrentUser } from 'my-redux/User/operations';
 import { api, clearToken, setToken } from 'services/api';
 
 export const registerUser = createAsyncThunk(
@@ -54,7 +54,7 @@ export const refreshUser = createAsyncThunk(
       const { data } = await api.post('/auth/refresh', { sid: sid });
       setToken(data.accessToken);
 
-      thunkAPI.dispatch(getCurrentUser());
+      thunkAPI.dispatch(fetchCurrentUser());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
