@@ -1,13 +1,13 @@
-import axios from 'axios';
+import axio from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getCurrentUser } from 'my-redux/User/operations';
-import { clearToken, setToken } from 'services/api';
+import { api, clearToken, setToken } from 'services/api';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/auth/register', credentials);
+      const { data } = await api.post('/auth/register', credentials);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -19,7 +19,7 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/auth/login', credentials);
+      const { data } = await api.post('/auth/login', credentials);
       setToken(data.accessToken);
       return data;
     } catch (error) {
@@ -32,7 +32,7 @@ export const logoutUser = createAsyncThunk(
   'auth/logout',
   async (_, thunkAPI) => {
     try {
-      await axios.get('/auth/logout');
+      await api.get('/auth/logout');
       clearToken();
       return;
     } catch (error) {
@@ -52,7 +52,7 @@ export const refreshUser = createAsyncThunk(
     }
     try {
       setToken(refreshToken);
-      const { data } = await axios.post('/auth/refresh', { sid: sid });
+      const { data } = await api.post('/auth/refresh', { sid: sid });
       setToken(data.accessToken);
 
       thunkAPI.dispatch(getCurrentUser());
