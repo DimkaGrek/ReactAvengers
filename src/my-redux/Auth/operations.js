@@ -1,4 +1,3 @@
-import axio from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getCurrentUser } from 'my-redux/User/operations';
 import { api, clearToken, setToken } from 'services/api';
