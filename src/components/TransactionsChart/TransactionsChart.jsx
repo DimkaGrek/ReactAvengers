@@ -18,7 +18,7 @@ export const TransactionsChart = () => {
           <Chart data={data} />
           <p className={s.chartDescr}>100%</p>
         </div>
-        <ul className={s.list}>
+        <ul className={`${s.list} scroll scrollA`}>
           {data.map((item, index) => (
             <li className={s.listItem} key={index}>
               <div
