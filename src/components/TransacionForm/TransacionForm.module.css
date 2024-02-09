@@ -1,7 +1,6 @@
 .formWrapper {
   width: fit-content;
   height: auto;
-  background-color: red;
   background-color: var(--box-background-color);
   border-radius: 30px;
   padding: 40px;
@@ -34,13 +33,6 @@
 .transacionForm input::placeholder,
 .comment::placeholder {
   color: var(--regular-text-color);
-}
-
-/* hide select element for number input */
-.transacionForm input[type='number']::-webkit-inner-spin-button,
-.transacionForm input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .typeLabel {
@@ -111,10 +103,12 @@
 
 .timeInput {
   width: 188px;
+  height: 24px;
 }
 
 .customField,
-.fieldWrapper {
+.fieldWrapper,
+.sumLabel {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -129,9 +123,33 @@
   stroke: var(--main-text-color);
   fill: none;
   position: absolute;
-  right: 3%;
-  top: 67%;
+  right: 4%;
+  top: 68%;
   transform: translate(-50%, -50%);
+}
+
+.sumLabel {
+  position: relative;
+}
+
+.transacionForm input[type='time']::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/* hide select element for number input */
+.transacionForm input[type='number']::-webkit-inner-spin-button,
+.transacionForm input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.currency {
+  width: 50px;
+  text-align: end;
+  position: absolute;
+  right: -1%;
+  top: 68%;
+  transform: translate(-50%, -50%);
+  color: var(--regular-text-color);
 }
 
 .comment {

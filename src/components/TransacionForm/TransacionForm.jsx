@@ -1,7 +1,12 @@
 import { Icon } from 'components';
 import s from './TransacionForm.module.css';
+import { useState } from 'react';
 
 export const TransacionForm = () => {
+  const currency = '$';
+  const sum = 1;
+  const [time, setTime] = useState('00:00:00');
+
   return (
     <div className={s.formWrapper}>
       <form className={s.transacionForm}>
@@ -43,9 +48,11 @@ export const TransacionForm = () => {
             Time
             <input
               className={s.timeInput}
-              type="text"
+              type="time"
               name="time"
-              placeholder="00:00:00"
+              step="1"
+              value={time}
+              onChange={e => setTime(e.target.value)}
             />
             <Icon name="clock" className={s.iconTime} size="20" />
           </label>
@@ -54,9 +61,14 @@ export const TransacionForm = () => {
           <label>Category</label>
           <input type="text" name="category" placeholder="Different" />
         </div>
-        <div className={s.fieldWrapper}>
-          <label>Sum</label>
-          <input type="number" name="sum" placeholder="Enter the sum" />
+        <div>
+          <label className={s.sumLabel}>
+            Sum
+            <input type="number" name="sum" placeholder="Enter the sum" />
+            <span className={s.currency} style={sum ? { color: 'white' } : {}}>
+              {currency}
+            </span>
+          </label>
         </div>
         <div className={s.fieldWrapper}>
           <label>Comment</label>
