@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import headerStyles from './headerStyles.module.css';
 import Logo from './Logo/Logo';
 import BurgerMenuBtn from './BurgerMenuBtn/BurgerMenuBtn';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'my-redux/Auth/authSlice';
 
 const Header = () => {
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {

@@ -1,5 +1,6 @@
 .mobileMenu {
   position: absolute;
+  z-index: 1;
   padding: 18px 20px;
   left: 0;
   top: 0;
@@ -11,11 +12,11 @@
 .closeBtn {
   position: absolute;
   right: 20px;
-  top: 18px;
-  background-color: #0c0d0d;
+  top: 31px;
+  background-color: transparent;
 }
 .closeBtnIcon {
   width: 20px;
   height: 20px;
-  fill: white;
+  fill: #0c0d0d;
 }

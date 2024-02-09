@@ -9,7 +9,7 @@ const BurgerMenu = ({ toggleMenu }) => {
     <div className={style.mobileMenu}>
       <UserBarBtn />
       <button className={style.closeBtn} onClick={toggleMenu}>
-        <Icon name="x-mark" className={style.closeBtnIcon} />
+        <Icon name="close-btn" className={style.closeBtnIcon} />
       </button>
       <TransactionsHistoryNav />
     </div>
