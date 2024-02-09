@@ -1,0 +1,130 @@
+.transacionForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--box-background-color);
+  width: 566px;
+  /* height: 600px; */
+  height: auto;
+  border-radius: 30px;
+  padding: 40px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--main-text-color);
+}
+
+.transacionForm input {
+  border: 1px solid var(--border-field-color);
+  border-radius: 12px;
+  padding: 12px 0 12px 18px;
+  background-color: transparent;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--main-text-color);
+}
+
+.transacionForm input ::placeholder {
+  color: var(--regular-text-color);
+}
+
+/* hide select element for number input */
+.transacionForm input[type='number']::-webkit-inner-spin-button,
+.transacionForm input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.typeLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+}
+
+.transactionTypes {
+  display: flex;
+  gap: 20px;
+}
+
+.customRadioBtn {
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 2px solid var(--border-field-color);
+  vertical-align: text-top;
+}
+
+.customRadioBtn::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--hover-color);
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.2s ease-in;
+}
+
+.radioBtn {
+  width: 0;
+  height: 0;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.radioBtn:checked + .customRadioBtn {
+  border-color: var(--hover-color);
+}
+
+.radioBtn:checked + .customRadioBtn::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.dateFields {
+  display: flex;
+  flex-basis: 50%;
+  gap: 20px;
+}
+
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comment {
+  resize: none;
+  background-color: transparent;
+  padding: 12px 18px;
+  color: var(--main-text-color);
+  border-radius: 12px;
+  border: 1px solid var(--border-field-color);
+  height: 97px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.submitBtn {
+  width: fit-content;
+  border-radius: 40px;
+  height: 47px;
+  padding: 0 44px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: var(--background-color);
+}
+
+.submitBtn:hover {
+  background-color: var(--hover-color);
+}
