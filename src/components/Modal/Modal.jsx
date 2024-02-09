@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 
-import { ModalContext } from 'components';
+import { Icon, ModalContext } from 'components';
 import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#rootModal');
@@ -41,29 +41,7 @@ export const Modal = ({ children, pd }) => {
     <div className={s.wrapper} onClick={handleClick}>
       <div className={modalClass}>
         <button className={s.button} onClick={toggleModal}>
-          {/* <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18 6L6 18"
-              stroke="#FAFAFA"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M6 6L18 18"
-              stroke="#FAFAFA"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg> */}
-          Close
+          <Icon className={s.icon} name={'x-mark'} size={24} />
         </button>
         {children}
       </div>

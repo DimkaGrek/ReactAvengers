@@ -9,6 +9,11 @@
   --main-text-color: #fafafa;
   --regular-text-color: rgba(250, 250, 250, 0.4);
   --text-color_50: rgba(250, 250, 250, 0.5);
+  --button-color-modal: #29292b;
+  --regular-text-color01: rgba(250, 250, 250, 0.1);
+  --black06: rgba(12, 13, 13, 0.6);
+  --black05: rgba(12, 13, 13, 0.5);
+
   /* Font-size */
 
   --font-size-small: 14px;
@@ -89,3 +94,25 @@ img {
   max-width: 100%;
   height: auto;
 }
+/* Scrollbar */
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #444446;
+  border-radius: 12px;
+}
+/* For TransactionChart */
+.scrollA::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollA::-webkit-scrollbar-track {
+  background-color: var(--background-color);
+}
+/* --------------------------------------------- */
+/* For Modal EditCategories, HistoryTransactions */
+.scrollB::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollB::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+/* Example: <ul className={`${s.list} scroll scrollA`}> */
+/* ---------------- */
