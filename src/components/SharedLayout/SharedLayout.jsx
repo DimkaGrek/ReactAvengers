@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header, Modal, ModalContext } from 'components';
+import { Header, Modal, ModalContext, UserSetsModal } from 'components';
 
 const SharedLayout = () => {
   const { isOpenModal, toggleModal } = useContext(ModalContext);
@@ -17,8 +17,8 @@ const SharedLayout = () => {
           Open Modal
         </button>
         {isOpenModal && (
-          <Modal pd={80}>
-            <h2>Something in modal</h2>
+          <Modal pd={60}>
+            <UserSetsModal />
           </Modal>
         )}
       </div>

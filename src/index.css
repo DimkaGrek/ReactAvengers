@@ -25,6 +25,12 @@
 }
 /* /////////////////////  /var/ ////////////////////////////// */
 
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: 'SuisseIntl-Regular';
   src: url('./assets/fonts/SuisseIntl-Regular.woff2') format('woff2'),
