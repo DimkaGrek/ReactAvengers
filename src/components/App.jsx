@@ -27,7 +27,12 @@ const App = () => {
       <Route path="/" element={<SharedLayout />}>
         <Route
           index
-          element={<PublicRoute component={<WelcomePage />} redirectTo="/" />}
+          element={
+            <PublicRoute
+              component={<WelcomePage />}
+              redirectTo="/transactions/expences"
+            />
+          }
         />
 
         <Route
