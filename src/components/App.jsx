@@ -6,15 +6,16 @@ import RegisterPage from 'pages/RegisterPage';
 import MainTransactionsPage from 'pages/MainTransactionsPage/MainTransactionsPage';
 import TransactionsHistoryPage from 'pages/TransactionsHistoryPage';
 import { useDispatch } from 'react-redux';
-import { loginUser, refreshUser } from 'my-redux/Auth/operations';
+import { loginUser } from 'my-redux/Auth/operations';
+import { Test } from './Test';
 
 const App = () => {
   const dispatch = useDispatch();
 
   dispatch(
     loginUser({
-      email: 'marta@test.com',
-      password: 'marta@test.com',
+      email: 'dimka@mail.ua',
+      password: 'password',
     })
   );
 
@@ -34,6 +35,7 @@ const App = () => {
           path="/transactions/history/:transactionsType"
           element={<TransactionsHistoryPage />}
         />
+        <Route path="/test" element={<Test />} />
       </Route>
     </Routes>
   );

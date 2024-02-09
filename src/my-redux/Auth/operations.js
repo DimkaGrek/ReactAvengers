@@ -18,6 +18,7 @@ export const loginUser = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
+      console.log('login/password->>> ', credentials);
       const { data } = await api.post('/auth/login', credentials);
       setToken(data.accessToken);
       return data;
