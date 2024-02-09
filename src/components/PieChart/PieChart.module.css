@@ -1,6 +1,11 @@
 .chart {
   transform: scale(1.4);
 }
+@media only screen and (max-width: 375px) {
+  .chart {
+    transform: scale(1.2);
+  }
+}
 @media only screen and (min-width: 768px) {
   .chart {
     transform: scale(1.45);
