@@ -1,0 +1,90 @@
+.chartContainer {
+  background-color: var(--box-background-color);
+  padding: 28px 20px 40px 20px;
+  border-radius: 30px;
+}
+@media only screen and (min-width: 768px) {
+  .chartContainer {
+    padding-top: 44px;
+    padding-left: 40px;
+    padding-right: 60px;
+    padding-bottom: 60px;
+  }
+}
+.title {
+  font-size: 14px;
+  color: var(--text-color_50);
+  margin-bottom: 98px;
+}
+@media only screen and (min-width: 768px) {
+  .title {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+  .statsWrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 141px;
+  }
+}
+.pieChartWrapper {
+  position: relative;
+  height: 100px;
+  width: 200px;
+  margin-inline: auto;
+  margin-bottom: 62px;
+}
+@media only screen and (min-width: 768px) {
+  .pieChartWrapper {
+    margin: 0;
+    margin-top: 42px;
+    margin-left: 45px;
+  }
+}
+.chartDescr {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--main-text-color);
+}
+.list {
+  font-size: 16px;
+  color: var(--text-color_50);
+  max-height: 126px;
+  padding-right: 28px;
+  overflow: auto;
+}
+@media only screen and (min-width: 768px) {
+  .list {
+    width: 191px;
+  }
+}
+.listItem {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+@media only screen and (min-width: 768px) {
+  listItem:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.wrapperMarker {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.itemDescr {
+  /* width: 132px; */
+  margin-right: auto;
+}
+.itemSpan {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--main-text-color);
+}

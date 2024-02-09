@@ -4,3 +4,6 @@ export { default as Header } from './Header/Header.jsx';
 export * from './ModalContent/ModalContext.jsx';
 export * from './Modal/Modal.jsx';
 export * from './Icon/Icon.jsx';
+export * from './TransactionsChart/TransactionsChart.jsx';
+export * from './TransactionsTotalAmount/TransactionsTotalAmount.jsx';
+export * from './PieChart/PieChart.jsx';
