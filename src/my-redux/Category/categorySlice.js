@@ -34,7 +34,7 @@ const categorySlice = createSlice({
       })
       .addCase(deleteCategory.fulfilled, (state, action) => {
         state.categories = state.categories.filter(
-          item => item.id !== action.payload.id
+          item => item._id !== action.payload
         );
       })
       .addCase(loginUser.fulfilled, (state, { payload: { user } }) => {

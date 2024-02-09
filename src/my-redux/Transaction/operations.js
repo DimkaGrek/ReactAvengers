@@ -28,3 +28,34 @@ export const addTransaction = createAsyncThunk(
     }
   }
 );
+
+export const editTransaction = createAsyncThunk(
+  'transactions/editTransaction',
+  async ({ _id, type, date, time, category, sum, comment }, thunkAPI) => {
+    try {
+      const { data } = await api.post(`/transactions/${type}/${_id}`, {
+        date,
+        time,
+        category,
+        sum,
+        comment,
+      });
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteTransaction = createAsyncThunk(
+  'categories/deleteTransaction',
+  async (id, thunkAPI) => {
+    try {
+      await api.patch(`/transactions/${id}`);
+      return id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getTransactions, addTransaction } from './operations';
+import {
+  getTransactions,
+  addTransaction,
+  editTransaction,
+  deleteTransaction,
+} from './operations';
 
 const initialState = {
   transactions: [],
@@ -15,20 +20,21 @@ const transactionSlice = createSlice({
       })
       .addCase(addTransaction.fulfilled, (state, action) => {
         state.transactions.push(action.payload);
+      })
+
+      .addCase(editTransaction.fulfilled, (state, action) => {
+        state.transactions = state.transactions.map(item => {
+          if (item._id === action.payload._id) {
+            return action.payload;
+          }
+          return item;
+        });
+      })
+      .addCase(deleteTransaction.fulfilled, (state, action) => {
+        state.transactions = state.transactions.filter(
+          item => item._id !== action.payload
+        );
       }),
-  //   .addCase(editTransaction.fulfilled, (state, action) => {
-  //     state.categories = state.categories.map(item => {
-  //       if (item.id === action.payload.id) {
-  //         return action.payload;
-  //       }
-  //       return item;
-  //     });
-  //   })
-  //   .addCase(deleteTransaction.fulfilled, (state, action) => {
-  //     state.categories = state.categories.filter(
-  //       item => item.id !== action.payload.id
-  //     );
-  //   })
   selectors: {
     selectTransactions: state => state.transactions,
   },
