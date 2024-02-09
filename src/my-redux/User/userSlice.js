@@ -43,6 +43,8 @@ const userSlice = createSlice({
           email: user.email,
           currency: user.currency,
           avatarUrl: user.avatarUrl,
+          totalIncomes: user.transactionsTotal.incomes,
+          totalExpenses: user.transactionsTotal.incomes,
         };
       })
       .addCase(changeUserInfo.fulfilled, (state, { payload }) => {

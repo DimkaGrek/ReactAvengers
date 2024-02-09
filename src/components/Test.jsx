@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import s from './Test.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCategory, getCategories } from 'my-redux/Category/operations';
+import { addCategory } from 'my-redux/Category/operations';
 import { selectCategories } from 'my-redux/Category/categorySlice';
-import { selectIsLoggedIn } from 'my-redux/Auth/authSlice';
+// import { selectIsLoggedIn } from 'my-redux/Auth/authSlice';
 
 export const Test = () => {
   const categories = useSelector(selectCategories);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -20,9 +20,9 @@ export const Test = () => {
   const [categoryName, setCategoryName] = useState(''); // Початкове значення для input
 
   const [transDate, setTranseDate] = useState('');
-  const [transTime, setTranseTime] = useState('');
-  const [transSum, setTranseSum] = useState(0);
-  const [transComment, setTransComment] = useState('');
+  // const [transTime, setTranseTime] = useState('');
+  // const [transSum, setTranseSum] = useState(0);
+  // const [transComment, setTransComment] = useState('');
 
   // Функція для обробки змін у полі select
   const handleTypeChange = event => {
@@ -46,23 +46,23 @@ export const Test = () => {
   };
 
   // Функція для обробки змін у полі time
-  const handleTimeChange = event => {
-    setTranseTime(event.target.value);
-  };
+  // const handleTimeChange = event => {
+  //   setTranseTime(event.target.value);
+  // };
 
   // Функція для обробки змін у полі sum
-  const handleSumChange = event => {
-    setTranseSum(event.target.value);
-  };
+  // const handleSumChange = event => {
+  //   setTranseSum(event.target.value);
+  // };
 
   // Функція для обробки змін у полі sum
-  const handleCommentChange = event => {
-    setTransComment(event.target.value);
-  };
+  // const handleCommentChange = event => {
+  //   setTransComment(event.target.value);
+  // };
 
   const handleSubmitTransaction = e => {
     e.preventDefault();
-    console.log({ type, transDate, transTime, transSum, transComment });
+    // console.log({ type, transDate, transTime, transSum, transComment });
   };
 
   console.log('categories->>>> ', categories);
