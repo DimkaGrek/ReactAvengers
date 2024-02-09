@@ -41,9 +41,7 @@ export const deleteUserAvatar = createAsyncThunk(
   'user/deleteAvatar',
   async (avatarId, thunkAPI) => {
     try {
-      await api.delete('/users/avatar', {
-        avatarId,
-      });
+      await api.delete(`/users/avatar${avatarId}`);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
