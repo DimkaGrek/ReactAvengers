@@ -64,4 +64,4 @@ const userSlice = createSlice({
 });
 
 export const userReducer = userSlice.reducer;
-// export const { selectUser } = userReducer.selectors;
+export const { selectUser } = userSlice.selectors;
