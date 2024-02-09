@@ -5,6 +5,7 @@ import {
   deleteUserAvatar,
   fetchCurrentUser,
 } from './operations';
+import { loginUser } from 'my-redux/Auth/operations';
 
 const initialState = {
   user: {
@@ -29,6 +30,14 @@ const userSlice = createSlice({
           state.user.avatarUrl = avatarUrl;
         }
       )
+      .addCase(loginUser.fulfilled, (state, { payload: { user } }) => {
+        state.user = {
+          name: user.name,
+          email: user.email,
+          currency: user.currency,
+          avatarUrl: user.avatarUrl,
+        };
+      })
       .addCase(changeUserInfo.fulfilled, (state, { payload }) => {
         state.name = payload.name;
         state.currency = payload.currency;
