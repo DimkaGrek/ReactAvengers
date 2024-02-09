@@ -37,9 +37,7 @@ const App = () => {
         />
         <Route
           path="/register"
-          element={
-            <PublicRoute component={<RegisterPage />} redirectTo="/login" />
-          }
+          element={<PublicRoute component={<RegisterPage />} redirectTo="/" />}
         />
         <Route
           path="/transactions/:transactionsType"

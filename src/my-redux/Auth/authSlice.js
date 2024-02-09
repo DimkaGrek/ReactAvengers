@@ -47,20 +47,24 @@ const authSlice = createSlice({
           changeUserInfo.fulfilled,
           changeUserAvatar.fulfilled,
           deleteUserAvatar.fulfilled,
-          state => (state.isRefreshing = false)
+          state => {
+            state.isRefreshing = false;
+          }
         )
       )
-      // .addMatcher(
-      //   isAnyOf(
-      //     loginUser.pending,
-      //     refreshUser.pending,
-      //     logoutUser.pending,
-      //     changeUserInfo.pending,
-      //     changeUserAvatar.pending,
-      //     deleteUserAvatar.pending
-      //   ),
-      //   state => (state.isRefreshing = true)
-      // )
+      .addMatcher(
+        isAnyOf(
+          loginUser.pending,
+          refreshUser.pending,
+          logoutUser.pending,
+          changeUserInfo.pending,
+          changeUserAvatar.pending,
+          deleteUserAvatar.pending
+        ),
+        state => {
+          state.isRefreshing = true;
+        }
+      )
       .addMatcher(
         isAnyOf(
           loginUser.rejected,
