@@ -17,7 +17,7 @@ const SharedLayout = () => {
           Open Modal
         </button>
         {isOpenModal && (
-          <Modal>
+          <Modal pd={80}>
             <h2>Something in modal</h2>
           </Modal>
         )}
