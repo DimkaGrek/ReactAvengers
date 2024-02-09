@@ -7,3 +7,4 @@ export * from './Icon/Icon.jsx';
 export * from './TransactionsChart/TransactionsChart.jsx';
 export * from './TransactionsTotalAmount/TransactionsTotalAmount.jsx';
 export * from './PieChart/PieChart.jsx';
+export * from './UserSetsModal/UserSetsModal.jsx';

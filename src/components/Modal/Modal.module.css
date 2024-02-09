@@ -8,13 +8,12 @@
 
   width: 100vw;
   height: 100vh;
-  background-color: grey;
-  opacity: 0.8;
+  background: var(--black06);
 }
 
 .modal {
   position: relative;
-  border: 1px solid rgba(250, 250, 250, 0.1);
+  border: 1px solid var(--regular-text-color01);
   border-radius: 30px;
   background-color: #171719;
 }
@@ -64,7 +63,13 @@
   width: 24px;
   height: 24px;
 
+  background-color: inherit;
+
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.icon {
+  stroke: var(--main-text-color);
 }
