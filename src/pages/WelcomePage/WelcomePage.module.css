@@ -1,0 +1,116 @@
+.container {
+  padding: 0 100px 100px;
+  display: flex;
+}
+
+.containerHome {
+  display: flex;
+  flex-direction: column;
+}
+
+.containerText {
+  width: 575px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: var(--font-size-small);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--regular-text-color);
+  margin-bottom: 10px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: var(--font-size-main-title);
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: var(--main-text-color);
+}
+
+.span {
+  text-decoration: underline;
+  color: var(--button-color);
+}
+
+.textDesc {
+  font-weight: 400;
+  font-size: var(--font-size-smaller);
+  letter-spacing: -0.02em;
+  color: var(--regular-text-color);
+  margin-bottom: 40px;
+}
+
+.containerButton {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 166px;
+}
+
+.buttonUp {
+  background-color: var(--button-color);
+  border-radius: 40px;
+
+  padding: 14px 44px;
+  width: 145px;
+  height: 47px;
+
+  font-weight: 400;
+  font-size: var(--font-size-smaller);
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: var(--main-text-color);
+  transition: background-color var(--transition-delay) var(--transition);
+
+  &:hover {
+    background-color: var(--hover-color);
+  }
+}
+.buttonIn {
+  background-color: transparent;
+  border: 1px solid var(--regular-text-color);
+  border-radius: 40px;
+
+  padding: 14px 40px;
+  width: 137px;
+  height: 47px;
+
+  font-weight: 400;
+  font-size: var(--font-size-smaller);
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--main-text-color);
+  transition: border var(--transition) var(--transition-delay);
+
+  &:hover {
+    border: 1px solid var(--button-color);
+  }
+}
+
+.titleUsers {
+  font-size: var(--font-size-modal-title);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--main-text-color);
+  margin-bottom: 12px;
+  justify-content: center;
+}
+
+.tx {
+  width: 210px;
+  font-weight: 400;
+  font-size: var(--font-size-smaller);
+  letter-spacing: -0.02em;
+  color: var(--regular-text-color);
+}
+
+.containerImg {
+  display: flex;
+  gap: 32px;
+}
+
+.img {
+  width: 125px;
+  height: 48px;
+}

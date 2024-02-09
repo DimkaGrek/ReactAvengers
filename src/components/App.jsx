@@ -1,31 +1,39 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout/SharedLayout';
-import LoginPage from 'pages/LoginPage';
-import RegisterPage from 'pages/RegisterPage';
+import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import MainTransactionsPage from 'pages/MainTransactionsPage/MainTransactionsPage';
-import TransactionsHistoryPage from 'pages/TransactionsHistoryPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
 import { useDispatch } from 'react-redux';
 import { loginUser } from 'my-redux/Auth/operations';
 import { Test } from './Test';
-import WelcomePage from 'pages/Home';
+import WelcomePage from 'pages/WelcomePage/WelcomePage';
 import { PublicRoute } from './Routes/PublicRoute';
 import { PrivateRoute } from './Routes/PrivateRoute';
+import TransactionsHistoryPage from 'pages/TransactionsHistoryPage';
 
 const App = () => {
   const dispatch = useDispatch();
-  dispatch(
-    loginUser({
-      email: 'dimka@mail.ua',
-      password: 'password',
-    })
-  );
+  // dispatch(
+  //   loginUser({
+  //     email: 'dimka@mail.ua',
+  //     password: 'password',
+  //   })
+  // );
 
   // dispatch(refreshUser());
 
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route index element={<WelcomePage />} />
+        <Route
+          index
+          element={
+            <PublicRoute
+              component={<WelcomePage />}
+              redirectTo="/transactions/expences"
+            />
+          }
+        />
 
         <Route
           path="/login"
