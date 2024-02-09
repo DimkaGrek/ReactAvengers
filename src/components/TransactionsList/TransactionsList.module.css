@@ -1,0 +1,91 @@
+.listTable {
+  table-layout: fixed;
+  width: 100%;
+
+  border-collapse: collapse;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-style: hidden;
+}
+
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 30px;
+}
+.listTable tr:last-child td:last-child {
+  border-bottom-right-radius: 30px;
+}
+
+thead th:nth-child(1) {
+  width: 15%;
+}
+
+thead th:nth-child(2) {
+  width: 17%;
+}
+
+thead th:nth-child(3) {
+  width: 22%;
+}
+
+thead th:nth-child(4) {
+  width: 10%;
+}
+
+thead th:nth-child(5) {
+  width: 13%;
+}
+
+thead th:nth-child(6) {
+  width: 33%;
+}
+
+thead {
+  height: 59px;
+  background: rgba(0, 0, 0, 0.2);
+}
+th,
+td {
+  padding: 20px;
+}
+
+thead th,
+tfoot th {
+  font-family: 'Suisse Intl', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(250, 250, 250, 0.4);
+  text-align: left;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody {
+  font-family: 'Suisse Intl', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #fafafa;
+  text-align: left;
+  background: #171719;
+}
+.btnContainer {
+  display: flex;
+  gap: 10px;
+}
+.btnTable {
+  border-radius: 40px;
+  padding: 14px 32px;
+  width: 118px;
+  height: 47px;
+  color: black;
+}
+
+.btnTableDel {
+  border-radius: 40px;
+  padding: 14px 30px;
+  width: 133px;
+  height: 47px;
+  background: #0c0d0d;
+  color: white;
+}
