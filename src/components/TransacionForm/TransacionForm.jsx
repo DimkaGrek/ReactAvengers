@@ -1,4 +1,3 @@
-import { Icon } from 'components';
 import s from './TransacionForm.module.css';
 
 export const TransacionForm = () => {
@@ -56,7 +55,6 @@ export const TransacionForm = () => {
       <button className={s.submitBtn} type="submit">
         Add
       </button>
-      <Icon name="close-btn" />
     </form>
   );
 };
