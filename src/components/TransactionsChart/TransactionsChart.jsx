@@ -1,25 +1,27 @@
+import { useSelector } from 'react-redux';
+//
 import { Chart } from 'components';
+import { countCategories } from 'helpers';
+import { selectTransactions } from 'my-redux/Transaction/transactionSlice';
 //
 import s from './TransactionsChart.module.css';
 
-export const TransactionsChart = () => {
-  const data = [
-    { name: 'Hobby', value: 25, color: '#06874b' },
-    { name: 'Products', value: 25, color: '#04cf70' },
-    { name: 'Cinema', value: 25, color: '#50cf94' },
-    { name: 'Health', value: 25, color: '#7ef1bb' },
-  ];
+export const TransactionsChart = ({ transactionsType }) => {
+  const data = useSelector(selectTransactions);
+
+  if (!data.length) return;
+  const transactions = countCategories(data);
 
   return (
     <div className={s.chartContainer}>
-      <h3 className={s.title}>Expenses categories</h3>
+      <h3 className={s.title}>{transactionsType} categories</h3>
       <div className={s.statsWrapper}>
         <div className={s.pieChartWrapper}>
-          <Chart data={data} />
+          <Chart data={transactions} />
           <p className={s.chartDescr}>100%</p>
         </div>
         <ul className={`${s.list} scroll scrollA`}>
-          {data.map((item, index) => (
+          {transactions.map((item, index) => (
             <li className={s.listItem} key={index}>
               <div
                 className={s.wrapperMarker}
