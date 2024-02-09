@@ -1,17 +1,12 @@
-// import { AuthForm } from 'components';
 import React from 'react';
 
+import AuthForm from '../../components/AuthForm/AuthForm';
 import s from './LoginPage.module.css';
 
 const LoginPage = () => {
   return (
-    <div>
-      <h2 className={s.title}>Sign In</h2>
-      <p className={s.text}>
-        Welcome back to effortless expense tracking! Your financial dashboard
-        awaits.
-      </p>
-      {/* <AuthForm /> */}
+    <div className={s.container}>
+      <AuthForm formType="signin" />
     </div>
   );
 };

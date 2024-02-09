@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Icon } from '../../components/Icon/Icon';
 import { registerUser } from '../../my-redux/Auth/operations';
-import styles from './AuthForm.module.css';
+import s from './AuthForm.module.css';
+import { BgImageWrapper } from 'components';
 
 const AuthForm = ({ formType }) => {
   const dispatch = useDispatch();
@@ -32,26 +33,30 @@ const AuthForm = ({ formType }) => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.cont}>
-        <div className={styles.containerTitle}>
-          <h2 className={styles.title}>
+    <div className={s.container}>
+      <div className={s.containerImg}>
+        <BgImageWrapper />
+      </div>
+      <div>
+        <div className={s.containerTitle}>
+          <h2 className={s.title}>
             {formType === 'signup' ? 'Sign Up' : 'Sign In'}
           </h2>
-          <p className={styles.text}>
-            Step into a world of hassle-free expense management! Your journey
-            towards financial mastery begins here.
+          <p className={s.text}>
+            {formType === 'signup'
+              ? 'Step into a world of hassle-free expense management! Your journey towards financial mastery begins here.'
+              : 'Welcome back to effortless expense tracking! Your financial dashboard awaits.'}
           </p>
         </div>
-        <div className={styles.container}>
-          <form onSubmit={onSubmit} className={styles.form}>
+        <div className={s.container}>
+          <form onSubmit={onSubmit} className={s.form}>
             {formType === 'signup' && (
               <div className="form-control">
                 <input
                   name="name"
                   type="text"
                   placeholder="Name"
-                  className={styles.input}
+                  className={s.input}
                   required
                 />
               </div>
@@ -61,17 +66,17 @@ const AuthForm = ({ formType }) => {
                 name="email"
                 type="email"
                 placeholder="Email"
-                className={styles.input}
+                className={s.input}
                 required
               />
             </div>
             <div className="form-control">
-              <div className={styles.containerIcon}>
+              <div className={s.containerIcon}>
                 <input
                   name="password"
                   type={showPass ? 'text' : 'password'}
                   placeholder="Password"
-                  className={styles.input}
+                  className={s.input}
                   required
                 />
                 <button
@@ -79,27 +84,27 @@ const AuthForm = ({ formType }) => {
                   onClick={() => setShowPass(prev => !prev)}
                 >
                   {showPass ? (
-                    <Icon name="eye" className={styles.icon} size="20" />
+                    <Icon name="eye" className={s.icon} size="20" />
                   ) : (
-                    <Icon name="eye-off" className={styles.icon} size="20" />
+                    <Icon name="eye-off" className={s.icon} size="20" />
                   )}
                 </button>
               </div>
             </div>
           </form>
         </div>
-        <div className={styles.containerLink}>
-          <button type="submit" className={styles.button}>
+        <div className={s.containerLink}>
+          <button type="submit" className={s.button}>
             {formType === 'signup' ? 'Sign Up' : 'Sign In'}
           </button>
           <NavLink
-            className={styles.link}
-            to={formType === 'signup' ? '/login' : '/signup'}
+            className={s.link}
+            to={formType === 'signup' ? '/login' : '/register'}
           >
             {formType === 'signup'
-              ? 'Already have an account?'
+              ? 'Already have account?'
               : "Don't have an account?"}{' '}
-            <span className={styles.span}>
+            <span className={s.span}>
               {formType === 'signup' ? 'Sign In' : 'Sign Up'}
             </span>
           </NavLink>
