@@ -1,0 +1,18 @@
+.logoWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3.5px;
+}
+.logo {
+  width: 27px;
+  height: 17px;
+}
+.logoText {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #fafafa;
+}

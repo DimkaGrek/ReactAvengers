@@ -1,7 +1,7 @@
-.dropDownMenuWrapper {
+.userBarBtnWrapper {
   position: relative;
 }
-.dropDownMenuTop {
+.userBarBtnTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,25 +18,31 @@
   letter-spacing: -0.02em;
   color: rgba(250, 250, 250, 0.4);
 }
-.dropDownMenuBody {
-  position: absolute;
-  padding: 16px;
-  border: 1px solid rgba(250, 250, 250, 0.1);
-  border-radius: 15px;
-  width: 194px;
-  height: 80px;
-  background: #0c0d0d;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  justify-content: center;
 
+.userLogoWrapper {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+.userLogo {
+  fill: #0ef387;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+}
+.userName {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;
-  color: rgba(250, 250, 250, 0.5);
+  letter-spacing: -0.02em;
+  color: rgba(250, 250, 250, 0.4);
 }
-.dropDownMenuItemsWrapper {
-  display: flex;
-  gap: 8px;
+.chevrone {
+  fill: none;
+  stroke: #0ef387;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 20px;
+  height: 20px;
 }

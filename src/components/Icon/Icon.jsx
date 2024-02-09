@@ -17,7 +17,7 @@ List of icons names ("name" - description (css styles) ):
 1) 'arrow-up' - Total income icon (add style: fill="color")
 2) 'arrow-down' - Total expense icon (add style: fill="color")
 3) 'chevron-up' - Arrow-up in header UserBarBtn (add styles: stroke="color", fill="none")
-4) 'chevron-up' - Arrow-down in header UserBarBtn (add styles: stroke="color", fill="none")
+4) 'chevron-down' - Arrow-down in header UserBarBtn (add styles: stroke="color", fill="none")
 5) 'burger-menu' - Burger-menu (add style in css: stroke="color")
 6) 'user-logo' - Icon instead user avatar, default user-logo (add style: fill="color")
 7) 'user' - Icon user for header profile settings (add styles: stroke="color", fill="none")
