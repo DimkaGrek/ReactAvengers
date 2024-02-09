@@ -1,0 +1,57 @@
+.userPanelBody {
+  position: absolute;
+  padding: 16px;
+  border: 1px solid rgba(250, 250, 250, 0.1);
+  border-radius: 15px;
+  width: 194px;
+  background: #0c0d0d;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(250, 250, 250, 0.5);
+}
+.userPanelItemsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+}
+.userPanelItemsWrapper:hover .userIcon {
+  stroke: #0ef387;
+}
+.userPanelItemsWrapper:hover .logOutIcon {
+  stroke: #0ef387;
+}
+.userPanelItemsWrapper:hover .userPanelLinkText {
+  color: #fafafa;
+}
+
+.userIcon {
+  fill: none;
+  width: 20px;
+  height: 20px;
+  stroke: #838383;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.logOutIcon {
+  fill: none;
+  width: 20px;
+  height: 20px;
+  stroke: #838383;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.userPanelLinkText {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(250, 250, 250, 0.5);
+}

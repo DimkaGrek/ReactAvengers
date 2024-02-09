@@ -1,0 +1,21 @@
+.mobileMenu {
+  position: absolute;
+  padding: 18px 20px;
+  left: 0;
+  top: 0;
+  background-color: #0ef387;
+  height: 100vh;
+  width: 375px;
+}
+
+.closeBtn {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  background-color: #0c0d0d;
+}
+.closeBtnIcon {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
