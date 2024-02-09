@@ -1,0 +1,42 @@
+.dropDownMenuWrapper {
+  position: relative;
+}
+.dropDownMenuTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 30px;
+  padding: 6px 16px;
+  width: 194px;
+  height: 46px;
+  background: #171719;
+  margin-bottom: 8px;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: rgba(250, 250, 250, 0.4);
+}
+.dropDownMenuBody {
+  position: absolute;
+  padding: 16px;
+  border: 1px solid rgba(250, 250, 250, 0.1);
+  border-radius: 15px;
+  width: 194px;
+  height: 80px;
+  background: #0c0d0d;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(250, 250, 250, 0.5);
+}
+.dropDownMenuItemsWrapper {
+  display: flex;
+  gap: 8px;
+}
