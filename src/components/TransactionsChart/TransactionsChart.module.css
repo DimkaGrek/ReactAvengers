@@ -6,8 +6,7 @@
 @media only screen and (min-width: 768px) {
   .chartContainer {
     padding-top: 44px;
-    padding-left: 40px;
-    padding-right: 60px;
+    padding-inline: 40px;
     padding-bottom: 60px;
   }
 }
@@ -25,6 +24,14 @@
     display: flex;
     align-items: flex-start;
     gap: 141px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .title {
+    margin-bottom: 35px;
+  }
+  .statsWrapper {
+    gap: 86px;
   }
 }
 .pieChartWrapper {
@@ -50,37 +57,42 @@
   font-size: 24px;
   color: var(--main-text-color);
 }
+@media only screen and (min-width: 1440px) {
+  .chartDescr {
+    bottom: -25px;
+  }
+}
 .list {
   font-size: 16px;
   color: var(--text-color_50);
   max-height: 126px;
-  padding-right: 28px;
+  padding-right: 16px;
   overflow: auto;
 }
 @media only screen and (min-width: 768px) {
   .list {
-    width: 191px;
+    width: 207px;
   }
 }
 .listItem {
   display: flex;
-  gap: 8px;
   align-items: center;
+}
+.listItem:not(:last-child) {
   margin-bottom: 15px;
 }
-@media only screen and (min-width: 768px) {
-  listItem:not(:last-child) {
-    margin-bottom: 15px;
-  }
-}
-
 .wrapperMarker {
   width: 12px;
   height: 12px;
   border-radius: 50%;
+  margin-right: 4px;
+}
+@media only screen and (min-width: 1440px) {
+  .wrapperMarker {
+    margin-right: 8px;
+  }
 }
 .itemDescr {
-  /* width: 132px; */
   margin-right: auto;
 }
 .itemSpan {

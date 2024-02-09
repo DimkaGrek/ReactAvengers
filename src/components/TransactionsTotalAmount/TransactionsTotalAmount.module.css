@@ -2,10 +2,11 @@
   margin-bottom: 40px;
 }
 .iconContainer {
+  padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 13px;
+  border-radius: 10px;
   width: 36px;
   height: 36px;
   background-color: var(--button-color);
@@ -22,7 +23,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 10px;
 }
 @media only screen and (min-width: 768px) {
   .list {
@@ -36,7 +37,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  border-radius: 30px;
+  border-radius: 20px;
   background-color: var(--box-background-color);
 }
 @media only screen and (min-width: 768px) {
@@ -45,18 +46,23 @@
     padding-inline: 23px;
     gap: 22px;
     flex-basis: calc((100% - 24px) / 2);
+    border-radius: 20px;
   }
 }
-
+@media only screen and (min-width: 1440px) {
+  .listItem {
+    padding-right: 104px;
+  }
+}
 .amountTitle {
   font-size: 12px;
   color: rgba(250, 250, 250, 0.5);
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 @media only screen and (min-width: 768px) {
   .amountTitle {
     font-size: 16px;
-    margin-bottom: 7px;
+    margin-bottom: 10px;
   }
 }
 .amountDescr {

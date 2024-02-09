@@ -1,20 +1,35 @@
+import { useParams } from 'react-router';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+//
 import { TransactionsChart, TransactionsTotalAmount } from 'components';
+import { getTransactions } from 'my-redux/Transaction/operations';
 //
 import s from './MainTransactionsPage.module.css';
 
 const MainTransactionsPage = () => {
+  const dispatch = useDispatch();
+  const { transactionsType } = useParams();
+
+  useEffect(() => {
+    dispatch(getTransactions({ type: transactionsType }));
+  }, [dispatch, transactionsType]);
+
+  const capitalizedType =
+    transactionsType[0].toUpperCase() + transactionsType.slice(1);
+
   return (
     <div className={s.container}>
       <div className={s.wrapper}>
         <div className={s.titleWrapper}>
-          <h2 className={s.title}>Expense Log</h2>
+          <h2 className={s.title}>{capitalizedType.slice(0, -1)} Log</h2>
           <p className={s.descr}>
             Capture and organize every penny spent with ease! A clear view of
             your financial habits at your fingertips.
           </p>
         </div>
         <TransactionsTotalAmount />
-        <TransactionsChart />
+        <TransactionsChart transactionsType={capitalizedType} />
       </div>
     </div>
   );
