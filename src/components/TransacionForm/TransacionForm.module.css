@@ -1,29 +1,38 @@
+.formWrapper {
+  width: fit-content;
+  height: auto;
+  background-color: red;
+  background-color: var(--box-background-color);
+  border-radius: 30px;
+  padding: 40px;
+}
+
 .transacionForm {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: var(--box-background-color);
-  width: 566px;
-  /* height: 600px; */
-  height: auto;
-  border-radius: 30px;
-  padding: 40px;
   font-size: 16px;
   line-height: 24px;
   color: var(--main-text-color);
+  width: 486px;
 }
 
 .transacionForm input {
   border: 1px solid var(--border-field-color);
   border-radius: 12px;
-  padding: 12px 0 12px 18px;
+  padding: 11px 18px 11px 18px;
   background-color: transparent;
   font-size: 16px;
   line-height: 24px;
   color: var(--main-text-color);
 }
 
-.transacionForm input ::placeholder {
+.transacionForm label {
+  line-height: 19px;
+}
+
+.transacionForm input::placeholder,
+.comment::placeholder {
   color: var(--regular-text-color);
 }
 
@@ -46,6 +55,7 @@
 .transactionTypes {
   display: flex;
   gap: 20px;
+  height: 24px;
 }
 
 .customRadioBtn {
@@ -90,16 +100,38 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
-.dateFields {
+.customFields {
   display: flex;
-  flex-basis: 50%;
   gap: 20px;
 }
 
+.dataInput {
+  width: 206px;
+}
+
+.timeInput {
+  width: 188px;
+}
+
+.customField,
 .fieldWrapper {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.customField {
+  position: relative;
+}
+
+.iconDate,
+.iconTime {
+  stroke: var(--main-text-color);
+  fill: none;
+  position: absolute;
+  right: 3%;
+  top: 67%;
+  transform: translate(-50%, -50%);
 }
 
 .comment {
@@ -109,7 +141,7 @@
   color: var(--main-text-color);
   border-radius: 12px;
   border: 1px solid var(--border-field-color);
-  height: 97px;
+  height: 71px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -118,13 +150,28 @@
 .submitBtn {
   width: fit-content;
   border-radius: 40px;
-  height: 47px;
-  padding: 0 44px;
+  padding: 13px 44px;
   text-align: center;
-  letter-spacing: -0.02em;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.32px;
   color: var(--background-color);
 }
 
 .submitBtn:hover {
   background-color: var(--hover-color);
+}
+
+.ransacionForm input:hover,
+.transacionForm input:focus,
+.transacionForm textarea:hover,
+.transacionForm textarea:focus {
+  border-color: var(--button-color);
+}
+
+.transacionForm input:focus,
+.transacionForm textarea:focus {
+  outline: none;
 }
