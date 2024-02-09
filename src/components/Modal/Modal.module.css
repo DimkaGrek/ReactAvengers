@@ -16,8 +16,45 @@
   position: relative;
   border: 1px solid rgba(250, 250, 250, 0.1);
   border-radius: 30px;
-  padding: 50px 40px;
   background-color: #171719;
+}
+@media screen and (max-width: 374.99px) {
+  .profile {
+    padding: 40px clamp(0px, 6vw, 20px) 60px;
+  }
+  .form {
+    padding: 40px 20px;
+  }
+  .logout {
+    padding: 80px 29px;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .profile {
+    padding: 40px 20px 60px;
+  }
+  .form {
+    padding: 40px 20px;
+  }
+  .logout {
+    padding: 80px 29px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .profile {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .form {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .logout {
+    padding-left: 105px;
+    padding-right: 105px;
+  }
 }
 
 .button {

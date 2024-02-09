@@ -3,7 +3,7 @@ import SharedLayout from './SharedLayout/SharedLayout';
 import LoginPage from 'pages/LoginPage';
 import Home from 'pages/Home';
 import RegisterPage from 'pages/RegisterPage';
-import MainTransactionsPage from 'pages/MainTransactionsPage';
+import MainTransactionsPage from 'pages/MainTransactionsPage/MainTransactionsPage';
 import TransactionsHistoryPage from 'pages/TransactionsHistoryPage';
 import { useDispatch } from 'react-redux';
 import { loginUser, refreshUser } from 'my-redux/Auth/operations';
@@ -18,7 +18,7 @@ const App = () => {
     })
   );
 
-  dispatch(refreshUser());
+  // dispatch(refreshUser());
 
   return (
     <Routes>

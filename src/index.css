@@ -8,7 +8,7 @@
   --hover-color: #0ebb69;
   --main-text-color: #fafafa;
   --regular-text-color: rgba(250, 250, 250, 0.4);
-
+  --text-color_50: rgba(250, 250, 250, 0.5);
   /* Font-size */
 
   --font-size-small: 14px;
@@ -20,11 +20,31 @@
 }
 /* /////////////////////  /var/ ////////////////////////////// */
 
+@font-face {
+  font-family: 'SuisseIntl-Regular';
+  src: url('./assets/fonts/SuisseIntl-Regular.woff2') format('woff2'),
+    url('./assets/fonts/SuisseIntl-Regular.woff') format('woff');
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SuisseIntl-Bold';
+  src: url('./assets/fonts/SuisseIntl-Bold.woff2') format('woff2'),
+    url('./assets/fonts/SuisseIntl-Bold.woff') format('woff');
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+}
+
 body,
 html {
   margin: 0;
   box-sizing: border-box;
   background-color: var(--background-color); /* #0c0d0d */
+  font-family: 'SuisseIntl-Regular', cursive;
+  font-weight: 400;
 }
 
 h1,
