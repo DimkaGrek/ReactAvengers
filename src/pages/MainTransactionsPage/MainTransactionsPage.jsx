@@ -32,9 +32,15 @@ const MainTransactionsPage = () => {
             your financial habits at your fingertips.
           </p>
         </div>
-        <TransactionsTotalAmount />
-        <TransactionForm />
-        <TransactionsChart transactionsType={capitalizedType} />
+        <div className={s.total}>
+          <TransactionsTotalAmount />
+        </div>
+        <div className={s.form}>
+          <TransactionForm />
+        </div>
+        <div className={s.chart}>
+          <TransactionsChart transactionsType={capitalizedType} />
+        </div>
       </div>
     </div>
   );
