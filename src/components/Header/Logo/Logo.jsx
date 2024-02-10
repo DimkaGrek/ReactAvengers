@@ -5,12 +5,16 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'my-redux/Auth/authSlice';
 
-const Logo = () => {
+const Logo = ({ resetStateActiveButton }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const path = isLoggedIn ? '/' : '/home';
 
   return (
-    <Link to={path} className={style.logoWrapper}>
+    <Link
+      onClick={resetStateActiveButton}
+      to={path}
+      className={style.logoWrapper}
+    >
       <Icon className={style.logo} />
       <p className={style.logoText}>ExpenseTracker</p>
     </Link>
