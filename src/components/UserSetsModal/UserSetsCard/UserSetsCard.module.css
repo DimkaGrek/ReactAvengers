@@ -54,3 +54,8 @@
   letter-spacing: -0.02em;
   color: var(--main-text-color);
 }
+
+.button:hover,
+.button:focus {
+  color: var(--text-color_50);
+}

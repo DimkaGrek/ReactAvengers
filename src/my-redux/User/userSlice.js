@@ -13,6 +13,8 @@ const initialState = {
     avatarUrl: '',
     currency: '',
     email: '',
+    totalIncomes: 0,
+    totalExpenses: 0,
   },
 };
 
@@ -23,11 +25,16 @@ const userSlice = createSlice({
     builder
       .addCase(
         fetchCurrentUser.fulfilled,
-        (state, { payload: { name, email, avatarUrl, currency } }) => {
+        (
+          state,
+          { payload: { name, email, avatarUrl, currency, transactionsTotal } }
+        ) => {
           state.user.name = name;
           state.user.email = email;
           state.user.currency = currency;
           state.user.avatarUrl = avatarUrl;
+          state.totalIncomes = transactionsTotal.incomes;
+          state.totalExpenses = transactionsTotal.expenses;
         }
       )
       .addCase(loginUser.fulfilled, (state, { payload: { user } }) => {
@@ -36,6 +43,8 @@ const userSlice = createSlice({
           email: user.email,
           currency: user.currency,
           avatarUrl: user.avatarUrl,
+          totalIncomes: user.transactionsTotal.incomes,
+          totalExpenses: user.transactionsTotal.incomes,
         };
       })
       .addCase(changeUserInfo.fulfilled, (state, { payload }) => {
@@ -55,4 +64,4 @@ const userSlice = createSlice({
 });
 
 export const userReducer = userSlice.reducer;
-// export const { selectUser } = userReducer.selectors;
+export const { selectUser } = userSlice.selectors;

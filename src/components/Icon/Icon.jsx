@@ -372,6 +372,14 @@ export const Icon = ({ name, className, size }) => {
         </Svg>
       );
 
+    // 20) Icon for close burger-menu (add style: fill="color")
+    case 'close-btn':
+      return (
+        <Svg className={className} size={size}>
+          <path d="M4.323 31.069l-4.323-4.5 11.177-10.735-10.735-11.177 4.253-4.085 10.735 11.177 10.88-10.45 4.323 4.5-10.88 10.45 10.735 11.177-4.253 4.085-10.735-11.177-11.177 10.735z"></path>
+        </Svg>
+      );
+
     // 0) Site logo as default value (without props "name")
     default:
       return (

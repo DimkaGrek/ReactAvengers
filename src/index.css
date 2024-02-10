@@ -6,6 +6,7 @@
   --box-background-color: #171719;
   --button-color: #0ef387;
   --hover-color: #0ebb69;
+  --text-color: #02b15a;
   --main-text-color: #fafafa;
   --regular-text-color: rgba(250, 250, 250, 0.4);
   --text-color_50: rgba(250, 250, 250, 0.5);
@@ -13,18 +14,33 @@
   --regular-text-color01: rgba(250, 250, 250, 0.1);
   --black06: rgba(12, 13, 13, 0.6);
   --black05: rgba(12, 13, 13, 0.5);
-  --border-field-color: rgba(250, 250, 250, 0.2);
+  --regular-text-color: #fafafa66;
+  --text-black-color: #11101c;
+  --text-dark-blue-color: #11101c80;
+  --bg-container-percent: #02b15a26;
+  --border-color:#fafafa33;
+  --text-link-color:#fafafa99;
 
   /* Font-size */
-
+  --font-size-mini: 12px;
   --font-size-small: 14px;
+  --font-size-smaller: 16px;
   --font-size-medium: 20px;
   --font-size-large: 24px;
   --font-size-modal-title: 28px;
   --font-size-title: 38px;
   --font-size-main-title: 56px;
+
+  --transition-delay: 700ms,
+  --transition: ease,
 }
 /* /////////////////////  /var/ ////////////////////////////// */
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
 
 @font-face {
   font-family: 'SuisseIntl-Regular';

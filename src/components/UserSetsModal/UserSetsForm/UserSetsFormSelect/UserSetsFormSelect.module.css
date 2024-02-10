@@ -1,0 +1,83 @@
+.container {
+  box-sizing: border-box;
+  position: relative;
+
+  background-color: var(--box-background-color);
+  padding: 12px 14px;
+  width: 98px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--regular-text-color);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.container:hover,
+.container:focus {
+  border-color: var(--hover-color);
+}
+
+.text {
+  font-family: 'Suisse Intl', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: var(--main-text-color);
+  white-space: nowrap;
+}
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  fill: black;
+  stroke: white;
+}
+
+.menu {
+  box-sizing: border-box;
+  position: absolute;
+  width: 98px;
+  border: 1px solid var(--regular-text-color01);
+  border-radius: 15px;
+
+  top: 46px;
+  left: 0px;
+  background-color: var(--background-color);
+
+  display: flex;
+  flex-direction: column;
+}
+.listItem {
+  padding: 5px 14px;
+  border-radius: 15px;
+}
+.listItem:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+}
+.menuItem {
+  font-family: 'Suisse Intl', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--regular-text-color);
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
