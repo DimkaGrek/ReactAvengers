@@ -13,7 +13,7 @@ export const TransactionsTotalAmount = () => {
     <div className={s.wrapper}>
       <ul className={s.list}>
         <li className={s.listItem}>
-          <Link to="/transactions/incomes">
+          <Link className={s.link} to="/transactions/incomes">
             <div className={s.iconContainer}>
               <Icon className={s.icon} name="arrow-up" size="18" />
             </div>
@@ -24,7 +24,7 @@ export const TransactionsTotalAmount = () => {
           </div>
         </li>
         <li className={s.listItem}>
-          <Link to="/transactions/expenses">
+          <Link className={s.link} to="/transactions/expenses">
             <div className={s.iconContainer}>
               <Icon className={s.icon} name="arrow-down" size="18" />
             </div>
