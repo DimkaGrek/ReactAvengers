@@ -14,3 +14,33 @@
   align-items: center;
   height: 100%;
 }
+.headerWrapperIfLogout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.headerIfLogout {
+  margin: 0 auto;
+  position: relative;
+  max-width: 375px;
+  background-color: var(--background-color);
+  border-bottom: none;
+  height: 63px;
+  padding: 0 20px;
+  margin-bottom: 66px;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    max-width: 768px;
+    padding: 0 32px;
+    height: 91px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .header {
+    max-width: 1440px;
+    padding: 0 100px;
+  }
+}
