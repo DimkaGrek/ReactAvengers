@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import style from './UserPanel.module.css';
 import { Icon } from 'components/Icon/Icon';
-import { Modal, ModalContext, UserSetsModal } from 'components';
+import { Modal, UserSetsModal } from 'components';
+import { useModal } from 'hooks';
 
 const UserPanel = () => {
-  const { isOpenModal, toggleModal } = useContext(ModalContext);
+  const [isOpenModal, toggleModal] = useModal();
   return (
     <div className={style.userPanelBody}>
       <button onClick={toggleModal} className={style.userPanelItemsWrapper}>
@@ -16,7 +17,7 @@ const UserPanel = () => {
         <p className={style.userPanelLinkText}>Log out</p>
       </button>
       {isOpenModal && (
-        <Modal pd={60}>
+        <Modal pd={60} toggleModal={toggleModal}>
           <UserSetsModal />
         </Modal>
       )}
