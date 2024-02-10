@@ -15,11 +15,11 @@ const UserBarBtn = () => {
   const toggleUserBarBtn = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <div className={style.userBarBtnWrapper}>
       <button className={style.userBarBtnTop} onClick={toggleUserBarBtn}>
         <div className={style.userLogoWrapper}>
-          {/* <Icon name="user-logo" className={style.userLogo} /> */}
           {avatarUrl ? (
             <img
               src={avatarUrl}
