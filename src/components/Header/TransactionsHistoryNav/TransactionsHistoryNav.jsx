@@ -1,13 +1,7 @@
-import React, { useState } from 'react';
 import style from './TransactionsHistoryNav.module.css';
 import { Link } from 'react-router-dom';
 
-const TransactionsHistoryNav = () => {
-  const [activeButton, setActiveButton] = useState(null);
-
-  const handleButtonClick = buttonName => {
-    setActiveButton(buttonName);
-  };
+const TransactionsHistoryNav = ({ activeButton, handleButtonClick }) => {
   return (
     <div className={style.buttonWrapper}>
       <Link to="/transactions/history/expense">

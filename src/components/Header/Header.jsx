@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import headerStyles from './headerStyles.module.css';
 import Logo from './Logo/Logo';
 import BurgerMenuBtn from './BurgerMenuBtn/BurgerMenuBtn';
@@ -12,6 +12,7 @@ const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [isOpen, setIsOpen] = useState(false);
   const [showComponent, setShowComponent] = useState(false);
+  const [activeButton, setActiveButton] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,6 +28,14 @@ const Header = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleButtonClick = buttonName => {
+    setActiveButton(buttonName);
+  };
+
+  const resetStateActiveButton = () => {
+    setActiveButton(null);
+  };
   return (
     <header
       className={isLoggedIn ? headerStyles.header : headerStyles.headerIfLogout}
@@ -38,10 +47,15 @@ const Header = () => {
             : headerStyles.headerWrapperIfLogout
         }
       >
-        <Logo />
+        <Logo resetStateActiveButton={resetStateActiveButton} />
         {isLoggedIn && <BurgerMenuBtn toggleMenu={toggleMenu} />}
         {isOpen && <BurgerMenu toggleMenu={toggleMenu} />}
-        {isLoggedIn && showComponent && <TransactionsHistoryNav />}
+        {isLoggedIn && showComponent && (
+          <TransactionsHistoryNav
+            activeButton={activeButton}
+            handleButtonClick={handleButtonClick}
+          />
+        )}
         {isLoggedIn && showComponent && <UserBarBtn />}
       </div>
     </header>
