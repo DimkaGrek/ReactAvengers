@@ -18,9 +18,9 @@
   --text-black-color: #11101c;
   --text-dark-blue-color: #11101c80;
   --bg-container-percent: #02b15a26;
-  --border-color:#fafafa33;
-  --text-link-color:#fafafa99;
-  --border-field-color: rgba(250, 250, 250, 0.20);
+  --border-color: #fafafa33;
+  --text-link-color: #fafafa99;
+  --border-field-color: rgba(250, 250, 250, 0.2);
 
   /* Font-size */
   --font-size-mini: 12px;
@@ -32,8 +32,8 @@
   --font-size-title: 38px;
   --font-size-main-title: 56px;
 
-  --transition-delay: 700ms,
-  --transition: ease,
+  --transition-delay: 700ms;
+  --transition: ease;
 }
 /* /////////////////////  /var/ ////////////////////////////// */
 
@@ -42,7 +42,6 @@
 ::before {
   box-sizing: border-box;
 }
-
 @font-face {
   font-family: 'SuisseIntl-Regular';
   src: url('./assets/fonts/SuisseIntl-Regular.woff2') format('woff2'),
@@ -134,7 +133,6 @@ img {
 }
 /* Example: <ul className={`${s.list} scroll scrollA`}> */
 /* ---------------- */
-
 
 /* Container */
 

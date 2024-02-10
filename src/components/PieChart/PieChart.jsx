@@ -1,13 +1,16 @@
 import { PieChart, Pie, Cell } from 'recharts';
+import { useMemo } from 'react';
 //
 import s from './PieChart.module.css';
 
 export const Chart = ({ data }) => {
+  const chartData = useMemo(() => data, [data]);
+
   return (
     <PieChart className={s.chart} width={200} height={200}>
       <Pie
         dataKey="value"
-        data={data}
+        data={chartData}
         startAngle={180}
         endAngle={0}
         cx="50%"
@@ -18,7 +21,7 @@ export const Chart = ({ data }) => {
         fill="#15151b"
         stroke="none"
       >
-        {data.map((entry, index) => (
+        {chartData.map((entry, index) => (
           <Cell key={index} fill={entry.color} />
         ))}
       </Pie>
