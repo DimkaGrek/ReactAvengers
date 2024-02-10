@@ -14,7 +14,6 @@ const colors = [
 export function countCategories(data, total) {
   if (!data.length) return [];
 
-  const categoriesData = [];
   const categorySum = {};
 
   const { firstDayOfMonth, lastDayOfMonth } = getCurrentMoth();
@@ -22,6 +21,8 @@ export function countCategories(data, total) {
   const currentMonthTransactions = data.filter(
     item => item.date >= firstDayOfMonth && item.date <= lastDayOfMonth
   );
+
+  if (!currentMonthTransactions.length) return [];
 
   currentMonthTransactions.forEach(transaction => {
     const { category, sum } = transaction;
@@ -31,6 +32,8 @@ export function countCategories(data, total) {
       categorySum[category.categoryName] = sum;
     }
   });
+
+  const categoriesData = [];
 
   Object.entries(categorySum).forEach(([key, value]) => {
     let percent = Math.round((value / total) * 100);

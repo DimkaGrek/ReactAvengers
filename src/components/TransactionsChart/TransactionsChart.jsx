@@ -13,6 +13,7 @@ export const TransactionsChart = ({ transactionsType }) => {
 
   const total = transactionsType === 'Incomes' ? totalIncomes : totalExpenses;
   const categories = countCategories(data, total);
+
   if (!categories.length)
     return (
       <h2 className={s.warningTitle}>
