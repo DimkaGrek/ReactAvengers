@@ -1,3 +1,5 @@
+import { getCurrentMoth } from './getCurrentMoth';
+
 const colors = [
   '#054025',
   '#097b46',
@@ -9,11 +11,19 @@ const colors = [
   '#bcc2bf',
 ];
 
-export function countCategories(data) {
-  const transactionsData = [];
+export function countCategories(data, total) {
+  if (!data.length) return [];
+
+  const categoriesData = [];
   const categorySum = {};
 
-  data.forEach(transaction => {
+  const { firstDayOfMonth, lastDayOfMonth } = getCurrentMoth();
+
+  const currentMonthTransactions = data.filter(
+    item => item.date >= firstDayOfMonth && item.date <= lastDayOfMonth
+  );
+
+  currentMonthTransactions.forEach(transaction => {
     const { category, sum } = transaction;
     if (categorySum[category.categoryName]) {
       categorySum[category.categoryName] += sum;
@@ -22,17 +32,24 @@ export function countCategories(data) {
     }
   });
 
-  const total = Object.values(categorySum).reduce(
-    (total, item) => (total += item),
+  Object.entries(categorySum).forEach(([key, value]) => {
+    let percent = Math.round((value / total) * 100);
+    categoriesData.push({ name: key, value: percent });
+  });
+
+  const sumRoundedPercentages = categoriesData.reduce(
+    (total, item) => total + item.value,
     0
   );
 
-  Object.entries(categorySum).forEach(([key, value]) => {
-    let percent = Math.round((value / total) * 100);
-    transactionsData.push({ name: key, value: percent });
-  });
+  const sortedCategories = categoriesData.sort((a, b) => b.value - a.value);
 
-  transactionsData.map((item, index) => (item.color = colors[index]));
+  if (sumRoundedPercentages !== 100) {
+    const diff = 100 - sumRoundedPercentages;
+    sortedCategories[sortedCategories.length - 1].value += diff;
+  }
 
-  return transactionsData.sort((a, b) => b.value - a.value);
+  sortedCategories.map((item, index) => (item.color = colors[index]));
+
+  return sortedCategories;
 }
