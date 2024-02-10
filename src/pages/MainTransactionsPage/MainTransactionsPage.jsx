@@ -6,6 +6,7 @@ import { TransactionsChart, TransactionsTotalAmount } from 'components';
 import { getTransactions } from 'my-redux/Transaction/operations';
 //
 import s from './MainTransactionsPage.module.css';
+import { TransactionForm } from 'components/TransactionForm/TransactionForm';
 
 const MainTransactionsPage = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const MainTransactionsPage = () => {
           </p>
         </div>
         <TransactionsTotalAmount />
+        <TransactionForm />
         <TransactionsChart transactionsType={capitalizedType} />
       </div>
     </div>

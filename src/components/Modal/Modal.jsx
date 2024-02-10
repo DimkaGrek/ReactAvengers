@@ -1,16 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 
-import { Icon, ModalContext } from 'components';
+import { Icon } from 'components';
 import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#rootModal');
 
-export const Modal = ({ children, pd }) => {
-  const { toggleModal } = useContext(ModalContext);
-
+export const Modal = ({ children, pd, toggleModal, anotherModal = false }) => {
   useEffect(() => {
+    if (anotherModal) return;
     const handleEscape = event => {
       if (event.code === 'Escape') {
         toggleModal();
@@ -21,7 +20,7 @@ export const Modal = ({ children, pd }) => {
     return () => {
       window.removeEventListener('keydown', handleEscape);
     };
-  }, [toggleModal]);
+  }, [toggleModal, anotherModal]);
 
   const handleClick = event => {
     const { target, currentTarget } = event;

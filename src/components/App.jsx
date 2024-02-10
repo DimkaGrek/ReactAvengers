@@ -13,12 +13,12 @@ import TransactionsHistoryPage from 'pages/TransactionsHistoryPage';
 
 const App = () => {
   const dispatch = useDispatch();
-  // dispatch(
-  //   loginUser({
-  //     email: 'dimka@mail.ua',
-  //     password: 'password',
-  //   })
-  // );
+  dispatch(
+    loginUser({
+      email: 'dimka@mail.ua',
+      password: 'password',
+    })
+  );
 
   // dispatch(refreshUser());
 
