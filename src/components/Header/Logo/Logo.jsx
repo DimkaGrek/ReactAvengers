@@ -7,10 +7,10 @@ import { selectIsLoggedIn } from 'my-redux/Auth/authSlice';
 
 const Logo = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const path = isLoggedIn ? '/' : '/home'; //need corections!!!!!
+  const path = isLoggedIn ? '/' : '/home';
 
   return (
-    <Link to={'/'} className={style.logoWrapper}>
+    <Link to={path} className={style.logoWrapper}>
       <Icon className={style.logo} />
       <p className={style.logoText}>ExpenseTracker</p>
     </Link>
