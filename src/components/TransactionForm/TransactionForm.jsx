@@ -1,11 +1,21 @@
 import { Icon } from 'components';
-import s from './TransacionForm.module.css';
+import s from './TransactionForm.module.css';
 import { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
-export const TransacionForm = () => {
+export const TransactionForm = () => {
   const currency = '$';
   const sum = 1;
-  const [time, setTime] = useState('00:00:00');
+
+  const currentDate = new Date();
+  const hours = String(currentDate.getHours()).padStart(2, '0');
+  const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+  const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+  const formattedTime = `${hours}:${minutes}:${seconds}`;
+
+  const [time, setTime] = useState(formattedTime);
+  const [startDate, setStartDate] = useState(new Date());
 
   return (
     <div className={s.formWrapper}>
@@ -17,7 +27,7 @@ export const TransacionForm = () => {
               type="radio"
               name="transaction-type"
               value="expense"
-              checked
+              defaultChecked
             />
             <span className={s.customRadioBtn}></span>
             Expense
@@ -36,12 +46,20 @@ export const TransacionForm = () => {
         <div className={s.customFields}>
           <label className={s.customField}>
             Date
-            <input
+            {/* <input
               className={s.dataInput}
               type="text"
               name="date"
               placeholder="mm/dd/yyyy"
-            />
+            /> */}
+            <div className="datepickerContainer">
+              <DatePicker
+                className={s.datePicker}
+                selected={startDate}
+                onChange={date => setStartDate(date)}
+                showPopperArrow={false}
+              />
+            </div>
             <Icon name="calendar" className={s.iconDate} size="20" />
           </label>
           <label className={s.customField}>
