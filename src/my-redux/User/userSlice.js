@@ -8,14 +8,12 @@ import {
 import { loginUser } from 'my-redux/Auth/operations';
 
 const initialState = {
-  user: {
-    name: '',
-    avatarUrl: '',
-    currency: '',
-    email: '',
-    totalIncomes: 0,
-    totalExpenses: 0,
-  },
+  name: '',
+  avatarUrl: null,
+  currency: '',
+  email: '',
+  totalIncomes: 0,
+  totalExpenses: 0,
 };
 
 const userSlice = createSlice({
@@ -29,23 +27,21 @@ const userSlice = createSlice({
           state,
           { payload: { name, email, avatarUrl, currency, transactionsTotal } }
         ) => {
-          state.user.name = name;
-          state.user.email = email;
-          state.user.currency = currency;
-          state.user.avatarUrl = avatarUrl;
+          state.name = name;
+          state.email = email;
+          state.currency = currency;
+          state.avatarUrl = avatarUrl;
           state.totalIncomes = transactionsTotal.incomes;
           state.totalExpenses = transactionsTotal.expenses;
         }
       )
       .addCase(loginUser.fulfilled, (state, { payload: { user } }) => {
-        state.user = {
-          name: user.name,
-          email: user.email,
-          currency: user.currency,
-          avatarUrl: user.avatarUrl,
-          totalIncomes: user.transactionsTotal.incomes,
-          totalExpenses: user.transactionsTotal.incomes,
-        };
+        state.name = user.name;
+        state.email = user.email;
+        state.currency = user.currency;
+        state.avatarUrl = user.avatarUrl;
+        state.totalIncomes = user.transactionsTotal.incomes;
+        state.totalExpenses = user.transactionsTotal.incomes;
       })
       .addCase(changeUserInfo.fulfilled, (state, { payload }) => {
         state.name = payload.name;
@@ -55,11 +51,11 @@ const userSlice = createSlice({
         state.avatarUrl = payload;
       })
       .addCase(deleteUserAvatar.fulfilled, state => {
-        state.avatarUrl = '';
+        state.avatarUrl = null;
       });
   },
   selectors: {
-    selectUser: state => state.user,
+    selectUser: state => state,
   },
 });
 
