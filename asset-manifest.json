@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ReactAvengers/static/css/main.6c1a43bc.css",
-    "main.js": "/ReactAvengers/static/js/main.72add5e6.js",
+    "main.js": "/ReactAvengers/static/js/main.3e5bea51.js",
     "static/media/heroDesc1x.jpg": "/ReactAvengers/static/media/heroDesc1x.ace94764272a5d5b5cb4.jpg",
     "static/media/SuisseIntl-Bold.woff": "/ReactAvengers/static/media/SuisseIntl-Bold.de95d736320ca1798e64.woff",
     "static/media/SuisseIntl-Regular.woff": "/ReactAvengers/static/media/SuisseIntl-Regular.aea326c0223e1531fbe9.woff",
@@ -10,10 +10,10 @@
     "static/media/images.png": "/ReactAvengers/static/media/images.ed900522f5feb1f79526.png",
     "index.html": "/ReactAvengers/index.html",
     "main.6c1a43bc.css.map": "/ReactAvengers/static/css/main.6c1a43bc.css.map",
-    "main.72add5e6.js.map": "/ReactAvengers/static/js/main.72add5e6.js.map"
+    "main.3e5bea51.js.map": "/ReactAvengers/static/js/main.3e5bea51.js.map"
   },
   "entrypoints": [
     "static/css/main.6c1a43bc.css",
-    "static/js/main.72add5e6.js"
+    "static/js/main.3e5bea51.js"
   ]
 }
