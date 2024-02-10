@@ -48,7 +48,7 @@ export const TransactionForm = () => {
             Date
             {/* <input
               className={s.dataInput}
-              type="text"
+              type="data"
               name="date"
               placeholder="mm/dd/yyyy"
             /> */}
@@ -58,9 +58,10 @@ export const TransactionForm = () => {
                 selected={startDate}
                 onChange={date => setStartDate(date)}
                 showPopperArrow={false}
+                maxDate={new Date()}
               />
             </div>
-            <Icon name="calendar" className={s.iconDate} size="20" />
+            <Icon name="calendar" className={s.iconDate} size="16" />
           </label>
           <label className={s.customField}>
             Time
@@ -72,7 +73,7 @@ export const TransactionForm = () => {
               value={time}
               onChange={e => setTime(e.target.value)}
             />
-            <Icon name="clock" className={s.iconTime} size="20" />
+            <Icon name="clock" className={s.iconTime} size="16" />
           </label>
         </div>
         <div className={s.fieldWrapper}>

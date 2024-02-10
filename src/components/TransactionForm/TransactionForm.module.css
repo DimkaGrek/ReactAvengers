@@ -2,31 +2,71 @@
   width: fit-content;
   background-color: var(--box-background-color);
   border-radius: 30px;
-  padding: 40px;
+  padding: 28px 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .formWrapper {
+    width: 704px;
+    padding: 40px 109px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .formWrapper {
+    width: 566px;
+    padding: 40px;
+  }
 }
 
 .transacionForm {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  font-size: 16px;
-  line-height: 24px;
   color: var(--main-text-color);
-  width: 486px;
+  width: 295px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .transacionForm {
+    width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 .transacionForm input {
   border: 1px solid var(--border-field-color);
   border-radius: 12px;
-  padding: 11px 18px 11px 18px;
+  padding: 11px 14px;
   background-color: transparent;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 18px;
   color: var(--main-text-color);
 }
 
+@media screen and (min-width: 768px) {
+  .transacionForm input {
+    padding: 11px 18px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
 .transacionForm label {
-  line-height: 19px;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: -0.28px;
+}
+
+@media screen and (min-width: 768px) {
+  .transacionForm label {
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: -0.32px;
+  }
 }
 
 .transacionForm input::placeholder,
@@ -39,7 +79,6 @@
   flex-direction: row;
   align-items: center;
   gap: 8px;
-  letter-spacing: -0.02em;
   cursor: pointer;
 }
 
@@ -93,16 +132,45 @@
 
 .customFields {
   display: flex;
-  gap: 20px;
+  gap: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .customFields input {
+    gap: 20px;
+  }
+}
+
+.customField {
+  width: 50%;
 }
 
 .datePicker {
-  width: 206px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .datePicker {
+    width: 236px;
+  }
+}
+
+.datepickerContainer {
+  position: relative;
+}
+
+.react-datepicker__calendar {
+  position: absolute;
 }
 
 .timeInput {
-  width: 188px;
-  height: 24px;
+  height: 42px;
+}
+
+@media screen and (min-width: 768px) {
+  .timeInput {
+    height: 48px;
+  }
 }
 
 .customField,
@@ -110,7 +178,15 @@
 .sumLabel {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
+}
+
+@media screen and (min-width: 768px) {
+  .customField,
+  .fieldWrapper,
+  .sumLabel {
+    gap: 8px;
+  }
 }
 
 .customField {
@@ -127,12 +203,12 @@
   transform: translate(-50%, -50%);
 }
 
-.datepickerContainer {
-  position: relative;
-}
-
-.react-datepicker__calendar {
-  position: absolute;
+@media screen and (min-width: 768px) {
+  .iconDate,
+  .iconTime {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .sumLabel {
@@ -162,27 +238,43 @@
 .comment {
   resize: none;
   background-color: transparent;
-  padding: 12px 18px;
+  padding: 12px 14px;
   color: var(--main-text-color);
   border-radius: 12px;
   border: 1px solid var(--border-field-color);
-  height: 71px;
+  height: 91px;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .comment {
+    height: 97px;
+    padding: 12px 14px;
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 .submitBtn {
   width: fit-content;
   border-radius: 40px;
-  padding: 13px 44px;
+  padding: 14px 44px;
   text-align: center;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.32px;
+  font-size: 14px;
+  letter-spacing: -0.28px;
+  line-height: 16px;
   color: var(--background-color);
+}
+
+@media screen and (min-width: 768px) {
+  .submitBtn {
+    padding: 14px 44px;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: -0.32px;
+  }
 }
 
 .submitBtn:hover {
