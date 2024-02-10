@@ -10,7 +10,7 @@
   width: 194px;
   height: 46px;
   background: #171719;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
 
   font-family: var(--font-family);
   font-weight: 400;
@@ -43,10 +43,25 @@
 }
 .chevrone {
   fill: none;
-  stroke: #0ef387;
+  stroke: var(--button-color);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
   width: 20px;
   height: 20px;
+}
+
+@media screen and (min-width: 1440px) {
+  .userBarBtnTop {
+    width: 217px;
+    height: 56px;
+    margin-bottom: 0;
+  }
+  .userLogoWrapper {
+    width: 44px;
+    height: 44px;
+  }
+  .userName {
+    font-size: 16px;
+  }
 }
