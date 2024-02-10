@@ -243,6 +243,7 @@
   border-radius: 12px;
   border: 1px solid var(--border-field-color);
   height: 91px;
+  font-family: 'SuisseIntl-Regular', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
