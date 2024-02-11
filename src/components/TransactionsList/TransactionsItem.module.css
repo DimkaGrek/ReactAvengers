@@ -1,0 +1,51 @@
+.btnContainer {
+  display: flex;
+  gap: 10px;
+}
+.btnTable {
+  position: relative;
+  border-radius: 40px;
+  padding: 14px 32px;
+  width: 118px;
+  height: 47px;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--background-color);
+}
+
+.btnTableDel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  padding: 14px 30px;
+  width: 133px;
+  height: 47px;
+  font-weight: 400;
+  font-size: 16px;
+  background: var(--background-color);
+
+  color: var(--main-text-color);
+}
+
+.iconDelete {
+  stroke: var(--main-text-color);
+  fill: none;
+  position: absolute;
+  left: 23%;
+  top: 28%;
+  transform: translate(-40%, 10%);
+}
+
+.textCont {
+  margin-left: 13px;
+}
+.iconEdit {
+  stroke: var(--background-color);
+  fill: none;
+  position: absolute;
+  left: 23%;
+  top: 28%;
+  transform: translate(-40%, 10%);
+}

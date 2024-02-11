@@ -52,7 +52,7 @@ export const deleteTransaction = createAsyncThunk(
   'categories/deleteTransaction',
   async (id, thunkAPI) => {
     try {
-      await api.patch(`/transactions/${id}`);
+      await api.delete(`/transactions/${id}`);
       return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
