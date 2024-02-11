@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import style from './UserBarBtn.module.css';
 import { Icon } from 'components/Icon/Icon';
 import UserPanel from '../UserPanel/UserPanel';
@@ -8,16 +8,21 @@ import { selectUser } from 'my-redux/User/userSlice';
 const UserBarBtn = () => {
   const { name } = useSelector(selectUser);
   const { avatarUrl } = useSelector(selectUser);
-  console.log(useSelector(selectUser));
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const userBtnRef = useRef(null);
 
   const toggleUserBarBtn = () => {
     setIsOpen(!isOpen);
   };
 
+  const closeUserBar = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <div className={style.userBarBtnWrapper}>
+    <div ref={userBtnRef} className={style.userBarBtnWrapper}>
       <button className={style.userBarBtnTop} onClick={toggleUserBarBtn}>
         <div className={style.userLogoWrapper}>
           {avatarUrl ? (
@@ -40,7 +45,13 @@ const UserBarBtn = () => {
           <Icon name="chevron-up" className={style.chevrone} />
         )}
       </button>
-      {isOpen && <UserPanel />}
+      {isOpen && (
+        <UserPanel
+          toggleUserBarBtn={toggleUserBarBtn}
+          userBtnRef={userBtnRef}
+          closeUserBar={closeUserBar}
+        />
+      )}
     </div>
   );
 };
