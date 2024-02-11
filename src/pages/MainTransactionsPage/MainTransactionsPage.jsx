@@ -24,7 +24,7 @@ const MainTransactionsPage = () => {
 
   const transaction = {
     type: 'income',
-    date: '2024-01-02',
+    date: '01-02-2024',
     time: '12:10:02',
     category: 'cinema',
     sum: '320',
@@ -45,7 +45,10 @@ const MainTransactionsPage = () => {
           <TransactionsTotalAmount />
         </div>
         <div className={s.form}>
-          <TransactionForm transactionsType={transactionsType} />
+          <TransactionForm
+            transactionsType={transactionsType}
+            transaction={transaction}
+          />
         </div>
         <div className={s.chart}>
           <TransactionsChart transactionsType={capitalizedType} />

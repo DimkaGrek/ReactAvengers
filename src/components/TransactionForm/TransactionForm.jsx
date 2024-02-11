@@ -23,16 +23,22 @@ export const TransactionForm = ({ transaction, transactionsType }) => {
   const [isOpenModalTransaction, toggleModalTransaction] = useModal();
   const { register, handleSubmit, reset, setValue } = useForm();
 
+  const [isChangeTime, setIsChangeTime] = useState(false);
+
   useEffect(() => {
+    if (!isChangeTime) {
+      setValue('time', currentTime);
+    }
+
     setValue('type', typeTransaction);
-    setValue('time', currentTime);
     setValue('date', getFormattedDate(startDate));
-  }, [currentTime, startDate, typeTransaction, setValue]);
+  }, [currentTime, startDate, typeTransaction, setValue, isChangeTime]);
 
   useEffect(() => {
     if (transaction) {
       const { type, date, time, category, sum, comment } = transaction;
 
+      setIsChangeTime(true);
       setValue('type', type);
       setValue('date', date);
       setValue('time', time);
@@ -42,15 +48,24 @@ export const TransactionForm = ({ transaction, transactionsType }) => {
     }
   }, [transaction, setValue]);
 
+  const handleChangeTime = () => {
+    setIsChangeTime(true);
+  };
+
   const handleChangeDate = date => {
     setStartDate(date);
     const formattedDate = getFormattedDate(date);
     setValue('date', formattedDate);
   };
 
-  const onSubmit = date => {
-    console.log(date);
+  const onSubmit = data => {
+    if (!isChangeTime) {
+      data.time = getFormattedTime();
+    }
+
+    console.log(data);
     reset();
+    setIsChangeTime(false);
     setStartDate(new Date());
   };
 
@@ -109,6 +124,7 @@ export const TransactionForm = ({ transaction, transactionsType }) => {
                 name="time"
                 step="1"
                 {...register('time')}
+                onChange={handleChangeTime}
               />
               <Icon name="clock" className={s.iconTime} size="16" />
             </label>
