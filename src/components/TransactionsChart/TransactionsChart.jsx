@@ -44,6 +44,8 @@ export const TransactionsChart = ({ transactionsType }) => {
       </div>
     );
 
+  if (!data.length) return;
+
   return !categoriesData.length ? (
     <div className={s.warningWrapper}>
       <h2 className={s.warningTitle}>
