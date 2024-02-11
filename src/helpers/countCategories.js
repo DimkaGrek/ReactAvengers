@@ -40,7 +40,7 @@ export function countCategories(data, total) {
   const categoriesData = [];
 
   Object.entries(categorySum).forEach(([key, value]) => {
-    let percent = Math.round((value / total) * 100);
+    let percent = Number(((value / total) * 100).toFixed(1));
     categoriesData.push({ name: key, value: percent });
   });
 
@@ -53,7 +53,10 @@ export function countCategories(data, total) {
 
   if (sumRoundedPercentages !== 100) {
     const diff = 100 - sumRoundedPercentages;
-    sortedCategories[sortedCategories.length - 1].value += diff;
+
+    sortedCategories[sortedCategories.length - 1].value = Number(
+      (sortedCategories[sortedCategories.length - 1].value + diff).toFixed(1)
+    );
   }
 
   // sortedCategories.map((item, index) => (item.color = colors[index]));
