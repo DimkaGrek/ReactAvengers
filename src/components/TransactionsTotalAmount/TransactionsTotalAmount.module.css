@@ -6,13 +6,11 @@
   fill: var(--main-text-color);
 }
 @media only screen and (min-width: 1440px) {
-  .link:hover .iconContainer,
-  .link:focus .iconContainer {
+  .link:hover .iconContainer {
     background-color: transparent;
     border: 1px solid var(--button-color);
   }
-  .link:hover .icon,
-  .link:focus .icon {
+  .link:hover .icon {
     fill: var(--main-text-color);
   }
 }
