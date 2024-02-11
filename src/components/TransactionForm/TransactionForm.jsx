@@ -135,7 +135,7 @@ export const TransactionForm = ({ transaction }) => {
           />
         </div>
         <button className={s.submitBtn} type="submit">
-          Add
+          {transaction ? 'Save' : 'Add'}
         </button>
       </form>
     </div>
