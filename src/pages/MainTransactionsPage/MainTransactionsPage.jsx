@@ -25,15 +25,6 @@ const MainTransactionsPage = () => {
   const capitalizedType =
     transactionsType[0].toUpperCase() + transactionsType.slice(1);
 
-  // const transaction = {
-  //   type: 'income',
-  //   date: '01-02-2024',
-  //   time: '12:10:02',
-  //   category: 'cinema',
-  //   sum: '320',
-  //   comment: 'buy tiсket',
-  // };
-
   const onSubmitForm = transaction => {
     dispatch(addTransaction(transaction));
   };

@@ -29,6 +29,7 @@ export const TransactionForm = ({
   const { register, handleSubmit, reset, setValue } = useForm();
 
   const [isChangeTime, setIsChangeTime] = useState(false);
+  const [categoryId, setCategoryId] = useState('');
 
   useEffect(() => {
     if (!isChangeTime) {
@@ -43,11 +44,13 @@ export const TransactionForm = ({
     if (transaction) {
       const { type, date, time, category, sum, comment } = transaction;
 
+      setCategoryId(category?._id);
       setIsChangeTime(true);
+
       setValue('type', type);
       setValue('date', date);
       setValue('time', time);
-      setValue('category', category);
+      setValue('category', category.categoryName);
       setValue('sum', sum);
       setValue('comment', comment);
     }
@@ -63,22 +66,25 @@ export const TransactionForm = ({
     setValue('date', formattedDate);
   };
 
+  const handleChangeCategory = (categoryId, categoryName) => {
+    setValue('category', categoryName);
+    setCategoryId(categoryId);
+  };
+
   const onSubmit = data => {
     if (!isChangeTime) {
       data.time = getFormattedTime();
     }
 
+    data.category = categoryId;
     console.log(data);
 
     onSubmitForm(data);
+
     reset();
     setIsChangeTime(false);
     setStartDate(new Date());
-  };
-
-  const handleChangeCategory = category => {
-    console.log(category);
-    setValue('category', category);
+    setCategoryId('');
   };
 
   return (
@@ -180,9 +186,11 @@ export const TransactionForm = ({
         <Modal pd={40} toggleModal={toggleModalTransaction}>
           <ul>
             <li
-              onClick={() => handleChangeCategory('65c8eb3ff1df95584aa3d60d')}
+              onClick={() =>
+                handleChangeCategory('65c8eb3ff1df95584aa3d60d', 'Salary')
+              }
             >
-              Cinema
+              Salary
             </li>
           </ul>
         </Modal>
