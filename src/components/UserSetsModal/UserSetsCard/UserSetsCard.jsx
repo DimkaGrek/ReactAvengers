@@ -1,33 +1,43 @@
-import { useDispatch, useSelector } from 'react-redux';
-import s from './UserSetsCard.module.css';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import Loader from 'components/Loader/Loader';
 import { selectUser } from 'my-redux/User/userSlice';
-import { takeFirstLetter, takeId } from 'helpers';
 import { changeUserAvatar, deleteUserAvatar } from 'my-redux/User/operations';
+import { useIsLoading } from 'hooks';
+import { takeFirstLetter, takeId } from 'helpers';
+
+import s from './UserSetsCard.module.css';
 
 export const UserSetsCard = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { name, avatarUrl } = useSelector(selectUser);
-  const noAvatar = avatarUrl === null;
-  const dispatch = useDispatch();
 
-  const handleChahge = e => {
+  const customDispatch = useIsLoading();
+
+  const noAvatar = avatarUrl === null;
+
+  const handleUploadAvatar = e => {
     const file = e.target.files[0];
-    dispatch(changeUserAvatar(file));
+    customDispatch(changeUserAvatar, file, setIsLoading);
   };
 
-  const handleUploadPhoto = () => {
+  const handleRedirectClick = () => {
     document.querySelector('#avatar').click();
   };
 
   const handleDeletePhoto = () => {
     const id = takeId(avatarUrl);
-    dispatch(deleteUserAvatar(id));
+    customDispatch(deleteUserAvatar, id, setIsLoading);
   };
 
   return (
     <div className={s.cardWrapper}>
       <div className={s.photoWrapper}>
-        {noAvatar && <p className={s.text}>{takeFirstLetter(name)}</p>}
-        {!noAvatar && (
+        {noAvatar && !isLoading && (
+          <p className={s.text}>{takeFirstLetter(name)}</p>
+        )}
+        {!noAvatar && !isLoading && (
           <img
             className={s.photo}
             src={avatarUrl}
@@ -35,9 +45,12 @@ export const UserSetsCard = () => {
             width={150}
           />
         )}
+        {isLoading && (
+          <Loader className="userIsLoading" width="60" height="60" />
+        )}
         <input
           className={s.input}
-          onChange={handleChahge}
+          onChange={handleUploadAvatar}
           type="file"
           id="avatar"
           name="avatar"
@@ -46,7 +59,7 @@ export const UserSetsCard = () => {
       </div>
 
       <div className={s.btnWrapper}>
-        <button className={s.button} onClick={handleUploadPhoto}>
+        <button className={s.button} onClick={handleRedirectClick}>
           Upload new photo
         </button>
         <button className={s.button} onClick={handleDeletePhoto}>
