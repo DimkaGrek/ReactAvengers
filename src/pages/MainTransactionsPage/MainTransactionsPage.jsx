@@ -45,7 +45,7 @@ const MainTransactionsPage = () => {
           <TransactionsTotalAmount />
         </div>
         <div className={s.form}>
-          <TransactionForm transaction={transaction} />
+          <TransactionForm transactionsType={transactionsType} />
         </div>
         <div className={s.chart}>
           <TransactionsChart transactionsType={capitalizedType} />

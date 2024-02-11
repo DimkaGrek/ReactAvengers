@@ -11,9 +11,12 @@ import { useModal } from 'hooks';
 import { selectUser } from '../../my-redux/User/userSlice';
 import { getFormattedDate, getFormattedTime } from 'helpers';
 
-export const TransactionForm = ({ transaction }) => {
+export const TransactionForm = ({ transaction, transactionsType }) => {
   const user = useSelector(selectUser);
   const { currency } = user;
+  const typeTransaction =
+    transactionsType === 'expenses' ? 'expense' : 'income';
+
   const dateForm = transaction ? transaction.date : new Date();
   const [startDate, setStartDate] = useState(dateForm);
   const currentTime = getFormattedTime();
@@ -21,9 +24,10 @@ export const TransactionForm = ({ transaction }) => {
   const { register, handleSubmit, reset, setValue } = useForm();
 
   useEffect(() => {
+    setValue('type', typeTransaction);
     setValue('time', currentTime);
     setValue('date', getFormattedDate(startDate));
-  }, [currentTime, startDate, setValue]);
+  }, [currentTime, startDate, typeTransaction, setValue]);
 
   useEffect(() => {
     if (transaction) {
