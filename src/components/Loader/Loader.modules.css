@@ -11,3 +11,8 @@
   height: 100vh;
   background: var(--black06);
 }
+.userIsLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
