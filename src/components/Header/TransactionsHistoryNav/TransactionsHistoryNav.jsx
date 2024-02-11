@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const TransactionsHistoryNav = ({ activeButton, handleButtonClick }) => {
   return (
     <div className={style.buttonWrapper}>
-      <Link to="/transactions/history/expense">
+      <Link to="/transactions/history/expenses">
         <button
           className={
             activeButton === 'expense'
@@ -19,7 +19,7 @@ const TransactionsHistoryNav = ({ activeButton, handleButtonClick }) => {
         </button>
       </Link>
 
-      <Link to="/transactions/history/income">
+      <Link to="/transactions/history/incomes">
         <button
           className={
             activeButton === 'income'

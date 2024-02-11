@@ -8,7 +8,7 @@ import {
   selectDate,
   selectFilter,
 } from 'my-redux/Filter/FilterSlice';
-// import { Icon } from 'components';
+import { Icon } from 'components';
 import DatePicker from 'react-datepicker';
 
 export const TransactionsSearchTools = () => {
@@ -26,23 +26,28 @@ export const TransactionsSearchTools = () => {
   return (
     <div className={s.formContainer}>
       <form action="" className={s.formBox}>
-        <input
-          value={filter}
-          onChange={changeFilterValue}
-          type="text"
-          className={s.formInput}
-        />
-        {/* <input type="text" className={s.formCalendar} /> */}
-        <div className="datepickerContainer">
+        <div className={s.filterContainer}>
+          <input
+            value={filter}
+            onChange={changeFilterValue}
+            type="text"
+            className={s.formInput}
+            placeholder="Search for anything.."
+          />
+          <Icon name="search" className={s.iconSearch} size="20" />
+        </div>
+
+        <div className={s.datepickerContainer}>
           <DatePicker
             className={s.formCalendar}
             selected={date}
             onChange={changeDateValue}
             showPopperArrow={false}
             maxDate={new Date()}
+            placeholderText="dd/mm/yyyy"
           />
+          <Icon name="calendar" className={s.iconDate} size="20" />
         </div>
-        {/* <Icon name="calendar" className={s.iconDate} size="16" /> */}
       </form>
     </div>
   );

@@ -1,18 +1,33 @@
+.containerTable {
+  height: 350px;
+}
 .listTable {
-  table-layout: fixed;
-  width: 100%;
-
   border-collapse: collapse;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   border-style: hidden;
 }
-
 table tr:last-child td:first-child {
   border-bottom-left-radius: 30px;
 }
 .listTable tr:last-child td:last-child {
   border-bottom-right-radius: 30px;
+  padding-bottom: 22px;
+}
+.listTable tr:last-child td:nth-child(5) {
+  padding-bottom: 22px;
+}
+.listTable tr:last-child td:nth-child(4) {
+  padding-bottom: 22px;
+}
+.listTable tr:last-child td:nth-child(3) {
+  padding-bottom: 22px;
+}
+.listTable tr:last-child td:nth-child(2) {
+  padding-bottom: 22px;
+}
+.listTable tr:last-child td:nth-child(1) {
+  padding-bottom: 22px;
 }
 
 thead th:nth-child(1) {
@@ -42,10 +57,7 @@ thead th:nth-child(6) {
 thead {
   height: 59px;
   background: rgba(0, 0, 0, 0.2);
-}
-th,
-td {
-  padding: 20px;
+  padding: 0 40px 0 40px;
 }
 
 thead th,
@@ -57,8 +69,18 @@ tfoot th {
   text-align: left;
 }
 
+td:last-child {
+  padding-right: 68px;
+}
 td {
   letter-spacing: 1px;
+  padding: 20px 0 0 40px;
+}
+th {
+  padding: 20px 40px;
+}
+tr {
+  padding-bottom: 22px;
 }
 
 tbody {
@@ -68,24 +90,4 @@ tbody {
   color: #fafafa;
   text-align: left;
   background: #171719;
-}
-.btnContainer {
-  display: flex;
-  gap: 10px;
-}
-.btnTable {
-  border-radius: 40px;
-  padding: 14px 32px;
-  width: 118px;
-  height: 47px;
-  color: black;
-}
-
-.btnTableDel {
-  border-radius: 40px;
-  padding: 14px 30px;
-  width: 133px;
-  height: 47px;
-  background: #0c0d0d;
-  color: white;
 }
