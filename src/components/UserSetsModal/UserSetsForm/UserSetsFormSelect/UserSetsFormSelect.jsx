@@ -1,17 +1,19 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import s from './UserSetsFormSelect.module.css';
 import { Icon } from 'components';
+import { UserSetsFormSelectList } from './UserSetsFormSelectList/UserSetsFormSelectList';
 const options = [
   { value: 'uah', label: '₴ UAH' },
   { value: 'usd', label: '$ USD' },
   { value: 'eur', label: '€ EUR' },
 ];
-export const UserSetsFormSelect = ({ setCurrency }) => {
+export const UserSetsFormSelect = ({ setCurrency, currency }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState(options[0]);
+  const box = useRef(null);
 
-  const handleOpen = () => {
+  const handleToggle = e => {
     setIsOpen(!isOpen);
   };
 
@@ -21,8 +23,13 @@ export const UserSetsFormSelect = ({ setCurrency }) => {
   };
 
   return (
-    <div onClick={handleOpen} className={s.container}>
-      <p className={s.text}>{option.label}</p>
+    <div ref={box} onClick={handleToggle} className={s.container}>
+      <p className={s.text}>
+        {options.reduce(
+          (acc, cur) => (cur.value === currency ? cur.label : acc),
+          ''
+        )}
+      </p>
       <div className={s.iconWrapper}>
         <Icon
           className={s.icon}
@@ -31,23 +38,18 @@ export const UserSetsFormSelect = ({ setCurrency }) => {
         />
       </div>
       {isOpen && (
-        <ul className={s.menu}>
-          {options.map(element => (
-            <li
-              className={s.listItem}
-              key={element.value}
-              onClick={() => handleChose(element)}
-            >
-              <p className={s.menuItem}>{element.label}</p>
-            </li>
-          ))}
-        </ul>
+        <UserSetsFormSelectList
+          options={options}
+          handleChose={handleChose}
+          boxRef={box}
+          handleToggle={handleToggle}
+        />
       )}
       <input
         className={s.input}
         type="text"
         name="currency"
-        value={option.value}
+        value={currency}
         readOnly
       />
     </div>

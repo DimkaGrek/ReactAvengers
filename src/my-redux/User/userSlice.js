@@ -56,8 +56,10 @@ const userSlice = createSlice({
   },
   selectors: {
     selectUser: state => state,
+    selectName: state => state.name,
+    selectCurrency: state => state.currency,
   },
 });
 
 export const userReducer = userSlice.reducer;
-export const { selectUser } = userSlice.selectors;
+export const { selectUser, selectName, selectCurrency } = userSlice.selectors;
