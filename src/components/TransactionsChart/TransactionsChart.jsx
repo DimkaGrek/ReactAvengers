@@ -46,9 +46,7 @@ export const TransactionsChart = ({ transactionsType }) => {
       </div>
     );
 
-  if (!data.length) return;
-
-  return !categoriesData.length ? (
+  return !categoriesData.length || !data.length ? (
     <div className={s.warningWrapper}>
       <h2 className={s.warningTitle}>
         You don't have any {transactionsType.toLowerCase()} in this month.
