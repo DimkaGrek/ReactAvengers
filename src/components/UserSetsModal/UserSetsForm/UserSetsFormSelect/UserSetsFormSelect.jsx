@@ -10,7 +10,6 @@ const options = [
 ];
 export const UserSetsFormSelect = ({ setCurrency, currency }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [option, setOption] = useState(options[0]);
   const box = useRef(null);
 
   const handleToggle = e => {
@@ -18,7 +17,6 @@ export const UserSetsFormSelect = ({ setCurrency, currency }) => {
   };
 
   const handleChose = element => {
-    setOption(element);
     setCurrency(element.value);
   };
 
