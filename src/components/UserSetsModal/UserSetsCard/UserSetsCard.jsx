@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './UserSetsCard.module.css';
 import { selectUser } from 'my-redux/User/userSlice';
@@ -6,24 +5,17 @@ import { takeFirstLetter, takeId } from 'helpers';
 import { changeUserAvatar, deleteUserAvatar } from 'my-redux/User/operations';
 
 export const UserSetsCard = () => {
-  const [localAvatar, setLocalAvatar] = useState(null);
   const { name, avatarUrl } = useSelector(selectUser);
-  const noAvatar = localAvatar === null && avatarUrl === null;
+  const noAvatar = avatarUrl === null;
   const dispatch = useDispatch();
 
   const handleChahge = e => {
-    const reader = new FileReader();
     const file = e.target.files[0];
-
-    reader.onload = e => {
-      const resultSrc = e.target.result;
-      setLocalAvatar({ src: resultSrc, file });
-    };
-    reader.readAsDataURL(file);
+    dispatch(changeUserAvatar(file));
   };
 
   const handleUploadPhoto = () => {
-    dispatch(changeUserAvatar(localAvatar.file));
+    document.querySelector('#avatar').click();
   };
 
   const handleDeletePhoto = () => {
@@ -33,16 +25,13 @@ export const UserSetsCard = () => {
 
   return (
     <div className={s.cardWrapper}>
-      <div
-        className={s.photoWrapper}
-        onClick={() => document.querySelector('#avatar').click()}
-      >
+      <div className={s.photoWrapper}>
         {noAvatar && <p className={s.text}>{takeFirstLetter(name)}</p>}
         {!noAvatar && (
           <img
             className={s.photo}
-            src={localAvatar?.src || avatarUrl}
-            alt="user photo"
+            src={avatarUrl}
+            alt="user avatar"
             width={150}
           />
         )}
