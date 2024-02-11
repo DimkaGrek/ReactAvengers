@@ -59,10 +59,10 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="3.2"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="3.2"
             d="M8 20l8-8 8 8"
           ></path>
         </Svg>
@@ -73,10 +73,10 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="3.2"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="3.2"
             d="M8 12l8 8 8-8"
           ></path>
         </Svg>
@@ -87,10 +87,10 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.6667"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.6667"
             d="M4 11.333h24M4 20.667h24"
           ></path>
         </Svg>
@@ -109,17 +109,17 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.6"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.6"
             d="M26.667 28v-2.667c0-1.415-0.562-2.771-1.562-3.771s-2.357-1.562-3.771-1.562h-10.667c-1.415 0-2.771 0.562-3.771 1.562s-1.562 2.357-1.562 3.771v2.667"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.6"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.6"
             d="M15.999 14.667c2.946 0 5.333-2.388 5.333-5.333s-2.388-5.333-5.333-5.333c-2.945 0-5.333 2.388-5.333 5.333s2.388 5.333 5.333 5.333z"
           ></path>
         </Svg>
@@ -130,24 +130,24 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4471"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4471"
             d="M12.235 27.294h-5.020c-0.666 0-1.304-0.264-1.775-0.735s-0.735-1.109-0.735-1.775v-17.569c0-0.666 0.264-1.304 0.735-1.775s1.109-0.735 1.775-0.735h5.020"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4471"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4471"
             d="M21.020 22.275l6.274-6.275-6.274-6.274"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4471"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4471"
             d="M27.294 16h-15.059"
           ></path>
         </Svg>
@@ -158,31 +158,31 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
             d="M25.333 5.333h-18.667c-1.473 0-2.667 1.194-2.667 2.667v18.667c0 1.473 1.194 2.667 2.667 2.667h18.667c1.473 0 2.667-1.194 2.667-2.667v-18.667c0-1.473-1.194-2.667-2.667-2.667z"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
             d="M21.333 2.667v5.333"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
             d="M10.667 2.667v5.333"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
             d="M4 13.333h24"
           ></path>
         </Svg>
@@ -193,17 +193,17 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
             d="M16 29.333c7.364 0 13.333-5.97 13.333-13.333s-5.969-13.333-13.333-13.333c-7.364 0-13.333 5.97-13.333 13.333s5.97 13.333 13.333 13.333z"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
             d="M16 8v8l5.333 2.667"
           ></path>
         </Svg>
@@ -214,17 +214,17 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
             d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667s-4.776-10.667-10.667-10.667c-5.891 0-10.667 4.776-10.667 10.667s4.776 10.667 10.667 10.667z"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
             d="M28 28l-5.8-5.8"
           ></path>
         </Svg>
@@ -235,10 +235,10 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="3"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="3"
             d="M26.667 8l-14.667 14.667-6.667-6.667"
           ></path>
         </Svg>
@@ -249,10 +249,10 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="3"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="3"
             d="M22.667 4c0.35-0.35 0.766-0.628 1.224-0.817s0.948-0.287 1.443-0.287c0.495 0 0.986 0.098 1.443 0.287s0.873 0.467 1.223 0.817 0.628 0.766 0.818 1.223c0.189 0.458 0.287 0.948 0.287 1.443s-0.098 0.986-0.287 1.443c-0.19 0.458-0.467 0.873-0.818 1.223l-18 18-7.333 2 2-7.333 18-18z"
           ></path>
         </Svg>
@@ -263,17 +263,17 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.6667"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.6667"
             d="M24 8l-16 16"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.6667"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.6667"
             d="M8 8l16 16"
           ></path>
         </Svg>
@@ -284,31 +284,31 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="3"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="3"
             d="M4 8h24"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="3"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="3"
             d="M25.333 8v18.667c0 0.707-0.281 1.385-0.781 1.886s-1.178 0.781-1.886 0.781h-13.333c-0.707 0-1.386-0.281-1.886-0.781s-0.781-1.178-0.781-1.886v-18.667M10.667 8v-2.667c0-0.707 0.281-1.386 0.781-1.886s1.178-0.781 1.886-0.781h5.333c0.707 0 1.386 0.281 1.886 0.781s0.781 1.178 0.781 1.886v2.667"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="3"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="3"
             d="M13.333 14.667v8"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="3"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="3"
             d="M18.667 14.667v8"
           ></path>
         </Svg>
@@ -319,17 +319,17 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
             d="M1.333 16c0 0 5.333-10.667 14.667-10.667s14.667 10.667 14.667 10.667-5.333 10.667-14.667 10.667c-9.333 0-14.667-10.667-14.667-10.667z"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
             d="M16 20c2.209 0 4-1.791 4-4s-1.791-4-4-4c-2.209 0-4 1.791-4 4s1.791 4 4 4z"
           ></path>
         </Svg>
@@ -340,17 +340,17 @@ export const Icon = ({ name, className, size }) => {
       return (
         <Svg className={className} size={size}>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
             d="M23.92 23.92c-2.279 1.737-5.055 2.7-7.92 2.747-9.333 0-14.667-10.667-14.667-10.667 1.659-3.091 3.959-5.791 6.747-7.92M13.2 5.653c0.918-0.215 1.857-0.322 2.8-0.32 9.333 0 14.667 10.667 14.667 10.667-0.809 1.514-1.775 2.94-2.88 4.253M18.827 18.827c-0.366 0.393-0.808 0.708-1.299 0.927s-1.020 0.336-1.557 0.346c-0.537 0.009-1.071-0.089-1.569-0.291s-0.95-0.501-1.33-0.88c-0.38-0.38-0.679-0.832-0.88-1.33s-0.3-1.032-0.29-1.569c0.009-0.537 0.127-1.067 0.346-1.558s0.534-0.932 0.927-1.298"
           ></path>
           <path
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-miterlimit="4"
-            stroke-width="2.4"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeMiterlimit="4"
+            strokeWidth="2.4"
             d="M1.333 1.333l29.333 29.333"
           ></path>
         </Svg>
