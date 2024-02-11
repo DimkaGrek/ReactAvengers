@@ -22,6 +22,15 @@ const MainTransactionsPage = () => {
   const capitalizedType =
     transactionsType[0].toUpperCase() + transactionsType.slice(1);
 
+  const transaction = {
+    type: 'income',
+    date: '2024-01-02',
+    time: '12:10:02',
+    category: 'cinema',
+    sum: '320',
+    comment: 'buy tiсket',
+  };
+
   return (
     <div className={s.container}>
       <div className={s.wrapper}>
@@ -36,7 +45,7 @@ const MainTransactionsPage = () => {
           <TransactionsTotalAmount />
         </div>
         <div className={s.form}>
-          <TransactionForm />
+          <TransactionForm transaction={transaction} />
         </div>
         <div className={s.chart}>
           <TransactionsChart transactionsType={capitalizedType} />

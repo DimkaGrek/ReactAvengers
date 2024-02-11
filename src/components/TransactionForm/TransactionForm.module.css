@@ -92,8 +92,8 @@
   position: relative;
   display: inline-block;
   border-radius: 10px;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   background-color: transparent;
   border-radius: 50%;
   border: 2px solid var(--border-field-color);
@@ -103,8 +103,8 @@
 .customRadioBtn::before {
   content: '';
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   background-color: var(--hover-color);
   border-radius: 50%;
   position: absolute;
@@ -167,6 +167,10 @@
   height: 42px;
 }
 
+.categoryInput {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
   .timeInput {
     height: 48px;
@@ -225,6 +229,11 @@
   -webkit-appearance: none;
   margin: 0;
 }
+
+.currencyInput:not(:placeholder-shown) + .currency {
+  color: white;
+}
+
 .currency {
   width: 50px;
   text-align: end;
@@ -282,7 +291,7 @@
   background-color: var(--hover-color);
 }
 
-.ransacionForm input:hover,
+.transacionForm input:hover,
 .transacionForm input:focus,
 .transacionForm textarea:hover,
 .transacionForm textarea:focus {
