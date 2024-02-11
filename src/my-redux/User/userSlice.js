@@ -41,7 +41,7 @@ const userSlice = createSlice({
         state.currency = user.currency;
         state.avatarUrl = user.avatarUrl;
         state.totalIncomes = user.transactionsTotal.incomes;
-        state.totalExpenses = user.transactionsTotal.incomes;
+        state.totalExpenses = user.transactionsTotal.expenses;
       })
       .addCase(changeUserInfo.fulfilled, (state, { payload }) => {
         state.name = payload.name;
