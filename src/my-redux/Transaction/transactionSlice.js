@@ -21,6 +21,7 @@ const transactionSlice = createSlice({
         state.error = null;
       })
       .addCase(addTransaction.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.transactions.push(action.payload);
         state.error = null;
       })

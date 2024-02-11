@@ -7,7 +7,10 @@ import {
   TransactionsChart,
   TransactionsTotalAmount,
 } from 'components';
-import { getTransactions } from 'my-redux/Transaction/operations';
+import {
+  addTransaction,
+  getTransactions,
+} from 'my-redux/Transaction/operations';
 //
 import s from './MainTransactionsPage.module.css';
 
@@ -22,13 +25,17 @@ const MainTransactionsPage = () => {
   const capitalizedType =
     transactionsType[0].toUpperCase() + transactionsType.slice(1);
 
-  const transaction = {
-    type: 'income',
-    date: '01-02-2024',
-    time: '12:10:02',
-    category: 'cinema',
-    sum: '320',
-    comment: 'buy tiсket',
+  // const transaction = {
+  //   type: 'income',
+  //   date: '01-02-2024',
+  //   time: '12:10:02',
+  //   category: 'cinema',
+  //   sum: '320',
+  //   comment: 'buy tiсket',
+  // };
+
+  const onSubmitForm = transaction => {
+    dispatch(addTransaction(transaction));
   };
 
   return (
@@ -47,7 +54,7 @@ const MainTransactionsPage = () => {
         <div className={s.form}>
           <TransactionForm
             transactionsType={transactionsType}
-            transaction={transaction}
+            onSubmitForm={onSubmitForm}
           />
         </div>
         <div className={s.chart}>

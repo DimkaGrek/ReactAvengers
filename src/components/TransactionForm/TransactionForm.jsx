@@ -11,11 +11,15 @@ import { useModal } from 'hooks';
 import { selectUser } from '../../my-redux/User/userSlice';
 import { getFormattedDate, getFormattedTime } from 'helpers';
 
-export const TransactionForm = ({ transaction, transactionsType }) => {
+export const TransactionForm = ({
+  transaction,
+  transactionsType,
+  onSubmitForm,
+}) => {
   const user = useSelector(selectUser);
   const { currency } = user;
   const typeTransaction =
-    transactionsType === 'expenses' ? 'expense' : 'income';
+    transactionsType === 'expenses' ? 'expenses' : 'incomes';
 
   const dateForm = transaction ? transaction.date : new Date();
   const [startDate, setStartDate] = useState(dateForm);
@@ -64,12 +68,15 @@ export const TransactionForm = ({ transaction, transactionsType }) => {
     }
 
     console.log(data);
+
+    onSubmitForm(data);
     reset();
     setIsChangeTime(false);
     setStartDate(new Date());
   };
 
   const handleChangeCategory = category => {
+    console.log(category);
     setValue('category', category);
   };
 
@@ -83,7 +90,7 @@ export const TransactionForm = ({ transaction, transactionsType }) => {
                 className={s.radioBtn}
                 type="radio"
                 name="type"
-                value="expense"
+                value="expenses"
                 {...register('type')}
                 defaultChecked
               />
@@ -95,7 +102,7 @@ export const TransactionForm = ({ transaction, transactionsType }) => {
                 className={s.radioBtn}
                 type="radio"
                 name="type"
-                value="income"
+                value="incomes"
                 {...register('type')}
               />
               <span className={s.customRadioBtn}></span>
@@ -122,7 +129,6 @@ export const TransactionForm = ({ transaction, transactionsType }) => {
                 className={s.timeInput}
                 type="time"
                 name="time"
-                step="1"
                 {...register('time')}
                 onChange={handleChangeTime}
               />
@@ -172,9 +178,11 @@ export const TransactionForm = ({ transaction, transactionsType }) => {
       {isOpenModalTransaction && (
         <Modal pd={40} toggleModal={toggleModalTransaction}>
           <ul>
-            <li onClick={() => handleChangeCategory('Cinema')}>Cinema</li>
-            <li onClick={() => handleChangeCategory('Products')}>Products</li>
-            <li onClick={() => handleChangeCategory('Shop')}>Shop</li>
+            <li
+              onClick={() => handleChangeCategory('65c8eb3ff1df95584aa3d60d')}
+            >
+              Cinema
+            </li>
           </ul>
         </Modal>
       )}
