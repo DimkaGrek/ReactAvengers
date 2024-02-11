@@ -12,12 +12,16 @@ const UserPanel = ({ closeUserBar, toggleUserBarBtn, userBtnRef }) => {
 
   useEffect(() => {
     const handleClickOutside = event => {
+      if (isOpenModal) return;
+
       if (userBtnRef.current && !userBtnRef.current.contains(event.target)) {
         toggleUserBarBtn();
       }
     };
 
     const handleKeyPress = event => {
+      if (isOpenModal) return;
+
       if (event.key === 'Escape') {
         closeUserBar();
       }
@@ -30,7 +34,7 @@ const UserPanel = ({ closeUserBar, toggleUserBarBtn, userBtnRef }) => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, [closeUserBar, toggleUserBarBtn, userBtnRef]);
+  }, [closeUserBar, toggleUserBarBtn, userBtnRef, isOpenModal]);
 
   return (
     <div className={style.userPanelBody}>
