@@ -6,7 +6,7 @@ import s from './LoginPage.module.css';
 const LoginPage = () => {
   return (
     <div className={s.container}>
-      <AuthForm formType="signin" />
+      <AuthForm signIn />
     </div>
   );
 };
