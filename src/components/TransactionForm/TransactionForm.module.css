@@ -167,6 +167,10 @@
   height: 42px;
 }
 
+.categoryInput {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
   .timeInput {
     height: 48px;
