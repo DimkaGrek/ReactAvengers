@@ -28,9 +28,13 @@ export const changeUserInfo = createAsyncThunk(
 export const changeUserAvatar = createAsyncThunk(
   'user/newAvatar',
   async (newAvatar, thunkAPI) => {
+    const fd = new FormData();
+    fd.append('avatar', newAvatar);
     try {
-      const { data } = await api.patch('/users/avatar', newAvatar);
-      return data;
+      const { data } = await api.patch('/users/avatar', fd, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      return data.avatarUrl;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -41,7 +45,7 @@ export const deleteUserAvatar = createAsyncThunk(
   'user/deleteAvatar',
   async (avatarId, thunkAPI) => {
     try {
-      await api.delete(`/users/avatar${avatarId}`);
+      await api.delete(`/users/avatar/${avatarId}`);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
