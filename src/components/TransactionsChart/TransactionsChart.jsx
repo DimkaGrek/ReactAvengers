@@ -9,6 +9,8 @@ import {
 } from 'my-redux/Transaction/transactionSlice';
 import { selectUser } from 'my-redux/User/userSlice';
 import warningImg from '../../assets/images/no_data_abstract.png';
+import errorImg from '../../assets/images/server-error.png';
+
 //
 import s from './TransactionsChart.module.css';
 
@@ -40,7 +42,7 @@ export const TransactionsChart = ({ transactionsType }) => {
         <h2 className={s.warningTitle}>
           Sorry, something went wrong. Please try again...
         </h2>
-        <img className={s.imgNoData} src={warningImg} alt="Error fetch" />
+        <img className={s.imgNoData} src={errorImg} alt="Error fetch" />
       </div>
     );
 
