@@ -12,24 +12,38 @@ import { useModal } from 'hooks';
 import { selectUser } from '../../my-redux/User/userSlice';
 import { getFormattedDate, getFormattedTime } from 'helpers';
 
-export const TransactionForm = ({ transaction }) => {
+export const TransactionForm = ({
+  transaction,
+  transactionsType,
+  onSubmitForm,
+}) => {
   const user = useSelector(selectUser);
   const { currency } = user;
+  const typeTransaction =
+    transactionsType === 'expenses' ? 'expenses' : 'incomes';
+
   const dateForm = transaction ? transaction.date : new Date();
   const [startDate, setStartDate] = useState(dateForm);
   const currentTime = getFormattedTime();
   const [isOpenModalTransaction, toggleModalTransaction] = useModal();
   const { register, handleSubmit, reset, setValue } = useForm();
 
+  const [isChangeTime, setIsChangeTime] = useState(false);
+
   useEffect(() => {
-    setValue('time', currentTime);
+    if (!isChangeTime) {
+      setValue('time', currentTime);
+    }
+
+    setValue('type', typeTransaction);
     setValue('date', getFormattedDate(startDate));
-  }, [currentTime, startDate, setValue]);
+  }, [currentTime, startDate, typeTransaction, setValue, isChangeTime]);
 
   useEffect(() => {
     if (transaction) {
       const { type, date, time, category, sum, comment } = transaction;
 
+      setIsChangeTime(true);
       setValue('type', type);
       setValue('date', date);
       setValue('time', time);
@@ -39,19 +53,31 @@ export const TransactionForm = ({ transaction }) => {
     }
   }, [transaction, setValue]);
 
+  const handleChangeTime = () => {
+    setIsChangeTime(true);
+  };
+
   const handleChangeDate = date => {
     setStartDate(date);
     const formattedDate = getFormattedDate(date);
     setValue('date', formattedDate);
   };
 
-  const onSubmit = date => {
-    console.log(date);
+  const onSubmit = data => {
+    if (!isChangeTime) {
+      data.time = getFormattedTime();
+    }
+
+    console.log(data);
+
+    onSubmitForm(data);
     reset();
+    setIsChangeTime(false);
     setStartDate(new Date());
   };
 
   const handleChangeCategory = category => {
+    console.log(category);
     setValue('category', category);
   };
 
@@ -65,7 +91,7 @@ export const TransactionForm = ({ transaction }) => {
                 className={s.radioBtn}
                 type="radio"
                 name="type"
-                value="expense"
+                value="expenses"
                 {...register('type')}
                 defaultChecked
               />
@@ -77,7 +103,7 @@ export const TransactionForm = ({ transaction }) => {
                 className={s.radioBtn}
                 type="radio"
                 name="type"
-                value="income"
+                value="incomes"
                 {...register('type')}
               />
               <span className={s.customRadioBtn}></span>
@@ -104,8 +130,8 @@ export const TransactionForm = ({ transaction }) => {
                 className={s.timeInput}
                 type="time"
                 name="time"
-                step="1"
                 {...register('time')}
+                onChange={handleChangeTime}
               />
               <Icon name="clock" className={s.iconTime} size="16" />
             </label>
@@ -153,9 +179,11 @@ export const TransactionForm = ({ transaction }) => {
       {isOpenModalTransaction && (
         <Modal pd={40} toggleModal={toggleModalTransaction}>
           <ul>
-            <li onClick={() => handleChangeCategory('Cinema')}>Cinema</li>
-            <li onClick={() => handleChangeCategory('Products')}>Products</li>
-            <li onClick={() => handleChangeCategory('Shop')}>Shop</li>
+            <li
+              onClick={() => handleChangeCategory('65c8eb3ff1df95584aa3d60d')}
+            >
+              Cinema
+            </li>
           </ul>
         </Modal>
       )}

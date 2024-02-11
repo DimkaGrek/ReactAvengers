@@ -21,8 +21,8 @@ export const addTransaction = createAsyncThunk(
   'transactions/addTransaction',
   async (transaction, thunkAPI) => {
     try {
-      const data = await api.post(`/transactions`, transaction);
-      console.log(data);
+      const { data } = await api.post(`/transactions`, transaction);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
