@@ -6,7 +6,7 @@ import s from './RegisterPage.module.css';
 const RegisterPage = () => {
   return (
     <div className={s.container}>
-      <AuthForm formType="signup" />
+      <AuthForm signUp />
     </div>
   );
 };
