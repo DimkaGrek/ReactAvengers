@@ -22,7 +22,11 @@ export const Chart = ({ data }) => {
         stroke="none"
       >
         {chartData.map((entry, index) => (
-          <Cell key={index} fill={entry.color} />
+          <Cell
+            style={{ outline: 'none' }}
+            key={`cell-${index}`}
+            fill={entry.color}
+          />
         ))}
       </Pie>
     </PieChart>
