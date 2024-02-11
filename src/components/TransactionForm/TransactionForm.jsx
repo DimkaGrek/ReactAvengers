@@ -116,7 +116,7 @@ export const TransactionForm = ({ transaction }) => {
               type="text"
               name="category"
               placeholder="Different"
-              autocomplete="off"
+              autoComplete="off"
               {...register('category')}
               onClick={toggleModalTransaction}
               onFocus={toggleModalTransaction}
