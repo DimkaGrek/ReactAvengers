@@ -1,5 +1,5 @@
 import { Watch } from 'react-loader-spinner';
-import s from './Loader.modules.css';
+import s from './Loader.module.css';
 
 const Loader = ({ className = 'backdrop', width = '80', height = '80' }) => {
   return (

@@ -6,6 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { Icon, Modal } from 'components';
 import s from './TransactionForm.module.css';
+import './DatePicker.css';
 import { useModal } from 'hooks';
 
 import { selectUser } from '../../my-redux/User/userSlice';
