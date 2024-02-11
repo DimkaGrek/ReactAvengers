@@ -2,11 +2,14 @@ import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 //
-import { TransactionsChart, TransactionsTotalAmount } from 'components';
+import {
+  TransactionForm,
+  TransactionsChart,
+  TransactionsTotalAmount,
+} from 'components';
 import { getTransactions } from 'my-redux/Transaction/operations';
 //
 import s from './MainTransactionsPage.module.css';
-import { TransactionForm } from 'components/TransactionForm/TransactionForm';
 
 const MainTransactionsPage = () => {
   const dispatch = useDispatch();
@@ -29,9 +32,15 @@ const MainTransactionsPage = () => {
             your financial habits at your fingertips.
           </p>
         </div>
-        <TransactionsTotalAmount />
-        <TransactionForm />
-        <TransactionsChart transactionsType={capitalizedType} />
+        <div className={s.total}>
+          <TransactionsTotalAmount />
+        </div>
+        <div className={s.form}>
+          <TransactionForm />
+        </div>
+        <div className={s.chart}>
+          <TransactionsChart transactionsType={capitalizedType} />
+        </div>
       </div>
     </div>
   );

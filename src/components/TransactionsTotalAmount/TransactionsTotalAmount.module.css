@@ -1,5 +1,20 @@
-.wrapper {
-  margin-bottom: 40px;
+.link:active .iconContainer {
+  background-color: transparent;
+  border: 1px solid var(--button-color);
+}
+.link:active .icon {
+  fill: var(--main-text-color);
+}
+@media only screen and (min-width: 1440px) {
+  .link:hover .iconContainer,
+  .link:focus .iconContainer {
+    background-color: transparent;
+    border: 1px solid var(--button-color);
+  }
+  .link:hover .icon,
+  .link:focus .icon {
+    fill: var(--main-text-color);
+  }
 }
 .iconContainer {
   padding: 4px;
@@ -10,6 +25,7 @@
   width: 36px;
   height: 36px;
   background-color: var(--button-color);
+  transition: all var(--transition-delay) var(--transition);
 }
 @media only screen and (min-width: 768px) {
   .iconContainer {

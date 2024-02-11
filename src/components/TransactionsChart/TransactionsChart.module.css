@@ -100,3 +100,13 @@
   font-size: 16px;
   color: var(--main-text-color);
 }
+.warningTitle {
+  text-align: center;
+  font-size: 20px;
+  color: var(--text-color_50);
+}
+@media only screen and (min-width: 768px) {
+  .warningTitle {
+    font-size: 24pxpx;
+  }
+}
