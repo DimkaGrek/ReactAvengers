@@ -28,8 +28,7 @@
 
 .containerText {
   position: absolute;
-  top: 315px;
-  left: -50px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,6 +36,8 @@
   width: 303px;
   height: 121px;
   background-color: var(--main-text-color);
+  position: absolute;
+  animation: moveBox 15s linear infinite;
 }
 
 .containerBalance {
@@ -71,4 +72,34 @@
   font-weight: 400;
   font-size: var(--font-size-mini);
   color: var(--text-color);
+}
+
+@keyframes moveBox {
+  0% {
+    transform: translate(150px, 0);
+  }
+  12.5% {
+    transform: translate(308px, 200px);
+  }
+  25% {
+    transform: translate(150px, 447px);
+  }
+  37.5% {
+    transform: translate(0, 300px);
+  }
+  50% {
+    transform: translate(200px, 0);
+  }
+  62.5% {
+    transform: translate(308px, 250px);
+  }
+  75% {
+    transform: translate(150px, 447px);
+  }
+  87.5% {
+    transform: translate(0, 200px);
+  }
+  100% {
+    transform: translate(150px, 0);
+  }
 }
