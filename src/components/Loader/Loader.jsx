@@ -1,13 +1,13 @@
 import { Watch } from 'react-loader-spinner';
 import s from './Loader.modules.css';
 
-const Loader = () => {
+const Loader = ({ className = 'backdrop', width = '80', height = '80' }) => {
   return (
-    <div className="backdrop">
+    <div className={`s.${className}`}>
       <Watch
         visible={true}
-        height="80"
-        width="80"
+        height={height}
+        width={width}
         radius="48"
         color="#0ef387"
         ariaLabel="watch-loading"
