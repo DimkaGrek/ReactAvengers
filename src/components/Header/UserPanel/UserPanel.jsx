@@ -9,6 +9,7 @@ import { logoutUser } from 'my-redux/Auth/operations';
 const UserPanel = () => {
   const dispatch = useDispatch();
   const [isOpenModal, toggleModal] = useModal();
+
   return (
     <div className={style.userPanelBody}>
       <button onClick={toggleModal} className={style.userPanelItemsWrapper}>

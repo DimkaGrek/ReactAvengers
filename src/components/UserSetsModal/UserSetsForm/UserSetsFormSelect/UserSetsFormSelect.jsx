@@ -48,6 +48,7 @@ export const UserSetsFormSelect = ({ setCurrency }) => {
         type="text"
         name="currency"
         value={option.value}
+        readOnly
       />
     </div>
   );

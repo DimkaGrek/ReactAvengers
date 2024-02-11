@@ -41,7 +41,7 @@ const App = () => {
           element={
             <PublicRoute
               component={<WelcomePage />}
-              redirectTo="/transactions/expences"
+              redirectTo="/transactions/expenses"
             />
           }
         />
