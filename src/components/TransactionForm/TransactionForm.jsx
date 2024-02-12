@@ -71,6 +71,7 @@ export const TransactionForm = ({
   const handleChangeCategory = item => {
     setValue('category', item.categoryName, { shouldValidate: true });
     setCategoryId(item._id);
+    toggleModalTransaction();
   };
 
   const handleChangeDate = date => {
