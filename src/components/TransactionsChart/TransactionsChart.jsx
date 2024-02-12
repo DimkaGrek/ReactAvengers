@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useMemo, useRef, useState } from 'react';
 //
 import { Chart } from 'components';
@@ -8,14 +8,16 @@ import {
   selectTransactionsError,
 } from 'my-redux/Transaction/transactionSlice';
 import { selectUser } from 'my-redux/User/userSlice';
+import { fetchCurrentUser } from 'my-redux/User/operations';
+//
 import warningImg from '../../assets/images/no_data_abstract.png';
 import errorImg from '../../assets/images/server-error.png';
-
 //
 import s from './TransactionsChart.module.css';
 
 export const TransactionsChart = ({ transactionsType }) => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(null);
+  const dispatch = useDispatch();
 
   const categoriesData = useMemo(() => categories, [categories]);
 
@@ -33,8 +35,16 @@ export const TransactionsChart = ({ transactionsType }) => {
   }, [totalIncomes, totalExpenses, transactionsType]);
 
   useEffect(() => {
-    setCategories([...countCategories(data, totalRef.current)]);
-  }, [data]);
+    if (data === null) return;
+
+    dispatch(fetchCurrentUser())
+      .unwrap()
+      .then(() => {
+        setCategories(countCategories(data, totalRef.current));
+      });
+  }, [data, dispatch]);
+
+  if (data === null || categoriesData === null) return;
 
   if (error)
     return (
@@ -46,7 +56,7 @@ export const TransactionsChart = ({ transactionsType }) => {
       </div>
     );
 
-  return !categoriesData.length || !data.length ? (
+  return !categoriesData.length ? (
     <div className={s.warningWrapper}>
       <h2 className={s.warningTitle}>
         You don't have any {transactionsType.toLowerCase()} in this month.

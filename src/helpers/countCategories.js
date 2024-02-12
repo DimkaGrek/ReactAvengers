@@ -19,7 +19,6 @@ export function countCategories(data, total) {
   if (!data.length) return [];
 
   const categorySum = {};
-
   const { firstDayOfMonth, lastDayOfMonth } = getCurrentMoth();
 
   const currentMonthTransactions = data.filter(
