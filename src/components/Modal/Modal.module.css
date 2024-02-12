@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   z-index: 9999;
@@ -59,8 +59,8 @@
 
 .button {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 19px;
+  right: 18px;
   width: 24px;
   height: 24px;
 

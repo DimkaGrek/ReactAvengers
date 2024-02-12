@@ -3,14 +3,16 @@ import { useRef, useState } from 'react';
 import s from './UserSetsFormSelect.module.css';
 import { Icon } from 'components';
 import { UserSetsFormSelectList } from './UserSetsFormSelectList/UserSetsFormSelectList';
-const options = [
-  { value: 'uah', label: '₴ UAH' },
-  { value: 'usd', label: '$ USD' },
-  { value: 'eur', label: '€ EUR' },
-];
-export const UserSetsFormSelect = ({ setCurrency, currency }) => {
-  const [isOpen, setIsOpen] = useState(false);
+import { choseLabel, options } from 'helpers';
+
+export const UserSetsFormSelect = ({
+  register,
+  setValue,
+  setCurrency,
+  currency,
+}) => {
   const box = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = e => {
     setIsOpen(!isOpen);
@@ -18,16 +20,12 @@ export const UserSetsFormSelect = ({ setCurrency, currency }) => {
 
   const handleChose = element => {
     setCurrency(element.value);
+    setValue('currency', element.value);
   };
 
   return (
     <div ref={box} onClick={handleToggle} className={s.container}>
-      <p className={s.text}>
-        {options.reduce(
-          (acc, cur) => (cur.value === currency ? cur.label : acc),
-          ''
-        )}
-      </p>
+      <p className={s.text}>{choseLabel(currency)}</p>
       <div className={s.iconWrapper}>
         <Icon
           className={s.icon}
@@ -43,13 +41,7 @@ export const UserSetsFormSelect = ({ setCurrency, currency }) => {
           handleToggle={handleToggle}
         />
       )}
-      <input
-        className={s.input}
-        type="text"
-        name="currency"
-        value={currency}
-        readOnly
-      />
+      <input className={s.input} {...register('currency')} value={currency} />
     </div>
   );
 };

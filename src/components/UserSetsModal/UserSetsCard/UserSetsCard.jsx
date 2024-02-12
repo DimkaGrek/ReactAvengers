@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import Loader from 'components/Loader/Loader';
@@ -12,9 +12,9 @@ import s from './UserSetsCard.module.css';
 export const UserSetsCard = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { name, avatarUrl } = useSelector(selectUser);
+  const fileInput = useRef(null);
 
   const customDispatch = useIsLoading();
-
   const noAvatar = avatarUrl === null;
 
   const handleUploadAvatar = e => {
@@ -23,7 +23,7 @@ export const UserSetsCard = () => {
   };
 
   const handleRedirectClick = () => {
-    document.querySelector('#avatar').click();
+    fileInput.current.click();
   };
 
   const handleDeletePhoto = () => {
@@ -49,6 +49,7 @@ export const UserSetsCard = () => {
           <Loader className="userIsLoading" width="60" height="60" />
         )}
         <input
+          ref={fileInput}
           className={s.input}
           onChange={handleUploadAvatar}
           type="file"
