@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ReactAvengers/static/css/main.9a80e34e.css",
-    "main.js": "/ReactAvengers/static/js/main.5783f7a8.js",
+    "main.css": "/ReactAvengers/static/css/main.e93d39f6.css",
+    "main.js": "/ReactAvengers/static/js/main.0ef52df5.js",
     "static/media/no_data_abstract.png": "/ReactAvengers/static/media/no_data_abstract.7998a2fa200f66ab3d0c.png",
     "static/media/server-error.png": "/ReactAvengers/static/media/server-error.22b27456e122853a79ea.png",
     "static/media/hero_desktop@2x.jpg": "/ReactAvengers/static/media/hero_desktop@2x.2a6784d6e404e8100441.jpg",
@@ -16,11 +16,11 @@
     "static/media/SuisseIntl-Regular.woff2": "/ReactAvengers/static/media/SuisseIntl-Regular.6e440c24ca670850db00.woff2",
     "static/media/images.png": "/ReactAvengers/static/media/images.ed900522f5feb1f79526.png",
     "index.html": "/ReactAvengers/index.html",
-    "main.9a80e34e.css.map": "/ReactAvengers/static/css/main.9a80e34e.css.map",
-    "main.5783f7a8.js.map": "/ReactAvengers/static/js/main.5783f7a8.js.map"
+    "main.e93d39f6.css.map": "/ReactAvengers/static/css/main.e93d39f6.css.map",
+    "main.0ef52df5.js.map": "/ReactAvengers/static/js/main.0ef52df5.js.map"
   },
   "entrypoints": [
-    "static/css/main.9a80e34e.css",
-    "static/js/main.5783f7a8.js"
+    "static/css/main.e93d39f6.css",
+    "static/js/main.0ef52df5.js"
   ]
 }
