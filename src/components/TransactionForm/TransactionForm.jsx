@@ -69,14 +69,13 @@ export const TransactionForm = ({
   }, [transaction, setValue, transactionsType]);
 
   const handleChangeCategory = item => {
-    setValue('category', item.categoryName);
+    setValue('category', item.categoryName, { shouldValidate: true });
     setCategoryId(item._id);
-    console.log(item._id);
   };
 
   const handleChangeDate = date => {
     const formattedDate = getFormattedDate(date);
-    setValue('date', formattedDate);
+    setValue('date', formattedDate, { shouldValidate: true });
   };
 
   const onSubmit = data => {
@@ -171,6 +170,7 @@ export const TransactionForm = ({
                         field.onChange(date);
                         handleChangeDate(date);
                       }}
+                      fixedHeight
                     />
                   </div>
                 )}
@@ -231,7 +231,7 @@ export const TransactionForm = ({
         </form>
       </div>
       {isOpenModalTransaction && (
-        <Modal pd={40} toggleModal={toggleModalTransaction}>
+        <Modal toggleModal={toggleModalTransaction}>
           <CategoriesModal
             transportCategory={handleChangeCategory}
             type={getValues('type')}
