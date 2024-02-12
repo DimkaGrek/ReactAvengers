@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
+  padding: 0 20px;
 }
 
 .containerHome {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .containerText {
@@ -20,14 +20,22 @@
 
 @media only screen and (min-width: 768px) {
   .containerText {
-    width: 575px;
+    width: 704px;
+  }
+
+  .container {
+    padding: 0 32px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .container {
     flex-direction: row;
-    padding: 0 100px 100px;
+    padding: 0 100px;
+  }
+
+  .containerText {
+    width: 575px;
   }
 
   .containerImg {
@@ -86,6 +94,7 @@
   letter-spacing: -0.02em;
   color: var(--regular-text-color);
   margin-bottom: 30px;
+  width: 335px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -102,6 +111,7 @@
   .textDesc {
     font-size: var(--font-size-smaller);
     margin-bottom: 40px;
+    width: 533px;
   }
 }
 
@@ -174,5 +184,20 @@
 @media only screen and (min-width: 1440px) {
   .containerButton {
     margin-bottom: 166px;
+  }
+}
+
+@media (max-width: 374.99px) {
+  .containerText {
+    width: 270px;
+  }
+
+  .buttonIn,
+  .buttonUp {
+    padding: 14px 35px;
+  }
+
+  .textDesc {
+    width: 270px;
   }
 }

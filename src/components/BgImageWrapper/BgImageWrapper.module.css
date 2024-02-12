@@ -7,6 +7,10 @@
   background-repeat: no-repeat;
   border-radius: 20px;
 
+  width: 335px;
+  height: 381px;
+  margin-bottom: 20px;
+
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
@@ -30,7 +34,7 @@
     width: 611px;
     height: 568px;
     margin-right: 54px;
-    margin-bottom: 36px;
+    margin-bottom: 0;
 
     background-image: url('../../assets/images/hero/hero_desktop@1x.jpg');
     @media (min-device-pixel-ratio: 2),
@@ -74,11 +78,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
+
   width: 248px;
   height: 81px;
+  top: 240px;
+  left: -10px;
   background-color: var(--main-text-color);
-  position: absolute;
+  border-radius: 20px;
 
   @media only screen and (min-width: 768px) {
     animation: moveBox 15s linear infinite;
@@ -176,37 +182,5 @@
   }
   100% {
     transform: translate(200px, 0);
-  }
-}
-
-@media (min-width: 1440px) {
-  @keyframes moveBox {
-    0% {
-      transform: translate(150px, 0);
-    }
-    12.5% {
-      transform: translate(308px, 200px);
-    }
-    25% {
-      transform: translate(150px, 447px);
-    }
-    37.5% {
-      transform: translate(0, 300px);
-    }
-    50% {
-      transform: translate(200px, 0);
-    }
-    62.5% {
-      transform: translate(308px, 250px);
-    }
-    75% {
-      transform: translate(150px, 447px);
-    }
-    87.5% {
-      transform: translate(0, 200px);
-    }
-    100% {
-      transform: translate(150px, 0);
-    }
   }
 }

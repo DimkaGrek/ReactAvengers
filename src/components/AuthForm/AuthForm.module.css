@@ -136,6 +136,17 @@
   }
 }
 
+@media (max-width: 374.99px) {
+  .containerTitle,
+   .input {
+    width: 280px;
+  }
+  
+  .containerIcon {
+    min-width: 280px;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .input {
     font-size: var(--font-size-smaller);
