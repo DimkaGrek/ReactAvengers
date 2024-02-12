@@ -22,7 +22,7 @@ export const UserSetsForm = () => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(updateUserShema) });
+  } = useForm({ mode: 'onChange', resolver: yupResolver(updateUserShema) });
   const customDispatch = useIsLoading();
 
   const onSubmit = data => {

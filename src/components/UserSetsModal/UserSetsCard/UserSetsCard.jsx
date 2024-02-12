@@ -46,6 +46,7 @@ export const UserSetsCard = () => {
 
   const handleDeletePhoto = () => {
     const id = takeId(avatarUrl);
+
     customDispatch(deleteUserAvatar, id, setIsLoading);
   };
 
@@ -81,7 +82,11 @@ export const UserSetsCard = () => {
         <button className={s.button} onClick={handleRedirectClick}>
           Upload new photo
         </button>
-        <button className={s.button} onClick={handleDeletePhoto}>
+        <button
+          className={s.button}
+          onClick={handleDeletePhoto}
+          disabled={noAvatar}
+        >
           Remove
         </button>
       </div>
