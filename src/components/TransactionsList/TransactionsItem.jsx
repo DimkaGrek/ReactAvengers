@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './TransactionsItem.module.css';
+// import s from './TransactionsList.module.css';
 import { Shorter } from './Shorter';
 import { deleteTransaction } from 'my-redux/Transaction/operations';
 import { useDispatch } from 'react-redux';
@@ -8,13 +9,13 @@ import { Icon } from 'components';
 export const TransactionsItem = ({ item }) => {
   const dispatch = useDispatch();
   return (
-    <tr key={item._id}>
-      <td>{Shorter(item.category.categoryName)}</td>
-      <td>{Shorter(item.comment)}</td>
-      <td>{item.date}</td>
-      <td>{item.time}</td>
-      <td>{item.sum}</td>
-      <td>
+    <ul className={s.tr} key={item._id}>
+      <li className={s.td}>{Shorter(item.category.categoryName)}</li>
+      <li className={s.td}>{Shorter(item.comment)}</li>
+      <li className={s.td}>{item.date}</li>
+      <li className={s.td}>{item.time}</li>
+      <li className={s.td}>{item.sum}/UAH</li>
+      <li className={s.td}>
         <div className={s.btnContainer}>
           <button className={s.btnTable}>
             <div>Edit</div>
@@ -28,7 +29,7 @@ export const TransactionsItem = ({ item }) => {
             <Icon name="trash-bin" className={s.iconDelete} size="16" />
           </button>
         </div>
-      </td>
-    </tr>
+      </li>
+    </ul>
   );
 };
