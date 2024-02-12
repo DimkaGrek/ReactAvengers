@@ -26,7 +26,6 @@ const categorySlice = createSlice({
         state.categories = action.payload;
       })
       .addCase(addCategory.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.categories[action.payload.type].push(action.payload);
       })
       .addCase(editCategory.fulfilled, (state, { payload }) => {
@@ -44,7 +43,6 @@ const categorySlice = createSlice({
         });
       })
       .addCase(deleteCategory.fulfilled, (state, { payload }) => {
-        console.log('payload:', payload.id);
         state.categories[payload.type] = state.categories[payload.type].filter(
           item => item._id !== payload.id
         );
@@ -55,7 +53,6 @@ const categorySlice = createSlice({
         state.categories.incomes = user.categories?.incomes || [];
       })
       .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.categories.expenses = payload.categories?.expenses || [];
         state.categories.incomes = payload.categories?.incomes || [];
       }),

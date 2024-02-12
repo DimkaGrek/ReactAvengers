@@ -37,6 +37,19 @@ const MainTransactionsPage = () => {
       });
   };
 
+  // const transaction = {
+  //   _id: '6529eff94ceb918e15a171f1',
+  //   type: 'incomes',
+  //   date: '2022-12-28',
+  //   time: '19:45',
+  //   category: {
+  //     _id: '6522bf1f9027bb7d55d6512b',
+  //     categoryName: 'Salary',
+  //   },
+  //   sum: 700,
+  //   comment: 'December salary',
+  // };
+
   return (
     <div className={s.container}>
       <div className={s.wrapper}>
@@ -54,6 +67,7 @@ const MainTransactionsPage = () => {
           <TransactionForm
             transactionsType={transactionsType}
             onSubmitForm={onSubmitForm}
+            // transaction={transaction}
           />
         </div>
         <div className={s.chart}>

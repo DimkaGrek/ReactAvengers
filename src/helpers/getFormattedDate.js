@@ -7,7 +7,7 @@ export const getFormattedDate = date => {
     const month = parseInt(parts[1], 10) - 1;
     const day = parseInt(parts[2], 10);
 
-    return new Date(month, day, year);
+    return new Date(year, month, day);
   }
 
   const year = date.getFullYear();

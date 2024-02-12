@@ -31,30 +31,18 @@ export const signInSchema = yup.object().shape({
     .max(64, 'Max length must be less than 64 chars'),
 });
 
-export const transactionSchema = yup.object().shape({
-  date: yup
-    .date()
-    .transform((originalValue, originalDate) => {
-      const dateFormat = /^(\d{2})\/(\d{2})\/(\d{4})$/;
-      if (!dateFormat.test(originalValue)) {
-        throw new yup.ValidationError(
-          'Invalid date format, please use "dd/MM/yyyy"',
-          originalValue,
-          'myDate'
-        );
-      }
-
-      // const [day, month, year] = originalValue.match(dateFormat);
-      // return new Date(`${year}-${month}-${day}`);
-    })
-    .required('Date is required'),
+export const transactionSchema = yup.object({
+  date: yup.string().required('Date is required'),
   time: yup.string().required('Time is required'),
   category: yup.string().required('Category is required'),
   sum: yup
-    .number()
-    .positive('Amount must be positive')
-    .integer('Amount must be an integer')
-    .min(0.01, 'Amount must be at least 0.01')
-    .required('Amount is required'),
-  comment: yup.string().required('Comment is required'),
+    .number('Sum is required')
+    .positive('Sum must be positive')
+    .integer('Sum must be an integer')
+    .min(1, 'Sum cannot be less than 1')
+    .required('Sum is required'),
+  comment: yup
+    .string()
+    .required('Comment is required')
+    .min(3, 'Comment length must be at least 3 characters long'),
 });

@@ -65,7 +65,7 @@ export const CategoriesModal = ({ type, transportCategory }) => {
 
   const handleGetCategory = item => {
     console.log(item);
-    // transportCategory(item);
+    transportCategory(item);
   };
 
   const handleDeleteCategory = (id, type) => {
@@ -90,7 +90,9 @@ export const CategoriesModal = ({ type, transportCategory }) => {
   // Example: <ul className={`${s.list} scroll scrollA`}></ul>
   return (
     <div className={s.mainBox}>
-      <h2 className={s.mainTitle}>Expenses</h2>
+      <h2 className={s.mainTitle}>
+        {type === 'expenses' ? 'Expenses' : 'Incomes'}
+      </h2>
       <h3 className={s.title}>All Category</h3>
 
       <ul className={`${s.listWrapper} scroll scrollB`} ref={ulRef}>

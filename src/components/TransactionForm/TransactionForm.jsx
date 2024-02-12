@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -12,6 +12,10 @@ import { useModal } from 'hooks';
 import { selectUser } from 'my-redux/User/userSlice';
 import { getFormattedDate, getFormattedTime } from 'helpers';
 import { selectTransactionsError } from 'my-redux/Transaction/transactionSlice';
+import { CategoriesModal } from 'components/CategoriesModal/CategoriesModal';
+import { transactionSchema } from 'schemas/validationSchemas';
+import { yupResolver } from '@hookform/resolvers/yup';
+import classNames from 'classnames';
 
 export const TransactionForm = ({
   transaction,
@@ -22,30 +26,38 @@ export const TransactionForm = ({
   const isError = useSelector(selectTransactionsError);
   const { currency } = user;
 
-  const dateForm = transaction ? transaction.date : new Date();
-  const [startDate, setStartDate] = useState(dateForm);
-  const currentTime = getFormattedTime();
   const [isOpenModalTransaction, toggleModalTransaction] = useModal();
-  const { register, handleSubmit, reset, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    getValues,
+    control,
+    formState: { errors },
+  } = useForm({
+    mode: 'onSubmit',
+    resolver: yupResolver(transactionSchema),
+  });
 
-  const [isChangeTime, setIsChangeTime] = useState(false);
   const [categoryId, setCategoryId] = useState('');
 
+  const clearFieldCategory = () => {
+    setValue('category', '');
+    setCategoryId('');
+  };
+
   useEffect(() => {
-    if (!isChangeTime) {
-      setValue('time', currentTime);
+    if (!transaction) {
+      setValue('type', transactionsType);
+      setValue('date', getFormattedDate(new Date()));
+      setValue('time', getFormattedTime());
     }
 
-    setValue('type', transactionsType);
-    setValue('date', getFormattedDate(startDate));
-  }, [currentTime, startDate, transactionsType, setValue, isChangeTime]);
-
-  useEffect(() => {
     if (transaction) {
       const { type, date, time, category, sum, comment } = transaction;
 
       setCategoryId(category?._id);
-      setIsChangeTime(true);
 
       setValue('type', type);
       setValue('date', date);
@@ -54,45 +66,66 @@ export const TransactionForm = ({
       setValue('sum', sum);
       setValue('comment', comment);
     }
-  }, [transaction, setValue]);
+  }, [transaction, setValue, transactionsType]);
 
-  const handleChangeTime = () => {
-    setIsChangeTime(true);
+  const handleChangeCategory = item => {
+    setValue('category', item.categoryName);
+    setCategoryId(item._id);
+    console.log(item._id);
   };
 
   const handleChangeDate = date => {
-    setStartDate(date);
     const formattedDate = getFormattedDate(date);
     setValue('date', formattedDate);
   };
 
-  const handleChangeCategory = item => {
-    setValue('category', item.categoryName);
-    setCategoryId(item.categoryId);
-  };
-
   const onSubmit = data => {
-    if (!isChangeTime) {
-      data.time = getFormattedTime();
-    }
-
     data.category = categoryId;
-    console.log(data);
+    console.log(data, 'FORMAAAAAA');
 
     onSubmitForm(data);
 
-    if (!isError) {
+    if (!isError && !transaction) {
       reset();
-      setIsChangeTime(false);
-      setStartDate(new Date());
-      setCategoryId('');
+
+      setValue('type', transactionsType);
+      setValue('date', getFormattedDate(new Date()));
+      setValue('time', getFormattedTime());
+      clearFieldCategory();
     }
   };
+
+  console.log(errors);
+
+  const inputDate = classNames({
+    [`${s.datePicker}`]: true,
+    [`${s.errorDate}`]: errors.date?.message,
+  });
+
+  const inputTime = classNames({
+    [`${s.timeInput}`]: true,
+    [`${s.errorTime}`]: errors.time?.message,
+  });
+
+  const inputCategory = classNames({
+    [`${s.categoryInput}`]: true,
+    [`${s.errorCategory}`]: errors.category?.message,
+  });
+
+  const inputSum = classNames({
+    [`${s.currencyInput}`]: true,
+    [`${s.errorSum}`]: errors.sum?.message,
+  });
+
+  const inputComment = classNames({
+    [`${s.comment}`]: true,
+    [`${s.errorComment}`]: errors.comment?.message,
+  });
 
   return (
     <div>
       <div className={s.formWrapper}>
-        <form className={s.transacionForm} onSubmit={handleSubmit(onSubmit)}>
+        <form className={s.transactionForm} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.transactionTypes}>
             <label className={s.typeLabel}>
               <input
@@ -101,7 +134,8 @@ export const TransactionForm = ({
                 name="type"
                 value="expenses"
                 {...register('type')}
-                defaultChecked
+                disabled={transaction?.type === 'incomes'}
+                onChange={clearFieldCategory}
               />
               <span className={s.customRadioBtn}></span>
               Expense
@@ -113,6 +147,8 @@ export const TransactionForm = ({
                 name="type"
                 value="incomes"
                 {...register('type')}
+                disabled={transaction?.type === 'expenses'}
+                onChange={clearFieldCategory}
               />
               <span className={s.customRadioBtn}></span>
               Income
@@ -121,26 +157,33 @@ export const TransactionForm = ({
           <div className={s.customFields}>
             <label className={s.customField}>
               Date
-              <div className="datepickerContainer">
-                <DatePicker
-                  name="date"
-                  className={s.datePicker}
-                  selected={startDate}
-                  onChange={date => handleChangeDate(date)}
-                  showPopperArrow={false}
-                  maxDate={new Date()}
-                />
-              </div>
+              <Controller
+                control={control}
+                name="date"
+                render={({ field }) => (
+                  <div className="datepickerContainer">
+                    <DatePicker
+                      className={inputDate}
+                      showPopperArrow={false}
+                      maxDate={new Date()}
+                      selected={field.value}
+                      onChange={date => {
+                        field.onChange(date);
+                        handleChangeDate(date);
+                      }}
+                    />
+                  </div>
+                )}
+              />
               <Icon name="calendar" className={s.iconDate} size="16" />
             </label>
             <label className={s.customField}>
               Time
               <input
-                className={s.timeInput}
+                className={inputTime}
                 type="time"
                 name="time"
                 {...register('time')}
-                onChange={handleChangeTime}
               />
               <Icon name="clock" className={s.iconTime} size="16" />
             </label>
@@ -148,21 +191,23 @@ export const TransactionForm = ({
           <div className={s.fieldWrapper}>
             <label>Category</label>
             <input
-              className={s.categoryInput}
+              className={inputCategory}
               type="text"
               name="category"
               placeholder="Different"
               autoComplete="off"
               {...register('category')}
+              required
+              readOnly
               onClick={toggleModalTransaction}
-              onFocus={toggleModalTransaction}
+              // onFocus={toggleModalTransaction}
             />
           </div>
           <div>
             <label className={s.sumLabel}>
               Sum
               <input
-                className={s.currencyInput}
+                className={inputSum}
                 type="number"
                 name="sum"
                 placeholder="Enter the sum"
@@ -174,7 +219,7 @@ export const TransactionForm = ({
           <div className={s.fieldWrapper}>
             <label>Comment</label>
             <textarea
-              className={s.comment}
+              className={inputComment}
               name="comment"
               placeholder="Enter the text"
               {...register('comment')}
@@ -187,18 +232,10 @@ export const TransactionForm = ({
       </div>
       {isOpenModalTransaction && (
         <Modal pd={40} toggleModal={toggleModalTransaction}>
-          <ul>
-            <li
-              onClick={() =>
-                handleChangeCategory({
-                  categoryId: '65c8eb3ff1df95584aa3d60d',
-                  categoryName: 'Salary',
-                })
-              }
-            >
-              Salary
-            </li>
-          </ul>
+          <CategoriesModal
+            transportCategory={handleChangeCategory}
+            type={getValues('type')}
+          />
         </Modal>
       )}
     </div>
