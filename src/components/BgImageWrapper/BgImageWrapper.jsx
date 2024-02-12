@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 
 import s from './BgImageWrapper.module.css';
 import { Icon } from '../Icon/Icon';
+import { randomNumber, randomPercentage } from 'helpers/getRandomNumber';
 
 export const BgImageWrapper = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -12,12 +13,8 @@ export const BgImageWrapper = () => {
   const startTimeRef = useRef(null);
 
   useEffect(() => {
-    const randomNumber = () =>
-      Math.floor(Math.random() * (10000 - 500 + 1) + 500);
-
     setRandomSum(randomNumber());
 
-    const randomPercentage = () => Math.random() * (100 - 1) + 1;
     setRandomPercent(randomPercentage());
   }, [currentStep]);
 
