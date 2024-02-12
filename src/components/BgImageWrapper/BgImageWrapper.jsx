@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+
 import s from './BgImageWrapper.module.css';
-import heroDesc1x from '../../assets/images/heroDesc1x.jpg';
 import { Icon } from '../Icon/Icon';
 
 export const BgImageWrapper = () => {
@@ -44,7 +44,6 @@ export const BgImageWrapper = () => {
 
   return (
     <div className={s.containerImg}>
-      <img src={heroDesc1x} alt="Hero Description" className={s.heroImg} />
       <div className={s.containerText} onAnimationStart={handleAnimationStart}>
         <div className={s.containerSvg}>
           <Icon name="arrow-up" className={s.icon} size="18" />
