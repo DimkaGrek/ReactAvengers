@@ -19,12 +19,12 @@ const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(
-      loginUser({
-        email: 'dimka@mail.ua',
-        password: 'password',
-      })
-    );
+    // dispatch(
+    //   loginUser({
+    //     email: 'dimka@mail.ua',
+    //     password: 'password',
+    //   })
+    // );
   }, [dispatch]);
 
   // useEffect(() => {
