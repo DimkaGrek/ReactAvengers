@@ -1,21 +1,26 @@
 {
   "files": {
-    "main.css": "/ReactAvengers/static/css/main.65c7d449.css",
-    "main.js": "/ReactAvengers/static/js/main.cdae106b.js",
+    "main.css": "/ReactAvengers/static/css/main.cc4f8644.css",
+    "main.js": "/ReactAvengers/static/js/main.3b7a6c4f.js",
     "static/media/no_data_abstract.png": "/ReactAvengers/static/media/no_data_abstract.7998a2fa200f66ab3d0c.png",
     "static/media/server-error.png": "/ReactAvengers/static/media/server-error.22b27456e122853a79ea.png",
-    "static/media/heroDesc1x.jpg": "/ReactAvengers/static/media/heroDesc1x.ace94764272a5d5b5cb4.jpg",
+    "static/media/hero_desktop@2x.jpg": "/ReactAvengers/static/media/hero_desktop@2x.2a6784d6e404e8100441.jpg",
+    "static/media/hero_tablet@2x.jpg": "/ReactAvengers/static/media/hero_tablet@2x.f38ba292d08cab3bc000.jpg",
+    "static/media/hero_mobile@2x.jpg": "/ReactAvengers/static/media/hero_mobile@2x.76d67c6497a01cb877ef.jpg",
+    "static/media/hero_desktop@1x.jpg": "/ReactAvengers/static/media/hero_desktop@1x.ace94764272a5d5b5cb4.jpg",
+    "static/media/hero_tablet@1x.jpg": "/ReactAvengers/static/media/hero_tablet@1x.4da1661d963914b2034d.jpg",
+    "static/media/hero_mobile@1x.jpg": "/ReactAvengers/static/media/hero_mobile@1x.ae9caf391a2cac027c19.jpg",
     "static/media/SuisseIntl-Bold.woff": "/ReactAvengers/static/media/SuisseIntl-Bold.de95d736320ca1798e64.woff",
     "static/media/SuisseIntl-Regular.woff": "/ReactAvengers/static/media/SuisseIntl-Regular.aea326c0223e1531fbe9.woff",
     "static/media/SuisseIntl-Bold.woff2": "/ReactAvengers/static/media/SuisseIntl-Bold.bec7b9dda193a28907ad.woff2",
     "static/media/SuisseIntl-Regular.woff2": "/ReactAvengers/static/media/SuisseIntl-Regular.6e440c24ca670850db00.woff2",
     "static/media/images.png": "/ReactAvengers/static/media/images.ed900522f5feb1f79526.png",
     "index.html": "/ReactAvengers/index.html",
-    "main.65c7d449.css.map": "/ReactAvengers/static/css/main.65c7d449.css.map",
-    "main.cdae106b.js.map": "/ReactAvengers/static/js/main.cdae106b.js.map"
+    "main.cc4f8644.css.map": "/ReactAvengers/static/css/main.cc4f8644.css.map",
+    "main.3b7a6c4f.js.map": "/ReactAvengers/static/js/main.3b7a6c4f.js.map"
   },
   "entrypoints": [
-    "static/css/main.65c7d449.css",
-    "static/js/main.cdae106b.js"
+    "static/css/main.cc4f8644.css",
+    "static/js/main.3b7a6c4f.js"
   ]
 }
