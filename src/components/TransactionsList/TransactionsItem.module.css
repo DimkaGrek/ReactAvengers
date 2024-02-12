@@ -5,23 +5,30 @@
 .btnTable {
   position: relative;
   border-radius: 40px;
-  padding: 14px 32px;
-  width: 118px;
-  height: 47px;
+  padding: 14px;
+  width: 44px;
+  height: 44px;
   font-weight: 400;
   font-size: 16px;
   color: var(--background-color);
 }
-
+.iconEdit {
+  stroke: var(--background-color);
+  fill: none;
+  position: absolute;
+  left: 45%;
+  top: 28%;
+  transform: translate(-40%, 10%);
+}
 .btnTableDel {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 40px;
-  padding: 14px 30px;
-  width: 133px;
-  height: 47px;
+  padding: 14px;
+  width: 44px;
+  height: 44px;
   font-weight: 400;
   font-size: 16px;
   background: var(--background-color);
@@ -33,32 +40,126 @@
   stroke: var(--main-text-color);
   fill: none;
   position: absolute;
-  left: 23%;
+  left: 45%;
   top: 28%;
   transform: translate(-40%, 10%);
+}
+.textEdit {
+  display: none;
+}
+.textCont {
+  display: none;
 }
 
-.textCont {
-  margin-left: 13px;
-}
-.iconEdit {
-  stroke: var(--background-color);
-  fill: none;
-  position: absolute;
-  left: 23%;
-  top: 28%;
-  transform: translate(-40%, 10%);
-}
 .tr {
-  padding-bottom: 22px;
   width: 100%;
   display: inline-flex;
 }
+.tr:first-child {
+  margin-top: 20px;
+}
 .td {
   letter-spacing: 1px;
-  padding: 20px 0 0 40px;
+  padding-left: 40px;
   width: 15%;
+  display: flex;
+  align-items: center;
 }
+
 .td:last-child {
   width: 31%;
+}
+
+@media only screen and (min-width: 768px) {
+  .btnContainer {
+    display: flex;
+    gap: 10px;
+    margin-left: 24px;
+  }
+  .btnTable {
+    position: relative;
+    border-radius: 40px;
+    padding: 14px;
+    width: 44px;
+    height: 44px;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--background-color);
+  }
+  .textEdit {
+    display: none;
+  }
+  .iconEdit {
+    stroke: var(--background-color);
+    fill: none;
+    position: absolute;
+    left: 45%;
+    top: 28%;
+    transform: translate(-40%, 10%);
+  }
+  .btnTableDel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    padding: 14px;
+    width: 44px;
+    height: 44px;
+    font-weight: 400;
+    font-size: 16px;
+    background: var(--background-color);
+
+    color: var(--main-text-color);
+  }
+  .textCont {
+    display: none;
+  }
+  .iconDelete {
+    stroke: var(--main-text-color);
+    fill: none;
+    position: absolute;
+    left: 45%;
+    top: 28%;
+    transform: translate(-40%, 10%);
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .btnContainer {
+    margin-left: 0;
+  }
+  .btnTable {
+    padding: 14px 32px;
+    width: 118px;
+    height: 47px;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--background-color);
+  }
+  .iconEdit {
+    left: 23%;
+    top: 28%;
+    transform: translate(-40%, 10%);
+  }
+  .textEdit {
+    display: block;
+  }
+  .btnTableDel {
+    border-radius: 40px;
+    padding: 14px 30px;
+    width: 133px;
+    height: 47px;
+    font-weight: 400;
+    font-size: 16px;
+    background: var(--background-color);
+
+    color: var(--main-text-color);
+  }
+  .textCont {
+    display: block;
+  }
+  .iconDelete {
+    left: 21%;
+    top: 26%;
+  }
 }
