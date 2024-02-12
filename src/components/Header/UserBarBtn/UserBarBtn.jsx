@@ -5,7 +5,7 @@ import UserPanel from '../UserPanel/UserPanel';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'my-redux/User/userSlice';
 
-const UserBarBtn = () => {
+const UserBarBtn = ({ closeMenu }) => {
   const { name } = useSelector(selectUser);
   const { avatarUrl } = useSelector(selectUser);
 
@@ -50,6 +50,7 @@ const UserBarBtn = () => {
           toggleUserBarBtn={toggleUserBarBtn}
           userBtnRef={userBtnRef}
           closeUserBar={closeUserBar}
+          closeMenu={closeMenu}
         />
       )}
     </div>
