@@ -29,9 +29,9 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
-	const closeMenu = () => {
-		setIsOpen(false)
-	}
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   const handleButtonAndToggleMenu = buttonName => {
     setActiveButton(buttonName);
@@ -59,7 +59,7 @@ const Header = () => {
             handleButtonAndToggleMenu={handleButtonAndToggleMenu}
             toggleMenu={toggleMenu}
             isOpen={isOpen}
-						closeMenu={closeMenu}
+            closeMenu={closeMenu}
           />
         )}
         {isLoggedIn && showComponent && (
@@ -69,7 +69,7 @@ const Header = () => {
             toggleMenu={toggleMenu}
           />
         )}
-        {isLoggedIn && showComponent && <UserBarBtn />}
+        {isLoggedIn && showComponent && <UserBarBtn closeMenu={closeMenu} />}
       </div>
     </header>
   );

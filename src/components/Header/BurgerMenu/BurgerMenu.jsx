@@ -44,7 +44,7 @@ const BurgerMenu = ({
       <div className={style.backdrop} onClick={handleBackdrop}></div>
       <div className={style.mobileMenu}>
         <div className={style.userBarBtnWrapper}>
-          <UserBarBtn />
+          <UserBarBtn closeMenu={closeMenu} />
           <button className={style.closeBtn} onClick={toggleMenu}>
             <Icon name="close-btn" className={style.closeBtnIcon} />
           </button>
