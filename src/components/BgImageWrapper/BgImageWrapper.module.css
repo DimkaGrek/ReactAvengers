@@ -81,10 +81,14 @@
 
   width: 248px;
   height: 81px;
-  top: 240px;
-  left: -10px;
+
   background-color: var(--main-text-color);
   border-radius: 20px;
+
+  @media only screen and (max-width: 767px) {
+    top: 240px;
+    left: -10px;
+  }
 
   @media only screen and (min-width: 768px) {
     animation: moveBox 15s linear infinite;
@@ -182,5 +186,37 @@
   }
   100% {
     transform: translate(200px, 0);
+  }
+}
+
+@media (min-width: 1440px) {
+  @keyframes moveBox {
+    0% {
+      transform: translate(150px, 0);
+    }
+    12.5% {
+      transform: translate(308px, 200px);
+    }
+    25% {
+      transform: translate(150px, 447px);
+    }
+    37.5% {
+      transform: translate(0, 300px);
+    }
+    50% {
+      transform: translate(200px, 0);
+    }
+    62.5% {
+      transform: translate(308px, 250px);
+    }
+    75% {
+      transform: translate(150px, 447px);
+    }
+    87.5% {
+      transform: translate(0, 200px);
+    }
+    100% {
+      transform: translate(150px, 0);
+    }
   }
 }
