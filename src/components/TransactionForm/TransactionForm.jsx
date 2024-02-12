@@ -12,6 +12,8 @@ import { useModal } from 'hooks';
 import { selectUser } from 'my-redux/User/userSlice';
 import { getFormattedDate, getFormattedTime } from 'helpers';
 import { selectTransactionsError } from 'my-redux/Transaction/transactionSlice';
+import { transactionSchema } from 'schemas/validationSchemas';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 export const TransactionForm = ({
   transaction,
@@ -26,7 +28,16 @@ export const TransactionForm = ({
   const [startDate, setStartDate] = useState(dateForm);
   const currentTime = getFormattedTime();
   const [isOpenModalTransaction, toggleModalTransaction] = useModal();
-  const { register, handleSubmit, reset, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    mode: 'onChange',
+    resolver: yupResolver(transactionSchema),
+  });
 
   const [isChangeTime, setIsChangeTime] = useState(false);
   const [categoryId, setCategoryId] = useState('');
@@ -75,6 +86,11 @@ export const TransactionForm = ({
     if (!isChangeTime) {
       data.time = getFormattedTime();
     }
+
+    // if (errors) {
+    //   console.log(errors);
+    //   return;
+    // }
 
     data.category = categoryId;
     console.log(data);
@@ -125,6 +141,7 @@ export const TransactionForm = ({
               Date
               <div className="datepickerContainer">
                 <DatePicker
+                  name="date"
                   className={s.datePicker}
                   selected={startDate}
                   onChange={date => handleChangeDate(date)}
@@ -168,7 +185,6 @@ export const TransactionForm = ({
                 name="sum"
                 placeholder="Enter the sum"
                 {...register('sum')}
-                min="0"
               />
               <span className={s.currency}>{currency?.toUpperCase()}</span>
             </label>
