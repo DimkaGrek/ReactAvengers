@@ -22,7 +22,6 @@ export const BgImageWrapper = () => {
     const viewportWidth = window.innerWidth;
     viewportWidthRef.current = viewportWidth;
 
-    console.log(viewportWidth);
     if (viewportWidth < 768) {
       return;
     }
