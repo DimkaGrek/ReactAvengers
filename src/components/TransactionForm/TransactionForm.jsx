@@ -12,8 +12,6 @@ import { useModal } from 'hooks';
 import { selectUser } from 'my-redux/User/userSlice';
 import { getFormattedDate, getFormattedTime } from 'helpers';
 import { selectTransactionsError } from 'my-redux/Transaction/transactionSlice';
-import { transactionSchema } from 'schemas/validationSchemas';
-import { yupResolver } from '@hookform/resolvers/yup';
 
 export const TransactionForm = ({
   transaction,
@@ -28,16 +26,7 @@ export const TransactionForm = ({
   const [startDate, setStartDate] = useState(dateForm);
   const currentTime = getFormattedTime();
   const [isOpenModalTransaction, toggleModalTransaction] = useModal();
-  const {
-    register,
-    handleSubmit,
-    reset,
-    setValue,
-    formState: { errors },
-  } = useForm({
-    mode: 'onChange',
-    resolver: yupResolver(transactionSchema),
-  });
+  const { register, handleSubmit, reset, setValue } = useForm();
 
   const [isChangeTime, setIsChangeTime] = useState(false);
   const [categoryId, setCategoryId] = useState('');
@@ -87,17 +76,10 @@ export const TransactionForm = ({
       data.time = getFormattedTime();
     }
 
-    // if (errors) {
-    //   console.log(errors);
-    //   return;
-    // }
-
     data.category = categoryId;
     console.log(data);
 
     onSubmitForm(data);
-
-    console.log(isError);
 
     if (!isError) {
       reset();
