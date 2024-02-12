@@ -1,34 +1,58 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import classNames from 'classnames';
+import { toast } from 'react-toastify';
 
 import s from './AuthForm.module.css';
 
 import { Icon } from '../../components/Icon/Icon';
-import { registerUser } from '../../my-redux/Auth/operations';
+import { loginUser, registerUser } from '../../my-redux/Auth/operations';
 import { BgImageWrapper } from 'components';
 import { signUpSchema, signInSchema } from '../../schemas/validationSchemas';
 
 const AuthForm = ({ signUp }) => {
   const [showPass, setShowPass] = useState(false);
-  const [validationStatus, setValidationStatus] = useState(null);
   const {
     register,
     reset,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, dirtyFields },
   } = useForm({
+    mode: 'onChange',
     resolver: yupResolver(signUp ? signUpSchema : signInSchema),
   });
+  let navigate = useNavigate();
 
   const dispatch = useDispatch();
 
-  const onSubmit = data => {
-    console.log('data');
+  const inputClass = fieldName => {
+    return classNames({
+      [`${s.input}`]: true,
+      [`${s.errorInput}`]: errors[fieldName]?.message && dirtyFields[fieldName],
+      [`${s.successInput}`]:
+        !errors[fieldName]?.message && dirtyFields[fieldName],
+    });
+  };
 
+  const renderMessage = fieldName => {
+    if (errors[fieldName]?.message && dirtyFields[fieldName]) {
+      return <p className={s.messageErr}>{errors[fieldName]?.message}</p>;
+    }
+    return (
+      <p className={s.messageSec}>
+        {!errors[fieldName]?.message && dirtyFields[fieldName]
+          ? `${fieldName.charAt(0).toUpperCase()}${fieldName.slice(
+              1
+            )} is entered correct`
+          : ''}
+      </p>
+    );
+  };
+
+  const onSubmit = data => {
     const { name, email, password } = data;
 
     const userData = {
@@ -40,53 +64,29 @@ const AuthForm = ({ signUp }) => {
       userData.name = name;
     }
 
-    dispatch(registerUser(userData))
+    dispatch(signUp ? registerUser(userData) : loginUser(userData))
       .unwrap()
       .then(() => {
         reset();
-        console.log('Registration success');
-        setValidationStatus('success');
+        toast.success(
+          signUp ? 'Registration successful!' : 'Login successful!'
+        );
+        signUp && navigate('/login');
       })
       .catch(error => {
-        console.error(error);
-        if (error.name === 'ValidationError') {
-          console.error('Validation errors:', error.inner);
-          // error.inner.forEach(e =>
-          //   setError(e.path, { type: 'manual', message: e.message })
-          // );
+        console.log(error);
+        if (error.response.status === 400) {
+          toast.error('Invalid data. Please check your input.');
+        } else if (error.response.status === 409) {
+          toast.error('User already exists. Please choose a different email.');
+        } else if (error.response.status === 403) {
+          toast.error('Invalid password.');
+        } else {
+          toast.error('An error occurred. Please try again later.');
         }
-        setValidationStatus('error');
       });
   };
 
-  const handleInputChange = () => {
-    if (validationStatus) {
-      // clearErrors();
-      setValidationStatus(null);
-    }
-  };
-
-  console.log(errors.name?.message);
-
-  const inputName = classNames({
-    [`${s.input}`]: true,
-    [`${s.errorInput}`]: errors.name?.message,
-    [`${s.successInput}`]: !errors.name?.message && Object.keys(errors).length,
-  });
-
-  const inputEmail = classNames({
-    [`${s.input}`]: true,
-    [`${s.errorInput}`]: errors.email?.message,
-    [`${s.successInput}`]: !errors.email?.message && Object.keys(errors).length,
-  });
-
-  const inputPassword = classNames({
-    [`${s.input}`]: true,
-    [`${s.errorInput}`]: errors.password?.message,
-    [`${s.successInput}`]:
-      !errors.password?.message && Object.keys(errors).length,
-  });
-  console.log('error name', errors.name);
   return (
     <div className={s.container}>
       <div className={s.containerImg}>
@@ -100,7 +100,6 @@ const AuthForm = ({ signUp }) => {
               ? 'Step into a world of hassle-free expense management! Your journey towards financial mastery begins here.'
               : 'Welcome back to effortless expense tracking! Your financial dashboard awaits.'}
           </p>
-          <p>{errors.password?.message}</p>
         </div>
         <div className={s.container}>
           <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
@@ -110,33 +109,34 @@ const AuthForm = ({ signUp }) => {
                   name="name"
                   type="text"
                   placeholder="Name"
-                  className={inputName}
+                  className={inputClass('name')}
                   {...register('name')}
-                  onChange={handleInputChange}
                 />
-                {validationStatus === 'success' && (
+                {!errors.name?.message && dirtyFields.name && (
                   <Icon name="success" size="16" className={s.successIcon} />
                 )}
-                {validationStatus === 'error' && (
+                {errors.name?.message && dirtyFields.name && (
                   <Icon name="error" size="16" className={s.errorIcon} />
                 )}
+                {renderMessage('name')}
               </div>
             )}
+
             <div className={s.containerIcon}>
               <input
                 name="email"
-                type="email"
+                type="text"
                 placeholder="Email"
-                className={inputEmail}
+                className={inputClass('email')}
                 {...register('email')}
-                onChange={handleInputChange}
               />
-              {validationStatus === 'success' && (
+              {!errors.email?.message && dirtyFields.email && (
                 <Icon name="success" size="16" className={s.successIcon} />
               )}
-              {validationStatus === 'error' && (
+              {errors.email?.message && dirtyFields.email && (
                 <Icon name="error" size="16" className={s.errorIcon} />
               )}
+              {renderMessage('email')}
             </div>
             <div>
               <div className={s.containerIcon}>
@@ -144,17 +144,9 @@ const AuthForm = ({ signUp }) => {
                   name="password"
                   type={showPass ? 'text' : 'password'}
                   placeholder="Password"
-                  className={inputPassword}
+                  className={inputClass('password')}
                   {...register('password')}
-                  onChange={handleInputChange}
                 />
-                {validationStatus === 'success' && (
-                  <Icon name="success" size="16" className={s.successIcon} />
-                )}
-                {validationStatus === 'error' && (
-                  <Icon name="error" size="16" className={s.errorIcon} />
-                )}
-
                 <button
                   type="button"
                   onClick={() => setShowPass(prev => !prev)}
@@ -165,11 +157,14 @@ const AuthForm = ({ signUp }) => {
                     <Icon name="eye-off" className={s.icon} size="16" />
                   )}
                 </button>
+                {renderMessage('password')}
               </div>
             </div>
-            <button type="submit" className={s.button}>
-              {signUp ? 'Sign Up' : 'Sign In'}
-            </button>
+            <div className={s.containerButton}>
+              <button type="submit" className={s.button}>
+                {signUp ? 'Sign Up' : 'Sign In'}
+              </button>
+            </div>
           </form>
         </div>
         <div className={s.containerLink}>

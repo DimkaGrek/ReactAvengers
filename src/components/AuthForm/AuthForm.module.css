@@ -30,7 +30,32 @@
 .form {
   display: flex;
   flex-direction: column;
+
   margin-bottom: 20px;
+}
+
+.form div:not(:last-child):not(:nth-last-child(2)) {
+  margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .containerTitle {
+    width: 399px;
+  }
+
+  .title {
+    font-size: var(--font-size-main-title);
+    color: var(--main-text-color);
+  }
+
+  .text {
+    font-size: var(--font-size-smaller);
+    color: var(--regular-text-color);
+  }
+
+  .form div:not(:last-child):not(:nth-last-child(2)) {
+    margin-bottom: 24px;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -45,16 +70,6 @@
 
   .containerTitle {
     width: 533px;
-  }
-
-  .title {
-    font-size: var(--font-size-title);
-    color: var(--main-text-color);
-  }
-
-  .text {
-    font-size: var(--font-size-smaller);
-    color: var(--regular-text-color);
   }
 }
 
@@ -83,16 +98,12 @@
   &:hover {
     border: 1px solid var(--button-color);
   }
-
-  /* &:not(:last-child) {
-    margin-bottom: 20px;
-  } */
 }
 
 .containerIcon {
   position: relative;
-  display: flex;
   align-items: center;
+  min-width: 335px;
 }
 
 .icon {
@@ -100,8 +111,8 @@
   fill: none;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   right: 18px;
+  transform: translateY(-50%);
 }
 
 .button {
@@ -123,21 +134,26 @@
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media (max-width: 374.99px) {
+  .containerTitle,
+  .input {
+    width: 280px;
+  }
+
+  .containerIcon {
+    min-width: 280px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
   .input {
     font-size: var(--font-size-smaller);
     line-height: 1.5;
     letter-spacing: 0.01em;
-    gap: 24px;
 
     padding: 12px 40px 12px 18px;
     width: 399px;
     height: 48px;
-  }
-
-  .icon {
-    width: 20px;
-    height: 20px;
   }
 
   .button {
@@ -168,25 +184,65 @@
 }
 
 .successInput {
-  border: 1px solid #097b45;
+  border: 1px solid var(--success-color);
+
+  &:hover {
+    border: 1px solid var(--success-color);
+  }
 }
 
 .errorInput {
-  border: 1px solid #e74a3b;
+  border: 1px solid var(--errors-color);
+
+  &:hover {
+    border: 1px solid var(--errors-color);
+  }
 }
 
 .successIcon {
-  fill: #097b45;
+  stroke: none;
+  fill: var(--success-color);
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   right: 18px;
+  transform: translateY(-50%);
 }
 
 .errorIcon {
-  fill: #e74a3b;
+  stroke: none;
+  fill: var(--errors-color);
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   right: 18px;
+  transform: translateY(-50%);
+}
+
+.messageErr,
+.messageSec {
+  font-weight: 400;
+  font-size: 10px;
+  color: var(--success-color);
+  padding: 4px 0 0 18px;
+  width: 320px;
+  position: absolute;
+}
+
+.messageErr {
+  color: var(--errors-color);
+}
+
+@media only screen and (min-width: 768px) {
+  .messageErr,
+  .messageSec {
+    width: 381px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .errorIcon,
+  .successIcon,
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
 }

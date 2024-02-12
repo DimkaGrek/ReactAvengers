@@ -1,18 +1,29 @@
+.backdrop {
+  display: none;
+  left: 0;
+  top: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
 .mobileMenu {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   padding: 18px 20px;
-  /* left: 0; */
   top: 0;
+  left: 0;
   background-color: var(--button-color);
-  height: 812px;
   width: 100%;
+  height: 100vh;
 }
-
+.userBarBtnWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .closeBtn {
-  position: absolute;
-  right: 20px;
-  top: 31px;
   background-color: transparent;
 }
 .closeBtnIcon {
@@ -20,11 +31,27 @@
   height: 20px;
   fill: var(--background-color);
 }
+.noScroll {
+  overflow: hidden;
+}
 
 @media screen and (min-width: 768px) {
   .mobileMenu {
     width: 385px;
-    height: 1024px;
+    height: 100vh;
     right: 0;
+    left: auto;
+  }
+  .backdrop {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .mobileMenu {
+    display: none;
+  }
+  .backdrop {
+    display: none;
   }
 }
