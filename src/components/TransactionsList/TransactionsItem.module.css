@@ -49,3 +49,16 @@
   top: 28%;
   transform: translate(-40%, 10%);
 }
+.tr {
+  padding-bottom: 22px;
+  width: 100%;
+  display: inline-flex;
+}
+.td {
+  letter-spacing: 1px;
+  padding: 20px 0 0 40px;
+  width: 15%;
+}
+.td:last-child {
+  width: 31%;
+}

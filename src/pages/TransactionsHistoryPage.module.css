@@ -1,15 +1,37 @@
 .container {
+  min-width: 320px;
+  max-width: 375px;
   padding: 0 20px;
 }
 
 @media only screen and (min-width: 768px) {
   .container {
+    max-width: 768px;
     padding: 0 32px;
   }
 }
 @media only screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
-    padding: 0 100px;
+    padding: 59px 100px 50px 100px;
   }
+}
+
+.historyTitle {
+  font-weight: 400;
+  font-size: 38px;
+  letter-spacing: -0.02em;
+  color: var(--main-text-color);
+}
+.historyText {
+  margin-top: 15px;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  color: var(--regular-text-color);
+}
+
+.textContainer {
+  max-width: 480px;
+  margin-bottom: 64px;
 }

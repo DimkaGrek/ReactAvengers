@@ -36,23 +36,23 @@ export const TransactionsList = () => {
 
   return (
     <div className={s.containerTable}>
-      <table className={s.listTable}>
-        <thead>
-          <tr key="111111">
-            <th>Category</th>
-            <th>Comment</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Sum</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className={s.listTable}>
+        <div className={s.thead}>
+          <ul className={s.tr} key="111111">
+            <li className={s.th}>Category</li>
+            <li className={s.th}>Comment</li>
+            <li className={s.th}>Date</li>
+            <li className={s.th}>Time</li>
+            <li className={s.th}>Sum</li>
+            <li className={s.th}>Actions</li>
+          </ul>
+        </div>
+        <div className={s.tbody}>
           {filterItems.map(item => (
             <TransactionsItem key={item._id} item={item} />
           ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   );
 };

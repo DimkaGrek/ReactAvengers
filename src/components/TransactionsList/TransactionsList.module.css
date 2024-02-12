@@ -1,4 +1,4 @@
-.containerTable {
+table {
   height: 350px;
 }
 .listTable {
@@ -54,14 +54,14 @@ thead th:nth-child(6) {
   width: 33%;
 }
 
-thead {
+.thead {
   height: 59px;
   background: rgba(0, 0, 0, 0.2);
   padding: 0 40px 0 40px;
 }
 
-thead th,
-tfoot th {
+.thead .th,
+.tfoot .th {
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -69,25 +69,33 @@ tfoot th {
   text-align: left;
 }
 
-td:last-child {
+.td:last-child {
   padding-right: 68px;
 }
-td {
+.td:first-child {
+  padding-left: 40px;
+}
+.td {
   letter-spacing: 1px;
-  padding: 20px 0 0 40px;
+  padding-top: 20px;
 }
-th {
-  padding: 20px 40px;
-}
-tr {
-  padding-bottom: 22px;
+.th {
+  padding: 20px 0;
+  width: 15%;
 }
 
-tbody {
+.tr {
+  width: 100%;
+  display: inline-flex;
+}
+
+.tbody {
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
   font-size: 20px;
   color: #fafafa;
   text-align: left;
   background: #171719;
+  height: 350px;
+  overflow-x: hidden;
 }
