@@ -2,17 +2,12 @@ import React from 'react';
 import style from '../Logo/Logo.module.css';
 import { Icon } from 'components/Icon/Icon';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'my-redux/Auth/authSlice';
 
 const Logo = ({ resetStateActiveButton }) => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const path = isLoggedIn ? '/' : '/home';
-
   return (
     <Link
       onClick={resetStateActiveButton}
-      to={path}
+      to={'/'}
       className={style.logoWrapper}
     >
       <Icon className={style.logo} />

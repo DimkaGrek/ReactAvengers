@@ -5,6 +5,7 @@ import { Modal, UserSetsModal } from 'components';
 import { useModal } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from 'my-redux/Auth/operations';
+import { Link } from 'react-router-dom';
 
 const UserPanel = ({ closeUserBar, toggleUserBarBtn, userBtnRef }) => {
   const dispatch = useDispatch();
@@ -41,14 +42,14 @@ const UserPanel = ({ closeUserBar, toggleUserBarBtn, userBtnRef }) => {
       <button
         onClick={() => {
           toggleModal();
-          // closeUserBar();
         }}
         className={style.userPanelItemsWrapper}
       >
         <Icon name="user" className={style.userIcon} />
         <p className={style.userPanelLinkText}>Profile settings</p>
       </button>
-      <button
+      <Link
+        to="/"
         onClick={() => {
           dispatch(logoutUser());
         }}
@@ -56,7 +57,7 @@ const UserPanel = ({ closeUserBar, toggleUserBarBtn, userBtnRef }) => {
       >
         <Icon name="log-out" className={style.logOutIcon} />
         <p className={style.userPanelLinkText}>Log out</p>
-      </button>
+      </Link>
       {isOpenModal && (
         <Modal pd={60} toggleModal={toggleModal}>
           <UserSetsModal />
