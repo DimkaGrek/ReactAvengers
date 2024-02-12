@@ -19,7 +19,7 @@
   }
 }
 
-.transacionForm {
+.transactionForm {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -30,14 +30,14 @@
 }
 
 @media screen and (min-width: 768px) {
-  .transacionForm {
+  .transactionForm {
     width: 100%;
     font-size: 16px;
     line-height: 24px;
   }
 }
 
-.transacionForm input {
+.transactionForm input {
   border: 1px solid var(--border-field-color);
   border-radius: 12px;
   padding: 11px 14px;
@@ -48,28 +48,28 @@
 }
 
 @media screen and (min-width: 768px) {
-  .transacionForm input {
+  .transactionForm input {
     padding: 11px 18px;
     font-size: 16px;
     line-height: 24px;
   }
 }
 
-.transacionForm label {
+.transactionForm label {
   font-size: 14px;
   line-height: 16px;
   letter-spacing: -0.28px;
 }
 
 @media screen and (min-width: 768px) {
-  .transacionForm label {
+  .transactionForm label {
     font-size: 16px;
     line-height: 19px;
     letter-spacing: -0.32px;
   }
 }
 
-.transacionForm input::placeholder,
+.transactionForm input::placeholder,
 .comment::placeholder {
   color: var(--regular-text-color);
 }
@@ -146,6 +146,7 @@
 }
 
 .datePicker {
+  font-family: 'SuisseIntl-Regular', sans-serif;
   width: 100%;
 }
 
@@ -219,13 +220,13 @@
   position: relative;
 }
 
-.transacionForm input[type='time']::-webkit-calendar-picker-indicator {
+.transactionForm input[type='time']::-webkit-calendar-picker-indicator {
   display: none;
 }
 
 /* hide select element for number input */
-.transacionForm input[type='number']::-webkit-inner-spin-button,
-.transacionForm input[type='number']::-webkit-outer-spin-button {
+.transactionForm input[type='number']::-webkit-inner-spin-button,
+.transactionForm input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -291,14 +292,35 @@
   background-color: var(--hover-color);
 }
 
-.transacionForm input:hover,
-.transacionForm input:focus,
-.transacionForm textarea:hover,
-.transacionForm textarea:focus {
+.transactionForm input:hover,
+.transactionForm input:focus,
+.transactionForm textarea:hover,
+.transactionForm textarea:focus {
   border-color: var(--button-color);
 }
 
-.transacionForm input:focus,
-.transacionForm textarea:focus {
+.transactionForm input:focus,
+.transactionForm textarea:focus {
   outline: none;
+}
+
+.transactionForm .errorDate,
+.transactionForm .errorDate:hover,
+.transactionForm .errorDate:focus,
+.transactionForm .errorTime,
+.transactionForm .errorTime:hover,
+.transactionForm .errorTime:focus,
+.transactionForm .errorComment,
+.transactionForm .errorComment:hover,
+.transactionForm .errorComment:focus,
+.transactionForm .errorCategory,
+.transactionForm .errorCategory:hover,
+.transactionForm .errorCategory:focus,
+.transactionForm .errorSum,
+.transactionForm .errorSum:hover,
+.transactionForm .errorSum:focus,
+.transactionForm .errorComment,
+.transactionForm .errorComment:hover,
+.transactionForm .errorComment:focus {
+  border-color: var(--errors-color);
 }
