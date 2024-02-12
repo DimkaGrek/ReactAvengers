@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import s from './CategoriesModal.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCategories } from 'my-redux/Category/categorySlice';
@@ -14,6 +14,7 @@ export const CategoriesModal = ({ type, transportCategory }) => {
   const categories = useSelector(selectCategories);
 
   const dispatch = useDispatch();
+  const ulRef = useRef(null);
 
   const [categoryName, setCategoryName] = useState('');
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -22,14 +23,30 @@ export const CategoriesModal = ({ type, transportCategory }) => {
 
   const handleSubmitCategory = e => {
     e.preventDefault();
+    if (categoryName.length > 16) {
+      toast.error(
+        'Category name length must be less than or equal to 16 characters long'
+      );
+      return;
+    }
+
     if (isEditMode) {
       console.log(categoryId);
       dispatch(editCategory({ categoryName, categoryId }))
+        .unwrap()
         .then(() => setIsEditMode(false))
         .catch(error => console.error('Error editing category: ', error));
     } else {
       dispatch(addCategory({ type, categoryName }))
-        .then(() => toast.success('New Category added succesfuly'))
+        .unwrap()
+        .then(() => {
+          toast.success('New Category added successfully');
+
+          ulRef.current.scrollTo({
+            top: ulRef.current.scrollHeight,
+            behavior: 'smooth',
+          });
+        })
         .catch(error => console.error('Error adding category: ', error));
     }
     setCategoryName('');
@@ -61,7 +78,8 @@ export const CategoriesModal = ({ type, transportCategory }) => {
       .catch(error => {
         console.log(error);
         toast.error(error.message);
-      });
+      })
+      .finally(setIsButtonDisabled(false));
   };
   useEffect(() => {
     if (!isEditMode) {
@@ -75,7 +93,7 @@ export const CategoriesModal = ({ type, transportCategory }) => {
       <h2 className={s.mainTitle}>Expenses</h2>
       <h3 className={s.title}>All Category</h3>
 
-      <ul className={`${s.listWrapper} scroll scrollB`}>
+      <ul className={`${s.listWrapper} scroll scrollB`} ref={ulRef}>
         {type === 'expenses' &&
           categories.expenses?.map(item => (
             <li className={s.listItem} key={item._id}>
@@ -103,7 +121,6 @@ export const CategoriesModal = ({ type, transportCategory }) => {
                 <li>
                   <button
                     className={s.buttonSVG}
-                    // onClick={() => handleDeleteCategory(item.id)}
                     onClick={() => handleDeleteCategory(item._id, type)}
                     disabled={isButtonDisabled}
                   >
