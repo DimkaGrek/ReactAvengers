@@ -1,7 +1,10 @@
 .header {
   margin: 0 auto;
   position: relative;
-  max-width: 375px;
+  /* max-width: 375px; */
+
+  /* responsive */
+  max-width: 100%;
   background-color: var(--background-color);
   border-bottom: 1px solid rgba(250, 250, 250, 0.1);
   height: 63px;
@@ -33,7 +36,8 @@
 
 @media screen and (min-width: 768px) {
   .header {
-    max-width: 768px;
+    /* max-width: 768px; */
+    max-width: 100%;
     padding: 0 32px;
     height: 91px;
   }
