@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import Resizer from 'react-image-file-resizer';
 
 import Loader from 'components/Loader/Loader';
 import { selectUser } from 'my-redux/User/userSlice';
@@ -9,6 +10,22 @@ import { takeFirstLetter, takeId } from 'helpers';
 
 import s from './UserSetsCard.module.css';
 
+const resizeFile = file =>
+  new Promise(resolve => {
+    Resizer.imageFileResizer(
+      file,
+      300,
+      300,
+      'JPEG',
+      100,
+      0,
+      uri => {
+        resolve(uri);
+      },
+      'file'
+    );
+  });
+
 export const UserSetsCard = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { name, avatarUrl } = useSelector(selectUser);
@@ -17,9 +34,10 @@ export const UserSetsCard = () => {
   const customDispatch = useIsLoading();
   const noAvatar = avatarUrl === null;
 
-  const handleUploadAvatar = e => {
+  const handleUploadAvatar = async e => {
     const file = e.target.files[0];
-    customDispatch(changeUserAvatar, file, setIsLoading);
+    const image = await resizeFile(file);
+    customDispatch(changeUserAvatar, image, setIsLoading);
   };
 
   const handleRedirectClick = () => {
