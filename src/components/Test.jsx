@@ -3,6 +3,9 @@ import s from './Test.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCategory } from 'my-redux/Category/operations';
 import { selectCategories } from 'my-redux/Category/categorySlice';
+import { CategoriesModal } from './CategoriesModal/CategoriesModal';
+import { Modal } from 'components';
+import { useModal } from 'hooks';
 // import { selectIsLoggedIn } from 'my-redux/Auth/authSlice';
 
 export const Test = () => {
@@ -23,6 +26,8 @@ export const Test = () => {
   // const [transTime, setTranseTime] = useState('');
   // const [transSum, setTranseSum] = useState(0);
   // const [transComment, setTransComment] = useState('');
+
+  const [isOpen, setisOpen] = useModal();
 
   // Функція для обробки змін у полі select
   const handleTypeChange = event => {
@@ -125,6 +130,21 @@ export const Test = () => {
           </label>
         </div>
       </form>
+
+      <div>
+        <button
+          style={{ outline: '1px solid red', padding: '15px 20px' }}
+          type="button"
+          onClick={setisOpen}
+        >
+          Open Modal
+        </button>
+        {isOpen && (
+          <Modal toggleModal={setisOpen}>
+            <CategoriesModal type="expenses" />
+          </Modal>
+        )}
+      </div>
     </div>
   );
 };
