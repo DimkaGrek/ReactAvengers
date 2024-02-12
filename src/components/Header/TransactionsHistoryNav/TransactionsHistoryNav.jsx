@@ -1,7 +1,10 @@
 import style from './TransactionsHistoryNav.module.css';
 import { Link } from 'react-router-dom';
 
-const TransactionsHistoryNav = ({ activeButton, handleButtonClick }) => {
+const TransactionsHistoryNav = ({
+  activeButton,
+  handleButtonAndToggleMenu,
+}) => {
   return (
     <div className={style.buttonWrapper}>
       <Link to="/transactions/history/expense">
@@ -12,7 +15,7 @@ const TransactionsHistoryNav = ({ activeButton, handleButtonClick }) => {
               : `${style.mobileNavBtn} ${style.mobileNavBtnExp}`
           }
           onClick={() => {
-            handleButtonClick('expense');
+            handleButtonAndToggleMenu('expense');
           }}
         >
           All Expense
@@ -27,7 +30,7 @@ const TransactionsHistoryNav = ({ activeButton, handleButtonClick }) => {
               : `${style.mobileNavBtn} ${style.mobileNavBtnInc}`
           }
           onClick={() => {
-            handleButtonClick('income');
+            handleButtonAndToggleMenu('income');
           }}
         >
           All Income
