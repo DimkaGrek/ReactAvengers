@@ -4,12 +4,17 @@ import { api, clearToken, setToken } from 'services/api';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
-  async (credentials, thunkAPI) => {
+  async ({ email, password, name }, thunkAPI) => {
     try {
-      const { data } = await api.post('/auth/register', credentials);
+      const { data } = await api.post('/auth/register', {
+        email,
+        password,
+        name,
+      });
+      await thunkAPI.dispatch(loginUser({ email, password }));
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -23,7 +28,7 @@ export const loginUser = createAsyncThunk(
       setToken(data.accessToken);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );

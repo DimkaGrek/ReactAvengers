@@ -7,7 +7,7 @@ import {
 } from './operations';
 
 const initialState = {
-  transactions: [],
+  transactions: null,
   error: null,
 };
 
@@ -22,8 +22,10 @@ const transactionSlice = createSlice({
       })
       .addCase(addTransaction.fulfilled, (state, action) => {
         console.log(action.payload);
-        state.transactions.push(action.payload);
         state.error = null;
+        if (state.transactions === null) {
+          state.transactions = [action.payload];
+        } else state.transactions = [...state.transactions, action.payload];
       })
 
       .addCase(editTransaction.fulfilled, (state, action) => {

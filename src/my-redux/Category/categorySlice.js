@@ -5,10 +5,14 @@ import {
   editCategory,
   deleteCategory,
 } from './operations';
-import { loginUser } from 'my-redux/Auth/operations';
+import { loginUser, refreshUser } from 'my-redux/Auth/operations';
+import { fetchCurrentUser } from 'my-redux/User/operations';
 
 const initialState = {
-  categories: {},
+  categories: {
+    expenses: [],
+    incomes: [],
+  },
   isLoading: false,
   error: null,
 };
@@ -22,24 +26,40 @@ const categorySlice = createSlice({
         state.categories = action.payload;
       })
       .addCase(addCategory.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.categories[action.payload.type].push(action.payload);
       })
-      .addCase(editCategory.fulfilled, (state, action) => {
-        state.categories = state.categories.map(item => {
-          if (item.id === action.payload.id) {
-            return action.payload;
+      .addCase(editCategory.fulfilled, (state, { payload }) => {
+        state.categories.expenses = state.categories?.expenses.map(item => {
+          if (item._id === payload._id) {
+            return payload;
+          }
+          return item;
+        });
+        state.categories.incomes = state.categories?.incomes.map(item => {
+          if (item._id === payload._id) {
+            return payload;
           }
           return item;
         });
       })
-      .addCase(deleteCategory.fulfilled, (state, action) => {
-        state.categories = state.categories.filter(
-          item => item._id !== action.payload
+      .addCase(deleteCategory.fulfilled, (state, { payload }) => {
+        console.log('payload:', payload.id);
+        state.categories[payload.type] = state.categories[payload.type].filter(
+          item => item._id !== payload.id
         );
       })
+
       .addCase(loginUser.fulfilled, (state, { payload: { user } }) => {
-        state.categories = user.categories;
+        state.categories.expenses = user.categories?.expenses || [];
+        state.categories.incomes = user.categories?.incomes || [];
+      })
+      .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
+        console.log(payload);
+        state.categories.expenses = payload.categories?.expenses || [];
+        state.categories.incomes = payload.categories?.incomes || [];
       }),
+
   selectors: {
     selectCategories: state => state.categories,
   },

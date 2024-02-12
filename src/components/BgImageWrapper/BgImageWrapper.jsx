@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+
 import s from './BgImageWrapper.module.css';
-import heroDesc1x from '../../assets/images/heroDesc1x.jpg';
 import { Icon } from '../Icon/Icon';
+import { randomNumber, randomPercentage } from 'helpers/getRandomNumber';
 
 export const BgImageWrapper = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -10,18 +11,22 @@ export const BgImageWrapper = () => {
   const [randomPercent, setRandomPercent] = useState(0);
   const animationRef = useRef(null);
   const startTimeRef = useRef(null);
+  const viewportWidthRef = useRef(window.innerWidth);
 
   useEffect(() => {
-    const randomNumber = () =>
-      Math.floor(Math.random() * (10000 - 500 + 1) + 500);
-
     setRandomSum(randomNumber());
-
-    const randomPercentage = () => Math.random() * (100 - 1) + 1;
     setRandomPercent(randomPercentage());
   }, [currentStep]);
 
   const handleAnimationStart = () => {
+    const viewportWidth = window.innerWidth;
+    viewportWidthRef.current = viewportWidth;
+
+    console.log(viewportWidth);
+    if (viewportWidth < 768) {
+      return;
+    }
+
     startTimeRef.current = performance.now();
     animationRef.current = requestAnimationFrame(updateAnimationProgress);
   };
@@ -29,6 +34,14 @@ export const BgImageWrapper = () => {
   const updateAnimationProgress = () => {
     const elapsedTime = performance.now() - startTimeRef.current;
     const percentage = (elapsedTime / (animationDuration * 1000)) * 100;
+
+    // Check if viewport width has changed during the animation
+    if (
+      viewportWidthRef.current !== window.innerWidth &&
+      window.innerWidth < 768
+    ) {
+      return;
+    }
 
     updateCurrentStep(percentage);
 
@@ -44,7 +57,6 @@ export const BgImageWrapper = () => {
 
   return (
     <div className={s.containerImg}>
-      <img src={heroDesc1x} alt="Hero Description" className={s.heroImg} />
       <div className={s.containerText} onAnimationStart={handleAnimationStart}>
         <div className={s.containerSvg}>
           <Icon name="arrow-up" className={s.icon} size="18" />
