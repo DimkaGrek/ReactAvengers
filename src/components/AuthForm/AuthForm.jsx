@@ -28,6 +28,30 @@ const AuthForm = ({ signUp }) => {
 
   const dispatch = useDispatch();
 
+  const inputClass = fieldName => {
+    return classNames({
+      [`${s.input}`]: true,
+      [`${s.errorInput}`]: errors[fieldName]?.message && dirtyFields[fieldName],
+      [`${s.successInput}`]:
+        !errors[fieldName]?.message && dirtyFields[fieldName],
+    });
+  };
+
+  const renderMessage = fieldName => {
+    if (errors[fieldName]?.message && dirtyFields[fieldName]) {
+      return <p className={s.messageErr}>{errors[fieldName]?.message}</p>;
+    }
+    return (
+      <p className={s.messageSec}>
+        {!errors[fieldName]?.message && dirtyFields[fieldName]
+          ? `${fieldName.charAt(0).toUpperCase()}${fieldName.slice(
+              1
+            )} is entered correct`
+          : ''}
+      </p>
+    );
+  };
+
   const onSubmit = data => {
     const { name, email, password } = data;
 
@@ -63,33 +87,6 @@ const AuthForm = ({ signUp }) => {
       });
   };
 
-  const inputName = classNames({
-    [`${s.input}`]: true,
-    [`${s.errorInput}`]: errors.name?.message && dirtyFields.name,
-    [`${s.successInput}`]: !errors.name?.message && dirtyFields.name,
-  });
-
-  const inputEmail = classNames({
-    [`${s.input}`]: true,
-    [`${s.errorInput}`]: errors.email?.message && dirtyFields.email,
-    [`${s.successInput}`]: !errors.email?.message && dirtyFields.email,
-  });
-
-  const inputPassword = classNames({
-    [`${s.input}`]: true,
-    [`${s.errorInput}`]: errors.password?.message && dirtyFields.password,
-    [`${s.successInput}`]: !errors.password?.message && dirtyFields.password,
-  });
-
-  // const inputClass = inputName => {
-  //   classNames({
-  //     [`${s.input}`]: true,
-  //     [`${s.errorInput}`]: errors[inputName]?.message && dirtyFields[inputName],
-  //     [`${s.successInput}`]:
-  //       !errors[inputName]?.message && dirtyFields[inputName],
-  //   });
-  // };
-
   return (
     <div className={s.container}>
       <div className={s.containerImg}>
@@ -112,8 +109,7 @@ const AuthForm = ({ signUp }) => {
                   name="name"
                   type="text"
                   placeholder="Name"
-                  className={inputName}
-                  // className={() => inputClass('name')}
+                  className={inputClass('name')}
                   {...register('name')}
                 />
                 {!errors.name?.message && dirtyFields.name && (
@@ -122,14 +118,7 @@ const AuthForm = ({ signUp }) => {
                 {errors.name?.message && dirtyFields.name && (
                   <Icon name="error" size="16" className={s.errorIcon} />
                 )}
-                {errors.name?.message && dirtyFields.name && (
-                  <p className={s.messageErr}>{errors.name?.message}</p>
-                )}
-                <p className={s.messageSec}>
-                  {!errors.name?.message && dirtyFields.name
-                    ? 'Name is entered correct'
-                    : ''}
-                </p>
+                {renderMessage('name')}
               </div>
             )}
 
@@ -138,8 +127,7 @@ const AuthForm = ({ signUp }) => {
                 name="email"
                 type="text"
                 placeholder="Email"
-                className={inputEmail}
-                // className={() => inputClass('email')}
+                className={inputClass('email')}
                 {...register('email')}
               />
               {!errors.email?.message && dirtyFields.email && (
@@ -148,14 +136,7 @@ const AuthForm = ({ signUp }) => {
               {errors.email?.message && dirtyFields.email && (
                 <Icon name="error" size="16" className={s.errorIcon} />
               )}
-              {errors.email?.message && dirtyFields.email && (
-                <p className={s.messageErr}>{errors.email?.message}</p>
-              )}
-              <p className={s.messageSec}>
-                {!errors.email?.message && dirtyFields.email
-                  ? 'Email is secure'
-                  : ''}
-              </p>
+              {renderMessage('email')}
             </div>
             <div>
               <div className={s.containerIcon}>
@@ -163,8 +144,7 @@ const AuthForm = ({ signUp }) => {
                   name="password"
                   type={showPass ? 'text' : 'password'}
                   placeholder="Password"
-                  className={inputPassword}
-                  // className={() => inputClass('password')}
+                  className={inputClass('password')}
                   {...register('password')}
                 />
                 <button
@@ -177,19 +157,14 @@ const AuthForm = ({ signUp }) => {
                     <Icon name="eye-off" className={s.icon} size="16" />
                   )}
                 </button>
-                {errors.password?.message && dirtyFields.password && (
-                  <p className={s.messageErr}>{errors.password?.message}</p>
-                )}
-                <p className={s.messageSec}>
-                  {!errors.password?.message && dirtyFields.password
-                    ? 'Password is secure'
-                    : ''}
-                </p>
+                {renderMessage('password')}
               </div>
             </div>
-            <button type="submit" className={s.button}>
-              {signUp ? 'Sign Up' : 'Sign In'}
-            </button>
+            <div className={s.containerButton}>
+              <button type="submit" className={s.button}>
+                {signUp ? 'Sign Up' : 'Sign In'}
+              </button>
+            </div>
           </form>
         </div>
         <div className={s.containerLink}>
