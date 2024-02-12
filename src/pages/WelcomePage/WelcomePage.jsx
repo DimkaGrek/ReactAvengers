@@ -2,8 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import s from './WelcomePage.module.css';
+
 import { BgImageWrapper } from 'components/BgImageWrapper/BgImageWrapper';
-import images from '../../assets/images/images.png';
+import users1x from '../../assets/images/images_users_1x@.png';
+import users2x from '../../assets/images/images_users_2x@.png';
 
 const Home = () => {
   return (
@@ -31,7 +33,10 @@ const Home = () => {
           </div>
         </div>
         <div className={s.containerImg}>
-          <img src={images} alt="Foto users" className={s.img} />
+          <picture>
+            <source srcSet={`${users1x}, ${users2x} 2x`} type="image/png" />
+            <img className={s.img} src={users1x} alt="Users photos" />
+          </picture>
           <div className={s.containerUsers}>
             <h2 className={s.titleUsers}>1000 users +</h2>
             <p className={s.tx}>
