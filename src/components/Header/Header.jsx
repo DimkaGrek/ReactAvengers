@@ -29,6 +29,10 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
+	const closeMenu = () => {
+		setIsOpen(false)
+	}
+
   const handleButtonAndToggleMenu = buttonName => {
     setActiveButton(buttonName);
     isOpen && setIsOpen(false);
@@ -55,6 +59,7 @@ const Header = () => {
             handleButtonAndToggleMenu={handleButtonAndToggleMenu}
             toggleMenu={toggleMenu}
             isOpen={isOpen}
+						closeMenu={closeMenu}
           />
         )}
         {isLoggedIn && showComponent && (
