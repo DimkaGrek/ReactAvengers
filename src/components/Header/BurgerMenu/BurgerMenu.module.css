@@ -1,4 +1,5 @@
 .backdrop {
+  display: none;
   left: 0;
   top: 0;
   position: fixed;
@@ -12,15 +13,17 @@
   z-index: 2;
   padding: 18px 20px;
   top: 0;
+  left: 0;
   background-color: var(--button-color);
+  width: 100%;
   height: 100vh;
-  width: 100vw;
 }
-
+.userBarBtnWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .closeBtn {
-  position: absolute;
-  right: 20px;
-  top: 31px;
   background-color: transparent;
 }
 .closeBtnIcon {
@@ -37,6 +40,10 @@
     width: 385px;
     height: 100vh;
     right: 0;
+    left: auto;
+  }
+  .backdrop {
+    display: block;
   }
 }
 
