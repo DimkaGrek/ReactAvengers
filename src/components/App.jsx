@@ -4,7 +4,7 @@ import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import MainTransactionsPage from 'pages/MainTransactionsPage/MainTransactionsPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser, refreshUser } from 'my-redux/Auth/operations';
+import { refreshUser } from 'my-redux/Auth/operations';
 import { Test } from './Test';
 import WelcomePage from 'pages/WelcomePage/WelcomePage';
 import { PublicRoute } from './Routes/PublicRoute';
@@ -17,15 +17,6 @@ import { useEffect } from 'react';
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-
-  // useEffect(() => {
-  // dispatch(
-  //   loginUser({
-  //     email: 'dimka@mail.ua',
-  //     password: 'password',
-  //   })
-  // );
-  // }, [dispatch]);
 
   useEffect(() => {
     dispatch(refreshUser());

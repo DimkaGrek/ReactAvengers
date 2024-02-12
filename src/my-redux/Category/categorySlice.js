@@ -5,7 +5,7 @@ import {
   editCategory,
   deleteCategory,
 } from './operations';
-import { loginUser, refreshUser } from 'my-redux/Auth/operations';
+import { loginUser } from 'my-redux/Auth/operations';
 import { fetchCurrentUser } from 'my-redux/User/operations';
 
 const initialState = {

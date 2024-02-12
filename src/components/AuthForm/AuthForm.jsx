@@ -136,7 +136,7 @@ const AuthForm = ({ signUp }) => {
             <div className={s.containerIcon}>
               <input
                 name="email"
-                type="email"
+                type="text"
                 placeholder="Email"
                 className={inputEmail}
                 // className={() => inputClass('email')}
