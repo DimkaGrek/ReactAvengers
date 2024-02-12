@@ -12,7 +12,6 @@
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
   font-size: 24px;
-  letter-spacing: -0.02em;
   color: var(--main-text-color);
 }
 @media screen and (min-width: 768px) {
