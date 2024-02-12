@@ -11,14 +11,22 @@ export const BgImageWrapper = () => {
   const [randomPercent, setRandomPercent] = useState(0);
   const animationRef = useRef(null);
   const startTimeRef = useRef(null);
+  const viewportWidthRef = useRef(window.innerWidth);
 
   useEffect(() => {
     setRandomSum(randomNumber());
-
     setRandomPercent(randomPercentage());
   }, [currentStep]);
 
   const handleAnimationStart = () => {
+    const viewportWidth = window.innerWidth;
+    viewportWidthRef.current = viewportWidth;
+
+    console.log(viewportWidth);
+    if (viewportWidth < 768) {
+      return;
+    }
+
     startTimeRef.current = performance.now();
     animationRef.current = requestAnimationFrame(updateAnimationProgress);
   };
@@ -26,6 +34,14 @@ export const BgImageWrapper = () => {
   const updateAnimationProgress = () => {
     const elapsedTime = performance.now() - startTimeRef.current;
     const percentage = (elapsedTime / (animationDuration * 1000)) * 100;
+
+    // Check if viewport width has changed during the animation
+    if (
+      viewportWidthRef.current !== window.innerWidth &&
+      window.innerWidth < 768
+    ) {
+      return;
+    }
 
     updateCurrentStep(percentage);
 
