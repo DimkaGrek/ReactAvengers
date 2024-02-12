@@ -30,9 +30,7 @@
 .form {
   display: flex;
   flex-direction: column;
-}
 
-.form {
   margin-bottom: 20px;
 }
 
@@ -138,10 +136,10 @@
 
 @media (max-width: 374.99px) {
   .containerTitle,
-   .input {
+  .input {
     width: 280px;
   }
-  
+
   .containerIcon {
     min-width: 280px;
   }
