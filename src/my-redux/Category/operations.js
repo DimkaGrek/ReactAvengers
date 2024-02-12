@@ -19,6 +19,7 @@ export const addCategory = createAsyncThunk(
   'categories/addCategory',
   async (category, thunkAPI) => {
     try {
+      console.log(category);
       const { data } = await api.post('/categories', category);
       console.log(data);
       return data;
@@ -30,10 +31,15 @@ export const addCategory = createAsyncThunk(
 
 export const editCategory = createAsyncThunk(
   'categories/editCategory',
-  async (category, thunkAPI) => {
+  async ({ categoryName, categoryId }, thunkAPI) => {
     try {
-      const data = await api.patch(`/categories/${category._id}`, category);
+      const dataChange = { _id: categoryId, categoryName };
+      console.log(dataChange);
+      const { data } = await api.patch(`/categories/${categoryId}`, {
+        categoryName,
+      });
       console.log(data);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -42,10 +48,10 @@ export const editCategory = createAsyncThunk(
 
 export const deleteCategory = createAsyncThunk(
   'categories/deleteCategory',
-  async (id, thunkAPI) => {
+  async ({ id, type }, thunkAPI) => {
     try {
-      await api.patch(`/categories/${id}`);
-      return id;
+      await api.delete(`/categories/${id}`);
+      return { id, type };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -1,0 +1,145 @@
+.mainBox {
+  border: 1px solid var(--regular-text-color01);
+  border-radius: 30px;
+  width: 500px;
+  height: 461px;
+  background-color: var(--box-background-color);
+  padding: 40px 0;
+  /* padding-right: 10px; */
+}
+
+.mainTitle {
+  font-family: 'Suisse Intl', sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  color: var(--main-text-color);
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: 'Suisse Intl', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: rgba(250, 250, 250, 0.4);
+  margin-left: 40px;
+
+  margin-bottom: 10px;
+}
+
+.listWrapper {
+  margin-bottom: 28px;
+  overflow: auto;
+  max-height: 193px;
+}
+
+.listItem {
+  font-family: 'Suisse Intl', sans-serif;
+  font-weight: 400;
+
+  color: #fafafa;
+  /* outline: 0.5px solid red; */
+  display: flex;
+  justify-content: space-between;
+
+  padding: 12px 40px;
+  margin-bottom: 10px;
+}
+.listItem:hover,
+.listItem:focus {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.listSVG {
+  display: flex;
+  gap: 14px;
+}
+
+/* .listSVGitem {
+
+ } */
+
+.buttonSVG {
+  background-color: transparent;
+  width: 16px;
+  height: 16px;
+}
+
+.icon {
+  fill: none;
+  stroke: none;
+}
+
+.listItem:hover .icon,
+.listItem:focus .icon {
+  stroke: #0ef387;
+}
+
+/* ----------------  Button --------------  */
+
+.labelCategory {
+  font-family: 'Suisse Intl', sans-serif;
+  font-weight: 400;
+
+  letter-spacing: -0.02em;
+  color: #0ef387;
+}
+
+input::placeholder {
+  font-family: 'Suisse Intl', sans-serif;
+  font-weight: 400;
+
+  line-height: 1.5;
+  color: rgba(250, 250, 250, 0.4);
+}
+
+.inputCategory {
+  border: 1px solid rgba(250, 250, 250, 0.2);
+  border-radius: 12px;
+  padding: 12px 303px 12px 18px;
+  width: 420px;
+  height: 48px;
+  margin-top: 8px;
+
+  background-color: #171719;
+  outline: none;
+  color: #fafafa;
+}
+
+.inputCategory:focus,
+.inputCategory:hover {
+  border-color: #0ef387;
+  outline-color: #0ef387;
+}
+
+.subbmitButton {
+  border-radius: 12px;
+  padding: 14px 44px;
+  width: 118px;
+  height: 47px;
+  background-color: #0ef387;
+
+  font-family: 'Suisse Intl', sans-serif;
+  font-weight: 400;
+
+  letter-spacing: -0.02em;
+  color: #0c0d0d;
+
+  position: absolute;
+  top: 8px;
+  right: 40px;
+}
+
+.subbmitButton:focus,
+.subbmitButton:hover {
+  background-color: #0ebb69;
+}
+
+.formStyle {
+  margin-left: 40px;
+}
+
+.inputBox {
+  position: relative;
+}

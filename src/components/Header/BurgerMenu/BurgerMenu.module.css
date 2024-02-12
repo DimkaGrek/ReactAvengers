@@ -1,3 +1,12 @@
+.backdrop {
+  left: 0;
+  top: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
 .mobileMenu {
   position: absolute;
   z-index: 2;
@@ -19,6 +28,9 @@
   height: 20px;
   fill: var(--background-color);
 }
+.noScroll {
+  overflow: hidden;
+}
 
 @media screen and (min-width: 768px) {
   .mobileMenu {
@@ -30,6 +42,9 @@
 
 @media screen and (min-width: 1440px) {
   .mobileMenu {
+    display: none;
+  }
+  .backdrop {
     display: none;
   }
 }
