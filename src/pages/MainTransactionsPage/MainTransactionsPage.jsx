@@ -13,6 +13,7 @@ import {
 } from 'my-redux/Transaction/operations';
 //
 import s from './MainTransactionsPage.module.css';
+import { toast } from 'react-toastify';
 
 const MainTransactionsPage = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,14 @@ const MainTransactionsPage = () => {
     transactionsType[0].toUpperCase() + transactionsType.slice(1);
 
   const onSubmitForm = transaction => {
-    dispatch(addTransaction(transaction));
+    dispatch(addTransaction(transaction))
+      .unwrap()
+      .then(() => {
+        toast.success('Transaction added successfully!');
+      })
+      .catch(error => {
+        toast.error('Something went wrong!');
+      });
   };
 
   return (

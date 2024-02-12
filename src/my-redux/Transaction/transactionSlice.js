@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   getTransactions,
   addTransaction,
@@ -43,9 +43,28 @@ const transactionSlice = createSlice({
         );
         state.error = null;
       })
-      .addCase(getTransactions.rejected, (state, action) => {
-        state.error = action.payload;
-      }),
+      .addMatcher(
+        isAnyOf(
+          getTransactions.pending,
+          addTransaction.pending,
+          editTransaction.pending,
+          deleteTransaction.pending
+        ),
+        state => {
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          getTransactions.rejected,
+          addTransaction.rejected,
+          editTransaction.rejected,
+          deleteTransaction.rejected
+        ),
+        (state, action) => {
+          state.error = action.payload;
+        }
+      ),
   selectors: {
     selectTransactions: state => state.transactions,
     selectTransactionsError: state => state.error,
@@ -54,4 +73,5 @@ const transactionSlice = createSlice({
 
 export const { selectTransactions, selectTransactionsError } =
   transactionSlice.selectors;
+
 export const transactionSliceReducer = transactionSlice.reducer;

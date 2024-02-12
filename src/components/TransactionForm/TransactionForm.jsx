@@ -9,8 +9,9 @@ import s from './TransactionForm.module.css';
 import './DatePicker.css';
 import { useModal } from 'hooks';
 
-import { selectUser } from '../../my-redux/User/userSlice';
+import { selectUser } from 'my-redux/User/userSlice';
 import { getFormattedDate, getFormattedTime } from 'helpers';
+import { selectTransactionsError } from 'my-redux/Transaction/transactionSlice';
 
 export const TransactionForm = ({
   transaction,
@@ -18,9 +19,8 @@ export const TransactionForm = ({
   onSubmitForm,
 }) => {
   const user = useSelector(selectUser);
+  const isError = useSelector(selectTransactionsError);
   const { currency } = user;
-  const typeTransaction =
-    transactionsType === 'expenses' ? 'expenses' : 'incomes';
 
   const dateForm = transaction ? transaction.date : new Date();
   const [startDate, setStartDate] = useState(dateForm);
@@ -36,9 +36,9 @@ export const TransactionForm = ({
       setValue('time', currentTime);
     }
 
-    setValue('type', typeTransaction);
+    setValue('type', transactionsType);
     setValue('date', getFormattedDate(startDate));
-  }, [currentTime, startDate, typeTransaction, setValue, isChangeTime]);
+  }, [currentTime, startDate, transactionsType, setValue, isChangeTime]);
 
   useEffect(() => {
     if (transaction) {
@@ -66,9 +66,9 @@ export const TransactionForm = ({
     setValue('date', formattedDate);
   };
 
-  const handleChangeCategory = (categoryId, categoryName) => {
-    setValue('category', categoryName);
-    setCategoryId(categoryId);
+  const handleChangeCategory = item => {
+    setValue('category', item.categoryName);
+    setCategoryId(item.categoryId);
   };
 
   const onSubmit = data => {
@@ -81,10 +81,14 @@ export const TransactionForm = ({
 
     onSubmitForm(data);
 
-    reset();
-    setIsChangeTime(false);
-    setStartDate(new Date());
-    setCategoryId('');
+    console.log(isError);
+
+    if (!isError) {
+      reset();
+      setIsChangeTime(false);
+      setStartDate(new Date());
+      setCategoryId('');
+    }
   };
 
   return (
@@ -164,6 +168,7 @@ export const TransactionForm = ({
                 name="sum"
                 placeholder="Enter the sum"
                 {...register('sum')}
+                min="0"
               />
               <span className={s.currency}>{currency?.toUpperCase()}</span>
             </label>
@@ -187,7 +192,10 @@ export const TransactionForm = ({
           <ul>
             <li
               onClick={() =>
-                handleChangeCategory('65c8eb3ff1df95584aa3d60d', 'Salary')
+                handleChangeCategory({
+                  categoryId: '65c8eb3ff1df95584aa3d60d',
+                  categoryName: 'Salary',
+                })
               }
             >
               Salary
