@@ -9,13 +9,11 @@ import { selectTransactions } from 'my-redux/Transaction/transactionSlice';
 
 export const TransactionsList = () => {
   const { transactionsType } = useParams();
-  console.log(transactionsType);
   const dispatch = useDispatch();
   const date = useSelector(selectDate);
   const transactions = useSelector(selectTransactions);
 
   useEffect(() => {
-    console.log(date);
     dispatch(getTransactions({ type: transactionsType, date }));
   }, [transactionsType, date, dispatch]);
 
@@ -47,7 +45,7 @@ export const TransactionsList = () => {
             <li className={s.th}>Actions</li>
           </ul>
         </div>
-        <div className={s.tbody}>
+        <div className={`${s.tbody} scroll scrollB`}>
           {filterItems.map(item => (
             <TransactionsItem key={item._id} item={item} />
           ))}
