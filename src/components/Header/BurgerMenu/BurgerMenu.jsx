@@ -43,10 +43,12 @@ const BurgerMenu = ({
     <>
       <div className={style.backdrop} onClick={handleBackdrop}></div>
       <div className={style.mobileMenu}>
-        <UserBarBtn />
-        <button className={style.closeBtn} onClick={toggleMenu}>
-          <Icon name="close-btn" className={style.closeBtnIcon} />
-        </button>
+        <div className={style.userBarBtnWrapper}>
+          <UserBarBtn closeMenu={closeMenu} />
+          <button className={style.closeBtn} onClick={toggleMenu}>
+            <Icon name="close-btn" className={style.closeBtnIcon} />
+          </button>
+        </div>
         <TransactionsHistoryNav
           handleButtonAndToggleMenu={handleButtonAndToggleMenu}
         />

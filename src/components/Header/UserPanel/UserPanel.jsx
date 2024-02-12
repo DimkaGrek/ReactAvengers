@@ -5,11 +5,18 @@ import { Modal, UserSetsModal } from 'components';
 import { useModal } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from 'my-redux/Auth/operations';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const UserPanel = ({ closeUserBar, toggleUserBarBtn, userBtnRef }) => {
-  const dispatch = useDispatch();
+const UserPanel = ({
+  closeUserBar,
+  toggleUserBarBtn,
+  closeMenu,
+  userBtnRef,
+}) => {
   const [isOpenModal, toggleModal] = useModal();
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = event => {
@@ -37,6 +44,17 @@ const UserPanel = ({ closeUserBar, toggleUserBarBtn, userBtnRef }) => {
     };
   }, [closeUserBar, toggleUserBarBtn, userBtnRef, isOpenModal]);
 
+  const handleLogout = async () => {
+    try {
+      await dispatch(logoutUser());
+      closeMenu();
+      navigate('/');
+    } catch (error) {
+      toast.error('Something went wrong...');
+      console.error('Error logging out:', error);
+    }
+  };
+
   return (
     <div className={style.userPanelBody}>
       <button
@@ -48,16 +66,10 @@ const UserPanel = ({ closeUserBar, toggleUserBarBtn, userBtnRef }) => {
         <Icon name="user" className={style.userIcon} />
         <p className={style.userPanelLinkText}>Profile settings</p>
       </button>
-      <Link
-        to="/"
-        onClick={() => {
-          dispatch(logoutUser());
-        }}
-        className={style.userPanelItemsWrapper}
-      >
+      <button onClick={handleLogout} className={style.userPanelItemsWrapper}>
         <Icon name="log-out" className={style.logOutIcon} />
         <p className={style.userPanelLinkText}>Log out</p>
-      </Link>
+      </button>
       {isOpenModal && (
         <Modal pd={60} toggleModal={toggleModal}>
           <UserSetsModal />

@@ -22,7 +22,6 @@ export const BgImageWrapper = () => {
     const viewportWidth = window.innerWidth;
     viewportWidthRef.current = viewportWidth;
 
-    console.log(viewportWidth);
     if (viewportWidth < 768) {
       return;
     }
@@ -63,7 +62,7 @@ export const BgImageWrapper = () => {
         </div>
         <div className={s.containerBalance}>
           <p className={s.text}>Your balance</p>
-          <p className={s.balance}>{`$${randomSum}`}</p>
+          <p className={s.balance}>{`$${randomSum.toFixed(3)}`}</p>
         </div>
         <div className={s.containerPercent}>
           <p className={s.percent}>{`+${randomPercent.toFixed(2)}%`}</p>
