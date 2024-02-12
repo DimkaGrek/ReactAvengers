@@ -29,8 +29,9 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleButtonClick = buttonName => {
+  const handleButtonAndToggleMenu = buttonName => {
     setActiveButton(buttonName);
+    isOpen && setIsOpen(false);
   };
 
   const resetStateActiveButton = () => {
@@ -49,11 +50,18 @@ const Header = () => {
       >
         <Logo resetStateActiveButton={resetStateActiveButton} />
         {isLoggedIn && <BurgerMenuBtn toggleMenu={toggleMenu} />}
-        {isOpen && <BurgerMenu toggleMenu={toggleMenu} />}
+        {isOpen && (
+          <BurgerMenu
+            handleButtonAndToggleMenu={handleButtonAndToggleMenu}
+            toggleMenu={toggleMenu}
+            isOpen={isOpen}
+          />
+        )}
         {isLoggedIn && showComponent && (
           <TransactionsHistoryNav
             activeButton={activeButton}
-            handleButtonClick={handleButtonClick}
+            handleButtonAndToggleMenu={handleButtonAndToggleMenu}
+            toggleMenu={toggleMenu}
           />
         )}
         {isLoggedIn && showComponent && <UserBarBtn />}

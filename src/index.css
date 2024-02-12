@@ -7,6 +7,8 @@
   --button-color: #0ef387;
   --hover-color: #0ebb69;
   --text-color: #02b15a;
+  --success-color: #097b45;
+  --errors-color: #e74a3b;
   --main-text-color: #fafafa;
   --regular-text-color: rgba(250, 250, 250, 0.4);
   --text-color_50: rgba(250, 250, 250, 0.5);
@@ -26,6 +28,7 @@
   --font-size-mini: 12px;
   --font-size-small: 14px;
   --font-size-smaller: 16px;
+  --font-size-mediumSm: 18px;
   --font-size-medium: 20px;
   --font-size-large: 24px;
   --font-size-modal-title: 28px;
