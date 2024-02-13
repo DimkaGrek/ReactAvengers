@@ -164,7 +164,7 @@ export const TransactionForm = ({
                         field.onChange(date);
                         handleChangeDate(date);
                       }}
-                      fixedHeight
+                      calendarClassName="fixed-height-calendar"
                     />
                   </div>
                 )}
