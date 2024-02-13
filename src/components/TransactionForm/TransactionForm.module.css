@@ -148,6 +148,7 @@
 .datePicker {
   font-family: 'SuisseIntl-Regular', sans-serif;
   width: 100%;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
@@ -207,6 +208,10 @@
   right: 4%;
   top: 68%;
   transform: translate(-50%, -50%);
+}
+
+.iconDate {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
@@ -278,6 +283,10 @@
   letter-spacing: -0.28px;
   line-height: 16px;
   color: var(--background-color);
+}
+
+.submitBtn:disabled {
+  cursor: not-allowed;
 }
 
 @media screen and (min-width: 768px) {

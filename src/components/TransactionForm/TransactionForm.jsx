@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
+import { useModal } from 'hooks';
 import DatePicker from 'react-datepicker';
+import classNames from 'classnames';
+import { yupResolver } from '@hookform/resolvers/yup';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { Icon, Modal } from 'components';
-import s from './TransactionForm.module.css';
-import './DatePicker.css';
-import { useModal } from 'hooks';
+import { CategoriesModal } from 'components/CategoriesModal/CategoriesModal';
 
 import { selectUser } from 'my-redux/User/userSlice';
 import { getFormattedDate, getFormattedTime } from 'helpers';
 import { selectTransactionsError } from 'my-redux/Transaction/transactionSlice';
-import { CategoriesModal } from 'components/CategoriesModal/CategoriesModal';
 import { transactionSchema } from 'schemas/validationSchemas';
-import { yupResolver } from '@hookform/resolvers/yup';
-import classNames from 'classnames';
+import s from './TransactionForm.module.css';
+import './DatePicker.css';
 
 export const TransactionForm = ({
   transaction,
@@ -25,8 +25,9 @@ export const TransactionForm = ({
   const user = useSelector(selectUser);
   const isError = useSelector(selectTransactionsError);
   const { currency } = user;
-
+  const [categoryId, setCategoryId] = useState('');
   const [isOpenModalTransaction, toggleModalTransaction] = useModal();
+
   const {
     register,
     handleSubmit,
@@ -35,30 +36,39 @@ export const TransactionForm = ({
     getValues,
     control,
     formState: { errors },
+    clearErrors,
   } = useForm({
     mode: 'onSubmit',
     resolver: yupResolver(transactionSchema),
   });
 
-  const [categoryId, setCategoryId] = useState('');
-
-  const clearFieldCategory = () => {
+  const clearFieldCategory = useCallback(() => {
     setValue('category', '');
     setCategoryId('');
-  };
+  }, [setValue, setCategoryId]);
+
+  const setDefaultValues = useCallback(() => {
+    if (transactionsType === getValues('type')) return;
+
+    setValue('type', transactionsType);
+    setValue('date', getFormattedDate(new Date()));
+    setValue('time', getFormattedTime());
+    setValue('category', '');
+    setCategoryId('');
+    setValue('sum', '');
+    setValue('comment', '');
+    clearErrors();
+  }, [setValue, setCategoryId, getValues, transactionsType, clearErrors]);
 
   useEffect(() => {
     if (!transaction) {
-      setValue('type', transactionsType);
-      setValue('date', getFormattedDate(new Date()));
-      setValue('time', getFormattedTime());
+      setDefaultValues();
     }
 
     if (transaction) {
       const { type, date, time, category, sum, comment } = transaction;
 
       setCategoryId(category?._id);
-
       setValue('type', type);
       setValue('date', date);
       setValue('time', time);
@@ -66,7 +76,7 @@ export const TransactionForm = ({
       setValue('sum', sum);
       setValue('comment', comment);
     }
-  }, [transaction, setValue, transactionsType]);
+  }, [transaction, setValue, setDefaultValues]);
 
   const handleChangeCategory = item => {
     setValue('category', item.categoryName, { shouldValidate: true });
@@ -81,21 +91,13 @@ export const TransactionForm = ({
 
   const onSubmit = data => {
     data.category = categoryId;
-    console.log(data, 'FORMAAAAAA');
-
     onSubmitForm(data);
 
     if (!isError && !transaction) {
       reset();
-
-      setValue('type', transactionsType);
-      setValue('date', getFormattedDate(new Date()));
-      setValue('time', getFormattedTime());
-      clearFieldCategory();
+      setDefaultValues();
     }
   };
-
-  console.log(errors);
 
   const inputDate = classNames({
     [`${s.datePicker}`]: true,
@@ -121,6 +123,8 @@ export const TransactionForm = ({
     [`${s.comment}`]: true,
     [`${s.errorComment}`]: errors.comment?.message,
   });
+
+  console.log(errors);
 
   return (
     <div>
@@ -201,7 +205,6 @@ export const TransactionForm = ({
               required
               readOnly
               onClick={toggleModalTransaction}
-              // onFocus={toggleModalTransaction}
             />
           </div>
           <div>
@@ -209,7 +212,7 @@ export const TransactionForm = ({
               Sum
               <input
                 className={inputSum}
-                type="number"
+                // type="number"
                 name="sum"
                 placeholder="Enter the sum"
                 {...register('sum')}
@@ -226,7 +229,11 @@ export const TransactionForm = ({
               {...register('comment')}
             />
           </div>
-          <button className={s.submitBtn} type="submit">
+          <button
+            className={s.submitBtn}
+            type="submit"
+            disabled={Object.entries(errors).length}
+          >
             {transaction ? 'Save' : 'Add'}
           </button>
         </form>
