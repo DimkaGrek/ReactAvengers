@@ -1,6 +1,6 @@
 .formContainer {
   width: 100%;
-  height: 150px;
+  height: auto;
   background-color: #171719;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
@@ -83,13 +83,15 @@
 }
 @media only screen and (min-width: 768px) {
   .formContainer {
-    height: 98px;
+    height: auto;
     flex-direction: row;
-    padding: 32px 0 16px 32px;
+    padding: 32px 32px 16px 32px;
   }
   .formBox {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 20px;
   }
   .formInput {
@@ -117,7 +119,7 @@
 @media only screen and (min-width: 1440px) {
   .formContainer {
     height: 90px;
-    padding: 20px 0 16px 40px;
+    padding: 20px 40px 16px 40px;
   }
   .formBox {
     display: flex;

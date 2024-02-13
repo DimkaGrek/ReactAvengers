@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import { fetchCurrentUser } from 'my-redux/User/operations';
 import { TransactionsMessage } from 'components/TransactionsMessage/TransactionsMessage';
 import { useGetTotalTransactionsSum } from 'hooks/getTotalTransactionsSum';
+// import { useParams } from 'react-router-dom';
 
 export const TransactionsList = () => {
   // const { transactionsType } = useParams();
