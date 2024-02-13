@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 export const useIsLoading = () => {
   const dispatch = useDispatch();
@@ -8,9 +9,11 @@ export const useIsLoading = () => {
 
     dispatch(func(data))
       .unwrap()
-      .then(() => {})
-      .catch(error => {
-        console.log(error);
+      .then(() => {
+        toast.success('Operation success');
+      })
+      .catch(() => {
+        toast.error('Something wrong');
       })
       .finally(() => {
         seter(false);

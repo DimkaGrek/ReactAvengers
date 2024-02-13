@@ -4,3 +4,4 @@ export * from './getFormattedTime';
 export * from './takeFirstLetter';
 export * from './takeId';
 export * from './choseLabel';
+export * from './getSevenLetters';

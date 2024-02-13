@@ -51,7 +51,7 @@ export const UserSetsForm = () => {
           />
         </div>
         <p className={s.inputMs}>{errors.name?.message}</p>
-        <button className={s.btnSubmit}>
+        <button className={s.btnSubmit} disabled={isLoading}>
           {isLoading ? 'Loading...' : 'Save'}
         </button>
       </form>

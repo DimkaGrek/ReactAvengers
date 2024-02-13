@@ -6,7 +6,7 @@ import { deleteTransaction } from 'my-redux/Transaction/operations';
 import { useDispatch } from 'react-redux';
 import { Icon } from 'components';
 
-export const TransactionsItem = ({ item }) => {
+export const TransactionsItem = ({ item, handleOpenModal }) => {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -21,17 +21,19 @@ export const TransactionsItem = ({ item }) => {
   }, []);
 
   const dispatch = useDispatch();
-  const currentDate = new Date(item.date);
 
-  const options = {
-    weekday: 'narrow',
-    day: '2-digit',
-    month: '2-digit',
-    year: '2-digit',
+  const convertDate = dateString => {
+    const dateObj = new Date(dateString);
+    const days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+    const dayOfWeek = days[dateObj.getDay()];
+    const day = dateObj.getDate();
+    const month = dateObj.getMonth() + 1;
+    const year = dateObj.getFullYear();
+    const formattedDate = `${dayOfWeek}, ${
+      day[0] === '0' ? day.substring(1) : day
+    }.${month.toString().padStart(2, '0')}.${year}`;
+    return formattedDate;
   };
-  const formattedDate = new Intl.DateTimeFormat('en', options).format(
-    currentDate
-  );
 
   return (
     <ul className={s.tr} key={item._id}>
@@ -39,12 +41,14 @@ export const TransactionsItem = ({ item }) => {
         {Shorter(item.category.categoryName, windowSize)}
       </li>
       <li className={s.td}>{Shorter(item.comment, windowSize)}</li>
-      <li className={s.td}>{ShorterDate(formattedDate, windowSize)}</li>
+      <li className={s.td}>
+        {ShorterDate(convertDate(item.date), windowSize)}
+      </li>
       <li className={s.td}>{item.time}</li>
       <li className={s.td}>{item.sum}/UAH</li>
       <li className={s.td}>
         <div className={s.btnContainer}>
-          <button className={s.btnTable}>
+          <button className={s.btnTable} onClick={() => handleOpenModal(item)}>
             <div className={s.textEdit}>Edit</div>
             <Icon name="edit" className={s.iconEdit} size="16" />
           </button>
@@ -52,8 +56,11 @@ export const TransactionsItem = ({ item }) => {
             className={s.btnTableDel}
             onClick={() => dispatch(deleteTransaction(item._id))}
           >
-            <div className={s.textCont}>Delete</div>
             <Icon name="trash-bin" className={s.iconDelete} size="16" />
+
+            <div className={s.textCont}>
+              <span>Delete</span>
+            </div>
           </button>
         </div>
       </li>
