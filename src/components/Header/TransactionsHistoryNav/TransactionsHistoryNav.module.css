@@ -16,43 +16,46 @@
   height: 40px;
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: -0.02em;
-}
-.mobileNavBtnExp {
-  background: #0c0d0d;
-  color: #fafafa;
-}
-
-.mobileNavBtnInc {
   border: 1px solid rgba(12, 13, 13, 0.4);
-  color: #0c0d0d;
 }
-
 .navBtnActive {
-  width: 125px;
-  height: 43px;
-  background-color: var(--button-color);
+  width: 115px;
+  height: 40px;
+  background-color: black;
   border: 1px solid var(--button-color);
-  font-size: 15px;
+  font-size: 13px;
   color: #fafafa;
   border-radius: 30px;
-  color: var(--background-color);
 }
 
 @media screen and (min-width: 768px) {
-  /* .buttonWrapper {
-    display: none;
-  } */
+  .mobileNavBtn {
+    width: 125px;
+    height: 43px;
+    font-size: 15px;
+  }
+  .navBtnActive {
+    width: 125px;
+    height: 43px;
+    font-size: 15px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .buttonWrapper {
     flex-direction: row;
   }
+  .navBtnActive {
+    background-color: var(--button-color);
+    border: 1px solid var(--button-color);
+    font-size: 15px;
+    color: #fafafa;
+    border-radius: 30px;
+    color: var(--background-color);
+  }
   .mobileNavBtn {
-    width: 125px;
-    height: 43px;
     background-color: transparent;
     border: 1px solid rgba(250, 250, 250, 0.4);
     font-size: 15px;
