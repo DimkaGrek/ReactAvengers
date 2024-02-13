@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 3.5px;
+  gap: 8px;
 }
 .logo {
   width: 27px;
