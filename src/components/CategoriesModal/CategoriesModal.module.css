@@ -28,11 +28,11 @@
 .mainTitle {
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
-  font-size: 24px;
+  font-size: var(--font-size-large); /* 24px */
   letter-spacing: -0.02em;
   color: var(--main-text-color);
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin-left: var(--font-size-medium); /* 20px */
+  margin-bottom: var(--font-size-medium); /* 20px */
 }
 
 @media screen and (min-width: 768px) {
@@ -41,14 +41,12 @@
     margin-left: 40px;
   }
 }
-
 .title {
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--font-size-mini); /* 12px */
   color: rgba(250, 250, 250, 0.4);
   margin-left: 22px;
-
   margin-bottom: 10px;
 }
 
@@ -74,10 +72,9 @@
 .listItem {
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
-  color: #fafafa;
+  color: var(--main-text-color);
   display: flex;
   justify-content: space-between;
-
   padding: 10px 20px;
   margin-bottom: 0;
 }
@@ -85,7 +82,7 @@
 .listItem:hover,
 .listItem:focus {
   padding: 12px 20px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--list-item-hover);
 }
 
 @media screen and (min-width: 768px) {
@@ -118,7 +115,7 @@
 
 .listItem:hover .icon,
 .listItem:focus .icon {
-  stroke: #0ef387;
+  stroke: var(--button-color);
 }
 
 /* ----------------  Button --------------  */
@@ -129,52 +126,53 @@
   font-size: 14px;
   letter-spacing: -0.02em;
   color: #0ef387;
+  --button-color: #0ef387;
 }
 
 @media screen and (min-width: 768px) {
   .labelCategory {
-    font-size: 16px;
+    font-size: var(--font-size-smaller); /* 16px */
   }
 }
 
 input::placeholder {
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: var(--font-size-small); /* 14px */
   line-height: 1.28571;
-  color: rgba(250, 250, 250, 0.4);
+  color: var(--regular-text-color);
 }
 
 @media screen and (min-width: 768px) {
   input::placeholder {
     line-height: 1.5;
-    font-size: 16px;
+    font-size: var(--font-size-smaller); /* 16px */
   }
 }
 
 .inputCategory {
-  border: 1px solid rgba(250, 250, 250, 0.2);
+  border: 1px solid var(--border-field-color);
   border-radius: 12px;
   padding: 12px 140px 12px 14px;
   width: 275px;
   height: 42px;
   margin-top: 8px;
-  background-color: #171719;
+  background-color: var(--box-background-color);
   outline: none;
-  color: #fafafa;
+  color: var(--main-text-color);
 }
 
 @media screen and (min-width: 375px) {
   .inputCategory {
-    border: 1px solid rgba(250, 250, 250, 0.2);
+    border: 1px solid var(--border-field-color);
     border-radius: 12px;
     padding: 12px 160px 12px 14px;
     width: 295px;
     height: 42px;
     margin-top: 8px;
-    background-color: #171719;
+    background-color: var(--box-background-color);
     outline: none;
-    color: #fafafa;
+    color: var(--main-text-color);
   }
 }
 
@@ -188,8 +186,8 @@ input::placeholder {
 
 .inputCategory:focus,
 .inputCategory:hover {
-  border-color: #0ef387;
-  outline-color: #0ef387;
+  border-color: var(--button-color);
+  outline-color: var(--button-color);
 }
 
 .subbmitButton {
@@ -197,13 +195,13 @@ input::placeholder {
   padding: 14px 44px;
   width: 118px;
   height: 42px;
-  background-color: #0ef387;
+  background-color: var(--button-color);
 
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: var(--font-size-small); /* 14px */
   letter-spacing: -0.02em;
-  color: #0c0d0d;
+  color: var(--background-color);
 
   position: absolute;
   top: 8px;
@@ -212,13 +210,13 @@ input::placeholder {
 
 .subbmitButton:focus,
 .subbmitButton:hover {
-  background-color: #0ebb69;
+  background-color: var(--hover-color);
 }
 
 @media screen and (min-width: 768px) {
   .subbmitButton {
     height: 47px;
-    font-size: 16px;
+    font-size: var(--font-size-smaller);
     top: 8px;
     right: 40px;
   }
