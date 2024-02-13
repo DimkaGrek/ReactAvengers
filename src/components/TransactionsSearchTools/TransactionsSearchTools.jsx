@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   changeDate,
   changeFilter,
+  resetFilter,
   selectDate,
   selectFilter,
 } from 'my-redux/Filter/FilterSlice';
@@ -19,8 +20,13 @@ export const TransactionsSearchTools = () => {
   };
 
   const date = useSelector(selectDate);
+  console.log('DDDATE ->>>', date);
   const changeDateValue = e => {
     dispatch(changeDate(format(e, 'yyyy-MM-dd')));
+  };
+
+  const handleResetFilter = () => {
+    dispatch(resetFilter());
   };
 
   return (
@@ -48,6 +54,9 @@ export const TransactionsSearchTools = () => {
           />
           <Icon name="calendar" className={s.iconDate} size="20" />
         </div>
+        <button onClick={handleResetFilter} type="button">
+          Reset
+        </button>
       </form>
     </div>
   );

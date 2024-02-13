@@ -19,16 +19,17 @@ const transactionSlice = createSlice({
   initialState,
   extraReducers: builder =>
     builder
-      .addCase(getTransactions.fulfilled, (state, action) => {
-        console.log('action.payload.getTrans---->>', action.payload);
-        state.transactions = action.payload;
-        if (action.payload.length !== 0) {
-          if (action.payload[0].type === 'expenses') {
-            state.totalTransExpenses = action.payload.reduce((total, item) => {
+      .addCase(getTransactions.fulfilled, (state, { payload }) => {
+        console.log('action.payload.getTrans---->>', payload);
+        const { data, date } = payload;
+        state.transactions = data;
+        if (data.length !== 0 && !date) {
+          if (data[0].type === 'expenses') {
+            state.totalTransExpenses = data.reduce((total, item) => {
               return (total += item.sum);
             }, 0);
           } else {
-            state.totalTransIncomes = action.payload.reduce((total, item) => {
+            state.totalTransIncomes = data.reduce((total, item) => {
               return (total += item.sum);
             }, 0);
           }
