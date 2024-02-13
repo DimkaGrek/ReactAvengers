@@ -14,6 +14,7 @@ import {
 //
 import s from './MainTransactionsPage.module.css';
 import { toast } from 'react-toastify';
+import { fetchCurrentUser } from 'my-redux/User/operations';
 
 const MainTransactionsPage = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const MainTransactionsPage = () => {
     dispatch(addTransaction(transaction))
       .unwrap()
       .then(() => {
+        dispatch(fetchCurrentUser());
         toast.success('Transaction added successfully!');
       })
       .catch(error => {

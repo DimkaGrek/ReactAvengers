@@ -9,6 +9,8 @@ import { logoutUser } from 'my-redux/Auth/operations';
 
 const initialState = {
   transactions: null,
+  totalTransExpenses: null,
+  totalTransIncomes: null,
   error: null,
 };
 
@@ -18,7 +20,17 @@ const transactionSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(getTransactions.fulfilled, (state, action) => {
+        console.log('action.payload.getTrans---->>', action.payload);
         state.transactions = action.payload;
+        if (action.payload[0].type === 'expenses') {
+          state.totalTransExpenses = action.payload.reduce((total, item) => {
+            return (total += item.sum);
+          }, 0);
+        } else {
+          state.totalTransIncomes = action.payload.reduce((total, item) => {
+            return (total += item.sum);
+          }, 0);
+        }
         state.error = null;
       })
       .addCase(addTransaction.fulfilled, (state, action) => {
@@ -72,10 +84,16 @@ const transactionSlice = createSlice({
   selectors: {
     selectTransactions: state => state.transactions,
     selectTransactionsError: state => state.error,
+    selectTotalTransExpenses: state => state.totalTransExpenses,
+    selectTotalTransIncomes: state => state.totalTransIncomes,
   },
 });
 
-export const { selectTransactions, selectTransactionsError } =
-  transactionSlice.selectors;
+export const {
+  selectTransactions,
+  selectTransactionsError,
+  selectTotalTransExpenses,
+  selectTotalTransIncomes,
+} = transactionSlice.selectors;
 
 export const transactionSliceReducer = transactionSlice.reducer;
