@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 //
 import { Chart } from 'components';
@@ -8,7 +8,7 @@ import {
   selectTransactionsError,
 } from 'my-redux/Transaction/transactionSlice';
 import { selectUser } from 'my-redux/User/userSlice';
-
+import { fetchCurrentUser } from 'my-redux/User/operations';
 //
 import warningImg from '../../assets/images/no_data_abstract.png';
 import errorImg from '../../assets/images/server-error.png';
@@ -17,6 +17,7 @@ import s from './TransactionsChart.module.css';
 
 export const TransactionsChart = ({ transactionsType }) => {
   const [categoriesData, setCategoriesData] = useState(null);
+  const dispatch = useDispatch();
 
   const { totalIncomes, totalExpenses } = useSelector(selectUser);
   const error = useSelector(selectTransactionsError);
@@ -33,8 +34,14 @@ export const TransactionsChart = ({ transactionsType }) => {
 
   useEffect(() => {
     if (data === null) return;
-    setCategoriesData(countCategories(data, totalRef.current));
-  }, [data]);
+
+    dispatch(fetchCurrentUser())
+      .unwrap()
+      .then(() => {
+        setCategoriesData(countCategories(data, totalRef.current));
+      })
+      .catch();
+  }, [data, dispatch]);
 
   if (data === null || categoriesData === null) return;
 
