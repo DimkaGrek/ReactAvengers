@@ -44,6 +44,5 @@ export function countCategories(data, total) {
     );
   }
 
-  // sortedCategories.map((item, index) => (item.color = colors[index]));
   return getColors(sortedCategories);
 }
