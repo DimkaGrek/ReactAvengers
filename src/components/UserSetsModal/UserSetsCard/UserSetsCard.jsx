@@ -38,7 +38,6 @@ export const UserSetsCard = () => {
     const file = e.target.files[0];
     if (!file) return;
     const image = await resizeFile(file);
-    console.log(file);
     customDispatch(changeUserAvatar, image, setIsLoading);
   };
 
