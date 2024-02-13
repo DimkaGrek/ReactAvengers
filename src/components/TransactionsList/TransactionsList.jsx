@@ -60,7 +60,7 @@ export const TransactionsList = () => {
   };
 
   return (
-    <div className={`${s.containerTable} scroll scrollB`}>
+    <div className={`${s.containerTable} scroll scrollB `}>
       <div className={s.listTable}>
         <div className={s.thead}>
           <ul className={s.tr} key="111111">

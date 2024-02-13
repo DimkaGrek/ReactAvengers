@@ -132,8 +132,16 @@ img {
 /* For Modal EditCategories, HistoryTransactions */
 .scrollB::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 .scrollB::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.scrollС::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.scrollC::-webkit-scrollbar-track {
   background-color: transparent;
 }
 /* Example: <ul className={`${s.list} scroll scrollA`}> */
