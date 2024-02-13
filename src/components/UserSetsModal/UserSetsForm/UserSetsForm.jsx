@@ -12,7 +12,7 @@ import { updateUserShema } from 'schemas/updateUserShema';
 import s from './UserSetsForm.module.css';
 import classNames from 'classnames';
 
-export const UserSetsForm = () => {
+export const UserSetsForm = ({ toggleModal }) => {
   const [isLoading, setIsLoading] = useState(false);
   const name = useSelector(selectName);
   const [currency, setCurrency] = useState(useSelector(selectCurrency));
@@ -27,6 +27,7 @@ export const UserSetsForm = () => {
 
   const onSubmit = data => {
     customDispatch(changeUserInfo, data, setIsLoading);
+    toggleModal();
   };
 
   const totalInputClass = classNames({
