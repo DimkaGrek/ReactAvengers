@@ -72,7 +72,7 @@ const UserPanel = ({
       </button>
       {isOpenModal && (
         <Modal pd={60} toggleModal={toggleModal}>
-          <UserSetsModal />
+          <UserSetsModal toggleModal={toggleModal} />
         </Modal>
       )}
     </div>
