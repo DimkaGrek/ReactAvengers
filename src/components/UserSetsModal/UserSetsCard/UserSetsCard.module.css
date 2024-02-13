@@ -60,18 +60,18 @@
   color: var(--main-text-color);
 }
 
-.button:disabled {
-  color: var(--text-color_50);
-  cursor: default;
-}
-
 @media screen and (min-width: 1440px) {
   .button:hover,
   .button:focus {
     color: var(--text-color_50);
   }
 }
+.button:disabled {
+  background-color: var(--text-color_50);
+  color: var(--main-text-color);
 
+  cursor: default;
+}
 .input {
   position: absolute;
   width: 1px;
