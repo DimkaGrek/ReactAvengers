@@ -90,11 +90,16 @@
   letter-spacing: -0.02em;
   color: var(--background-color);
 }
+
 @media screen and (min-width: 1440px) {
   .btnSubmit:hover,
   .btnSubmit:focus {
     background-color: var(--hover-color);
   }
+}
+.btnSubmit:disabled {
+  background-color: var(--text-color_50);
+  cursor: default;
 }
 @media screen and (min-width: 768px) {
   .btnSubmit {

@@ -36,6 +36,7 @@ export const UserSetsCard = () => {
 
   const handleUploadAvatar = async e => {
     const file = e.target.files[0];
+    if (!file) return;
     const image = await resizeFile(file);
     customDispatch(changeUserAvatar, image, setIsLoading);
   };
@@ -46,6 +47,7 @@ export const UserSetsCard = () => {
 
   const handleDeletePhoto = () => {
     const id = takeId(avatarUrl);
+
     customDispatch(deleteUserAvatar, id, setIsLoading);
   };
 
@@ -78,10 +80,18 @@ export const UserSetsCard = () => {
       </div>
 
       <div className={s.btnWrapper}>
-        <button className={s.button} onClick={handleRedirectClick}>
+        <button
+          className={s.button}
+          onClick={handleRedirectClick}
+          disabled={isLoading}
+        >
           Upload new photo
         </button>
-        <button className={s.button} onClick={handleDeletePhoto}>
+        <button
+          className={s.button}
+          onClick={handleDeletePhoto}
+          disabled={noAvatar || isLoading}
+        >
           Remove
         </button>
       </div>

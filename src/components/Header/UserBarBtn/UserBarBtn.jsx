@@ -4,8 +4,14 @@ import { Icon } from 'components/Icon/Icon';
 import UserPanel from '../UserPanel/UserPanel';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'my-redux/User/userSlice';
+import { getSevenLetters } from 'helpers';
 
-const UserBarBtn = ({ closeMenu }) => {
+const UserBarBtn = ({
+  toggleProfileModal,
+  toggleLogOutModal,
+  closeMenu,
+  isMenuOpen,
+}) => {
   const { name } = useSelector(selectUser);
   const { avatarUrl } = useSelector(selectUser);
 
@@ -38,7 +44,9 @@ const UserBarBtn = ({ closeMenu }) => {
           )}
         </div>
 
-        <p className={style.userName}>{name ? name : 'Your Name'}</p>
+        <p className={style.userName}>
+          {name ? getSevenLetters(name) : 'Your Name'}
+        </p>
         {!isOpen ? (
           <Icon name="chevron-down" className={style.chevrone} />
         ) : (
@@ -51,6 +59,9 @@ const UserBarBtn = ({ closeMenu }) => {
           userBtnRef={userBtnRef}
           closeUserBar={closeUserBar}
           closeMenu={closeMenu}
+          isMenuOpen={isMenuOpen}
+          toggleProfileModal={toggleProfileModal}
+          toggleLogOutModal={toggleLogOutModal}
         />
       )}
     </div>

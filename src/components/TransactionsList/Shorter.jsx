@@ -1,7 +1,7 @@
 export const Shorter = (str, windowSize) => {
   let word = 7;
   if (windowSize < 1440) {
-    word = 3;
+    word = 6;
   }
 
   if (str.length > word) {
@@ -15,6 +15,6 @@ export const ShorterDate = (str, windowSize) => {
     return `${str.slice(0, 5)}...`;
   }
   if (windowSize >= 1440) {
-    return `${str.slice(0, 13)}`;
+    return `${str.slice(0, 14)}`;
   }
 };

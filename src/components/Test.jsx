@@ -141,7 +141,7 @@ export const Test = () => {
         </button>
         {isOpen && (
           <Modal toggleModal={setisOpen}>
-            <CategoriesModal type="expenses" />
+            <CategoriesModal type="incomes" />
           </Modal>
         )}
       </div>

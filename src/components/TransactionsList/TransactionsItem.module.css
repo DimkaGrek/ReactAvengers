@@ -16,9 +16,9 @@
   stroke: var(--background-color);
   fill: none;
   position: absolute;
-  left: 45%;
-  top: 28%;
-  transform: translate(-40%, 10%);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .btnTableDel {
   position: relative;
@@ -40,9 +40,9 @@
   stroke: var(--main-text-color);
   fill: none;
   position: absolute;
-  left: 45%;
-  top: 28%;
-  transform: translate(-40%, 10%);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .textEdit {
   display: none;
@@ -60,21 +60,61 @@
 }
 .td {
   letter-spacing: 1px;
-  padding-left: 40px;
-  width: 15%;
   display: flex;
   align-items: center;
 }
 
-.td:last-child {
-  width: 31%;
+.td:nth-child(1) {
+  width: 20%;
+  padding-left: 20px;
+}
+.td:nth-child(2) {
+  width: 15%;
+}
+.td:nth-child(3) {
+  width: 15%;
+}
+.td:nth-child(4) {
+  width: 12%;
+}
+.td:nth-child(5) {
+  width: 18%;
+}
+.td:nth-child(6) {
+  width: 20%;
 }
 
 @media only screen and (min-width: 768px) {
+  .td:nth-child(1) {
+    width: 20%;
+    padding-left: 32px;
+  }
+  .td:nth-child(2) {
+    width: 15%;
+  }
+  .td:nth-child(3) {
+    width: 15%;
+  }
+  .td:nth-child(4) {
+    width: 12%;
+  }
+  .td:nth-child(5) {
+    width: 18%;
+  }
+  .td:nth-child(6) {
+    width: 20%;
+  }
+
+  /* .td:last-child {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 16px;
+  } */
   .btnContainer {
     display: flex;
-    gap: 10px;
-    margin-left: 24px;
+    gap: 8px;
+    margin-left: auto;
+    margin-right: 16px;
   }
   .btnTable {
     position: relative;
@@ -93,9 +133,9 @@
     stroke: var(--background-color);
     fill: none;
     position: absolute;
-    left: 45%;
-    top: 28%;
-    transform: translate(-40%, 10%);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
   .btnTableDel {
     position: relative;
@@ -115,21 +155,48 @@
   .textCont {
     display: none;
   }
-  .iconDelete {
+  /* .iconDelete {
     stroke: var(--main-text-color);
     fill: none;
     position: absolute;
     left: 45%;
     top: 28%;
     transform: translate(-40%, 10%);
+  } */
+  .iconDelete {
+    stroke: var(--main-text-color);
+    fill: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 @media only screen and (min-width: 1440px) {
+  .td:nth-child(1) {
+    width: 15%;
+    padding-left: 40px;
+  }
+  .td:nth-child(2) {
+    width: 15%;
+  }
+  .td:nth-child(3) {
+    width: 15%;
+  }
+  .td:nth-child(4) {
+    width: 15%;
+  }
+  .td:nth-child(5) {
+    width: 15%;
+  }
+  .td:nth-child(6) {
+    width: 25%;
+  }
   .btnContainer {
     margin-left: 0;
   }
   .btnTable {
-    padding: 14px 32px;
+    padding: 14px 11px 14px 32px;
     width: 118px;
     height: 47px;
     font-weight: 400;
@@ -137,7 +204,7 @@
     color: var(--background-color);
   }
   .iconEdit {
-    left: 23%;
+    left: 31%;
     top: 28%;
     transform: translate(-40%, 10%);
   }
@@ -146,7 +213,7 @@
   }
   .btnTableDel {
     border-radius: 40px;
-    padding: 14px 30px;
+    padding: 14px 8px 14px 30px;
     width: 133px;
     height: 47px;
     font-weight: 400;
@@ -159,7 +226,15 @@
     display: block;
   }
   .iconDelete {
-    left: 21%;
-    top: 26%;
+    left: 26%;
+    top: 46%;
   }
+
+  /* .iconDelete {
+  stroke: var(--main-text-color);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+} */
 }

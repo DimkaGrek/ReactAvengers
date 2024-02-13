@@ -30,3 +30,22 @@ export const signInSchema = yup.object().shape({
     .min(8, 'Min length must be more than 8 chars')
     .max(64, 'Max length must be less than 64 chars'),
 });
+
+export const transactionSchema = yup.object({
+  date: yup.string().required('Date is required'),
+  time: yup.string().required('Time is required'),
+  category: yup.string().required('Category is required'),
+  sum: yup
+    .string()
+    .matches(/^[1-9][0-9]*$/, 'Sum must be greater than 0')
+    .test('max', 'Sum must be less than or equal to 1000000', value => {
+      if (!value) return true;
+      const parsedValue = parseInt(value, 10);
+      return !isNaN(parsedValue) && parsedValue <= 1000000;
+    })
+    .required('Sum is required'),
+  comment: yup
+    .string()
+    .required('Comment is required')
+    .min(3, 'Comment length must be at least 3 characters long'),
+});

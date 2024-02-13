@@ -19,25 +19,33 @@
   }
 }
 
-.transacionForm {
+.transactionForm {
   display: flex;
   flex-direction: column;
   gap: 20px;
   color: var(--main-text-color);
-  width: 295px;
+  width: 100%;
   font-size: 14px;
   line-height: 18px;
 }
 
+@media screen and (min-width: 375px) {
+  .transactionForm {
+    width: 295px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
 @media screen and (min-width: 768px) {
-  .transacionForm {
+  .transactionForm {
     width: 100%;
     font-size: 16px;
     line-height: 24px;
   }
 }
 
-.transacionForm input {
+.transactionForm input {
   border: 1px solid var(--border-field-color);
   border-radius: 12px;
   padding: 11px 14px;
@@ -48,28 +56,28 @@
 }
 
 @media screen and (min-width: 768px) {
-  .transacionForm input {
+  .transactionForm input {
     padding: 11px 18px;
     font-size: 16px;
     line-height: 24px;
   }
 }
 
-.transacionForm label {
+.transactionForm label {
   font-size: 14px;
   line-height: 16px;
   letter-spacing: -0.28px;
 }
 
 @media screen and (min-width: 768px) {
-  .transacionForm label {
+  .transactionForm label {
     font-size: 16px;
     line-height: 19px;
     letter-spacing: -0.32px;
   }
 }
 
-.transacionForm input::placeholder,
+.transactionForm input::placeholder,
 .comment::placeholder {
   color: var(--regular-text-color);
 }
@@ -146,7 +154,9 @@
 }
 
 .datePicker {
+  font-family: 'SuisseIntl-Regular', sans-serif;
   width: 100%;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
@@ -163,16 +173,25 @@
   position: absolute;
 }
 
-.timeInput {
+.timeField {
+  font-size: 14px;
   height: 42px;
+  font-family: 'SuisseIntl-Regular', sans-serif;
 }
 
-.categoryInput {
+@media screen and (min-width: 768px) {
+  .datePicker {
+    font-size: 16px;
+    height: 48px;
+  }
+}
+
+.categoryField {
   cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
-  .timeInput {
+  .timeField {
     height: 48px;
   }
 }
@@ -202,9 +221,19 @@
   stroke: var(--main-text-color);
   fill: none;
   position: absolute;
-  right: 4%;
-  top: 68%;
+  right: 5%;
+  top: 66%;
   transform: translate(-50%, -50%);
+}
+
+.iconDate {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 375px) {
+  .iconDate {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -212,6 +241,9 @@
   .iconTime {
     width: 20px;
     height: 20px;
+    right: 4%;
+    top: 68%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -219,18 +251,18 @@
   position: relative;
 }
 
-.transacionForm input[type='time']::-webkit-calendar-picker-indicator {
+.transactionForm input[type='time']::-webkit-calendar-picker-indicator {
   display: none;
 }
 
 /* hide select element for number input */
-.transacionForm input[type='number']::-webkit-inner-spin-button,
-.transacionForm input[type='number']::-webkit-outer-spin-button {
+.transactionForm input[type='number']::-webkit-inner-spin-button,
+.transactionForm input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.currencyInput:not(:placeholder-shown) + .currency {
+.sumInput:not(:placeholder-shown) + .currency {
   color: white;
 }
 
@@ -244,7 +276,7 @@
   color: var(--regular-text-color);
 }
 
-.comment {
+.commentField {
   resize: none;
   background-color: transparent;
   padding: 12px 14px;
@@ -259,7 +291,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .comment {
+  .commentField {
     height: 97px;
     padding: 12px 14px;
     font-size: 16px;
@@ -278,6 +310,10 @@
   color: var(--background-color);
 }
 
+.submitBtn:disabled {
+  cursor: not-allowed;
+}
+
 @media screen and (min-width: 768px) {
   .submitBtn {
     padding: 14px 44px;
@@ -291,14 +327,39 @@
   background-color: var(--hover-color);
 }
 
-.transacionForm input:hover,
-.transacionForm input:focus,
-.transacionForm textarea:hover,
-.transacionForm textarea:focus {
+.transactionForm input:hover,
+.transactionForm input:focus,
+.transactionForm textarea:hover,
+.transactionForm textarea:focus {
   border-color: var(--button-color);
 }
 
-.transacionForm input:focus,
-.transacionForm textarea:focus {
+.transactionForm input:focus,
+.transactionForm textarea:focus {
   outline: none;
+}
+
+.transactionForm .errorField,
+.transactionForm .errorField:hover,
+.transactionForm .errorField:focus {
+  border-color: var(--errors-color);
+}
+
+.fieldWrapper {
+  position: relative;
+}
+
+.messageError {
+  font-weight: 400;
+  font-size: 10px;
+  padding: 4px 0 0 18px;
+
+  left: 0%;
+  top: 94%;
+  position: absolute;
+  color: var(--errors-color);
+}
+
+.categoryField + .messageError {
+  padding-top: 2px;
 }

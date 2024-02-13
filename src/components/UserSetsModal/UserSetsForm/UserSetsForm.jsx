@@ -12,7 +12,7 @@ import { updateUserShema } from 'schemas/updateUserShema';
 import s from './UserSetsForm.module.css';
 import classNames from 'classnames';
 
-export const UserSetsForm = () => {
+export const UserSetsForm = ({ toggleModal }) => {
   const [isLoading, setIsLoading] = useState(false);
   const name = useSelector(selectName);
   const [currency, setCurrency] = useState(useSelector(selectCurrency));
@@ -22,11 +22,12 @@ export const UserSetsForm = () => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(updateUserShema) });
+  } = useForm({ mode: 'onChange', resolver: yupResolver(updateUserShema) });
   const customDispatch = useIsLoading();
 
   const onSubmit = data => {
     customDispatch(changeUserInfo, data, setIsLoading);
+    toggleModal();
   };
 
   const totalInputClass = classNames({
@@ -51,7 +52,7 @@ export const UserSetsForm = () => {
           />
         </div>
         <p className={s.inputMs}>{errors.name?.message}</p>
-        <button className={s.btnSubmit}>
+        <button className={s.btnSubmit} disabled={isLoading}>
           {isLoading ? 'Loading...' : 'Save'}
         </button>
       </form>
