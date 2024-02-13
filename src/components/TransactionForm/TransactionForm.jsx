@@ -16,6 +16,7 @@ import { selectTransactionsError } from 'my-redux/Transaction/transactionSlice';
 import { transactionSchema } from 'schemas/validationSchemas';
 import s from './TransactionForm.module.css';
 import './DatePicker.css';
+import { useNavigate } from 'react-router-dom';
 
 export const TransactionForm = ({
   transaction,
@@ -41,15 +42,18 @@ export const TransactionForm = ({
     mode: 'onChange',
     resolver: yupResolver(transactionSchema),
   });
+  const navigate = useNavigate();
 
-  const clearFieldCategory = useCallback(() => {
-    setValue('category', '');
-    setCategoryId('');
-  }, [setValue, setCategoryId]);
+  const clearFieldCategory = useCallback(
+    type => {
+      setValue('category', '');
+      setCategoryId('');
+      navigate(`/transactions/${type}`);
+    },
+    [setValue, setCategoryId, navigate]
+  );
 
   const setDefaultValues = useCallback(() => {
-    if (transactionsType === getValues('type')) return;
-
     setValue('type', transactionsType);
     setValue('date', getFormattedDate(new Date()));
     setValue('time', getFormattedTime());
@@ -58,7 +62,7 @@ export const TransactionForm = ({
     setValue('sum', '');
     setValue('comment', '');
     clearErrors();
-  }, [setValue, setCategoryId, getValues, transactionsType, clearErrors]);
+  }, [setValue, setCategoryId, transactionsType, clearErrors]);
 
   useEffect(() => {
     if (!transaction) {
@@ -127,7 +131,7 @@ export const TransactionForm = ({
                 value="expenses"
                 {...register('type')}
                 disabled={transaction?.type === 'incomes'}
-                onChange={clearFieldCategory}
+                onChange={() => clearFieldCategory('expenses')}
               />
               <span className={s.customRadioBtn}></span>
               Expense
@@ -140,7 +144,7 @@ export const TransactionForm = ({
                 value="incomes"
                 {...register('type')}
                 disabled={transaction?.type === 'expenses'}
-                onChange={clearFieldCategory}
+                onChange={() => clearFieldCategory('incomes')}
               />
               <span className={s.customRadioBtn}></span>
               Income
