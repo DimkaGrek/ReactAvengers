@@ -40,6 +40,7 @@
   stroke-width: 1.3;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transition: var(--transition) var(--transition-delay);
 }
 .logOutIcon {
   fill: none;
@@ -49,12 +50,14 @@
   stroke-width: 1.3;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transition: var(--transition) var(--transition-delay);
 }
 .userPanelLinkText {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 14px;
   color: rgba(250, 250, 250, 0.5);
+  transition: var(--transition) var(--transition-delay);
 }
 
 @media screen and (min-width: 1440px) {
