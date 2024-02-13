@@ -1,11 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TransactionsItem } from './TransactionsItem';
 import s from './TransactionsList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDate, selectFilter } from 'my-redux/Filter/FilterSlice';
-import { getTransactions } from 'my-redux/Transaction/operations';
+import {
+  editTransaction,
+  getTransactions,
+} from 'my-redux/Transaction/operations';
 import { useParams } from 'react-router-dom';
 import { selectTransactions } from 'my-redux/Transaction/transactionSlice';
+import { useModal } from 'hooks';
+import { Modal, TransactionForm } from 'components';
+import { toast } from 'react-toastify';
 
 export const TransactionsList = () => {
   const { transactionsType } = useParams();
@@ -13,9 +19,23 @@ export const TransactionsList = () => {
   const date = useSelector(selectDate);
   const transactions = useSelector(selectTransactions);
 
+  const onSubmitForm = transaction => {
+    dispatch(editTransaction(transaction))
+      .unwrap()
+      .then(() => {
+        toast.success('Transaction edited successfully!');
+        toggleEditTransaction();
+      })
+      .catch(error => {
+        toast.error('Something went wrong!');
+      });
+  };
+
   useEffect(() => {
     dispatch(getTransactions({ type: transactionsType, date }));
   }, [transactionsType, date, dispatch]);
+
+  const [isOpenEditTransaction, toggleEditTransaction] = useModal();
 
   const filter = useSelector(selectFilter);
   const getFilterValue = () => {
@@ -32,6 +52,13 @@ export const TransactionsList = () => {
   };
   const filterItems = getFilterValue();
 
+  const [currentItem, setCurrentItem] = useState({});
+
+  const handleOpenModal = item => {
+    setCurrentItem(item);
+    toggleEditTransaction();
+  };
+
   return (
     <div className={`${s.containerTable} scroll scrollB`}>
       <div className={s.listTable}>
@@ -47,10 +74,22 @@ export const TransactionsList = () => {
         </div>
         <div className={`${s.tbody} scroll scrollB`}>
           {filterItems.map(item => (
-            <TransactionsItem key={item._id} item={item} />
+            <TransactionsItem
+              key={item._id}
+              item={item}
+              handleOpenModal={handleOpenModal}
+            />
           ))}
         </div>
       </div>
+      {isOpenEditTransaction && (
+        <Modal toggleModal={toggleEditTransaction}>
+          <TransactionForm
+            transaction={currentItem}
+            onSubmitForm={onSubmitForm}
+          />
+        </Modal>
+      )}
     </div>
   );
 };

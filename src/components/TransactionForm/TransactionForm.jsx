@@ -95,6 +95,11 @@ export const TransactionForm = ({
 
   const onSubmit = data => {
     data.category = categoryId;
+
+    if (transaction) {
+      data._id = transaction._id;
+    }
+
     onSubmitForm(data);
 
     if (!isError && !transaction) {
@@ -242,7 +247,6 @@ export const TransactionForm = ({
           <CategoriesModal
             transportCategory={handleChangeCategory}
             type={getValues('type')}
-            anotherModal={true}
           />
         </Modal>
       )}
