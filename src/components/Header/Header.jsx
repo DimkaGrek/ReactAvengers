@@ -88,8 +88,8 @@ const Header = () => {
         </Modal>
       )}
       {isOpenLogOutModal && (
-        <Modal pd={60} toggleModal={toggleLogOutModal}>
-          <LogOut />
+        <Modal pd={80} toggleModal={toggleLogOutModal}>
+          <LogOut toggleLogOutModal={toggleLogOutModal} />
         </Modal>
       )}
     </header>
