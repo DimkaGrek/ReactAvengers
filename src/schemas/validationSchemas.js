@@ -38,6 +38,11 @@ export const transactionSchema = yup.object({
   sum: yup
     .string()
     .matches(/^[1-9][0-9]*$/, 'Sum must be greater than 0')
+    .test('max', 'Sum must be less than or equal to 1000000', value => {
+      if (!value) return true;
+      const parsedValue = parseInt(value, 10);
+      return !isNaN(parsedValue) && parsedValue <= 1000000;
+    })
     .required('Sum is required'),
   comment: yup
     .string()
