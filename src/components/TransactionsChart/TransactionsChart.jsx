@@ -16,10 +16,8 @@ import errorImg from '../../assets/images/server-error.png';
 import s from './TransactionsChart.module.css';
 
 export const TransactionsChart = ({ transactionsType }) => {
-  const [categories, setCategories] = useState(null);
+  const [categoriesData, setCategoriesData] = useState(null);
   const dispatch = useDispatch();
-
-  const categoriesData = useMemo(() => categories, [categories]);
 
   const { totalIncomes, totalExpenses } = useSelector(selectUser);
   const error = useSelector(selectTransactionsError);
@@ -40,7 +38,7 @@ export const TransactionsChart = ({ transactionsType }) => {
     dispatch(fetchCurrentUser())
       .unwrap()
       .then(() => {
-        setCategories(countCategories(data, totalRef.current));
+        setCategoriesData(countCategories(data, totalRef.current));
       });
   }, [data, dispatch]);
 
@@ -61,7 +59,7 @@ export const TransactionsChart = ({ transactionsType }) => {
       <h2 className={s.warningTitle}>
         You don't have any {transactionsType.toLowerCase()} in this month.
       </h2>
-      <img className={s.imgNoData} src={warningImg} alt="No data" />
+      <img className={s.imgNoTransactions} src={warningImg} alt="No data" />
     </div>
   ) : (
     <div className={s.chartContainer}>

@@ -141,3 +141,17 @@
     width: 440px;
   }
 }
+.imgNoTransactions {
+  position: absolute;
+  left: 50%;
+  bottom: 15px;
+  transform: translateX(-50%);
+  width: 250px;
+  border-radius: 20px;
+}
+@media only screen and (min-width: 768px) {
+  .imgNoTransactions {
+    bottom: 25px;
+    width: 400px;
+  }
+}
