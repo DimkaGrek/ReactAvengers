@@ -6,7 +6,7 @@ import { deleteTransaction } from 'my-redux/Transaction/operations';
 import { useDispatch } from 'react-redux';
 import { Icon } from 'components';
 
-export const TransactionsItem = ({ item }) => {
+export const TransactionsItem = ({ item, handleOpenModal }) => {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export const TransactionsItem = ({ item }) => {
       <li className={s.td}>{item.sum}/UAH</li>
       <li className={s.td}>
         <div className={s.btnContainer}>
-          <button className={s.btnTable}>
+          <button className={s.btnTable} onClick={() => handleOpenModal(item)}>
             <div className={s.textEdit}>Edit</div>
             <Icon name="edit" className={s.iconEdit} size="16" />
           </button>
