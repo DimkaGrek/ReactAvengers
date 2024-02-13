@@ -212,7 +212,7 @@ export const TransactionForm = ({
               Sum
               <input
                 className={inputSum}
-                // type="number"
+                type="text"
                 name="sum"
                 placeholder="Enter the sum"
                 {...register('sum')}
