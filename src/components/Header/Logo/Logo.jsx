@@ -10,7 +10,9 @@ const Logo = ({ resetStateActiveButton }) => {
       to={'/'}
       className={style.logoWrapper}
     >
-      <Icon className={style.logo} />
+      <div className={style.logoIconWrapper}>
+        <Icon className={style.logo} />
+      </div>
       <p className={style.logoText}>ExpenseTracker</p>
     </Link>
   );
