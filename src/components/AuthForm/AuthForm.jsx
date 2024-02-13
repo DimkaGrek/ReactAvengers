@@ -101,71 +101,73 @@ const AuthForm = ({ signUp }) => {
               : 'Welcome back to effortless expense tracking! Your financial dashboard awaits.'}
           </p>
         </div>
-        <div className={s.container}>
-          <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
-            {signUp && (
+        <div className={s.containerForm}>
+          <div className={s.container}>
+            <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
+              {signUp && (
+                <div className={s.containerIcon}>
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder="Name"
+                    className={inputClass('name')}
+                    {...register('name')}
+                  />
+                  {!errors.name?.message && dirtyFields.name && (
+                    <Icon name="success" size="16" className={s.successIcon} />
+                  )}
+                  {errors.name?.message && dirtyFields.name && (
+                    <Icon name="error" size="16" className={s.errorIcon} />
+                  )}
+                  {renderMessage('name')}
+                </div>
+              )}
+
               <div className={s.containerIcon}>
                 <input
-                  name="name"
+                  name="email"
                   type="text"
-                  placeholder="Name"
-                  className={inputClass('name')}
-                  {...register('name')}
+                  placeholder="Email"
+                  className={inputClass('email')}
+                  {...register('email')}
                 />
-                {!errors.name?.message && dirtyFields.name && (
+                {!errors.email?.message && dirtyFields.email && (
                   <Icon name="success" size="16" className={s.successIcon} />
                 )}
-                {errors.name?.message && dirtyFields.name && (
+                {errors.email?.message && dirtyFields.email && (
                   <Icon name="error" size="16" className={s.errorIcon} />
                 )}
-                {renderMessage('name')}
+                {renderMessage('email')}
               </div>
-            )}
-
-            <div className={s.containerIcon}>
-              <input
-                name="email"
-                type="text"
-                placeholder="Email"
-                className={inputClass('email')}
-                {...register('email')}
-              />
-              {!errors.email?.message && dirtyFields.email && (
-                <Icon name="success" size="16" className={s.successIcon} />
-              )}
-              {errors.email?.message && dirtyFields.email && (
-                <Icon name="error" size="16" className={s.errorIcon} />
-              )}
-              {renderMessage('email')}
-            </div>
-            <div>
-              <div className={s.containerIcon}>
-                <input
-                  name="password"
-                  type={showPass ? 'text' : 'password'}
-                  placeholder="Password"
-                  className={inputClass('password')}
-                  {...register('password')}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPass(prev => !prev)}
-                >
-                  {showPass ? (
-                    <Icon name="eye" className={s.icon} size="16" />
-                  ) : (
-                    <Icon name="eye-off" className={s.icon} size="16" />
-                  )}
+              <div>
+                <div className={s.containerIcon}>
+                  <input
+                    name="password"
+                    type={showPass ? 'text' : 'password'}
+                    placeholder="Password"
+                    className={inputClass('password')}
+                    {...register('password')}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPass(prev => !prev)}
+                  >
+                    {showPass ? (
+                      <Icon name="eye" className={s.icon} size="16" />
+                    ) : (
+                      <Icon name="eye-off" className={s.icon} size="16" />
+                    )}
+                  </button>
+                  {renderMessage('password')}
+                </div>
+              </div>
+              <div className={s.containerButton}>
+                <button type="submit" className={s.button}>
+                  {signUp ? 'Sign Up' : 'Sign In'}
                 </button>
-                {renderMessage('password')}
               </div>
-            </div>
-            <div className={s.containerButton}>
-              <button type="submit" className={s.button}>
-                {signUp ? 'Sign Up' : 'Sign In'}
-              </button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
         <div className={s.containerLink}>
           <NavLink className={s.link} to={signUp ? '/login' : '/register'}>
