@@ -23,5 +23,6 @@ const filterValue = createSlice({
 
 export const filterValueReducer = filterValue.reducer;
 export const { changeFilter, changeDate, resetFilter } = filterValue.actions;
+
 export const selectFilter = state => state.filter.filter;
 export const selectDate = state => state.filter.date;

@@ -9,10 +9,10 @@ import {
   selectDate,
   selectFilter,
 } from 'my-redux/Filter/FilterSlice';
-import { Icon } from 'components';
+import { Icon, UniversalButton } from 'components';
 import DatePicker from 'react-datepicker';
 
-export const TransactionsSearchTools = () => {
+export const TransactionsSearchTools = ({ handleOpenModal }) => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
   const changeFilterValue = e => {
@@ -54,9 +54,8 @@ export const TransactionsSearchTools = () => {
           />
           <Icon name="calendar" className={s.iconDate} size="20" />
         </div>
-        <button onClick={handleResetFilter} type="button">
-          Reset
-        </button>
+        <UniversalButton action={handleResetFilter} type="reset" />
+        <UniversalButton className={s.addBtn} action={handleOpenModal} />
       </form>
     </div>
   );

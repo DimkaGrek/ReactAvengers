@@ -2,23 +2,43 @@ import { TransactionsList } from 'components/TransactionsList/TransactionsList';
 import { TransactionsSearchTools } from 'components/TransactionsSearchTools/TransactionsSearchTools';
 import React, { useEffect, useRef } from 'react';
 import s from './TransactionsHistoryPage.module.css';
-import { TransactionsTotalAmount } from 'components';
+import { Modal, TransactionForm, TransactionsTotalAmount } from 'components';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectTotalTransExpenses,
   selectTotalTransIncomes,
-  selectTransactions,
 } from 'my-redux/Transaction/transactionSlice';
-import { TransactionsMessage } from 'components/TransactionsMessage/TransactionsMessage';
-import { getTransactions } from 'my-redux/Transaction/operations';
+import {
+  addTransaction,
+  getTransactions,
+} from 'my-redux/Transaction/operations';
 import { selectDate } from 'my-redux/Filter/FilterSlice';
 import { useGetTotalTransactionsSum } from 'hooks/getTotalTransactionsSum';
+import { useModal } from 'hooks';
+import { fetchCurrentUser } from 'my-redux/User/operations';
+import { toast } from 'react-toastify';
 
 const TransactionsHistoryPage = () => {
-  const transactions = useSelector(selectTransactions);
   const totalExpenses = useSelector(selectTotalTransExpenses);
   const totalIncomes = useSelector(selectTotalTransIncomes);
+
+  const getTotalSumTransactionClick = useGetTotalTransactionsSum();
+
+  const onSubmitForm = transaction => {
+    dispatch(addTransaction(transaction))
+      .unwrap()
+      .then(() => {
+        dispatch(fetchCurrentUser());
+        getTotalSumTransactionClick();
+        toggleIsAddModal();
+        toast.success('Transaction added successfully!');
+      })
+      .catch(error => {
+        console.log(error);
+        toast.error('Something went wrong!');
+      });
+  };
 
   const dispatch = useDispatch();
   const filterDate = useSelector(selectDate);
@@ -32,6 +52,7 @@ const TransactionsHistoryPage = () => {
     description =
       'Track and celebrate every bit of earnings effortlessly! Gain insights into your total revenue in a snap.';
   }
+
   const getTotalSumTransaction = useRef(useGetTotalTransactionsSum());
 
   useEffect(() => {
@@ -56,6 +77,8 @@ const TransactionsHistoryPage = () => {
   // console.log('totalExenses ->>>', totalExpenses);
   // console.log('totalIncomes ->>>', totalIncomes);
 
+  const [isAddModal, toggleIsAddModal] = useModal();
+
   return (
     <div className={s.container}>
       <div className={s.textContainer}>
@@ -68,13 +91,16 @@ const TransactionsHistoryPage = () => {
           totalAllIncomes={totalIncomes}
         />
       </div>
-      {transactions.length !== 0 || filterDate ? (
-        <>
-          <TransactionsSearchTools />
-          <TransactionsList />
-        </>
-      ) : (
-        <TransactionsMessage message="No trasactions" />
+      <TransactionsSearchTools handleOpenModal={toggleIsAddModal} />
+      <TransactionsList />
+      {isAddModal && (
+        <Modal toggleModal={toggleIsAddModal}>
+          <TransactionForm
+            onSubmitForm={onSubmitForm}
+            transactionsType={transactionsType}
+            history={transactionsType}
+          />
+        </Modal>
       )}
     </div>
   );

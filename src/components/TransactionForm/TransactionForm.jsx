@@ -22,12 +22,16 @@ export const TransactionForm = ({
   transaction,
   transactionsType,
   onSubmitForm,
+  history,
 }) => {
   const user = useSelector(selectUser);
   const isError = useSelector(selectTransactionsError);
   const { currency } = user;
   const [categoryId, setCategoryId] = useState('');
   const [isOpenModalTransaction, toggleModalTransaction] = useModal();
+
+  console.log(history, 'HISTORY');
+  console.log(transactionsType, 'TRANSACTION');
 
   const {
     register,
@@ -135,7 +139,9 @@ export const TransactionForm = ({
                 name="type"
                 value="expenses"
                 {...register('type')}
-                disabled={transaction?.type === 'incomes'}
+                disabled={
+                  transaction?.type === 'incomes' || history === 'incomes'
+                }
                 onChange={() => clearFieldCategory('expenses')}
               />
               <span className={s.customRadioBtn}></span>
@@ -148,7 +154,9 @@ export const TransactionForm = ({
                 name="type"
                 value="incomes"
                 {...register('type')}
-                disabled={transaction?.type === 'expenses'}
+                disabled={
+                  transaction?.type === 'expenses' || history === 'expenses'
+                }
                 onChange={() => clearFieldCategory('incomes')}
               />
               <span className={s.customRadioBtn}></span>
