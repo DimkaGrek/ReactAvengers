@@ -61,7 +61,7 @@ const TransactionsHistoryPage = () => {
           totalAllIncomes={totalIncomes}
         />
       </div>
-      {transactions.length !== 0 ? (
+      {transactions.length !== 0 || date ? (
         <>
           <TransactionsSearchTools />
           <TransactionsList />

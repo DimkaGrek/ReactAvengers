@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { TransactionsItem } from './TransactionsItem';
 import s from './TransactionsList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDate, selectFilter } from 'my-redux/Filter/FilterSlice';
-import {
-  editTransaction,
-  getTransactions,
-} from 'my-redux/Transaction/operations';
-import { useParams } from 'react-router-dom';
+import { selectFilter } from 'my-redux/Filter/FilterSlice';
+import { editTransaction } from 'my-redux/Transaction/operations';
 import { selectTransactions } from 'my-redux/Transaction/transactionSlice';
 import { useModal } from 'hooks';
 import { Modal, TransactionForm } from 'components';
@@ -33,11 +29,6 @@ export const TransactionsList = () => {
         toast.error('Something went wrong!');
       });
   };
-
-  // useEffect(() => {
-  //   console.log('dispatchGetTransactions');
-  //   dispatch(getTransactions({ type: transactionsType, date }));
-  // }, [transactionsType, date, dispatch]);
 
   const [isOpenEditTransaction, toggleEditTransaction] = useModal();
 
