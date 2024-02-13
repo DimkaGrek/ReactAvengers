@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout/SharedLayout';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import MainTransactionsPage from 'pages/MainTransactionsPage/MainTransactionsPage';
@@ -71,6 +71,7 @@ const App = () => {
           }
         />
         <Route path="/test" element={<Test />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
   );

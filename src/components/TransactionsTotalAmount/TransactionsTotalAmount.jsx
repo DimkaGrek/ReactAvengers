@@ -8,7 +8,10 @@ import { selectUser } from 'my-redux/User/userSlice';
 import s from './TransactionsTotalAmount.module.css';
 import { getCurrencyChar, getPath } from 'helpers';
 
-export const TransactionsTotalAmount = () => {
+export const TransactionsTotalAmount = ({
+  totalAllExpenses = null,
+  totalAllIncomes = null,
+}) => {
   const [path, setPath] = useState({});
   const location = useLocation();
 
@@ -32,7 +35,7 @@ export const TransactionsTotalAmount = () => {
             <h3 className={s.amountTitle}>Total Income</h3>
             <p className={s.amountDescr}>
               {currencyChar}
-              {totalIncomes}
+              {totalAllIncomes || totalIncomes}
             </p>
           </div>
         </li>
@@ -46,7 +49,7 @@ export const TransactionsTotalAmount = () => {
             <h3 className={s.amountTitle}>Total Expense</h3>
             <p className={s.amountDescr}>
               {currencyChar}
-              {totalExpenses}
+              {totalAllExpenses || totalExpenses}
             </p>
           </div>
         </li>

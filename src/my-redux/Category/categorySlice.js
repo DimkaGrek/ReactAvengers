@@ -5,7 +5,7 @@ import {
   editCategory,
   deleteCategory,
 } from './operations';
-import { loginUser } from 'my-redux/Auth/operations';
+import { loginUser, logoutUser } from 'my-redux/Auth/operations';
 import { fetchCurrentUser } from 'my-redux/User/operations';
 
 const initialState = {
@@ -55,6 +55,9 @@ const categorySlice = createSlice({
       .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
         state.categories.expenses = payload.categories?.expenses || [];
         state.categories.incomes = payload.categories?.incomes || [];
+      })
+      .addCase(logoutUser.fulfilled, state => {
+        return initialState;
       }),
 
   selectors: {

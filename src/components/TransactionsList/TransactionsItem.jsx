@@ -5,6 +5,8 @@ import { Shorter, ShorterDate } from './Shorter';
 import { deleteTransaction } from 'my-redux/Transaction/operations';
 import { useDispatch } from 'react-redux';
 import { Icon } from 'components';
+import { toast } from 'react-toastify';
+import { fetchCurrentUser } from 'my-redux/User/operations';
 
 export const TransactionsItem = ({ item, handleOpenModal }) => {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
@@ -21,6 +23,16 @@ export const TransactionsItem = ({ item, handleOpenModal }) => {
   }, []);
 
   const dispatch = useDispatch();
+
+  const handleDeleteTransaction = id => {
+    dispatch(deleteTransaction(id))
+      .unwrap()
+      .then(() => {
+        dispatch(fetchCurrentUser());
+        toast.success('Transaction deleted successfully');
+      })
+      .catch(error => toast.error('Something wrong !'));
+  };
 
   const convertDate = dateString => {
     const dateObj = new Date(dateString);
@@ -54,7 +66,7 @@ export const TransactionsItem = ({ item, handleOpenModal }) => {
           </button>
           <button
             className={s.btnTableDel}
-            onClick={() => dispatch(deleteTransaction(item._id))}
+            onClick={() => handleDeleteTransaction(item._id)}
           >
             <Icon name="trash-bin" className={s.iconDelete} size="16" />
 

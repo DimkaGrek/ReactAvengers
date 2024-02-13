@@ -143,7 +143,11 @@ export const CategoriesModal = ({ type, transportCategory }) => {
             value={categoryName}
           />
 
-          <button className={s.subbmitButton} type="submit">
+          <button
+            className={s.subbmitButton}
+            type="submit"
+            disabled={categoryName.length === 0}
+          >
             {isEditMode ? 'Edit' : 'Add'}
           </button>
         </div>

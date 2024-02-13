@@ -208,8 +208,8 @@ input::placeholder {
   right: 20px;
 }
 
-.subbmitButton:focus,
-.subbmitButton:hover {
+.subbmitButton:not([disabled]):focus,
+.subbmitButton:not([disabled]):hover {
   background-color: var(--hover-color);
 }
 
