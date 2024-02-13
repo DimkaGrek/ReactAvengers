@@ -5,6 +5,7 @@ import {
   editTransaction,
   deleteTransaction,
 } from './operations';
+import { logoutUser } from 'my-redux/Auth/operations';
 
 const initialState = {
   transactions: null,
@@ -42,6 +43,9 @@ const transactionSlice = createSlice({
           item => item._id !== action.payload
         );
         state.error = null;
+      })
+      .addCase(logoutUser.fulfilled, state => {
+        return initialState;
       })
       .addMatcher(
         isAnyOf(
