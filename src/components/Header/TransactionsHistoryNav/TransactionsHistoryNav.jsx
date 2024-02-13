@@ -1,18 +1,39 @@
 import style from './TransactionsHistoryNav.module.css';
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 const TransactionsHistoryNav = ({
   activeButton,
   handleButtonAndToggleMenu,
 }) => {
+  const isMobileScreen = useMediaQuery({ query: '(min-width: 375px)' });
+
+  const changeActiveButtonStyleDesktop = buttonName => {
+    return activeButton === buttonName
+      ? style.navBtnActive
+      : style.mobileNavBtn;
+  };
+
+  const changeActiveButtonStyleMobile = currentPage => {
+    const currentUrl = window.location.pathname;
+
+    if (currentUrl === currentPage) {
+      return style.navBtnActive;
+    } else {
+      return style.mobileNavBtn;
+    }
+  };
+
   return (
     <div className={style.buttonWrapper}>
       <Link to="/transactions/history/expenses">
         <button
           className={
-            activeButton === 'expense'
-              ? style.navBtnActive
-              : `${style.mobileNavBtn} ${style.mobileNavBtnExp}`
+            isMobileScreen
+              ? changeActiveButtonStyleMobile(
+                  '/ReactAvengers/transactions/history/expenses'
+                )
+              : changeActiveButtonStyleDesktop('expense')
           }
           onClick={() => {
             handleButtonAndToggleMenu('expense');
@@ -25,15 +46,17 @@ const TransactionsHistoryNav = ({
       <Link to="/transactions/history/incomes">
         <button
           className={
-            activeButton === 'income'
-              ? style.navBtnActive
-              : `${style.mobileNavBtn} ${style.mobileNavBtnInc}`
+            isMobileScreen
+              ? changeActiveButtonStyleMobile(
+                  '/ReactAvengers/transactions/history/incomes'
+                )
+              : changeActiveButtonStyleDesktop('income')
           }
           onClick={() => {
             handleButtonAndToggleMenu('income');
           }}
         >
-          All Income
+          All Incomes
         </button>
       </Link>
     </div>
