@@ -6,7 +6,12 @@ import { useSelector } from 'react-redux';
 import { selectUser } from 'my-redux/User/userSlice';
 import { getSevenLetters } from 'helpers';
 
-const UserBarBtn = ({ closeMenu }) => {
+const UserBarBtn = ({
+  toggleProfileModal,
+  toggleLogOutModal,
+  closeMenu,
+  isMenuOpen,
+}) => {
   const { name } = useSelector(selectUser);
   const { avatarUrl } = useSelector(selectUser);
 
@@ -54,6 +59,9 @@ const UserBarBtn = ({ closeMenu }) => {
           userBtnRef={userBtnRef}
           closeUserBar={closeUserBar}
           closeMenu={closeMenu}
+          isMenuOpen={isMenuOpen}
+          toggleProfileModal={toggleProfileModal}
+          toggleLogOutModal={toggleLogOutModal}
         />
       )}
     </div>

@@ -7,12 +7,16 @@ import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'my-redux/Auth/authSlice';
 import TransactionsHistoryNav from './TransactionsHistoryNav/TransactionsHistoryNav';
 import UserBarBtn from './UserBarBtn/UserBarBtn';
+import { useModal } from 'hooks';
+import { LogOut, Modal, UserSetsModal } from 'components';
 
 const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showComponent, setShowComponent] = useState(false);
   const [activeButton, setActiveButton] = useState(null);
+  const [isOpenProfileModal, toggleProfileModal] = useModal();
+  const [isOpenLogOutModal, toggleLogOutModal] = useModal();
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,16 +30,16 @@ const Header = () => {
   }, []);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const closeMenu = () => {
-    setIsOpen(false);
+    setIsMenuOpen(false);
   };
 
   const handleButtonAndToggleMenu = buttonName => {
     setActiveButton(buttonName);
-    isOpen && setIsOpen(false);
+    isMenuOpen && setIsMenuOpen(false);
   };
 
   const resetStateActiveButton = () => {
@@ -54,12 +58,14 @@ const Header = () => {
       >
         <Logo resetStateActiveButton={resetStateActiveButton} />
         {isLoggedIn && <BurgerMenuBtn toggleMenu={toggleMenu} />}
-        {isOpen && (
+        {isMenuOpen && (
           <BurgerMenu
             handleButtonAndToggleMenu={handleButtonAndToggleMenu}
             toggleMenu={toggleMenu}
-            isOpen={isOpen}
+            isMenuOpen={isMenuOpen}
             closeMenu={closeMenu}
+            toggleProfileModal={toggleProfileModal}
+            toggleLogOutModal={toggleLogOutModal}
           />
         )}
         {isLoggedIn && showComponent && (
@@ -69,8 +75,23 @@ const Header = () => {
             toggleMenu={toggleMenu}
           />
         )}
-        {isLoggedIn && showComponent && <UserBarBtn closeMenu={closeMenu} />}
+        {isLoggedIn && showComponent && (
+          <UserBarBtn
+            toggleProfileModal={toggleProfileModal}
+            toggleLogOutModal={toggleLogOutModal}
+          />
+        )}
       </div>
+      {isOpenProfileModal && (
+        <Modal pd={60} toggleModal={toggleProfileModal}>
+          <UserSetsModal toggleModal={toggleProfileModal} />
+        </Modal>
+      )}
+      {isOpenLogOutModal && (
+        <Modal pd={60} toggleModal={toggleLogOutModal}>
+          <LogOut />
+        </Modal>
+      )}
     </header>
   );
 };

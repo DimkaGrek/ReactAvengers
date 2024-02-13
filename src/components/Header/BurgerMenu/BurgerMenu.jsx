@@ -6,12 +6,14 @@ import TransactionsHistoryNav from '../TransactionsHistoryNav/TransactionsHistor
 
 const BurgerMenu = ({
   toggleMenu,
-  isOpen,
   handleButtonAndToggleMenu,
+  isMenuOpen,
   closeMenu,
+  toggleProfileModal,
+  toggleLogOutModal,
 }) => {
   useEffect(() => {
-    if (isOpen) {
+    if (isMenuOpen) {
       document.body.classList.add(style.noScroll);
     } else {
       document.body.classList.remove(style.noScroll);
@@ -19,7 +21,7 @@ const BurgerMenu = ({
     return () => {
       document.body.classList.remove(style.noScroll);
     };
-  }, [isOpen]);
+  }, [isMenuOpen]);
 
   const handleBackdrop = () => {
     toggleMenu();
@@ -37,14 +39,19 @@ const BurgerMenu = ({
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, [isOpen, closeMenu]);
+  }, [isMenuOpen, closeMenu]);
 
   return (
     <>
       <div className={style.backdrop} onClick={handleBackdrop}></div>
       <div className={style.mobileMenu}>
         <div className={style.userBarBtnWrapper}>
-          <UserBarBtn closeMenu={closeMenu} />
+          <UserBarBtn
+            isMenuOpen={isMenuOpen}
+            closeMenu={closeMenu}
+            toggleProfileModal={toggleProfileModal}
+            toggleLogOutModal={toggleLogOutModal}
+          />
           <button className={style.closeBtn} onClick={toggleMenu}>
             <Icon name="close-btn" className={style.closeBtnIcon} />
           </button>

@@ -11,3 +11,4 @@ export * from './BgImageWrapper/BgImageWrapper.jsx';
 export * from './AuthForm/AuthForm.jsx';
 export * from './TransactionForm/TransactionForm.jsx';
 export * from './Loader/Loader.jsx';
+export * from './LogOut/LogOut.jsx';
