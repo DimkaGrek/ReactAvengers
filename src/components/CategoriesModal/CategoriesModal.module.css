@@ -5,6 +5,8 @@
   border-radius: 30px;
   background-color: var(--box-background-color);
   padding: 40px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 375px) {
@@ -23,6 +25,9 @@
     width: 500px;
     height: 461px;
   }
+}
+.box {
+  flex-grow: 1;
 }
 
 .mainTitle {
@@ -60,12 +65,38 @@
   margin-bottom: 30px;
   overflow: auto;
   max-height: 160px;
+
+  /* position: relative; */
 }
 
 @media screen and (min-width: 768px) {
   .listWrapper {
     margin-bottom: 28px;
     max-height: 193px;
+  }
+}
+
+.noobjects {
+  font-family: 'Suisse Intl', sans-serif;
+  font-weight: 400;
+
+  line-height: 1.28571;
+  color: var(--regular-text-color);
+  display: flex;
+  justify-content: center;
+
+  padding: 60px 0;
+}
+.noobjectsP {
+  font-size: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .noobjects {
+    padding: 80px 0;
+  }
+  .noobjectsP {
+    font-size: 18px;
   }
 }
 
@@ -123,10 +154,9 @@
 .labelCategory {
   font-family: 'Suisse Intl', sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: var(--font-size-small); /* 14px */
   letter-spacing: -0.02em;
-  color: #0ef387;
-  --button-color: #0ef387;
+  color: var(--button-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -160,6 +190,7 @@ input::placeholder {
   background-color: var(--box-background-color);
   outline: none;
   color: var(--main-text-color);
+  font-size: var(--font-size-small); /* 14px */
 }
 
 @media screen and (min-width: 375px) {
@@ -173,6 +204,7 @@ input::placeholder {
     background-color: var(--box-background-color);
     outline: none;
     color: var(--main-text-color);
+    font-size: var(--font-size-smaller); /* 16px */
   }
 }
 
