@@ -114,8 +114,6 @@ export const TransactionForm = ({
     }
   };
 
-  console.log(errors);
-
   return (
     <div>
       <div className={s.formWrapper}>
@@ -240,6 +238,7 @@ export const TransactionForm = ({
           <CategoriesModal
             transportCategory={handleChangeCategory}
             type={getValues('type')}
+            anotherModal={true}
           />
         </Modal>
       )}
