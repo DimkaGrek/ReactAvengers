@@ -5,7 +5,7 @@ import {
   deleteUserAvatar,
   fetchCurrentUser,
 } from './operations';
-import { loginUser } from 'my-redux/Auth/operations';
+import { loginUser, logoutUser } from 'my-redux/Auth/operations';
 
 const initialState = {
   name: '',
@@ -52,6 +52,9 @@ const userSlice = createSlice({
       })
       .addCase(deleteUserAvatar.fulfilled, state => {
         state.avatarUrl = null;
+      })
+      .addCase(logoutUser.fulfilled, state => {
+        return initialState;
       });
   },
   selectors: {

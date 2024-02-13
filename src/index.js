@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter basename="/ReactAvengers">
         <App />
-        <ToastContainer theme="dark" />
+        <ToastContainer theme="dark" style={{ zIndex: 99999 }} />
       </BrowserRouter>
     </PersistGate>
   </Provider>
