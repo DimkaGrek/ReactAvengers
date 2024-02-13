@@ -59,10 +59,6 @@
 }
 
 @media only screen and (min-width: 1440px) {
-  .container {
-    justify-content: left;
-  }
-
   .containerImg {
     display: flex;
     margin-top: 82px;
@@ -70,6 +66,11 @@
 
   .containerTitle {
     width: 533px;
+  }
+
+  .containerForm {
+    display: flex;
+    justify-content: flex-start;
   }
 }
 
