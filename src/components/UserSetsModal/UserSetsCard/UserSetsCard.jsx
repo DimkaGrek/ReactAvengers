@@ -79,13 +79,17 @@ export const UserSetsCard = () => {
       </div>
 
       <div className={s.btnWrapper}>
-        <button className={s.button} onClick={handleRedirectClick}>
+        <button
+          className={s.button}
+          onClick={handleRedirectClick}
+          disabled={isLoading}
+        >
           Upload new photo
         </button>
         <button
           className={s.button}
           onClick={handleDeletePhoto}
-          disabled={noAvatar}
+          disabled={noAvatar || isLoading}
         >
           Remove
         </button>
