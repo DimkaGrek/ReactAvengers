@@ -9,8 +9,10 @@ export const getTransactions = createAsyncThunk(
         throw Error('wrong type');
       }
       const params = date ? { date } : {};
+      console.log('params ->>>>>', params);
       const { data } = await api.get(`/transactions/${type}`, { params });
-      return data;
+      console.log('dataaaaaa-> ', data);
+      return { data, date };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

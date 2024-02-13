@@ -10,6 +10,7 @@ import { Modal, TransactionForm } from 'components';
 import { toast } from 'react-toastify';
 import { fetchCurrentUser } from 'my-redux/User/operations';
 import { TransactionsMessage } from 'components/TransactionsMessage/TransactionsMessage';
+import { useGetTotalTransactionsSum } from 'hooks/getTotalTransactionsSum';
 
 export const TransactionsList = () => {
   // const { transactionsType } = useParams();
@@ -17,11 +18,14 @@ export const TransactionsList = () => {
   // const date = useSelector(selectDate);
   const transactions = useSelector(selectTransactions);
 
+  const getTotalSumTransaction = useGetTotalTransactionsSum();
+
   const onSubmitForm = transaction => {
     dispatch(editTransaction(transaction))
       .unwrap()
       .then(() => {
         dispatch(fetchCurrentUser());
+        getTotalSumTransaction();
         toast.success('Transaction edited successfully!');
         toggleEditTransaction();
       })

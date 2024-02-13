@@ -15,10 +15,13 @@ const filterValue = createSlice({
     changeDate: (state, action) => {
       state.date = action.payload;
     },
+    resetFilter: (state, action) => {
+      return initialState;
+    },
   },
 });
 
 export const filterValueReducer = filterValue.reducer;
-export const { changeFilter, changeDate } = filterValue.actions;
+export const { changeFilter, changeDate, resetFilter } = filterValue.actions;
 export const selectFilter = state => state.filter.filter;
 export const selectDate = state => state.filter.date;

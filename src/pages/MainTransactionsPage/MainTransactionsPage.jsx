@@ -15,6 +15,7 @@ import {
 import s from './MainTransactionsPage.module.css';
 import { toast } from 'react-toastify';
 import { fetchCurrentUser } from 'my-redux/User/operations';
+import { useGetTotalTransactionsSum } from 'hooks/getTotalTransactionsSum';
 
 const MainTransactionsPage = () => {
   const dispatch = useDispatch();
@@ -27,11 +28,14 @@ const MainTransactionsPage = () => {
   const capitalizedType =
     transactionsType[0].toUpperCase() + transactionsType.slice(1);
 
+  const getTotalSumTransaction = useGetTotalTransactionsSum();
+
   const onSubmitForm = transaction => {
     dispatch(addTransaction(transaction))
       .unwrap()
       .then(() => {
         dispatch(fetchCurrentUser());
+        getTotalSumTransaction();
         toast.success('Transaction added successfully!');
       })
       .catch(error => {

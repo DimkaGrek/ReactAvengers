@@ -1,6 +1,6 @@
 import { TransactionsList } from 'components/TransactionsList/TransactionsList';
 import { TransactionsSearchTools } from 'components/TransactionsSearchTools/TransactionsSearchTools';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import s from './TransactionsHistoryPage.module.css';
 import { TransactionsTotalAmount } from 'components';
 import { useParams } from 'react-router-dom';
@@ -13,6 +13,7 @@ import {
 import { TransactionsMessage } from 'components/TransactionsMessage/TransactionsMessage';
 import { getTransactions } from 'my-redux/Transaction/operations';
 import { selectDate } from 'my-redux/Filter/FilterSlice';
+import { useGetTotalTransactionsSum } from 'hooks/getTotalTransactionsSum';
 
 const TransactionsHistoryPage = () => {
   const transactions = useSelector(selectTransactions);
@@ -20,7 +21,7 @@ const TransactionsHistoryPage = () => {
   const totalIncomes = useSelector(selectTotalTransIncomes);
 
   const dispatch = useDispatch();
-  const date = useSelector(selectDate);
+  const filterDate = useSelector(selectDate);
 
   const { transactionsType } = useParams();
   let text = 'All Expense';
@@ -31,24 +32,30 @@ const TransactionsHistoryPage = () => {
     description =
       'Track and celebrate every bit of earnings effortlessly! Gain insights into your total revenue in a snap.';
   }
+  const getTotalSumTransaction = useRef(useGetTotalTransactionsSum());
 
   useEffect(() => {
-    if (transactionsType === 'expenses') {
-      dispatch(getTransactions({ type: 'incomes', date }));
-      dispatch(getTransactions({ type: 'expenses', date }));
-    } else {
-      dispatch(getTransactions({ type: 'expenses', date }));
-      dispatch(getTransactions({ type: 'incomes', date }));
-    }
-    // if (transactionsType === 'incomes') {
-    //   dispatch(getTransactions({ type: 'expenses', date }));
-    // } else {
-    //   dispatch(getTransactions({ type: 'incomes', date }));
-    // }
-  }, [date, dispatch, transactionsType]);
+    console.log('GetTotalTrans!!!!!');
+    getTotalSumTransaction.current();
+    return () => {
+      console.log('getTotalTrans');
+    };
+  }, []);
 
-  console.log('totalExenses ->>>', totalExpenses);
-  console.log('totalIncomes ->>>', totalIncomes);
+  useEffect(() => {
+    console.log('USE EFFECT GET TRANSACTION!!!');
+    if (filterDate) {
+      console.log('FilteredTrans!!!');
+      dispatch(getTransactions({ type: transactionsType, date: filterDate }));
+    } else {
+      console.log('NO Filtered trans!!!');
+      dispatch(getTransactions({ type: transactionsType }));
+    }
+  }, [filterDate, dispatch, transactionsType]);
+
+  // console.log('totalExenses ->>>', totalExpenses);
+  // console.log('totalIncomes ->>>', totalIncomes);
+
   return (
     <div className={s.container}>
       <div className={s.textContainer}>
@@ -61,7 +68,7 @@ const TransactionsHistoryPage = () => {
           totalAllIncomes={totalIncomes}
         />
       </div>
-      {transactions.length !== 0 || date ? (
+      {transactions.length !== 0 || filterDate ? (
         <>
           <TransactionsSearchTools />
           <TransactionsList />
