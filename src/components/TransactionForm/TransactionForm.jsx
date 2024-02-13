@@ -108,6 +108,12 @@ export const TransactionForm = ({
     });
   };
 
+  const renderMessage = fieldName => {
+    if (errors[fieldName]?.message) {
+      return <p className={s.messageError}>{errors[fieldName]?.message}</p>;
+    }
+  };
+
   console.log(errors);
 
   return (
@@ -166,6 +172,7 @@ export const TransactionForm = ({
                 )}
               />
               <Icon name="calendar" className={s.iconDate} size="16" />
+              {renderMessage('date')}
             </label>
             <label className={s.customField}>
               Time
@@ -176,6 +183,7 @@ export const TransactionForm = ({
                 {...register('time')}
               />
               <Icon name="clock" className={s.iconTime} size="16" />
+              {renderMessage('time')}
             </label>
           </div>
           <div className={s.fieldWrapper}>
@@ -191,6 +199,7 @@ export const TransactionForm = ({
               readOnly
               onClick={toggleModalTransaction}
             />
+            {renderMessage('category')}
           </div>
           <div>
             <label className={s.sumLabel}>
@@ -204,6 +213,7 @@ export const TransactionForm = ({
                 {...register('sum')}
               />
               <span className={s.currency}>{currency?.toUpperCase()}</span>
+              {renderMessage('sum')}
             </label>
           </div>
           <div className={s.fieldWrapper}>
@@ -214,6 +224,7 @@ export const TransactionForm = ({
               placeholder="Enter the text"
               {...register('comment')}
             />
+            {renderMessage('comment')}
           </div>
           <button
             className={s.submitBtn}
