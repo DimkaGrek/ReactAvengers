@@ -37,10 +37,7 @@ export const transactionSchema = yup.object({
   category: yup.string().required('Category is required'),
   sum: yup
     .string()
-    .matches(
-      /^[1-9][0-9]*$/,
-      'Sum must consist of numbers and be greater than 0'
-    )
+    .matches(/^[1-9][0-9]*$/, 'Sum must be greater than 0')
     .required('Sum is required'),
   comment: yup
     .string()

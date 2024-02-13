@@ -38,7 +38,7 @@ export const TransactionForm = ({
     formState: { errors },
     clearErrors,
   } = useForm({
-    mode: 'onSubmit',
+    mode: 'onChange',
     resolver: yupResolver(transactionSchema),
   });
 
@@ -99,30 +99,14 @@ export const TransactionForm = ({
     }
   };
 
-  const inputDate = classNames({
-    [`${s.datePicker}`]: true,
-    [`${s.errorDate}`]: errors.date?.message,
-  });
-
-  const inputTime = classNames({
-    [`${s.timeInput}`]: true,
-    [`${s.errorTime}`]: errors.time?.message,
-  });
-
-  const inputCategory = classNames({
-    [`${s.categoryInput}`]: true,
-    [`${s.errorCategory}`]: errors.category?.message,
-  });
-
-  const inputSum = classNames({
-    [`${s.currencyInput}`]: true,
-    [`${s.errorSum}`]: errors.sum?.message,
-  });
-
-  const inputComment = classNames({
-    [`${s.comment}`]: true,
-    [`${s.errorComment}`]: errors.comment?.message,
-  });
+  const fieldClasses = fieldName => {
+    return classNames({
+      [`${
+        s[fieldName !== 'date' ? `${fieldName + 'Field'}` : 'datePicker']
+      }`]: true,
+      [`${s.errorField}`]: errors[fieldName]?.message,
+    });
+  };
 
   console.log(errors);
 
@@ -167,10 +151,11 @@ export const TransactionForm = ({
                 render={({ field }) => (
                   <div className="datepickerContainer">
                     <DatePicker
-                      className={inputDate}
+                      className={fieldClasses('date')}
                       showPopperArrow={false}
                       maxDate={new Date()}
                       selected={field.value}
+                      placeholderText="mm/dd/yyyy"
                       onChange={date => {
                         field.onChange(date);
                         handleChangeDate(date);
@@ -185,7 +170,7 @@ export const TransactionForm = ({
             <label className={s.customField}>
               Time
               <input
-                className={inputTime}
+                className={fieldClasses('time')}
                 type="time"
                 name="time"
                 {...register('time')}
@@ -196,7 +181,7 @@ export const TransactionForm = ({
           <div className={s.fieldWrapper}>
             <label>Category</label>
             <input
-              className={inputCategory}
+              className={fieldClasses('category')}
               type="text"
               name="category"
               placeholder="Different"
@@ -211,10 +196,11 @@ export const TransactionForm = ({
             <label className={s.sumLabel}>
               Sum
               <input
-                className={inputSum}
-                type="text"
+                className={fieldClasses('sum')}
+                type="number"
                 name="sum"
                 placeholder="Enter the sum"
+                autoComplete="off"
                 {...register('sum')}
               />
               <span className={s.currency}>{currency?.toUpperCase()}</span>
@@ -223,7 +209,7 @@ export const TransactionForm = ({
           <div className={s.fieldWrapper}>
             <label>Comment</label>
             <textarea
-              className={inputComment}
+              className={fieldClasses('comment')}
               name="comment"
               placeholder="Enter the text"
               {...register('comment')}
