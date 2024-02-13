@@ -1,13 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 //
 import { Icon } from 'components';
 import { selectUser } from 'my-redux/User/userSlice';
 //
 import s from './TransactionsTotalAmount.module.css';
-import { getCurrencyChar } from 'helpers/getCurrencyChar';
-import { getPath } from 'helpers/getPath';
-import { useEffect, useState } from 'react';
+import { getCurrencyChar, getPath } from 'helpers';
 
 export const TransactionsTotalAmount = () => {
   const [path, setPath] = useState({});
@@ -32,7 +31,8 @@ export const TransactionsTotalAmount = () => {
           <div>
             <h3 className={s.amountTitle}>Total Income</h3>
             <p className={s.amountDescr}>
-              {currencyChar} {totalIncomes}
+              {currencyChar}
+              {totalIncomes}
             </p>
           </div>
         </li>
@@ -45,7 +45,8 @@ export const TransactionsTotalAmount = () => {
           <div>
             <h3 className={s.amountTitle}>Total Expense</h3>
             <p className={s.amountDescr}>
-              {currencyChar} {totalExpenses}
+              {currencyChar}
+              {totalExpenses}
             </p>
           </div>
         </li>

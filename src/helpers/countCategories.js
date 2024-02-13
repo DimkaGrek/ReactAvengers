@@ -1,20 +1,6 @@
 import { getColors } from './getColors';
 import { getCurrentMoth } from './getCurrentMoth';
 
-// const colors = [
-//   '#054025',
-//   '#097b46',
-//   '#3ba171',
-//   '#4de69f',
-//   '#7ef1bb',
-//   '#b8e6d1',
-//   '#eaefec',
-//   '#bcc2bf',
-//   '#d3dad6',
-//   '#ebf2ee',
-// ];
-// console.log((Math.random() * (1000000 - 100000 + 1) + 100000).toFixed(3));
-
 export function countCategories(data, total) {
   if (!data.length) return [];
 
