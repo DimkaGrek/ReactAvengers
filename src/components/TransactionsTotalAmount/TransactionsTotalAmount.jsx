@@ -1,37 +1,52 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 //
 import { Icon } from 'components';
 import { selectUser } from 'my-redux/User/userSlice';
 //
 import s from './TransactionsTotalAmount.module.css';
+import { getCurrencyChar } from 'helpers/getCurrencyChar';
+import { getPath } from 'helpers/getPath';
+import { useEffect, useState } from 'react';
 
 export const TransactionsTotalAmount = () => {
-  const { totalIncomes, totalExpenses } = useSelector(selectUser);
+  const [path, setPath] = useState({});
+  const location = useLocation();
+
+  const { totalIncomes, totalExpenses, currency } = useSelector(selectUser);
+  const currencyChar = getCurrencyChar(currency);
+
+  useEffect(() => {
+    setPath(getPath(location));
+  }, [location]);
 
   return (
     <div className={s.wrapper}>
       <ul className={s.list}>
         <li className={s.listItem}>
-          <Link className={s.link} to="/transactions/incomes">
+          <Link className={s.link} to={path.incomes}>
             <div className={s.iconContainer}>
               <Icon className={s.icon} name="arrow-up" size="18" />
             </div>
           </Link>
           <div>
             <h3 className={s.amountTitle}>Total Income</h3>
-            <p className={s.amountDescr}>$ {totalIncomes}</p>
+            <p className={s.amountDescr}>
+              {currencyChar} {totalIncomes}
+            </p>
           </div>
         </li>
         <li className={s.listItem}>
-          <Link className={s.link} to="/transactions/expenses">
+          <Link className={s.link} to={path.expenses}>
             <div className={s.iconContainer}>
               <Icon className={s.icon} name="arrow-down" size="18" />
             </div>
           </Link>
           <div>
             <h3 className={s.amountTitle}>Total Expense</h3>
-            <p className={s.amountDescr}>$ {totalExpenses}</p>
+            <p className={s.amountDescr}>
+              {currencyChar} {totalExpenses}
+            </p>
           </div>
         </li>
       </ul>
