@@ -24,9 +24,17 @@
   flex-direction: column;
   gap: 20px;
   color: var(--main-text-color);
-  width: 295px;
+  width: 100%;
   font-size: 14px;
   line-height: 18px;
+}
+
+@media screen and (min-width: 375px) {
+  .transactionForm {
+    width: 295px;
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -148,6 +156,7 @@
 .datePicker {
   font-family: 'SuisseIntl-Regular', sans-serif;
   width: 100%;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
@@ -164,17 +173,25 @@
   position: absolute;
 }
 
-.timeInput {
+.timeField {
+  font-size: 14px;
   height: 42px;
   font-family: 'SuisseIntl-Regular', sans-serif;
 }
 
-.categoryInput {
+@media screen and (min-width: 768px) {
+  .datePicker {
+    font-size: 16px;
+    height: 48px;
+  }
+}
+
+.categoryField {
   cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
-  .timeInput {
+  .timeField {
     height: 48px;
   }
 }
@@ -204,9 +221,19 @@
   stroke: var(--main-text-color);
   fill: none;
   position: absolute;
-  right: 4%;
-  top: 68%;
+  right: 5%;
+  top: 66%;
   transform: translate(-50%, -50%);
+}
+
+.iconDate {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 375px) {
+  .iconDate {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -214,6 +241,9 @@
   .iconTime {
     width: 20px;
     height: 20px;
+    right: 4%;
+    top: 68%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -232,7 +262,7 @@
   margin: 0;
 }
 
-.currencyInput:not(:placeholder-shown) + .currency {
+.sumInput:not(:placeholder-shown) + .currency {
   color: white;
 }
 
@@ -246,7 +276,7 @@
   color: var(--regular-text-color);
 }
 
-.comment {
+.commentField {
   resize: none;
   background-color: transparent;
   padding: 12px 14px;
@@ -261,7 +291,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .comment {
+  .commentField {
     height: 97px;
     padding: 12px 14px;
     font-size: 16px;
@@ -278,6 +308,10 @@
   letter-spacing: -0.28px;
   line-height: 16px;
   color: var(--background-color);
+}
+
+.submitBtn:disabled {
+  cursor: not-allowed;
 }
 
 @media screen and (min-width: 768px) {
@@ -305,23 +339,27 @@
   outline: none;
 }
 
-.transactionForm .errorDate,
-.transactionForm .errorDate:hover,
-.transactionForm .errorDate:focus,
-.transactionForm .errorTime,
-.transactionForm .errorTime:hover,
-.transactionForm .errorTime:focus,
-.transactionForm .errorComment,
-.transactionForm .errorComment:hover,
-.transactionForm .errorComment:focus,
-.transactionForm .errorCategory,
-.transactionForm .errorCategory:hover,
-.transactionForm .errorCategory:focus,
-.transactionForm .errorSum,
-.transactionForm .errorSum:hover,
-.transactionForm .errorSum:focus,
-.transactionForm .errorComment,
-.transactionForm .errorComment:hover,
-.transactionForm .errorComment:focus {
+.transactionForm .errorField,
+.transactionForm .errorField:hover,
+.transactionForm .errorField:focus {
   border-color: var(--errors-color);
+}
+
+.fieldWrapper {
+  position: relative;
+}
+
+.messageError {
+  font-weight: 400;
+  font-size: 10px;
+  padding: 4px 0 0 18px;
+
+  left: 0%;
+  top: 94%;
+  position: absolute;
+  color: var(--errors-color);
+}
+
+.categoryField + .messageError {
+  padding-top: 2px;
 }

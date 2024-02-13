@@ -45,3 +45,7 @@
 .react-datepicker__navigation:hover *::before {
   border-color: var(--background-color);
 }
+
+.fixed-height-calendar {
+  height: 236px;
+}

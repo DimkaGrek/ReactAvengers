@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
+import { useModal } from 'hooks';
 import DatePicker from 'react-datepicker';
+import classNames from 'classnames';
+import { yupResolver } from '@hookform/resolvers/yup';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { Icon, Modal } from 'components';
-import s from './TransactionForm.module.css';
-import './DatePicker.css';
-import { useModal } from 'hooks';
+import { CategoriesModal } from 'components/CategoriesModal/CategoriesModal';
 
 import { selectUser } from 'my-redux/User/userSlice';
 import { getFormattedDate, getFormattedTime } from 'helpers';
 import { selectTransactionsError } from 'my-redux/Transaction/transactionSlice';
-import { CategoriesModal } from 'components/CategoriesModal/CategoriesModal';
 import { transactionSchema } from 'schemas/validationSchemas';
-import { yupResolver } from '@hookform/resolvers/yup';
-import classNames from 'classnames';
+import s from './TransactionForm.module.css';
+import './DatePicker.css';
 
 export const TransactionForm = ({
   transaction,
@@ -25,8 +25,9 @@ export const TransactionForm = ({
   const user = useSelector(selectUser);
   const isError = useSelector(selectTransactionsError);
   const { currency } = user;
-
+  const [categoryId, setCategoryId] = useState('');
   const [isOpenModalTransaction, toggleModalTransaction] = useModal();
+
   const {
     register,
     handleSubmit,
@@ -35,30 +36,39 @@ export const TransactionForm = ({
     getValues,
     control,
     formState: { errors },
+    clearErrors,
   } = useForm({
-    mode: 'onSubmit',
+    mode: 'onChange',
     resolver: yupResolver(transactionSchema),
   });
 
-  const [categoryId, setCategoryId] = useState('');
-
-  const clearFieldCategory = () => {
+  const clearFieldCategory = useCallback(() => {
     setValue('category', '');
     setCategoryId('');
-  };
+  }, [setValue, setCategoryId]);
+
+  const setDefaultValues = useCallback(() => {
+    if (transactionsType === getValues('type')) return;
+
+    setValue('type', transactionsType);
+    setValue('date', getFormattedDate(new Date()));
+    setValue('time', getFormattedTime());
+    setValue('category', '');
+    setCategoryId('');
+    setValue('sum', '');
+    setValue('comment', '');
+    clearErrors();
+  }, [setValue, setCategoryId, getValues, transactionsType, clearErrors]);
 
   useEffect(() => {
     if (!transaction) {
-      setValue('type', transactionsType);
-      setValue('date', getFormattedDate(new Date()));
-      setValue('time', getFormattedTime());
+      setDefaultValues();
     }
 
     if (transaction) {
       const { type, date, time, category, sum, comment } = transaction;
 
       setCategoryId(category?._id);
-
       setValue('type', type);
       setValue('date', date);
       setValue('time', time);
@@ -66,7 +76,7 @@ export const TransactionForm = ({
       setValue('sum', sum);
       setValue('comment', comment);
     }
-  }, [transaction, setValue, transactionsType]);
+  }, [transaction, setValue, setDefaultValues]);
 
   const handleChangeCategory = item => {
     setValue('category', item.categoryName, { shouldValidate: true });
@@ -81,46 +91,28 @@ export const TransactionForm = ({
 
   const onSubmit = data => {
     data.category = categoryId;
-    console.log(data, 'FORMAAAAAA');
-
     onSubmitForm(data);
 
     if (!isError && !transaction) {
       reset();
-
-      setValue('type', transactionsType);
-      setValue('date', getFormattedDate(new Date()));
-      setValue('time', getFormattedTime());
-      clearFieldCategory();
+      setDefaultValues();
     }
   };
 
-  console.log(errors);
+  const fieldClasses = fieldName => {
+    return classNames({
+      [`${
+        s[fieldName !== 'date' ? `${fieldName + 'Field'}` : 'datePicker']
+      }`]: true,
+      [`${s.errorField}`]: errors[fieldName]?.message,
+    });
+  };
 
-  const inputDate = classNames({
-    [`${s.datePicker}`]: true,
-    [`${s.errorDate}`]: errors.date?.message,
-  });
-
-  const inputTime = classNames({
-    [`${s.timeInput}`]: true,
-    [`${s.errorTime}`]: errors.time?.message,
-  });
-
-  const inputCategory = classNames({
-    [`${s.categoryInput}`]: true,
-    [`${s.errorCategory}`]: errors.category?.message,
-  });
-
-  const inputSum = classNames({
-    [`${s.currencyInput}`]: true,
-    [`${s.errorSum}`]: errors.sum?.message,
-  });
-
-  const inputComment = classNames({
-    [`${s.comment}`]: true,
-    [`${s.errorComment}`]: errors.comment?.message,
-  });
+  const renderMessage = fieldName => {
+    if (errors[fieldName]?.message) {
+      return <p className={s.messageError}>{errors[fieldName]?.message}</p>;
+    }
+  };
 
   return (
     <div>
@@ -163,36 +155,39 @@ export const TransactionForm = ({
                 render={({ field }) => (
                   <div className="datepickerContainer">
                     <DatePicker
-                      className={inputDate}
+                      className={fieldClasses('date')}
                       showPopperArrow={false}
                       maxDate={new Date()}
                       selected={field.value}
+                      placeholderText="mm/dd/yyyy"
                       onChange={date => {
                         field.onChange(date);
                         handleChangeDate(date);
                       }}
-                      fixedHeight
+                      calendarClassName="fixed-height-calendar"
                     />
                   </div>
                 )}
               />
               <Icon name="calendar" className={s.iconDate} size="16" />
+              {renderMessage('date')}
             </label>
             <label className={s.customField}>
               Time
               <input
-                className={inputTime}
+                className={fieldClasses('time')}
                 type="time"
                 name="time"
                 {...register('time')}
               />
               <Icon name="clock" className={s.iconTime} size="16" />
+              {renderMessage('time')}
             </label>
           </div>
           <div className={s.fieldWrapper}>
             <label>Category</label>
             <input
-              className={inputCategory}
+              className={fieldClasses('category')}
               type="text"
               name="category"
               placeholder="Different"
@@ -201,32 +196,39 @@ export const TransactionForm = ({
               required
               readOnly
               onClick={toggleModalTransaction}
-              // onFocus={toggleModalTransaction}
             />
+            {renderMessage('category')}
           </div>
           <div>
             <label className={s.sumLabel}>
               Sum
               <input
-                className={inputSum}
+                className={fieldClasses('sum')}
                 type="number"
                 name="sum"
                 placeholder="Enter the sum"
+                autoComplete="off"
                 {...register('sum')}
               />
               <span className={s.currency}>{currency?.toUpperCase()}</span>
+              {renderMessage('sum')}
             </label>
           </div>
           <div className={s.fieldWrapper}>
             <label>Comment</label>
             <textarea
-              className={inputComment}
+              className={fieldClasses('comment')}
               name="comment"
               placeholder="Enter the text"
               {...register('comment')}
             />
+            {renderMessage('comment')}
           </div>
-          <button className={s.submitBtn} type="submit">
+          <button
+            className={s.submitBtn}
+            type="submit"
+            disabled={Object.entries(errors).length}
+          >
             {transaction ? 'Save' : 'Add'}
           </button>
         </form>
@@ -236,6 +238,7 @@ export const TransactionForm = ({
           <CategoriesModal
             transportCategory={handleChangeCategory}
             type={getValues('type')}
+            anotherModal={true}
           />
         </Modal>
       )}
