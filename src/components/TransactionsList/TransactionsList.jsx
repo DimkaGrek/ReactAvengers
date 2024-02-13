@@ -10,12 +10,15 @@ import { Modal, TransactionForm } from 'components';
 import { toast } from 'react-toastify';
 import { fetchCurrentUser } from 'my-redux/User/operations';
 import { TransactionsMessage } from 'components/TransactionsMessage/TransactionsMessage';
+// import { useParams } from 'react-router-dom';
 
 export const TransactionsList = () => {
   // const { transactionsType } = useParams();
   const dispatch = useDispatch();
   // const date = useSelector(selectDate);
   const transactions = useSelector(selectTransactions);
+
+  console.log(transactions, 'transaction');
 
   const onSubmitForm = transaction => {
     dispatch(editTransaction(transaction))
@@ -56,40 +59,41 @@ export const TransactionsList = () => {
   console.log('income transacitons: -->>>> ', transactions);
   return (
     <div className={`${s.containerTable} scroll scrollB `}>
-      {filterItems.length !== 0 ? (
-        <>
-          <div className={s.listTable}>
-            <div className={s.thead}>
-              <ul className={s.tr} key="111111">
-                <li className={s.th}>Category</li>
-                <li className={s.th}>Comment</li>
-                <li className={s.th}>Date</li>
-                <li className={s.th}>Time</li>
-                <li className={s.th}>Sum</li>
-                <li className={s.th}>Actions</li>
-              </ul>
-            </div>
-            <div className={`${s.tbody} scroll scrollB`}>
-              {filterItems.map(item => (
-                <TransactionsItem
-                  key={item._id}
-                  item={item}
-                  handleOpenModal={handleOpenModal}
-                />
-              ))}
-            </div>
-          </div>
-          {isOpenEditTransaction && (
-            <Modal toggleModal={toggleEditTransaction}>
-              <TransactionForm
-                transaction={currentItem}
-                onSubmitForm={onSubmitForm}
-              />
-            </Modal>
+      <div className={s.listTable}>
+        <div className={s.thead}>
+          <ul className={s.tr} key="111111">
+            <li className={s.th}>Category</li>
+            <li className={s.th}>Comment</li>
+            <li className={s.th}>Date</li>
+            <li className={s.th}>Time</li>
+            <li className={s.th}>Sum</li>
+            <li className={s.th}>Actions</li>
+          </ul>
+        </div>
+        <div className={`${s.tbody} scroll scrollB`}>
+          {transactions.length === 0 && (
+            <TransactionsMessage message="No trasactions" />
           )}
-        </>
-      ) : (
-        <TransactionsMessage message="No transactions in case" />
+          {filterItems.length !== 0 &&
+            filterItems.map(item => (
+              <TransactionsItem
+                key={item._id}
+                item={item}
+                handleOpenModal={handleOpenModal}
+              />
+            ))}
+          {filter && filterItems.length === 0 && transactions.length !== 0 && (
+            <TransactionsMessage message="No transactions in case" />
+          )}
+        </div>
+      </div>
+      {isOpenEditTransaction && (
+        <Modal toggleModal={toggleEditTransaction}>
+          <TransactionForm
+            transaction={currentItem}
+            onSubmitForm={onSubmitForm}
+          />
+        </Modal>
       )}
     </div>
   );

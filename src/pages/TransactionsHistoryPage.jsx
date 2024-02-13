@@ -61,14 +61,8 @@ const TransactionsHistoryPage = () => {
           totalAllIncomes={totalIncomes}
         />
       </div>
-      {transactions.length !== 0 || date ? (
-        <>
-          <TransactionsSearchTools />
-          <TransactionsList />
-        </>
-      ) : (
-        <TransactionsMessage message="No trasactions" />
-      )}
+      <TransactionsSearchTools />
+      <TransactionsList />
     </div>
   );
 };
