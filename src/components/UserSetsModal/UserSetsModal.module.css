@@ -1,0 +1,21 @@
+.wrapper {
+  width: 295px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    width: 420px;
+  }
+}
+
+.title {
+  font-family: 'SuisseIntl-Regular', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: var(--main-text-color);
+}
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 28px;
+  }
+}

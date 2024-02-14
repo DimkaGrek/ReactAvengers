@@ -1,0 +1,18 @@
+.backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+
+  width: 100vw;
+  height: 100vh;
+  background: var(--black06);
+}
+.userIsLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

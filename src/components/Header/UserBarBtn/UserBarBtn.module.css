@@ -1,0 +1,70 @@
+.userBarBtnWrapper {
+  position: relative;
+}
+.userBarBtnTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 30px;
+  padding: 6px 16px;
+  width: 194px;
+  height: 46px;
+  background: #171719;
+
+  font-family: 'SuisseIntl-Regular', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: rgba(250, 250, 250, 0.4);
+}
+
+.userLogoWrapper {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+.avatarPlaceholder {
+  font-size: 25px;
+}
+.userLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.userName {
+  font-family: 'SuisseIntl-Regular', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: rgba(250, 250, 250, 0.4);
+}
+.chevrone {
+  fill: none;
+  stroke: var(--button-color);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (min-width: 1440px) {
+  .userBarBtnTop {
+    width: 217px;
+    height: 56px;
+    margin-bottom: 0;
+  }
+  .userLogoWrapper {
+    width: 44px;
+    height: 44px;
+  }
+  .userName {
+    font-size: 16px;
+  }
+}

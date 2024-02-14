@@ -1,0 +1,371 @@
+.formWrapper {
+  width: fit-content;
+  background-color: var(--box-background-color);
+  border-radius: 30px;
+  padding: 28px 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .formWrapper {
+    width: 704px;
+    padding: 40px 109px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .formWrapper {
+    width: 566px;
+    padding: 40px;
+  }
+}
+
+.transactionForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--main-text-color);
+  width: 100%;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@media screen and (min-width: 375px) {
+  .transactionForm {
+    width: 295px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .transactionForm {
+    width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.transactionForm input {
+  border: 1px solid var(--border-field-color);
+  border-radius: 12px;
+  padding: 11px 14px;
+  background-color: transparent;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--main-text-color);
+}
+
+@media screen and (min-width: 768px) {
+  .transactionForm input {
+    padding: 11px 18px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.transactionForm label {
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: -0.28px;
+}
+
+@media screen and (min-width: 768px) {
+  .transactionForm label {
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: -0.32px;
+  }
+}
+
+.transactionForm input::placeholder,
+.commentField::placeholder {
+  color: var(--regular-text-color);
+}
+
+.typeLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.transactionTypes {
+  display: flex;
+  gap: 20px;
+  height: 24px;
+}
+
+.customRadioBtn {
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 2px solid var(--border-field-color);
+  vertical-align: text-top;
+}
+
+.radioLabel {
+  cursor: not-allowed;
+}
+
+.customRadioBtn::before {
+  content: '';
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background-color: var(--hover-color);
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.2s ease-in;
+}
+
+.radioBtn {
+  width: 0;
+  height: 0;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.radioBtn:checked + .customRadioBtn {
+  border-color: var(--hover-color);
+}
+
+.radioBtn:checked + .customRadioBtn::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.customFields {
+  display: flex;
+  gap: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .customFields input {
+    gap: 20px;
+  }
+}
+
+.customField {
+  width: 50%;
+}
+
+.datePicker {
+  font-family: 'SuisseIntl-Regular', sans-serif;
+  width: 100%;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .datePicker {
+    width: 236px;
+  }
+}
+
+.datepickerContainer {
+  position: relative;
+}
+
+.react-datepicker__calendar {
+  position: absolute;
+}
+
+.timeField {
+  font-size: 14px;
+  height: 42px;
+  font-family: 'SuisseIntl-Regular', sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+  .datePicker {
+    font-size: 16px;
+    height: 48px;
+  }
+}
+
+.categoryField {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .timeField {
+    height: 48px;
+  }
+}
+
+.customField,
+.fieldWrapper,
+.sumLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+@media screen and (min-width: 768px) {
+  .customField,
+  .fieldWrapper,
+  .sumLabel {
+    gap: 8px;
+  }
+}
+
+.customField {
+  position: relative;
+}
+
+.iconDate,
+.iconTime {
+  stroke: var(--main-text-color);
+  fill: none;
+  position: absolute;
+  right: 5%;
+  top: 66%;
+  transform: translate(-50%, -50%);
+}
+
+.iconDate {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 375px) {
+  .iconDate {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .iconDate,
+  .iconTime {
+    width: 20px;
+    height: 20px;
+    right: 4%;
+    top: 68%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.sumLabel {
+  position: relative;
+}
+
+.transactionForm input[type='time']::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/* hide select element for number input */
+.transactionForm input[type='number']::-webkit-inner-spin-button,
+.transactionForm input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sumInput:not(:placeholder-shown) + .currency {
+  color: white;
+}
+
+.currency {
+  width: 50px;
+  text-align: end;
+  position: absolute;
+  right: -1%;
+  top: 68%;
+  transform: translate(-50%, -50%);
+  color: var(--regular-text-color);
+}
+
+.commentField {
+  resize: none;
+  background-color: transparent;
+  padding: 12px 14px;
+  color: var(--main-text-color);
+  border-radius: 12px;
+  border: 1px solid var(--border-field-color);
+  height: 91px;
+  font-family: 'SuisseIntl-Regular', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .commentField {
+    height: 97px;
+    padding: 12px 14px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.submitBtn {
+  width: fit-content;
+  border-radius: 40px;
+  padding: 14px 44px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: -0.28px;
+  line-height: 16px;
+  color: var(--background-color);
+  transition: all var(--transition-delay) var(--transition);
+}
+
+.submitBtn:disabled {
+  cursor: not-allowed;
+}
+
+@media screen and (min-width: 768px) {
+  .submitBtn {
+    padding: 14px 44px;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: -0.32px;
+  }
+}
+
+.submitBtn:hover,
+.submitBtn:focus {
+  background-color: var(--hover-color);
+}
+
+.transactionForm input:hover,
+.transactionForm input:focus,
+.transactionForm textarea:hover,
+.transactionForm textarea:focus {
+  border-color: var(--button-color);
+}
+
+.transactionForm input:focus,
+.transactionForm textarea:focus {
+  outline: none;
+}
+
+.transactionForm .errorField,
+.transactionForm .errorField:hover,
+.transactionForm .errorField:focus {
+  border-color: var(--errors-color);
+}
+
+.fieldWrapper {
+  position: relative;
+}
+
+.messageError {
+  font-weight: 400;
+  font-size: 10px;
+  padding: 4px 0 0 18px;
+
+  left: 0%;
+  top: 94%;
+  position: absolute;
+  color: var(--errors-color);
+}
+
+.categoryField + .messageError {
+  padding-top: 2px;
+}

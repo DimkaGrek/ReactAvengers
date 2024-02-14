@@ -1,0 +1,35 @@
+.button {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+  border: 1px solid var(--regular-text-color);
+}
+
+@media only screen and (min-width: 768px) {
+  .button {
+    display: flex;
+  }
+}
+
+.button:hover,
+.button:focus {
+  border-color: var(--button-color);
+  outline: none;
+}
+
+.btnIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--button-color);
+}
+
+@media only screen and (min-width: 768px) {
+  .btnIcon {
+    width: 20px;
+    height: 20px;
+  }
+}

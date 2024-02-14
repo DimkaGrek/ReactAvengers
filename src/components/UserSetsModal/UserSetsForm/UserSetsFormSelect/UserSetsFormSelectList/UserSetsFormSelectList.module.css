@@ -1,0 +1,54 @@
+.menu {
+  box-sizing: border-box;
+  position: absolute;
+  width: 98px;
+  border: 1px solid var(--regular-text-color01);
+  border-radius: 15px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  top: 46px;
+  left: 0px;
+  background-color: var(--background-color);
+
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .menu {
+    width: 122px;
+    top: 52px;
+  }
+}
+.listItem {
+  padding: 5px 14px;
+  border-radius: 15px;
+  color: var(--regular-text-color);
+}
+
+@media screen and (min-width: 768px) {
+  .listItem {
+    padding-inline: 18px;
+    transition: all var(--transition-delay) var(--transition);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .listItem:hover {
+    background-color: var(--hover-color);
+    color: var(--main-text-color);
+
+    cursor: pointer;
+  }
+}
+.menuItem {
+  font-family: 'Suisse Intl', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.3;
+}
+@media screen and (min-width: 768px) {
+  .menuItem {
+    font-size: 16px;
+  }
+}

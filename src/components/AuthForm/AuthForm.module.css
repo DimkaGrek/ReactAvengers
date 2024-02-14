@@ -1,0 +1,249 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.containerImg {
+  display: none;
+}
+
+.containerTitle {
+  width: 335px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: var(--font-size-title-mob);
+  letter-spacing: -0.02em;
+  color: var(--main-text-color);
+  margin-bottom: 20px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: var(--font-size-small);
+  letter-spacing: -0.02em;
+  color: var(--regular-text-color);
+  margin-bottom: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 20px;
+}
+
+.form div:not(:last-child):not(:nth-last-child(2)) {
+  margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .containerTitle {
+    width: 399px;
+  }
+
+  .title {
+    font-size: var(--font-size-main-title);
+    color: var(--main-text-color);
+  }
+
+  .text {
+    font-size: var(--font-size-smaller);
+    color: var(--regular-text-color);
+  }
+
+  .form div:not(:last-child):not(:nth-last-child(2)) {
+    margin-bottom: 24px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .containerImg {
+    display: flex;
+    margin-top: 82px;
+  }
+
+  .containerTitle {
+    width: 533px;
+  }
+
+  .containerForm {
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+.input {
+  border: 1px solid var(--border-color);
+  outline: none;
+  border-radius: 12px;
+
+  background-color: transparent;
+  color: var(--main-text-color);
+
+  font-weight: 400;
+  font-size: var(--font-size-small);
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+
+  padding: 12px 40px 12px 18px;
+  width: 335px;
+  height: 42px;
+  transition: border var(--transition) var(--transition-delay);
+
+  &::placeholder {
+    color: var(--regular-text-color);
+  }
+
+  &:hover {
+    border: 1px solid var(--button-color);
+  }
+}
+
+.containerIcon {
+  position: relative;
+  align-items: center;
+  min-width: 335px;
+}
+
+.icon {
+  stroke: var(--main-text-color);
+  fill: none;
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+}
+
+.button {
+  border-radius: 40px;
+  padding: 14px 44px;
+  margin-top: 80px;
+
+  width: 138px;
+  height: 44px;
+
+  font-weight: 400;
+  font-size: var(--font-size-small);
+  letter-spacing: -0.02em;
+  color: var(--background-color);
+  background-color: var(--button-color);
+
+  &:hover {
+    background-color: var(--hover-color);
+  }
+}
+
+@media (max-width: 374.99px) {
+  .containerTitle,
+  .input {
+    width: 280px;
+  }
+
+  .containerIcon {
+    min-width: 280px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .input {
+    font-size: var(--font-size-smaller);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+
+    padding: 12px 40px 12px 18px;
+    width: 399px;
+    height: 48px;
+  }
+
+  .button {
+    font-size: var(--font-size-smaller);
+    width: 146px;
+    height: 47px;
+
+    margin-top: 60px;
+  }
+}
+
+.containerLink {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-link-color);
+}
+
+.span {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--main-text-color);
+}
+
+.successInput {
+  border: 1px solid var(--success-color);
+
+  &:hover {
+    border: 1px solid var(--success-color);
+  }
+}
+
+.errorInput {
+  border: 1px solid var(--errors-color);
+
+  &:hover {
+    border: 1px solid var(--errors-color);
+  }
+}
+
+.successIcon {
+  stroke: none;
+  fill: var(--success-color);
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+}
+
+.errorIcon {
+  stroke: none;
+  fill: var(--errors-color);
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+}
+
+.messageErr,
+.messageSec {
+  font-weight: 400;
+  font-size: 10px;
+  color: var(--success-color);
+  padding: 4px 0 0 18px;
+  width: 320px;
+  position: absolute;
+}
+
+.messageErr {
+  color: var(--errors-color);
+}
+
+@media only screen and (min-width: 768px) {
+  .messageErr,
+  .messageSec {
+    width: 381px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .errorIcon,
+  .successIcon,
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}

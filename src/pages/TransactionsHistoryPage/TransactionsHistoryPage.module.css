@@ -1,0 +1,72 @@
+.container {
+  position: relative;
+  min-width: 320px;
+  max-width: 375px;
+  padding: 0 20px 80px 20px;
+  margin: 0 auto;
+}
+.historyTitle {
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  color: var(--main-text-color);
+}
+.historyText {
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--regular-text-color);
+}
+
+.textContainer {
+  max-width: 100%;
+  margin-bottom: 40px;
+}
+.historyAmount {
+  width: 100%;
+  margin: 40px 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px 32px 32px;
+    margin: 0 auto;
+  }
+  .textContainer {
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+  .historyText {
+    margin-top: 15px;
+    font-size: 16px;
+  }
+  .historyTitle {
+    font-size: 38px;
+  }
+  .historyAmount {
+    width: 100%;
+    margin: 40px 0;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+    padding: 0 100px 50px 100px;
+    margin: 0 auto;
+  }
+  .textContainer {
+    max-width: 492px;
+    margin-bottom: 64px;
+  }
+  .historyAmount {
+    margin: 0;
+    position: absolute;
+    width: 630px;
+    fill: none;
+    left: 67%;
+    top: -1%;
+    transform: translate(-40%, 10%);
+  }
+}

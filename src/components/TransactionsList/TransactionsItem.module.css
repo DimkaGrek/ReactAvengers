@@ -1,0 +1,263 @@
+.btnContainer {
+  display: flex;
+  gap: 10px;
+}
+.btnTable {
+  position: relative;
+  border-radius: 40px;
+  padding: 14px;
+  width: 44px;
+  height: 44px;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--background-color);
+}
+
+.iconEdit {
+  stroke: var(--background-color);
+  fill: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.btnTableDel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 40px;
+  padding: 14px;
+  width: 44px;
+  height: 44px;
+  font-weight: 400;
+  font-size: 16px;
+  background: var(--background-color);
+
+  color: var(--main-text-color);
+}
+
+.iconDelete {
+  stroke: var(--main-text-color);
+  fill: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.textEdit {
+  display: none;
+}
+.textCont {
+  display: none;
+}
+
+.tr {
+  width: 100%;
+  display: inline-flex;
+}
+.tr:first-child {
+  margin-top: 20px;
+}
+.td {
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.td:nth-child(1) {
+  width: 20%;
+  padding-left: 20px;
+}
+.td:nth-child(2) {
+  width: 15%;
+}
+.td:nth-child(3) {
+  width: 15%;
+}
+.td:nth-child(4) {
+  width: 12%;
+}
+.td:nth-child(5) {
+  width: 18%;
+}
+.td:nth-child(6) {
+  width: 20%;
+}
+
+@media only screen and (min-width: 768px) {
+  .td:nth-child(1) {
+    width: 20%;
+    padding-left: 32px;
+  }
+  .td:nth-child(2) {
+    width: 15%;
+  }
+  .td:nth-child(3) {
+    width: 15%;
+  }
+  .td:nth-child(4) {
+    width: 12%;
+  }
+  .td:nth-child(5) {
+    width: 18%;
+  }
+  .td:nth-child(6) {
+    width: 20%;
+  }
+
+  /* .td:last-child {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 16px;
+  } */
+  .btnContainer {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+    margin-right: 16px;
+  }
+  .btnTable {
+    position: relative;
+    border-radius: 40px;
+    padding: 14px;
+    width: 44px;
+    height: 44px;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--background-color);
+  }
+  .textEdit {
+    display: none;
+  }
+  .iconEdit {
+    stroke: var(--background-color);
+    fill: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .btnTableDel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    padding: 14px;
+    width: 44px;
+    height: 44px;
+    font-weight: 400;
+    font-size: 16px;
+    background: var(--background-color);
+
+    color: var(--main-text-color);
+  }
+  .textCont {
+    display: none;
+  }
+  /* .iconDelete {
+    stroke: var(--main-text-color);
+    fill: none;
+    position: absolute;
+    left: 45%;
+    top: 28%;
+    transform: translate(-40%, 10%);
+  } */
+  .iconDelete {
+    stroke: var(--main-text-color);
+    fill: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .td:nth-child(1) {
+    width: 15%;
+    padding-left: 40px;
+  }
+  .td:nth-child(2) {
+    width: 15%;
+  }
+  .td:nth-child(3) {
+    width: 15%;
+  }
+  .td:nth-child(4) {
+    width: 15%;
+  }
+  .td:nth-child(5) {
+    width: 15%;
+  }
+  .td:nth-child(6) {
+    width: 25%;
+  }
+  .btnContainer {
+    margin-left: 0;
+  }
+  .btnTable {
+    padding: 14px 11px 14px 32px;
+    width: 118px;
+    height: 47px;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--background-color);
+  }
+
+  .iconEdit {
+    left: 31%;
+    top: 28%;
+    transform: translate(-40%, 10%);
+  }
+  .textEdit {
+    display: block;
+  }
+  .btnTableDel {
+    outline: none;
+    border-radius: 40px;
+    padding: 14px 8px 14px 30px;
+    width: 133px;
+    height: 47px;
+    font-weight: 400;
+    font-size: 16px;
+    background: var(--background-color);
+
+    color: var(--main-text-color);
+  }
+  .textCont {
+    display: block;
+  }
+  .iconDelete {
+    left: 26%;
+    top: 46%;
+  }
+
+  /* .iconDelete {
+  stroke: var(--main-text-color);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+} */
+}
+
+.btnTable,
+.btnTableDel {
+  transition: all var(--transition-delay) var(--transition);
+  outline: none;
+}
+
+.btnTableDel {
+  border: 1px solid var(--background-color);
+}
+
+.btnTable:hover,
+.btnTable:focus {
+  background-color: var(--hover-color);
+}
+
+.btnTableDel:hover,
+.btnTableDel:focus {
+  border: 1px solid var(--hover-color);
+}

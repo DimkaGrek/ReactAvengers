@@ -1,0 +1,222 @@
+.containerImg {
+  position: relative;
+  display: flex;
+  background-image: url('../../assets/images/hero/hero_mobile_@1x.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+
+  width: 335px;
+  height: 381px;
+  margin-bottom: 20px;
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('../../assets/images/hero/hero_mobile_@2x.jpg');
+  }
+
+  @media (min-width: 768px) {
+    width: 704px;
+    height: 482px;
+    margin-bottom: 32px;
+
+    background-image: url('../../assets/images/hero/hero_tablet_@1x.jpg');
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../../assets/images/hero/hero_tablet_@2x.jpg');
+    }
+  }
+
+  @media (min-width: 1440px) {
+    width: 611px;
+    height: 568px;
+    margin-right: 54px;
+    margin-bottom: 0;
+
+    background-image: url('../../assets/images/hero/hero_desktop_@1x.jpg');
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../../assets/images/hero/hero_desktop_@2x.jpg');
+    }
+  }
+
+  @media (max-width: 374.99px) {
+    width: 280px;
+
+    background-image: url('../../assets/images/hero/hero_mobile_@1x.jpg');
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../../assets/images/hero/hero_mobile_@2x.jpg');
+    }
+  }
+}
+
+.containerSvg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  background-color: var(--button-color);
+
+  margin-right: 12px;
+}
+
+.icon {
+  fill: var(--background-color);
+}
+
+.containerText {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 248px;
+  height: 81px;
+
+  background-color: var(--main-text-color);
+  border-radius: 20px;
+
+  @media only screen and (max-width: 767px) {
+    top: 240px;
+    left: -10px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    animation: moveBox 15s linear infinite;
+  }
+}
+
+.containerBalance {
+  margin-right: 12px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: var(--font-size-mini);
+  color: var(--text-dark-blue-color);
+
+  margin-bottom: 4px;
+}
+
+.balance {
+  font-weight: 700;
+  font-size: var(--font-size-mediumSm);
+  color: var(--text-black-color);
+}
+
+.containerPercent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
+  width: 58px;
+  height: 22px;
+  background-color: var(--bg-container-percent);
+}
+
+.percent {
+  text-align: center;
+
+  font-weight: 400;
+  font-size: var(--font-size-mini);
+  color: var(--text-color);
+}
+
+@media only screen and (min-width: 768px) {
+  .containerText {
+    width: 303px;
+    height: 121px;
+  }
+
+  .containerBalance {
+    margin-right: 14px;
+  }
+
+  .text {
+    font-size: var(--font-size-smaller);
+    margin-bottom: 7px;
+  }
+
+  .balance {
+    font-size: var(--font-size-large);
+  }
+
+  .containerSvg {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 13px;
+    margin-right: 22px;
+  }
+}
+
+@keyframes moveBox {
+  0% {
+    transform: translate(200px, 0);
+  }
+  12.5% {
+    transform: translate(400px, 159px);
+  }
+  25% {
+    transform: translate(200px, 361px);
+  }
+  37.5% {
+    transform: translate(0, 168px);
+  }
+  50% {
+    transform: translate(280px, 0);
+  }
+  62.5% {
+    transform: translate(400px, 180px);
+  }
+  75% {
+    transform: translate(200px, 361px);
+  }
+  87.5% {
+    transform: translate(0, 120px);
+  }
+  100% {
+    transform: translate(200px, 0);
+  }
+}
+
+@media (min-width: 1440px) {
+  @keyframes moveBox {
+    0% {
+      transform: translate(150px, 0);
+    }
+    12.5% {
+      transform: translate(308px, 200px);
+    }
+    25% {
+      transform: translate(150px, 447px);
+    }
+    37.5% {
+      transform: translate(0, 300px);
+    }
+    50% {
+      transform: translate(200px, 0);
+    }
+    62.5% {
+      transform: translate(308px, 250px);
+    }
+    75% {
+      transform: translate(150px, 447px);
+    }
+    87.5% {
+      transform: translate(0, 200px);
+    }
+    100% {
+      transform: translate(150px, 0);
+    }
+  }
+}

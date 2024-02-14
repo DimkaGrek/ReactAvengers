@@ -1,0 +1,10 @@
+.burgerMenuBtn {
+  stroke: #fafafa;
+  background-color: transparent;
+}
+
+@media screen and (min-width: 1440px) {
+  .burgerMenuBtn {
+    display: none;
+  }
+}

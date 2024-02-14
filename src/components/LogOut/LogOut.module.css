@@ -1,0 +1,65 @@
+.title {
+  font-family: 'SuisseIntl-Regular', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--main-text-color);
+  margin-bottom: 40px;
+}
+
+.container {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  font-family: 'SuisseIntl-Regular', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--background-color);
+
+  border-radius: 40px;
+  padding: 14px 44px;
+  transition: all var(--transition-delay) var(--transition);
+}
+
+.buttonCansel {
+  font-family: 'SuisseIntl-Regular', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  background: var(--button-color-modal);
+  color: var(--main-text-color);
+
+  border-radius: 40px;
+  padding: 14px 44px;
+  transition: all var(--transition-delay) var(--transition);
+}
+@media screen and (min-width: 768px) {
+  .button {
+    font-size: 16px;
+  }
+
+  .buttonCansel {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .button:hover,
+  .button:focus {
+    background: #0ebb69;
+  }
+  .buttonCansel:hover,
+  .buttonCansel:focus {
+    color: var(--text-color_50);
+  }
+}
+.button:disabled {
+  background-color: var(--text-color_50);
+  cursor: default;
+}
