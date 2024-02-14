@@ -6,7 +6,7 @@ const TransactionsHistoryNav = ({
   activeButton,
   handleButtonAndToggleMenu,
 }) => {
-  const isMobileScreen = useMediaQuery({ query: '(min-width: 375px)' });
+  const isMobileScreen = useMediaQuery({ query: '(min-width: 320px)' });
 
   const changeActiveButtonStyleDesktop = buttonName => {
     return activeButton === buttonName
