@@ -3,6 +3,7 @@
   padding: 28px 20px 40px 20px;
   border-radius: 30px;
   overflow: hidden;
+  margin-bottom: 80px;
 }
 @media only screen and (min-width: 768px) {
   .chartContainer {
@@ -33,6 +34,9 @@
   }
   .statsWrapper {
     gap: 86px;
+  }
+  .chartContainer {
+    margin-bottom: 0;
   }
 }
 .pieChartWrapper {
