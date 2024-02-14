@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkReactAvengers=self.webpackChunkReactAvengers||[]).push([[743],{5743:function(e,n,s){s.r(n),s.d(n,{default:function(){return a}});var r=s(6615),t="RegisterPage_container__l-2BF",c=s(3329),a=function(){return(0,c.jsx)("div",{className:t,children:(0,c.jsx)(r.Z,{signUp:!0})})}}}]);
+//# sourceMappingURL=743.706f69dd.chunk.js.map

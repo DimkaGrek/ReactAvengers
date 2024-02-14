@@ -1,7 +1,17 @@
 {
   "files": {
-    "main.css": "/ReactAvengers/static/css/main.fdc90e0c.css",
-    "main.js": "/ReactAvengers/static/js/main.579aaa53.js",
+    "main.css": "/ReactAvengers/static/css/main.f2995d5a.css",
+    "main.js": "/ReactAvengers/static/js/main.6688f683.js",
+    "static/css/701.89503569.chunk.css": "/ReactAvengers/static/css/701.89503569.chunk.css",
+    "static/js/701.928021eb.chunk.js": "/ReactAvengers/static/js/701.928021eb.chunk.js",
+    "static/css/169.75a51c02.chunk.css": "/ReactAvengers/static/css/169.75a51c02.chunk.css",
+    "static/js/169.8043cb7d.chunk.js": "/ReactAvengers/static/js/169.8043cb7d.chunk.js",
+    "static/css/743.89516e87.chunk.css": "/ReactAvengers/static/css/743.89516e87.chunk.css",
+    "static/js/743.706f69dd.chunk.js": "/ReactAvengers/static/js/743.706f69dd.chunk.js",
+    "static/css/321.bce9bb7a.chunk.css": "/ReactAvengers/static/css/321.bce9bb7a.chunk.css",
+    "static/js/321.082646a5.chunk.js": "/ReactAvengers/static/js/321.082646a5.chunk.js",
+    "static/css/859.32dead90.chunk.css": "/ReactAvengers/static/css/859.32dead90.chunk.css",
+    "static/js/859.9e143450.chunk.js": "/ReactAvengers/static/js/859.9e143450.chunk.js",
     "static/media/no_data_abstract.png": "/ReactAvengers/static/media/no_data_abstract.7998a2fa200f66ab3d0c.png",
     "static/media/server-error.png": "/ReactAvengers/static/media/server-error.22b27456e122853a79ea.png",
     "static/media/hero_desktop_@2x.jpg": "/ReactAvengers/static/media/hero_desktop_@2x.2a6784d6e404e8100441.jpg",
@@ -17,11 +27,21 @@
     "static/media/images_users_2x@.png": "/ReactAvengers/static/media/images_users_2x@.5eeae9b8b3455548bd2f.png",
     "static/media/images_users_1x@.png": "/ReactAvengers/static/media/images_users_1x@.c1c11a19d97602915a48.png",
     "index.html": "/ReactAvengers/index.html",
-    "main.fdc90e0c.css.map": "/ReactAvengers/static/css/main.fdc90e0c.css.map",
-    "main.579aaa53.js.map": "/ReactAvengers/static/js/main.579aaa53.js.map"
+    "main.f2995d5a.css.map": "/ReactAvengers/static/css/main.f2995d5a.css.map",
+    "main.6688f683.js.map": "/ReactAvengers/static/js/main.6688f683.js.map",
+    "701.89503569.chunk.css.map": "/ReactAvengers/static/css/701.89503569.chunk.css.map",
+    "701.928021eb.chunk.js.map": "/ReactAvengers/static/js/701.928021eb.chunk.js.map",
+    "169.75a51c02.chunk.css.map": "/ReactAvengers/static/css/169.75a51c02.chunk.css.map",
+    "169.8043cb7d.chunk.js.map": "/ReactAvengers/static/js/169.8043cb7d.chunk.js.map",
+    "743.89516e87.chunk.css.map": "/ReactAvengers/static/css/743.89516e87.chunk.css.map",
+    "743.706f69dd.chunk.js.map": "/ReactAvengers/static/js/743.706f69dd.chunk.js.map",
+    "321.bce9bb7a.chunk.css.map": "/ReactAvengers/static/css/321.bce9bb7a.chunk.css.map",
+    "321.082646a5.chunk.js.map": "/ReactAvengers/static/js/321.082646a5.chunk.js.map",
+    "859.32dead90.chunk.css.map": "/ReactAvengers/static/css/859.32dead90.chunk.css.map",
+    "859.9e143450.chunk.js.map": "/ReactAvengers/static/js/859.9e143450.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fdc90e0c.css",
-    "static/js/main.579aaa53.js"
+    "static/css/main.f2995d5a.css",
+    "static/js/main.6688f683.js"
   ]
 }
