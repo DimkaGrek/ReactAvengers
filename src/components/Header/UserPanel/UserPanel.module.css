@@ -11,7 +11,7 @@
   justify-content: center;
   top: 50px;
 
-  font-family: var(--font-family);
+  font-family: 'SuisseIntl-Regular', sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: rgba(250, 250, 250, 0.5);
@@ -54,7 +54,7 @@
   transition: var(--transition) var(--transition-delay);
 }
 .userPanelLinkText {
-  font-family: var(--font-family);
+  font-family: 'SuisseIntl-Regular', sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: rgba(250, 250, 250, 0.5);
