@@ -11,10 +11,10 @@ import { toast } from 'react-toastify';
 import { fetchCurrentUser } from 'my-redux/User/operations';
 import { TransactionsMessage } from 'components/TransactionsMessage/TransactionsMessage';
 import { useGetTotalTransactionsSum } from 'hooks/getTotalTransactionsSum';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export const TransactionsList = () => {
-  // const { transactionsType } = useParams();
+  const { transactionsType } = useParams();
   const dispatch = useDispatch();
   // const date = useSelector(selectDate);
   const transactions = useSelector(selectTransactions);
@@ -58,7 +58,7 @@ export const TransactionsList = () => {
     setCurrentItem(item);
     toggleEditTransaction();
   };
-  console.log('income transacitons: -->>>> ', transactions);
+
   return (
     <div className={`${s.containerTable} scroll scrollB `}>
       <div className={s.listTable}>
@@ -74,7 +74,9 @@ export const TransactionsList = () => {
         </div>
         <div className={`${s.tbody} scroll scrollB`}>
           {transactions.length === 0 && (
-            <TransactionsMessage message="No trasactions" />
+            <TransactionsMessage
+              message={`Transaction ${transactionsType} list is empty!`}
+            />
           )}
           {filterItems.length !== 0 &&
             filterItems.map(item => (
@@ -85,7 +87,7 @@ export const TransactionsList = () => {
               />
             ))}
           {filter && filterItems.length === 0 && transactions.length !== 0 && (
-            <TransactionsMessage message="No transactions in case" />
+            <TransactionsMessage message="Nothing found by filter!" />
           )}
         </div>
       </div>
