@@ -12,6 +12,7 @@
   font-size: 16px;
   color: var(--background-color);
 }
+
 .iconEdit {
   stroke: var(--background-color);
   fill: none;
@@ -203,6 +204,7 @@
     font-size: 16px;
     color: var(--background-color);
   }
+
   .iconEdit {
     left: 31%;
     top: 28%;

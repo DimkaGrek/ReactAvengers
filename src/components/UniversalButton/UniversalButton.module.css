@@ -16,8 +16,9 @@
 }
 
 .button:hover,
-.button:hover {
+.button:focus {
   border-color: var(--button-color);
+  outline: none;
 }
 
 .btnIcon {
