@@ -127,12 +127,24 @@ export const TransactionForm = ({
     }
   };
 
+  const radioBtnExpenses = classNames({
+    [`${s.typeLabel}`]: true,
+    [`${s.radioLabel}`]:
+      transaction?.type === 'incomes' || history === 'incomes',
+  });
+
+  const radioBtnIncomes = classNames({
+    [`${s.typeLabel}`]: true,
+    [`${s.radioLabel}`]:
+      transaction?.type === 'expenses' || history === 'expenses',
+  });
+
   return (
     <div>
       <div className={s.formWrapper}>
         <form className={s.transactionForm} onSubmit={handleSubmit(onSubmit)}>
           <div className={s.transactionTypes}>
-            <label className={s.typeLabel}>
+            <label className={radioBtnExpenses}>
               <input
                 className={s.radioBtn}
                 type="radio"
@@ -147,7 +159,7 @@ export const TransactionForm = ({
               <span className={s.customRadioBtn}></span>
               Expense
             </label>
-            <label className={s.typeLabel}>
+            <label className={radioBtnIncomes}>
               <input
                 className={s.radioBtn}
                 type="radio"

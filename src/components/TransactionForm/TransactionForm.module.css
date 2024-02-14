@@ -108,7 +108,7 @@
   vertical-align: text-top;
 }
 
-.radioBtn:disabled + .customRadioBtn {
+.radioLabel {
   cursor: not-allowed;
 }
 
@@ -312,6 +312,7 @@
   letter-spacing: -0.28px;
   line-height: 16px;
   color: var(--background-color);
+  transition: all var(--transition-delay) var(--transition);
 }
 
 .submitBtn:disabled {
@@ -327,7 +328,8 @@
   }
 }
 
-.submitBtn:hover {
+.submitBtn:hover,
+.submitBtn:focus {
   background-color: var(--hover-color);
 }
 

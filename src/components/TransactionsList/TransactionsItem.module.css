@@ -214,6 +214,7 @@
     display: block;
   }
   .btnTableDel {
+    outline: none;
     border-radius: 40px;
     padding: 14px 8px 14px 30px;
     width: 133px;
@@ -239,4 +240,24 @@
   top: 50%;
   transform: translate(-50%, -50%);
 } */
+}
+
+.btnTable,
+.btnTableDel {
+  transition: all var(--transition-delay) var(--transition);
+  outline: none;
+}
+
+.btnTableDel {
+  border: 1px solid var(--background-color);
+}
+
+.btnTable:hover,
+.btnTable:focus {
+  background-color: var(--hover-color);
+}
+
+.btnTableDel:hover,
+.btnTableDel:focus {
+  border: 1px solid var(--hover-color);
 }

@@ -22,6 +22,11 @@ export const TransactionsSearchTools = ({ handleOpenModal }) => {
   const date = useSelector(selectDate);
   console.log('DDDATE ->>>', date);
   const changeDateValue = e => {
+    if (!e) {
+      dispatch(changeDate(format(new Date(), 'yyyy-MM-dd')));
+      return;
+    }
+
     dispatch(changeDate(format(e, 'yyyy-MM-dd')));
   };
 
