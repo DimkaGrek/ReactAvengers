@@ -78,7 +78,7 @@
 }
 
 .transactionForm input::placeholder,
-.comment::placeholder {
+.commentField::placeholder {
   color: var(--regular-text-color);
 }
 
