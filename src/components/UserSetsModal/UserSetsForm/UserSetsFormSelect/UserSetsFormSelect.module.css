@@ -20,6 +20,7 @@
     width: 122px;
     gap: 18px;
     padding-inline: 18px;
+    transition: all var(--transition-delay) var(--transition);
   }
 }
 @media screen and (min-width: 1440px) {
