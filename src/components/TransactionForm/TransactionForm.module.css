@@ -108,6 +108,10 @@
   vertical-align: text-top;
 }
 
+.radioBtn:disabled + .customRadioBtn {
+  cursor: not-allowed;
+}
+
 .customRadioBtn::before {
   content: '';
   display: inline-block;
