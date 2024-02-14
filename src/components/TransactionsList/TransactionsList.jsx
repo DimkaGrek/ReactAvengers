@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { TransactionsItem } from './TransactionsItem';
-import s from './TransactionsList.module.css';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
+
+import { TransactionsItem } from './TransactionsItem';
 import { selectFilter } from 'my-redux/Filter/FilterSlice';
 import { editTransaction } from 'my-redux/Transaction/operations';
 import { selectTransactions } from 'my-redux/Transaction/transactionSlice';
 import { useModal } from 'hooks';
 import { Modal, TransactionForm } from 'components';
-import { toast } from 'react-toastify';
 import { fetchCurrentUser } from 'my-redux/User/operations';
 import { TransactionsMessage } from 'components/TransactionsMessage/TransactionsMessage';
 import { useGetTotalTransactionsSum } from 'hooks/getTotalTransactionsSum';
-import { useParams } from 'react-router-dom';
+import s from './TransactionsList.module.css';
 
 export const TransactionsList = () => {
   const { transactionsType } = useParams();
   const dispatch = useDispatch();
-  // const date = useSelector(selectDate);
   const transactions = useSelector(selectTransactions);
 
   const getTotalSumTransaction = useGetTotalTransactionsSum();

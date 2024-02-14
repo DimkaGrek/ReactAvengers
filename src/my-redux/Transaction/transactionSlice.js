@@ -1,4 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+
 import {
   getTransactions,
   addTransaction,
@@ -20,7 +21,6 @@ const transactionSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(getTransactions.fulfilled, (state, { payload }) => {
-        console.log('action.payload.getTrans---->>', payload);
         const { data, date } = payload;
         state.transactions = data;
         if (data.length !== 0 && !date) {
@@ -37,7 +37,6 @@ const transactionSlice = createSlice({
         state.error = null;
       })
       .addCase(addTransaction.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.error = null;
         if (state.transactions === null) {
           state.transactions = [action.payload];

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import AuthForm from '../../components/AuthForm/AuthForm';
 import s from './LoginPage.module.css';
 

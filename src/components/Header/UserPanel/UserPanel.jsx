@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+
 import style from './UserPanel.module.css';
 import { Icon } from 'components/Icon/Icon';
 

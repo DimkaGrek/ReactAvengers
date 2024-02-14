@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { format } from 'date-fns';
 
 const initialState = {
   filter: '',

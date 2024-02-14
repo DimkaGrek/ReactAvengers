@@ -2,6 +2,7 @@
   display: flex;
   gap: 8px;
   height: 17px;
+  align-items: center;
 }
 .logoIconWrapper {
   width: 27px;

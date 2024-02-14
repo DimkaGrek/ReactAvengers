@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import s from './BgImageWrapper.module.css';
 import { Icon } from '../Icon/Icon';
 import { randomNumber, randomPercentage } from 'helpers/getRandomNumber';
+import s from './BgImageWrapper.module.css';
 
 export const BgImageWrapper = () => {
   const [currentStep, setCurrentStep] = useState(1);

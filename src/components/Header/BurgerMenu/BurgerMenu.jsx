@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+
 import UserBarBtn from '../UserBarBtn/UserBarBtn';
-import style from './BurgerMenu.module.css';
 import { Icon } from 'components/Icon/Icon';
 import TransactionsHistoryNav from '../TransactionsHistoryNav/TransactionsHistoryNav';
+import style from './BurgerMenu.module.css';
 
 const BurgerMenu = ({
   toggleMenu,

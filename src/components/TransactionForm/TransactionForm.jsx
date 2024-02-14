@@ -6,6 +6,7 @@ import DatePicker from 'react-datepicker';
 import classNames from 'classnames';
 import { yupResolver } from '@hookform/resolvers/yup';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useNavigate } from 'react-router-dom';
 
 import { Icon, Modal } from 'components';
 import { CategoriesModal } from 'components/CategoriesModal/CategoriesModal';
@@ -14,9 +15,8 @@ import { selectUser } from 'my-redux/User/userSlice';
 import { getFormattedDate, getFormattedTime } from 'helpers';
 import { selectTransactionsError } from 'my-redux/Transaction/transactionSlice';
 import { transactionSchema } from 'schemas/validationSchemas';
-import s from './TransactionForm.module.css';
 import './DatePicker.css';
-import { useNavigate } from 'react-router-dom';
+import s from './TransactionForm.module.css';
 
 export const TransactionForm = ({
   transaction,
@@ -29,9 +29,6 @@ export const TransactionForm = ({
   const { currency } = user;
   const [categoryId, setCategoryId] = useState('');
   const [isOpenModalTransaction, toggleModalTransaction] = useModal();
-
-  console.log(history, 'HISTORY');
-  console.log(transactionsType, 'TRANSACTION');
 
   const {
     register,

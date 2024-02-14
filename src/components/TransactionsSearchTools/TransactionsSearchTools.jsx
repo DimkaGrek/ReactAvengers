@@ -1,7 +1,7 @@
-import s from './TransactionsSearchTools.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
 
-import { useDispatch, useSelector } from 'react-redux';
 import {
   changeDate,
   changeFilter,
@@ -10,7 +10,7 @@ import {
   selectFilter,
 } from 'my-redux/Filter/FilterSlice';
 import { Icon, UniversalButton } from 'components';
-import DatePicker from 'react-datepicker';
+import s from './TransactionsSearchTools.module.css';
 
 export const TransactionsSearchTools = ({ handleOpenModal }) => {
   const dispatch = useDispatch();
@@ -20,13 +20,11 @@ export const TransactionsSearchTools = ({ handleOpenModal }) => {
   };
 
   const date = useSelector(selectDate);
-  console.log('DDDATE ->>>', date);
   const changeDateValue = e => {
     if (!e) {
       dispatch(changeDate(format(new Date(), 'yyyy-MM-dd')));
       return;
     }
-
     dispatch(changeDate(format(e, 'yyyy-MM-dd')));
   };
 

@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react';
-import style from './UserBarBtn.module.css';
+import { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import { Icon } from 'components/Icon/Icon';
 import UserPanel from '../UserPanel/UserPanel';
-import { useSelector } from 'react-redux';
 import { selectUser } from 'my-redux/User/userSlice';
 import { getSevenLetters } from 'helpers';
+import style from './UserBarBtn.module.css';
 
 const UserBarBtn = ({
   toggleProfileModal,

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { loginUser } from './operations';
 import { refreshUser } from './operations';
 import { logoutUser } from './operations';

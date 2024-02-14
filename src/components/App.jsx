@@ -1,18 +1,23 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import SharedLayout from './SharedLayout/SharedLayout';
-import RegisterPage from 'pages/RegisterPage/RegisterPage';
-import MainTransactionsPage from 'pages/MainTransactionsPage/MainTransactionsPage';
-import LoginPage from 'pages/LoginPage/LoginPage';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, lazy } from 'react';
+
+import SharedLayout from './SharedLayout/SharedLayout';
 import { refreshUser } from 'my-redux/Auth/operations';
-import { Test } from './Test';
-import WelcomePage from 'pages/WelcomePage/WelcomePage';
 import { PublicRoute } from './Routes/PublicRoute';
 import { PrivateRoute } from './Routes/PrivateRoute';
-import TransactionsHistoryPage from 'pages/TransactionsHistoryPage';
 import { selectIsRefreshing } from 'my-redux/Auth/authSlice';
 import Loader from './Loader/Loader';
-import { useEffect } from 'react';
+
+const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
+const MainTransactionsPage = lazy(() =>
+  import('pages/MainTransactionsPage/MainTransactionsPage')
+);
+const TransactionsHistoryPage = lazy(() =>
+  import('pages/TransactionsHistoryPage/TransactionsHistoryPage')
+);
 
 const App = () => {
   const dispatch = useDispatch();
@@ -70,7 +75,6 @@ const App = () => {
             />
           }
         />
-        <Route path="/test" element={<Test />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

@@ -1,11 +1,10 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
-
-import s from './WelcomePage.module.css';
 
 import { BgImageWrapper } from 'components/BgImageWrapper/BgImageWrapper';
 import users1x from '../../assets/images/images_users_1x@.png';
 import users2x from '../../assets/images/images_users_2x@.png';
+
+import s from './WelcomePage.module.css';
 
 const Home = () => {
   return (

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const Svg = ({ children, className, size }) => {
   return (
     <svg

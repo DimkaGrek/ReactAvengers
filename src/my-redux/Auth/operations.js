@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { fetchCurrentUser } from 'my-redux/User/operations';
 import { api, clearToken, setToken } from 'services/api';
 
@@ -22,7 +23,6 @@ export const registerUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
-    console.log('login/password->>> ', credentials);
     try {
       const { data } = await api.post('/auth/login', credentials);
       setToken(data.accessToken);

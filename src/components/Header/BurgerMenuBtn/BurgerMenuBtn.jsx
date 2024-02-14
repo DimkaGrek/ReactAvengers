@@ -1,6 +1,5 @@
-import React from 'react';
-import style from './BurgerMenuBtn.module.css';
 import { Icon } from 'components';
+import style from './BurgerMenuBtn.module.css';
 
 const BurgerMenuBtn = ({ toggleMenu }) => {
   return (

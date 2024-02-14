@@ -1,7 +1,7 @@
-import React from 'react';
-import style from '../Logo/Logo.module.css';
-import { Icon } from 'components/Icon/Icon';
 import { NavLink } from 'react-router-dom';
+
+import { Icon } from 'components/Icon/Icon';
+import style from '../Logo/Logo.module.css';
 
 const Logo = ({ resetStateActiveButton }) => {
   return (

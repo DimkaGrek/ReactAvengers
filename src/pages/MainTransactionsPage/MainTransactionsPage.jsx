@@ -1,6 +1,7 @@
 import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 //
 import {
   TransactionForm,
@@ -12,9 +13,8 @@ import {
   getTransactions,
 } from 'my-redux/Transaction/operations';
 //
-import s from './MainTransactionsPage.module.css';
-import { toast } from 'react-toastify';
 import { fetchCurrentUser } from 'my-redux/User/operations';
+import s from './MainTransactionsPage.module.css';
 
 const MainTransactionsPage = () => {
   const dispatch = useDispatch();

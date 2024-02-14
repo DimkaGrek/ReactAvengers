@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import headerStyles from './headerStyles.module.css';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import Logo from './Logo/Logo';
 import BurgerMenuBtn from './BurgerMenuBtn/BurgerMenuBtn';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
-import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'my-redux/Auth/authSlice';
 import TransactionsHistoryNav from './TransactionsHistoryNav/TransactionsHistoryNav';
 import UserBarBtn from './UserBarBtn/UserBarBtn';
 import { useModal } from 'hooks';
 import { LogOut, Modal, UserSetsModal } from 'components';
+import headerStyles from './headerStyles.module.css';
 
 const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

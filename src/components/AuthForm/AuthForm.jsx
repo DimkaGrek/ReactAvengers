@@ -6,12 +6,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import classNames from 'classnames';
 import { toast } from 'react-toastify';
 
-import s from './AuthForm.module.css';
-
-import { Icon } from '../../components/Icon/Icon';
+import { BgImageWrapper, Icon } from 'components';
 import { loginUser, registerUser } from '../../my-redux/Auth/operations';
-import { BgImageWrapper } from 'components';
 import { signUpSchema, signInSchema } from '../../schemas/validationSchemas';
+
+import s from './AuthForm.module.css';
 
 const AuthForm = ({ signUp }) => {
   const [showPass, setShowPass] = useState(false);
@@ -68,13 +67,12 @@ const AuthForm = ({ signUp }) => {
       .unwrap()
       .then(() => {
         reset();
-        toast.success(
-          signUp ? 'Registration successful!' : 'Login successful!'
-        );
+        toast.success('Welcome !');
+        //   signUp ? 'Registration successful!' : 'Login successful!'
+        // );
         signUp && navigate('/login');
       })
       .catch(error => {
-        console.log(error);
         if (error.response.status === 400) {
           toast.error('Invalid data. Please check your input.');
         } else if (error.response.status === 409) {

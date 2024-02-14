@@ -1,6 +1,7 @@
-import style from './TransactionsHistoryNav.module.css';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+
+import style from './TransactionsHistoryNav.module.css';
 
 const TransactionsHistoryNav = ({
   activeButton,

@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import s from './CategoriesModal.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCategories } from 'my-redux/Category/categorySlice';
-import { Icon } from '../../components/Icon/Icon';
+import { toast } from 'react-toastify';
+
 import {
   addCategory,
   deleteCategory,
   editCategory,
 } from 'my-redux/Category/operations';
-import { toast } from 'react-toastify';
+import { selectCategories } from 'my-redux/Category/categorySlice';
+import { Icon } from '../../components/Icon/Icon';
+import s from './CategoriesModal.module.css';
 
 export const CategoriesModal = ({ type, transportCategory }) => {
   const categories = useSelector(selectCategories);
@@ -34,7 +35,7 @@ export const CategoriesModal = ({ type, transportCategory }) => {
       dispatch(editCategory({ categoryName, categoryId }))
         .unwrap()
         .then(() => setIsEditMode(false))
-        .catch(error => console.error('Error editing category: ', error));
+        .catch(error => toast.error('Error editing category'));
     } else {
       dispatch(addCategory({ type, categoryName }))
         .unwrap()
@@ -46,7 +47,7 @@ export const CategoriesModal = ({ type, transportCategory }) => {
             behavior: 'smooth',
           });
         })
-        .catch(error => console.error('Error adding category: ', error));
+        .catch(error => toast.error('Error adding category'));
     }
     setCategoryName('');
   };
@@ -72,9 +73,9 @@ export const CategoriesModal = ({ type, transportCategory }) => {
 
     dispatch(deleteCategory({ id, type }))
       .unwrap()
-      .then()
+      .then(() => toast.success('Category deleted successfully'))
       .catch(error => {
-        toast.error(error.message);
+        toast.error('Cannot delete category with existing transactions');
       })
       .finally(setIsButtonDisabled(false));
   };

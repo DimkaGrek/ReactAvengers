@@ -9,8 +9,8 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-
 import storage from 'redux-persist/lib/storage';
+
 import { authReducer } from './Auth/authSlice';
 import { userReducer } from './User/userSlice';
 import { categorySliceReducer } from './Category/categorySlice';

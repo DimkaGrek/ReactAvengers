@@ -1,10 +1,11 @@
-import { TransactionsList } from 'components/TransactionsList/TransactionsList';
-import { TransactionsSearchTools } from 'components/TransactionsSearchTools/TransactionsSearchTools';
-import React, { useEffect, useRef } from 'react';
-import s from './TransactionsHistoryPage.module.css';
-import { Modal, TransactionForm, TransactionsTotalAmount } from 'components';
+import { useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+
+import { TransactionsList } from 'components/TransactionsList/TransactionsList';
+import { TransactionsSearchTools } from 'components/TransactionsSearchTools/TransactionsSearchTools';
+import { Modal, TransactionForm, TransactionsTotalAmount } from 'components';
 import {
   selectTotalTransExpenses,
   selectTotalTransIncomes,
@@ -17,7 +18,7 @@ import { selectDate } from 'my-redux/Filter/FilterSlice';
 import { useGetTotalTransactionsSum } from 'hooks/getTotalTransactionsSum';
 import { useModal } from 'hooks';
 import { fetchCurrentUser } from 'my-redux/User/operations';
-import { toast } from 'react-toastify';
+import s from './TransactionsHistoryPage.module.css';
 
 const TransactionsHistoryPage = () => {
   const totalExpenses = useSelector(selectTotalTransExpenses);
@@ -35,7 +36,6 @@ const TransactionsHistoryPage = () => {
         toast.success('Transaction added successfully!');
       })
       .catch(error => {
-        console.log(error);
         toast.error('Something went wrong!');
       });
   };
@@ -56,26 +56,16 @@ const TransactionsHistoryPage = () => {
   const getTotalSumTransaction = useRef(useGetTotalTransactionsSum());
 
   useEffect(() => {
-    console.log('GetTotalTrans!!!!!');
     getTotalSumTransaction.current();
-    return () => {
-      console.log('getTotalTrans');
-    };
   }, []);
 
   useEffect(() => {
-    console.log('USE EFFECT GET TRANSACTION!!!');
     if (filterDate) {
-      console.log('FilteredTrans!!!');
       dispatch(getTransactions({ type: transactionsType, date: filterDate }));
     } else {
-      console.log('NO Filtered trans!!!');
       dispatch(getTransactions({ type: transactionsType }));
     }
   }, [filterDate, dispatch, transactionsType]);
-
-  // console.log('totalExenses ->>>', totalExpenses);
-  // console.log('totalIncomes ->>>', totalIncomes);
 
   const [isAddModal, toggleIsAddModal] = useModal();
 
