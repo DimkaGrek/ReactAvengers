@@ -33,6 +33,7 @@ List of icons names ("name" - description (css styles) ):
 17) 'eye-off' - Hidden password icon (add styles: stroke="color", fill="none")
 18) 'error' - Icon for unvalid form field (add style: fill="color")
 19) 'success' - Icon for valid form field (add style in css: fill="color")
+20) 'close-btn' - Icon for close burger-menu (add style: fill="color")
 
 */
 

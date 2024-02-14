@@ -18,15 +18,20 @@
   padding: 15px 30px;
   width: 100%;
   height: 50px;
-  border: none;
-  background: #0c0d0d;
+  border: 1px solid var(--background-color);
+  background: var(--background-color);
 
-  font-family: 'Suisse Intl', sans-serif;
+  font-family: 'SuisseIntl-Regular', sans-serif;
   font-weight: 400;
   font-size: 16px;
   letter-spacing: -0.02em;
   color: rgba(250, 250, 250, 0.4);
   outline: none;
+}
+
+.formInput:hover,
+.formInput:focus {
+  border: 1px solid var(--button-color);
 }
 
 .formCalendar {
@@ -38,7 +43,7 @@
   background: #171719;
   color: rgba(250, 250, 250, 0.4);
 
-  font-family: 'Suisse Intl', sans-serif;
+  font-family: 'SuisseIntl-Regular', sans-serif;
   font-weight: 400;
   font-size: 16px;
   letter-spacing: -0.02em;
@@ -99,10 +104,9 @@
     padding: 15px 30px;
     width: 254px;
     height: 50px;
-    border: none;
     background: #0c0d0d;
 
-    font-family: 'Suisse Intl', sans-serif;
+    font-family: 'SuisseIntl-Regular', sans-serif;
     font-weight: 400;
     font-size: 16px;
     letter-spacing: -0.02em;

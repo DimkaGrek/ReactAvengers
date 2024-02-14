@@ -78,7 +78,7 @@
 }
 
 .transactionForm input::placeholder,
-.comment::placeholder {
+.commentField::placeholder {
   color: var(--regular-text-color);
 }
 
@@ -106,6 +106,10 @@
   border-radius: 50%;
   border: 2px solid var(--border-field-color);
   vertical-align: text-top;
+}
+
+.radioLabel {
+  cursor: not-allowed;
 }
 
 .customRadioBtn::before {
@@ -308,6 +312,7 @@
   letter-spacing: -0.28px;
   line-height: 16px;
   color: var(--background-color);
+  transition: all var(--transition-delay) var(--transition);
 }
 
 .submitBtn:disabled {
@@ -323,7 +328,8 @@
   }
 }
 
-.submitBtn:hover {
+.submitBtn:hover,
+.submitBtn:focus {
   background-color: var(--hover-color);
 }
 
