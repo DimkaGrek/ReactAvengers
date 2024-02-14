@@ -24,6 +24,7 @@
 
   border-radius: 40px;
   padding: 14px 44px;
+  transition: all var(--transition-delay) var(--transition);
 }
 
 .buttonCansel {
@@ -36,6 +37,7 @@
 
   border-radius: 40px;
   padding: 14px 44px;
+  transition: all var(--transition-delay) var(--transition);
 }
 @media screen and (min-width: 768px) {
   .button {

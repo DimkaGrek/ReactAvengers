@@ -1,9 +1,11 @@
-import s from './LogOut.module.css';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
 import { logoutUser } from 'my-redux/Auth/operations';
 import { toast } from 'react-toastify';
-import { useState } from 'react';
+
+import s from './LogOut.module.css';
 
 export const LogOut = ({ toggleLogOutModal }) => {
   const dispatch = useDispatch();

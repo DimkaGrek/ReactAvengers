@@ -29,6 +29,7 @@
 @media screen and (min-width: 768px) {
   .listItem {
     padding-inline: 18px;
+    transition: all var(--transition-delay) var(--transition);
   }
 }
 
