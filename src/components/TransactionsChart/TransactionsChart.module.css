@@ -2,12 +2,11 @@
   background-color: var(--box-background-color);
   padding: 28px 20px 40px 20px;
   border-radius: 30px;
-  overflow: hidden;
   margin-bottom: 80px;
 }
 @media only screen and (min-width: 768px) {
   .chartContainer {
-    padding-top: 44px;
+    padding-top: 40px;
     padding-inline: 40px;
     padding-bottom: 60px;
   }
@@ -15,17 +14,17 @@
 .title {
   font-size: 14px;
   color: var(--text-color_50);
-  margin-bottom: 98px;
+  margin-bottom: 56px;
 }
 @media only screen and (min-width: 768px) {
   .title {
     font-size: 16px;
-    margin-bottom: 40px;
+    margin-bottom: 37px;
   }
   .statsWrapper {
     display: flex;
     align-items: flex-start;
-    gap: 141px;
+    gap: 96px;
   }
 }
 @media only screen and (min-width: 1440px) {
@@ -33,7 +32,7 @@
     margin-bottom: 35px;
   }
   .statsWrapper {
-    gap: 86px;
+    gap: 42px;
   }
   .chartContainer {
     margin-bottom: 0;
@@ -41,16 +40,14 @@
 }
 .pieChartWrapper {
   position: relative;
-  height: 100px;
-  width: 200px;
+  height: 150px;
+  width: 292px;
   margin-inline: auto;
-  margin-bottom: 62px;
+  margin-bottom: 60px;
 }
 @media only screen and (min-width: 768px) {
   .pieChartWrapper {
     margin: 0;
-    margin-top: 42px;
-    margin-left: 45px;
   }
 }
 .chartDescr {
@@ -71,12 +68,14 @@
   font-size: 16px;
   color: var(--text-color_50);
   max-height: 126px;
-  padding-right: 16px;
+  padding-right: 28px;
   overflow: auto;
 }
 @media only screen and (min-width: 768px) {
   .list {
-    width: 207px;
+    width: 216px;
+    margin-top: 4px;
+    padding-right: 18px;
   }
 }
 .listItem {
@@ -84,13 +83,13 @@
   align-items: center;
 }
 .listItem:not(:last-child) {
-  margin-bottom: 15px;
+  margin-bottom: 17px;
 }
 .wrapperMarker {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  margin-right: 4px;
+  margin-right: 10px;
 }
 @media only screen and (min-width: 1440px) {
   .wrapperMarker {

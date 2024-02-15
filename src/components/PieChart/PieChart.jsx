@@ -1,22 +1,19 @@
 import { PieChart, Pie, Cell } from 'recharts';
 import { useMemo } from 'react';
-//
-import s from './PieChart.module.css';
 
 export const Chart = ({ data }) => {
   const chartData = useMemo(() => data, [data]);
 
   return (
-    <PieChart className={s.chart} width={200} height={200}>
+    <PieChart width={292} height={150}>
       <Pie
         dataKey="value"
         data={chartData}
         startAngle={180}
         endAngle={0}
-        cx="50%"
-        cy="50%"
-        innerRadius={65}
-        outerRadius={100}
+        cy={140}
+        innerRadius={95}
+        outerRadius={145}
         paddingAngle={-1}
         cornerRadius={4}
         fill="#15151b"

@@ -1,33 +1,14 @@
-.container {
-  max-width: 375px;
-  padding-inline: 20px;
-  margin-top: 66px;
-  margin-inline: auto;
-}
-
 .wrapper {
   display: flex;
   flex-direction: column;
   gap: 40px;
-}
-
-@media only screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding-inline: 32px;
-  }
+  margin-top: 66px;
 }
 @media only screen and (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-    padding-inline: 100px;
-  }
-
   .wrapper {
     flex-wrap: wrap;
     gap: 40px 44px;
     max-height: 600px;
-    max-width: 630px;
   }
 }
 
@@ -50,10 +31,16 @@
 }
 @media only screen and (min-width: 768px) {
   .descr {
+    width: 500px;
     font-size: 16px;
   }
 }
-
+@media only screen and (min-width: 768px) {
+  .descr {
+    width: 625px;
+    font-size: 16px;
+  }
+}
 @media only screen and (min-width: 1440px) {
   .titleWrapper {
     order: 2;
@@ -67,5 +54,6 @@
   }
   .chart {
     order: 3;
+    max-width: 630px;
   }
 }

@@ -20,7 +20,7 @@ export const Modal = ({ children, pd, toggleModal, anotherModal = false }) => {
 
     return () => {
       window.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'scroll';
+      document.body.style.overflow = 'auto';
     };
   }, [toggleModal, anotherModal]);
 
