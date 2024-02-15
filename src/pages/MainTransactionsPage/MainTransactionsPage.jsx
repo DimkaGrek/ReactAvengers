@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-//
+
 import {
   TransactionForm,
   TransactionsChart,
@@ -12,8 +12,8 @@ import {
   addTransaction,
   getTransactions,
 } from 'my-redux/Transaction/operations';
-//
 import { fetchCurrentUser } from 'my-redux/User/operations';
+
 import s from './MainTransactionsPage.module.css';
 
 const MainTransactionsPage = () => {
@@ -40,7 +40,7 @@ const MainTransactionsPage = () => {
   };
 
   return (
-    <div className={s.container}>
+    <div className="container">
       <div className={s.wrapper}>
         <div className={s.titleWrapper}>
           <h2 className={s.title}>{capitalizedType.slice(0, -1)} Log</h2>

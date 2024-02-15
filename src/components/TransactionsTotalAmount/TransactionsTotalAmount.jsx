@@ -1,12 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-//
+
 import { Icon } from 'components';
 import { selectUser } from 'my-redux/User/userSlice';
-//
-import s from './TransactionsTotalAmount.module.css';
 import { getCurrencyChar, getPath } from 'helpers';
+
+import s from './TransactionsTotalAmount.module.css';
 
 export const TransactionsTotalAmount = ({
   totalAllExpenses = null,
