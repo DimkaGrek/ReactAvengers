@@ -35,10 +35,9 @@
     font-size: 16px;
   }
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1440px) {
   .descr {
     width: 625px;
-    font-size: 16px;
   }
 }
 @media only screen and (min-width: 1440px) {
@@ -54,6 +53,6 @@
   }
   .chart {
     order: 3;
-    max-width: 630px;
+    width: 630px;
   }
 }
