@@ -61,7 +61,6 @@
 @media only screen and (min-width: 1440px) {
   .containerImg {
     display: flex;
-    margin-top: 82px;
   }
 
   .containerTitle {
