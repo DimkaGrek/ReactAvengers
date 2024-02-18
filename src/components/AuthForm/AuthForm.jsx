@@ -65,11 +65,13 @@ const AuthForm = ({ signUp }) => {
 
     dispatch(signUp ? registerUser(userData) : loginUser(userData))
       .unwrap()
-      .then(() => {
+      .then(userName => {
         reset();
-        toast.success('Welcome !');
-        //   signUp ? 'Registration successful!' : 'Login successful!'
-        // );
+        toast.success(
+          signUp
+            ? `Welcome, ${userName.name}!`
+            : `Welcome, ${userName.user.name}!`
+        );
         signUp && navigate('/login');
       })
       .catch(error => {
