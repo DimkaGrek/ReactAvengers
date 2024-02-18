@@ -14,7 +14,7 @@ import {
   addTransaction,
   getTransactions,
 } from 'my-redux/Transaction/operations';
-import { selectDate } from 'my-redux/Filter/FilterSlice';
+import { resetFilter, selectDate } from 'my-redux/Filter/FilterSlice';
 import { useGetTotalTransactionsSum } from 'hooks/getTotalTransactionsSum';
 import { useModal } from 'hooks';
 import { fetchCurrentUser } from 'my-redux/User/operations';
@@ -34,6 +34,7 @@ const TransactionsHistoryPage = () => {
         getTotalSumTransactionClick();
         toggleIsAddModal();
         toast.success('Transaction added successfully!');
+        dispatch(resetFilter());
       })
       .catch(error => {
         toast.error('Something went wrong!');
@@ -81,7 +82,10 @@ const TransactionsHistoryPage = () => {
           totalAllIncomes={totalIncomes}
         />
       </div>
-      <TransactionsSearchTools handleOpenModal={toggleIsAddModal} />
+      <TransactionsSearchTools
+        handleOpenModal={toggleIsAddModal}
+        type={transactionsType}
+      />
       <TransactionsList />
       {isAddModal && (
         <Modal toggleModal={toggleIsAddModal}>
