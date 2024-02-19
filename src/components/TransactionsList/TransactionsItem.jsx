@@ -3,14 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import { Shorter, ShorterDate } from './Shorter';
-import { deleteTransaction } from 'my-redux/Transaction/operations';
+import {
+  deleteTransaction,
+  getTransactions,
+} from 'my-redux/Transaction/operations';
 import { Icon } from 'components';
 import { fetchCurrentUser } from 'my-redux/User/operations';
 import s from './TransactionsItem.module.css';
 import { selectCurrency } from 'my-redux/User/userSlice';
+import { useParams } from 'react-router-dom';
 
 export const TransactionsItem = ({ item, handleOpenModal }) => {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const { transactionsType } = useParams();
 
   useEffect(() => {
     function handleWindowResize() {
@@ -30,6 +35,7 @@ export const TransactionsItem = ({ item, handleOpenModal }) => {
       .unwrap()
       .then(() => {
         dispatch(fetchCurrentUser());
+        dispatch(getTransactions({ type: transactionsType }));
         toast.success('Transaction deleted successfully');
       })
       .catch(error => toast.error('Something wrong !'));

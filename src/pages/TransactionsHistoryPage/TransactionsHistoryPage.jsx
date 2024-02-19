@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -15,23 +15,21 @@ import {
   getTransactions,
 } from 'my-redux/Transaction/operations';
 import { resetFilter, selectDate } from 'my-redux/Filter/FilterSlice';
-import { useGetTotalTransactionsSum } from 'hooks/getTotalTransactionsSum';
 import { useModal } from 'hooks';
 import { fetchCurrentUser } from 'my-redux/User/operations';
 import s from './TransactionsHistoryPage.module.css';
 
 const TransactionsHistoryPage = () => {
+  const { transactionsType } = useParams();
   const totalExpenses = useSelector(selectTotalTransExpenses);
   const totalIncomes = useSelector(selectTotalTransIncomes);
-
-  const getTotalSumTransactionClick = useGetTotalTransactionsSum();
 
   const onSubmitForm = transaction => {
     dispatch(addTransaction(transaction))
       .unwrap()
       .then(() => {
         dispatch(fetchCurrentUser());
-        getTotalSumTransactionClick();
+        dispatch(getTransactions({ type: transactionsType }));
         toggleIsAddModal();
         toast.success('Transaction added successfully!');
         dispatch(resetFilter());
@@ -44,7 +42,6 @@ const TransactionsHistoryPage = () => {
   const dispatch = useDispatch();
   const filterDate = useSelector(selectDate);
 
-  const { transactionsType } = useParams();
   let text = 'All Expense';
   let description =
     'View and manage every transaction seamlessly! Your entire financial landscape, all in one place.';
@@ -53,12 +50,6 @@ const TransactionsHistoryPage = () => {
     description =
       'Track and celebrate every bit of earnings effortlessly! Gain insights into your total revenue in a snap.';
   }
-
-  const getTotalSumTransaction = useRef(useGetTotalTransactionsSum());
-
-  useEffect(() => {
-    getTotalSumTransaction.current();
-  }, []);
 
   useEffect(() => {
     if (filterDate) {

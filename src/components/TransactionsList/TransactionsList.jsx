@@ -5,13 +5,15 @@ import { useParams } from 'react-router-dom';
 
 import { TransactionsItem } from './TransactionsItem';
 import { selectFilter } from 'my-redux/Filter/FilterSlice';
-import { editTransaction } from 'my-redux/Transaction/operations';
+import {
+  editTransaction,
+  getTransactions,
+} from 'my-redux/Transaction/operations';
 import { selectTransactions } from 'my-redux/Transaction/transactionSlice';
 import { useModal } from 'hooks';
 import { Modal, TransactionForm } from 'components';
 import { fetchCurrentUser } from 'my-redux/User/operations';
 import { TransactionsMessage } from 'components/TransactionsMessage/TransactionsMessage';
-import { useGetTotalTransactionsSum } from 'hooks/getTotalTransactionsSum';
 import s from './TransactionsList.module.css';
 
 export const TransactionsList = () => {
@@ -19,14 +21,12 @@ export const TransactionsList = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(selectTransactions);
 
-  const getTotalSumTransaction = useGetTotalTransactionsSum();
-
   const onSubmitForm = transaction => {
     dispatch(editTransaction(transaction))
       .unwrap()
       .then(() => {
         dispatch(fetchCurrentUser());
-        getTotalSumTransaction();
+        dispatch(getTransactions({ type: transactionsType }));
         toast.success('Transaction edited successfully!');
         toggleEditTransaction();
       })
