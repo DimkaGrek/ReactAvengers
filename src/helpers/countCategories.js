@@ -29,19 +29,23 @@ export function countCategories(data, total) {
     categoriesData.push({ name: key, value: percent });
   });
 
-  const sumRoundedPercentages = categoriesData.reduce(
+  const sumPercentages = categoriesData.reduce(
     (total, item) => total + item.value,
     0
   );
 
   const sortedCategories = categoriesData.sort((a, b) => b.value - a.value);
 
-  if (sumRoundedPercentages !== 100) {
-    const diff = 100 - sumRoundedPercentages;
+  if (sumPercentages !== 100) {
+    const diff = 100 - sumPercentages;
 
-    sortedCategories[sortedCategories.length - 1].value = Number(
-      (sortedCategories[sortedCategories.length - 1].value + diff).toFixed(1)
-    );
+    if (sortedCategories[sortedCategories.length - 1].value > 1) {
+      sortedCategories[sortedCategories.length - 1].value = Number(
+        (sortedCategories[sortedCategories.length - 1].value + diff).toFixed(1)
+      );
+    } else {
+      sortedCategories[sortedCategories.length - 1].value = 0.1;
+    }
   }
 
   return getColors(sortedCategories);

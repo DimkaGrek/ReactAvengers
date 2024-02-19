@@ -10,7 +10,7 @@ export const getTransactions = createAsyncThunk(
       }
       const params = date ? { date } : {};
       const { data } = await api.get(`/transactions/${type}`, { params });
-      return { data, date };
+      return { data, date, type };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

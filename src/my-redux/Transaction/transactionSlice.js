@@ -21,10 +21,17 @@ const transactionSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(getTransactions.fulfilled, (state, { payload }) => {
-        const { data, date } = payload;
+        const { data, date, type } = payload;
         state.transactions = data;
-        if (data.length !== 0 && !date) {
-          if (data[0].type === 'expenses') {
+        if (!data.length && type === 'incomes') {
+          state.totalTransIncomes = 0;
+        }
+        if (!data.length && type === 'expenses') {
+          state.totalTransExpenses = 0;
+        }
+
+        if (data.length && !date) {
+          if (type === 'expenses') {
             state.totalTransExpenses = data.reduce((total, item) => {
               return (total += item.sum);
             }, 0);

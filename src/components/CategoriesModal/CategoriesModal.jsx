@@ -10,6 +10,7 @@ import {
 import { selectCategories } from 'my-redux/Category/categorySlice';
 import { Icon } from '../../components/Icon/Icon';
 import s from './CategoriesModal.module.css';
+import { getTransactions } from 'my-redux/Transaction/operations';
 
 export const CategoriesModal = ({ type, transportCategory }) => {
   const categories = useSelector(selectCategories);
@@ -34,7 +35,10 @@ export const CategoriesModal = ({ type, transportCategory }) => {
     if (isEditMode) {
       dispatch(editCategory({ categoryName, categoryId }))
         .unwrap()
-        .then(() => setIsEditMode(false))
+        .then(() => {
+          dispatch(getTransactions({ type }));
+          setIsEditMode(false);
+        })
         .catch(error => toast.error('Error editing category'));
     } else {
       dispatch(addCategory({ type, categoryName }))
