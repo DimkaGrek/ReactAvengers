@@ -1,13 +1,20 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
 import style from './TransactionsHistoryNav.module.css';
+import { useEffect } from 'react';
 
 const TransactionsHistoryNav = ({
   activeButton,
   handleButtonAndToggleMenu,
 }) => {
   const isMobileScreen = useMediaQuery({ query: '(min-width: 320px)' });
+
+  const { transactionsType } = useParams();
+
+  useEffect(() => {
+    handleButtonAndToggleMenu(transactionsType);
+  }, [transactionsType, handleButtonAndToggleMenu]);
 
   const changeActiveButtonStyleDesktop = buttonName => {
     return activeButton === buttonName

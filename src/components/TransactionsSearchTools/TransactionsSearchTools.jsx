@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
 
@@ -12,12 +13,16 @@ import {
 import { Icon, UniversalButton } from 'components';
 import s from './TransactionsSearchTools.module.css';
 
-export const TransactionsSearchTools = ({ handleOpenModal }) => {
+export const TransactionsSearchTools = ({ handleOpenModal, type }) => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
   const changeFilterValue = e => {
     dispatch(changeFilter(e.target.value));
   };
+
+  useEffect(() => {
+    dispatch(resetFilter());
+  }, [type, dispatch]);
 
   const date = useSelector(selectDate);
   const changeDateValue = e => {
