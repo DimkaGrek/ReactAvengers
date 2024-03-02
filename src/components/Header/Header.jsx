@@ -40,7 +40,6 @@ const Header = () => {
 
   const handleButtonAndToggleMenu = buttonName => {
     setActiveButton(buttonName);
-    isMenuOpen && setIsMenuOpen(false);
   };
 
   const resetStateActiveButton = () => {
