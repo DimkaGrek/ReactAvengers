@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ReactAvengers/static/css/main.fa561dfe.css",
-    "main.js": "/ReactAvengers/static/js/main.10216351.js",
+    "main.js": "/ReactAvengers/static/js/main.58d1737b.js",
     "static/css/701.89503569.chunk.css": "/ReactAvengers/static/css/701.89503569.chunk.css",
     "static/js/701.928021eb.chunk.js": "/ReactAvengers/static/js/701.928021eb.chunk.js",
     "static/css/169.75a51c02.chunk.css": "/ReactAvengers/static/css/169.75a51c02.chunk.css",
@@ -28,7 +28,7 @@
     "static/media/images_users_1x@.png": "/ReactAvengers/static/media/images_users_1x@.c1c11a19d97602915a48.png",
     "index.html": "/ReactAvengers/index.html",
     "main.fa561dfe.css.map": "/ReactAvengers/static/css/main.fa561dfe.css.map",
-    "main.10216351.js.map": "/ReactAvengers/static/js/main.10216351.js.map",
+    "main.58d1737b.js.map": "/ReactAvengers/static/js/main.58d1737b.js.map",
     "701.89503569.chunk.css.map": "/ReactAvengers/static/css/701.89503569.chunk.css.map",
     "701.928021eb.chunk.js.map": "/ReactAvengers/static/js/701.928021eb.chunk.js.map",
     "169.75a51c02.chunk.css.map": "/ReactAvengers/static/css/169.75a51c02.chunk.css.map",
@@ -42,6 +42,6 @@
   },
   "entrypoints": [
     "static/css/main.fa561dfe.css",
-    "static/js/main.10216351.js"
+    "static/js/main.58d1737b.js"
   ]
 }
